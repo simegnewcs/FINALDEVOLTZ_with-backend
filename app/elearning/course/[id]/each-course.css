@@ -1,0 +1,281 @@
+/* each-course.css */
+
+/* Brand Colors */
+:root {
+  --brand-yellow: #FFD600; /* Bold. Bright. Visionary. */
+  --brand-blue: #299DD5;   /* Tech-driven. Trusted. Intelligent. */
+  --brand-purple: #A65885; /* Creative. Energetic. Future-ready. */
+}
+
+/* Hide sidebars by default on small screens */
+@media (max-width: 1024px) {
+  .left-sidebar-collapsed,
+  .right-sidebar-collapsed {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease-in-out;
+  }
+
+  .left-sidebar-expanded,
+  .right-sidebar-expanded {
+    max-height: 500px;
+    overflow-y: auto;
+    transition: max-height 0.35s ease-in-out;
+    /* Add subtle shadow for clarity */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+  font-size: 20px;
+}
+
+.body1{
+  
+  overflow-y: scroll; /* or auto */
+
+
+}
+
+/* Hide scrollbar on mobile sidebars */
+aside::-webkit-scrollbar {
+  display: none;
+}
+.hamburger{
+  display: none;
+}
+aside {
+  /* -ms-overflow-style: none;
+  scrollbar-width: none; */
+position: sticky;
+  height: 600px;        /* Fixed height */
+  overflow-y: scroll; 
+/* background: linear-gradient(to right, #FFD600, #299DD5, #A65885); */
+background: radial-gradient(circle, #299DD5, #df2591);
+
+  border:solid 6px #299DD5;
+  
+}
+
+.progress1{
+  background-color: #299DD5;
+}
+.progress2{
+   font-weight: bold;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  font-weight: 300;
+  background-color: #299DD5;
+}
+
+.asideright h3{
+  background-color: #FFD600;
+  margin: 0;
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 15px;
+  font-weight: bold;
+}
+.asideright li{
+   font-weight: bold;
+  background-color: #FFD600;
+  margin: 0;
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 15px;
+}
+.topicesleft{
+ /* background: linear-gradient(to right, #FFD600, #299DD5, #A65885); */
+font-family: 'Times New Roman', Times, serif;
+}
+.almetam{
+  background-color: #FFD600;
+}
+/* main containt */
+.mainCon{
+  height: 600px;
+  overflow-y: scroll;
+}
+
+footer{
+  background-color: #323232;
+
+}
+
+.footerpart{
+  padding: 60px;
+}
+/* PROSE CONTENT STYLES */
+.prose {
+  --tw-prose-body: var(--brand-blue);
+  --tw-prose-headings: var(--brand-purple);
+  --tw-prose-links: var(--brand-purple);
+  --tw-prose-code: var(--brand-blue);
+  --tw-prose-bullets: var(--brand-purple);
+  --tw-prose-quotes: var(--brand-yellow);
+  /* font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif ,'Times New Roman', Times, serif;
+  line-height: 1.6; */
+
+font-family: 'Times New Roman', Times, serif;
+  line-height: 2;
+
+ 
+  max-width: 100%;
+  font-weight: 500;
+font-size: 20px;
+}
+
+/* Paragraph spacing */
+.prose p {
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+}
+
+/* Headings inside notes */
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: var(--brand-purple);
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  scroll-margin-top: 80px; /* For smooth anchor link spacing */
+}
+
+/* Lists */
+.prose ul,
+.prose ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+  color: var(--brand-blue);
+  font-weight: 500;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+}
+
+/* Inline code styling */
+.prose code {
+  background-color: var(--brand-yellow);
+  color: #1a1a1a;
+  padding: 0.2em 0.5em;
+  border-radius: 0.3rem;
+  font-family: "Fira Mono", monospace;
+  font-size: 0.95em;
+  font-weight: 600;
+  border: 1px solid var(--brand-purple);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.prose code:hover {
+  background-color: #ffe54c;
+}
+
+/* Blockquotes */
+.prose blockquote {
+  border-left: 5px solid var(--brand-purple);
+  padding-left: 1.25rem;
+  color: var(--brand-blue);
+  font-style: italic;
+  margin: 1.5rem 0;
+  background: #fff3f9;
+  border-radius: 0.4rem;
+  box-shadow: 0 2px 5px rgb(166 88 133 / 0.15);
+}
+
+/* Tables */
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid var(--brand-yellow);
+  padding: 0.75rem 1.25rem;
+  text-align: left;
+  color: var(--brand-blue);
+}
+
+.prose th {
+  background-color: var(--brand-purple);
+  font-weight: 700;
+  color: white;
+}
+
+/* Links */
+.prose a {
+  color: var(--brand-yellow);
+  text-decoration: underline;
+  transition: color 0.25s ease-in-out;
+}
+
+.prose a:hover,
+.prose a:focus {
+  color: var(--brand-purple);
+  outline: none;
+}
+
+/* Responsive font size */
+@media (max-width: 768px) {
+  .prose {
+    font-size: 0.95rem;
+  }
+  .hamburger{
+    display: block;
+  }
+
+  .mainCon{
+ 
+  overflow: hidden;
+  width: 100%;
+
+ 
+}
+
+.wholeleft{
+  display: none;
+}
+
+.footerpart{
+  padding-left: 15px;
+
+  justify-content: space-between;
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
+}
+.topicesleft{
+ /* background: linear-gradient(to right, #FFD600, #299DD5, #A65885); */
+font-family: 'Times New Roman', Times, serif;
+height: 30px;
+}
+}
+
+/* Add subtle shadow and padding for code blocks */
+pre {
+  background-color: #1e293b; /* Tailwind slate-800 */
+  color: var(--brand-yellow);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  box-shadow: 0 4px 12px rgb(41 157 213 / 0.3);
+  border: 1px solid var(--brand-yellow);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+pre:hover {
+  box-shadow: 0 6px 20px rgb(41 157 213 / 0.6);
+}
