@@ -284,6 +284,48 @@ export default function HomePage() {
             ))}
           </div>
 
+              <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-12">
+            
+              <div
+              
+                className="bg-gradient-to-br from-slate-50 to-blue-50 p-6 sm:p-8 rounded-2xl hover:shadow-xl transition-all group"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-700 to-coral-500 rounded-lg flex items-center justify-center mb-4 sm:mb-0 sm:mr-4">
+                    <img className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900">DevVoltz E-Commerce Store</h3>
+                </div>
+                <p className="text-slate-600 mb-6 text-sm sm:text-base">Welcome to DevVoltz E-Commerce Store <br />  – your one-stop shop for quality tech products and solutions.<br /> Browse, choose, and buy your favorite products with ease
+                  and confidence.<br /> Fast, secure, and hassle-free shopping – all in one place</p>
+                <ul className="space-y-2 mb-6">
+                   
+                    <li className="flex items-center text-slate-600 text-sm sm:text-base">
+                      <CheckCircle className="w-4 h-4 text-coral-500 mr-2 flex-shrink-0" />
+                      Wide range of tech products.
+
+                    </li>
+                    <li className="flex items-center text-slate-600 text-sm sm:text-base">
+                      <CheckCircle className="w-4 h-4 text-coral-500 mr-2 flex-shrink-0" />
+                      Secure payment options.
+                    </li>
+                    <li className="flex items-center text-slate-600 text-sm sm:text-base">
+                      <CheckCircle className="w-4 h-4 text-coral-500 mr-2 flex-shrink-0" />
+                      Fast delivery services.
+                    </li>
+                  
+                </ul>
+                < Link href="https://devoltzstore.vercel.app" className="text-blue-700 font-semibold hover:text-coral-500 transition-colors flex items-center group-hover:translate-x-2 transition-transform text-sm sm:text-base">
+                  Visit Store 
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Link>
+                
+                  
+              
+              </div>
+            
+          </div>
+
           <div className="text-center">
             <button
               onClick={handleExploreServices}
