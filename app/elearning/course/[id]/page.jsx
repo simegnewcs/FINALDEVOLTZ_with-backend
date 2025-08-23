@@ -108,31 +108,34 @@ export default function CoursePage() {
       </div>
 
       <nav className="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-700 to-coral-500 rounded-lg flex items-center justify-center">
-                <User className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-blue-700 to-coral-500 bg-clip-text text-transparent">
-                DevVoltz
-              </span>
-            </Link>
-            <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="icon">
-                <Settings className="w-5 h-5" />
-              </Button>
-              <Button variant="ghost" size="icon" onClick={() => console.log("Logout")}> {/* Replace with real logout */}
-                <LogOut className="w-5 h-5" />
-              </Button>
-            </div>
-          </div>
-        </div>
-      </nav>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex justify-between items-center h-16">
+      <Link href="/" className="flex items-center space-x-2">
+        {/* --- LOGO ADDED HERE --- */}
+        <img
+          src="/logodvwhitey.png"
+          alt="DevVoltz Logo"
+          className="w-10 h-10 rounded-full"
+        />
+        <span className="text-2xl font-bold bg-gradient-to-r from-blue-700 to-coral-500 bg-clip-text text-transparent">
+          DevVoltz
+        </span>
+      </Link>
+      <div className="flex items-center space-x-4">
+        <Button variant="ghost" size="icon">
+          <Settings className="w-5 h-5" />
+        </Button>
+        <Button variant="ghost" size="icon" onClick={() => console.log("Logout")}> {/* Replace with real logout */}
+          <LogOut className="w-5 h-5" />
+        </Button>
+      </div>
+    </div>
+  </div>
+</nav>
 
       <div className="flex flex-col lg:flex-row ">
         <aside className={`bg-brandBlue border-b lg:border-b-0 lg:border-r border-brandBlue/20 p-4 overflow-y-auto transition-all duration-300 wholeleft ${showLeftSidebar ? "left-sidebar-expanded" : "left-sidebar-collapsed"} w-25 lg:w-1/6`}>
-          <h2 className="text-xl font-bold text-brandBlue">HTML Tutorial</h2>
+          <h2 className="text-xl font-bold text-brandBlue">DevVoltz Tutorial</h2>
           <ul className="space-y-1 text-sm topicesleft">
             {topics.map((topic, index) => (
               <li key={index}>
@@ -276,9 +279,14 @@ export default function CoursePage() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 footerpart">
           <div>
             <h2 className="text-2xl font-bold mb-3 flex items-center gap-2">
-              <span className="bg-gradient-to-r from-blue-700 to-pink-500 text-white p-2 rounded">⚡</span>
-              DevVoltz
-            </h2>
+  {/* --- LOGO ADDED HERE --- */}
+  <img
+    src="/logodvwhitey.png"
+    alt="DevVoltz Logo"
+    className="w-8 h-8 rounded-full"
+  />
+  DevVoltz
+</h2>
             <p className="text-sm text-gray-400">
               Empowering Africa's tech future from Addis Ababa to Dubai and beyond.
             </p>

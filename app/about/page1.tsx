@@ -330,6 +330,8 @@ export default function AboutPage() {
               <div className="flex items-center space-x-2 mb-4">
                 <div className="w-8 h-8 bg-gradient-to-r from-blue-700 to-coral-500 rounded-lg flex items-center justify-center">
                   <Zap className="w-5 h-5 text-white" />
+                  <img src="../logodvwhitey.png" alt="" className="w-30 h-10  border-rounded " style={{ borderRadius: "50%" }} // ✅ correct
+                />
                 </div>
                 <span className="text-2xl font-bold">DevVoltz</span>
               </div>

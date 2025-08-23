@@ -2,6 +2,7 @@
 
 export const courseTopics = {
   html: [
+    
     {
       "title": "The Evolution of HTML",
       "note": "👉 HTML (HyperText Markup Language) is the core language used to create web pages. \n\n 👉It has evolved significantly since its creation in the early 1990s, gaining features that made the web more interactive, accessible, and modern.\n\n\ \n\n\⫷⫸⫷⫸⫷⫸⫷⫸HTML Evolution Timeline:⫷⫸⫷⫸⫷⫸\n\nVersion    Year    Key Features\n--------   ----    -----------\nHTML 1.0   1993    Simple; only basic tags like headings, paragraphs, and links.\nHTML 2.0   1995    Standardized HTML; included forms and tables.\nHTML 3.2   1997    Introduced styles, scripts, and applets.\nHTML 4.01  1999    Supported CSS and better structure for layout.\nHTML5      2014    Supports audio, video, canvas, local storage, semantic tags, and mobile-friendly design.\n\nWhy the Evolution Was Important:\n- Older versions were limited to static content\n- Newer versions brought structure, multimedia, and interactivity\n- HTML5 made websites more responsive, powerful, and mobile-compatible\n\nSummary of Major Milestones:\n- HTML 1.0 – Birth of HTML with basic tags only\n- HTML 4.01 – Introduced separation of content and style (via CSS)\n- HTML5 – Supports media, canvas, semantic structure, and modern web standards\n\nKey Terms:\n- Semantic Tags: Tags like <article>, <section>, <header> that give meaning to content\n- Canvas: A tag for drawing graphics using JavaScript\n- Responsive Design: Layouts that adjust to screen size using CSS techniques",
@@ -1491,32 +1492,31 @@ SQL :
 }
 ],
 Java : [
-  {
+{
   "title": "Java HOME",
-  "note": "Main starting point for Java resources and documentation with comprehensive project structure and execution.",
-  "code": "// Main.java - Primary application entry point\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"=== Welcome to Java Programming! ===\");\n        \n        // Display system information\n        System.out.println(\"Java Version: \" + System.getProperty(\"java.version\"));\n        System.out.println(\"JVM Vendor: \" + System.getProperty(\"java.vendor\"));\n        System.out.println(\"Operating System: \" + System.getProperty(\"os.name\"));\n        \n        // Demonstrate basic functionality\n        displayWelcomeMessage();\n        demonstrateBasicOperations();\n    }\n    \n    public static void displayWelcomeMessage() {\n        System.out.println(\"\\n--- Getting Started ---\");\n        System.out.println(\"1. Install JDK from Oracle or OpenJDK\");\n        System.out.println(\"2. Set JAVA_HOME environment variable\");\n        System.out.println(\"3. Add Java bin directory to PATH\");\n        System.out.println(\"4. Verify installation: java -version\");\n    }\n    \n    public static void demonstrateBasicOperations() {\n        System.out.println(\"\\n--- Basic Operations ---\");\n        \n        // Variable declaration and usage\n        String language = \"Java\";\n        int version = 21;\n        boolean isObjectOriented = true;\n        \n        System.out.println(\"Language: \" + language);\n        System.out.println(\"Latest Version: \" + version);\n        System.out.println(\"Object Oriented: \" + isObjectOriented);\n        \n        // Simple calculation\n        int result = calculateSquare(5);\n        System.out.println(\"Square of 5: \" + result);\n    }\n    \n    public static int calculateSquare(int number) {\n        return number * number;\n    }\n}\n\n// Compile: javac Main.java\n// Run: java Main"
+  "note": "Java HOME serves as the central hub for Java resources, tutorials, and project entry points. It provides comprehensive guidance on structuring projects, executing Java programs, and understanding the JVM ecosystem. Java HOME is your starting point to learn everything from installation and configuration to advanced features, including multithreading, collections, streams, and APIs. It emphasizes best practices, maintainable code, debugging techniques, and platform-independent development using JVM.",
+  "code": "// Main.java - Primary Java Application Entry Point\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"=== Welcome to Java Programming! ===\");\n        \n        // Display system properties\n        System.out.println(\"Java Version: \" + System.getProperty(\"java.version\"));\n        System.out.println(\"JVM Vendor: \" + System.getProperty(\"java.vendor\"));\n        System.out.println(\"OS: \" + System.getProperty(\"os.name\") + \" - \" + System.getProperty(\"os.arch\"));\n        \n        // Demonstrate features\n        displayWelcomeMessage();\n        demonstrateBasicOperations();\n        demonstrateAdvancedOperations();\n        demonstrateControlFlow();\n    }\n\n    public static void displayWelcomeMessage() {\n        System.out.println(\"\\n--- Getting Started ---\");\n        System.out.println(\"1. Install JDK from Oracle or OpenJDK\");\n        System.out.println(\"2. Set JAVA_HOME environment variable\");\n        System.out.println(\"3. Add Java bin directory to PATH\");\n        System.out.println(\"4. Verify installation using: java -version and javac -version\");\n        System.out.println(\"5. Choose IDE: IntelliJ IDEA, Eclipse, VS Code, or NetBeans\");\n    }\n\n    public static void demonstrateBasicOperations() {\n        System.out.println(\"\\n--- Basic Operations ---\");\n\n        String language = \"Java\";\n        int version = 21;\n        boolean isObjectOriented = true;\n\n        System.out.println(\"Language: \" + language);\n        System.out.println(\"Latest Version: \" + version);\n        System.out.println(\"Object Oriented: \" + isObjectOriented);\n\n        int result = calculateSquare(7);\n        System.out.println(\"Square of 7: \" + result);\n\n        double area = calculateCircleArea(5);\n        System.out.println(\"Area of circle with radius 5: \" + area);\n    }\n\n    public static int calculateSquare(int number) {\n        return number * number;\n    }\n\n    public static double calculateCircleArea(double radius) {\n        final double PI = 3.14159;\n        return PI * radius * radius;\n    }\n\n    public static void demonstrateAdvancedOperations() {\n        System.out.println(\"\\n--- Advanced Operations ---\");\n        int[] numbers = {1, 2, 3, 4, 5};\n        int sum = 0;\n        for(int num : numbers) sum += num;\n        System.out.println(\"Sum of array numbers: \" + sum);\n\n        String combined = String.join(\", \", \"Java\", \"Python\", \"C++\");\n        System.out.println(\"Joined languages: \" + combined);\n    }\n\n    public static void demonstrateControlFlow() {\n        System.out.println(\"\\n--- Control Flow Examples ---\");\n        int score = 85;\n        if(score >= 90) {\n            System.out.println(\"Grade: A\");\n        } else if(score >= 75) {\n            System.out.println(\"Grade: B\");\n        } else {\n            System.out.println(\"Grade: C or below\");\n        }\n\n        System.out.println(\"Loop from 1 to 5:\");\n        for(int i=1; i<=5; i++) {\n            System.out.println(i);\n        }\n    }\n}\n\n// Compile: javac Main.java\n// Run: java Main"
 },
 {
   "title": "Java Intro",
-  "note": "Java is a high-level, class-based, object-oriented programming language with platform independence and strong typing.",
-  "code": "// Introduction to Java Programming\npublic class JavaIntroduction {\n    \n    // Main method - program entry point\n    public static void main(String[] args) {\n        System.out.println(\"=== Java Programming Introduction ===\\n\");\n        \n        // Java Features Demonstration\n        demonstratePlatformIndependence();\n        demonstrateObjectOrientedNature();\n        demonstrateStrongTyping();\n        demonstrateMemoryManagement();\n        \n        // Real-world analogy\n        System.out.println(\"\\n--- Real-world Analogy ---\");\n        System.out.println(\"Java is like a universal recipe:\");\n        System.out.println(\"- Write once, run anywhere (WORA)\");\n        System.out.println(\"- Object-oriented like building with LEGO\");\n        System.out.println(\"- Strong typing ensures safety\");\n        System.out.println(\"- Automatic memory management\");\n    }\n    \n    public static void demonstratePlatformIndependence() {\n        System.out.println(\"1. Platform Independence:\");\n        System.out.println(\"   Java code compiles to bytecode\");\n        System.out.println(\"   Bytecode runs on JVM (Java Virtual Machine)\");\n        System.out.println(\"   JVM available for Windows, macOS, Linux, etc.\");\n        System.out.println(\"   Example: Same .class file runs everywhere\");\n    }\n    \n    public static void demonstrateObjectOrientedNature() {\n        System.out.println(\"\\n2. Object-Oriented Programming:\");\n        System.out.println(\"   Everything is an object\");\n        System.out.println(\"   Supports encapsulation, inheritance, polymorphism\");\n        System.out.println(\"   Example: Car class with methods and properties\");\n        \n        // Simple class demonstration\n        Car myCar = new Car(\"Toyota\", \"Camry\", 2023);\n        myCar.displayInfo();\n        myCar.startEngine();\n    }\n    \n    public static void demonstrateStrongTyping() {\n        System.out.println(\"\\n3. Strong Typing System:\");\n        System.out.println(\"   Variables must be declared with specific types\");\n        System.out.println(\"   Type safety prevents many errors\");\n        System.out.println(\"   Example: int age = 25; // Correct\");\n        System.out.println(\"   Example: age = \"twenty five\"; // Compile error\");\n        \n        int age = 25;\n        String name = \"Alice\";\n        // age = name; // This would cause compile-time error\n        System.out.println(\"   Age: \" + age + \", Name: \" + name);\n    }\n    \n    public static void demonstrateMemoryManagement() {\n        System.out.println(\"\\n4. Automatic Memory Management:\");\n        System.out.println(\"   Garbage Collector automatically frees memory\");\n        System.out.println(\"   No manual memory management needed\");\n        System.out.println(\"   Prevents memory leaks and dangling pointers\");\n    }\n}\n\n// Supporting Car class for demonstration\nclass Car {\n    private String make;\n    private String model;\n    private int year;\n    \n    public Car(String make, String model, int year) {\n        this.make = make;\n        this.model = model;\n        this.year = year;\n    }\n    \n    public void displayInfo() {\n        System.out.println(\"   Car: \" + year + \" \" + make + \" \" + model);\n    }\n    \n    public void startEngine() {\n        System.out.println(\"   Engine started! Vroom vroom!\");\n    }\n}"
+  "note": "Java is a versatile, high-level programming language that is class-based, object-oriented, and platform-independent. It follows the 'Write Once, Run Anywhere' philosophy, which allows compiled bytecode to run on any device with a JVM. Java enforces strong typing, automatic memory management through garbage collection, and provides a rich set of standard libraries for networking, I/O, collections, and concurrency. Its syntax is influenced by C/C++ but simplified for ease of use. Java is widely used in enterprise applications, Android development, web services, and large-scale distributed systems.",
+  "code": "// Introduction to Java Programming\npublic class JavaIntroduction {\n    public static void main(String[] args) {\n        System.out.println(\"=== Java Programming Introduction ===\\n\");\n\n        demonstratePlatformIndependence();\n        demonstrateObjectOrientedNature();\n        demonstrateStrongTyping();\n        demonstrateMemoryManagement();\n        demonstrateUseCases();\n    }\n\n    public static void demonstratePlatformIndependence() {\n        System.out.println(\"1. Platform Independence:\");\n        System.out.println(\"   - Java code compiles to bytecode\");\n        System.out.println(\"   - Bytecode runs on any JVM-enabled system\");\n        System.out.println(\"   - Example: Windows, Linux, macOS\");\n    }\n\n    public static void demonstrateObjectOrientedNature() {\n        System.out.println(\"\\n2. Object-Oriented Programming:\");\n        System.out.println(\"   - Classes and Objects\");\n        System.out.println(\"   - Encapsulation, Inheritance, Polymorphism, Abstraction\");\n\n        Car myCar = new Car(\"Toyota\", \"Camry\", 2023);\n        myCar.displayInfo();\n        myCar.startEngine();\n    }\n\n    public static void demonstrateStrongTyping() {\n        System.out.println(\"\\n3. Strong Typing System:\");\n        int age = 25;\n        String name = \"Alice\";\n        System.out.println(\"   Name: \" + name + \", Age: \" + age);\n    }\n\n    public static void demonstrateMemoryManagement() {\n        System.out.println(\"\\n4. Automatic Memory Management:\");\n        System.out.println(\"   - Garbage Collector handles memory allocation and freeing\");\n    }\n\n    public static void demonstrateUseCases() {\n        System.out.println(\"\\n5. Common Java Use Cases:\");\n        System.out.println(\"   - Android App Development\");\n        System.out.println(\"   - Web Applications (Spring, Jakarta EE)\");\n        System.out.println(\"   - Enterprise Systems\");\n        System.out.println(\"   - Big Data & Distributed Systems\");\n    }\n}\n\nclass Car {\n    private String make, model; private int year;\n    public Car(String make, String model, int year){this.make=make;this.model=model;this.year=year;}\n    public void displayInfo(){System.out.println(\"   Car: \" + year + \" \" + make + \" \" + model);}\n    public void startEngine(){System.out.println(\"   Engine started! Vroom vroom!\");}\n}"
 },
 {
   "title": "Java Get Started",
-  "note": "Complete Java development environment setup with JDK installation, IDE configuration, and comprehensive first program.",
-  "code": "// Complete Java Getting Started Guide\npublic class GettingStarted {\n    \n    public static void main(String[] args) {\n        System.out.println(\"=== Java Development Environment Setup ===\\n\");\n        \n        displayInstallationSteps();\n        demonstrateFirstProgram();\n        demonstrateCompilationProcess();\n        demonstratePackageManagement();\n        demonstrateIDESetup();\n    }\n    \n    public static void displayInstallationSteps() {\n        System.out.println(\"1. JDK Installation Steps:\");\n        System.out.println(\"   - Download JDK from oracle.com or adoptium.net\");\n        System.out.println(\"   - Run installer for your operating system\");\n        System.out.println(\"   - Set JAVA_HOME environment variable\");\n        System.out.println(\"   - Add %JAVA_HOME%\\\\bin to PATH\");\n        System.out.println(\"   - Verify: java -version and javac -version\");\n        System.out.println(\"   Example output:\");\n        System.out.println(\"   java version \\\"21.0.1\\\" 2023-10-17 LTS\");\n        System.out.println(\"   Java(TM) SE Runtime Environment (build 21.0.1+12-LTS-29)\");\n    }\n    \n    public static void demonstrateFirstProgram() {\n        System.out.println(\"\\n2. Your First Java Program:\");\n        \n        // Comprehensive Hello World with features\n        System.out.println(\"   Create file: HelloWorld.java\");\n        System.out.println(\"   Content:\");\n        System.out.println(\"   public class HelloWorld {\");\n        System.out.println(\"       public static void main(String[] args) {\");\n        System.out.println(\"           System.out.println(\\\"Hello, World!\\\");\");\n        System.out.println(\"           \");\n        System.out.println(\"           // Additional demonstrations\");\n        System.out.println(\"           displaySystemInfo();\");\n        System.out.println(\"           demonstrateVariables();\");\n        System.out.println(\"           showMathOperations();\");\n        System.out.println(\"       }\");\n        System.out.println(\"   }\");\n    }\n    \n    public static void demonstrateCompilationProcess() {\n        System.out.println(\"\\n3. Compilation and Execution:\");\n        System.out.println(\"   Open terminal/command prompt:\");\n        System.out.println(\"   $ javac HelloWorld.java    # Compiles to bytecode\");\n        System.out.println(\"   $ java HelloWorld          # Runs the program\");\n        System.out.println(\"   Output:\");\n        System.out.println(\"   Hello, World!\");\n        System.out.println(\"   Java Version: 21.0.1\");\n        System.out.println(\"   OS: Windows 11\");\n        System.out.println(\"   5 + 3 = 8\");\n    }\n    \n    public static void demonstratePackageManagement() {\n        System.out.println(\"\\n4. Project Structure and Packages:\");\n        System.out.println(\"   Recommended structure:\");\n        System.out.println(\"   myproject/\");\n        System.out.println(\"   ├── src/\");\n        System.out.println(\"   │   └── com/\");\n        System.out.println(\"   │       └── mycompany/\");\n        System.out.println(\"   │           └── HelloWorld.java\");\n        System.out.println(\"   └── bin/\");\n        System.out.println(\"   \");\n        System.out.println(\"   Compile with packages:\");\n        System.out.println(\"   $ javac -d bin src/com/mycompany/*.java\");\n        System.out.println(\"   $ java -cp bin com.mycompany.HelloWorld\");\n    }\n    \n    public static void demonstrateIDESetup() {\n        System.out.println(\"\\n5. IDE Recommendations:\");\n        System.out.println(\"   - IntelliJ IDEA (Professional/Community)\");\n        System.out.println(\"   - Eclipse IDE for Java Developers\");\n        System.out.println(\"   - Visual Studio Code with Java Extension Pack\");\n        System.out.println(\"   - NetBeans IDE\");\n        System.out.println(\"   \");\n        System.out.println(\"   IDE Features:\");\n        System.out.println(\"   - Code completion\");\n        System.out.println(\"   - Debugging tools\");\n        System.out.println(\"   - Built-in terminal\");\n        System.out.println(\"   - Version control integration\");\n        System.out.println(\"   - Maven/Gradle support\");\n    }\n}\n\n// Extended HelloWorld example\nclass HelloWorldExtended {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n        System.out.println(\"Welcome to Java Programming!\");\n        \n        // System information\n        System.out.println(\"Java Version: \" + System.getProperty(\"java.version\"));\n        System.out.println(\"Operating System: \" + System.getProperty(\"os.name\"));\n        \n        // Variable demonstration\n        String studentName = \"Alice Johnson\";\n        int studentAge = 20;\n        double gpa = 3.8;\n        \n        System.out.println(\"\\nStudent Information:\");\n        System.out.println(\"Name: \" + studentName);\n        System.out.println(\"Age: \" + studentAge);\n        System.out.println(\"GPA: \" + gpa);\n        \n        // Math operations\n        int a = 15;\n        int b = 7;\n        System.out.println(\"\\nMath Operations:\");\n        System.out.println(a + \" + \" + b + \" = \" + (a + b));\n        System.out.println(a + \" - \" + b + \" = \" + (a - b));\n        System.out.println(a + \" * \" + b + \" = \" + (a * b));\n        System.out.println(a + \" / \" + b + \" = \" + (a / b));\n        System.out.println(a + \" % \" + b + \" = \" + (a % b));\n    }\n}"
+  "note": "Guide for setting up a complete Java development environment, including JDK installation, IDE configuration, first program creation, compiling, running, and package management. Covers project folder structure, best practices for code organization, and essential tools for productivity and debugging.",
+  "code": "// Getting Started with Java\npublic class GettingStarted {\n    public static void main(String[] args) {\n        System.out.println(\"=== Java Development Environment Setup ===\");\n\n        displayInstallationSteps();\n        demonstrateFirstProgram();\n        demonstrateCompilationProcess();\n        demonstratePackageManagement();\n        demonstrateIDESetup();\n    }\n\n    public static void displayInstallationSteps() {\n        System.out.println(\"1. Install JDK from Oracle or Adoptium\");\n        System.out.println(\"2. Set JAVA_HOME and update PATH\");\n        System.out.println(\"3. Verify installation: java -version, javac -version\");\n    }\n\n    public static void demonstrateFirstProgram() {\n        System.out.println(\"\\n2. First Java Program - HelloWorld.java\");\n        System.out.println(\"   - Compile: javac HelloWorld.java\");\n        System.out.println(\"   - Run: java HelloWorld\");\n        System.out.println(\"   Output: Hello, World!\");\n    }\n\n    public static void demonstrateCompilationProcess() {\n        System.out.println(\"\\n3. Compilation produces .class files for JVM execution\");\n    }\n\n    public static void demonstratePackageManagement() {\n        System.out.println(\"\\n4. Package Management Example\");\n        System.out.println(\"   - Organize code in src/com/company/\");\n        System.out.println(\"   - Compile with javac -d bin src/com/company/*.java\");\n    }\n\n    public static void demonstrateIDESetup() {\n        System.out.println(\"\\n5. Recommended IDEs:\");\n        System.out.println(\"   - IntelliJ IDEA, Eclipse, VS Code\");\n    }\n}\n\nclass HelloWorldExtended {\n    public static void main(String[] args){\n        System.out.println(\"Hello, World!\\nWelcome to Java Programming!\");\n        String name=\"Alice\"; int age=20; double gpa=3.8;\n        System.out.printf(\"Student Info: %s, Age: %d, GPA: %.2f\\n\", name, age, gpa);\n    }\n}"
 },
 {
   "title": "Java Syntax",
-  "note": "Comprehensive Java syntax rules with proper structure, naming conventions, and best practices for professional code.",
-  "code": "// Java Syntax Masterclass\npublic class JavaSyntax {\n    \n    // Constants (UPPER_SNAKE_CASE)\n    public static final double PI = 3.14159;\n    public static final int MAX_CONNECTIONS = 100;\n    \n    // Class variables (camelCase)\n    private int instanceCount = 0;\n    private static String applicationName = \"SyntaxDemo\";\n    \n    public static void main(String[] args) {\n        System.out.println(\"=== Java Syntax Rules and Conventions ===\\n\");\n        \n        demonstrateBasicSyntax();\n        demonstrateNamingConventions();\n        demonstrateCodeStructure();\n        demonstrateCommonPatterns();\n        demonstrateBestPractices();\n    }\n    \n    public static void demonstrateBasicSyntax() {\n        System.out.println(\"1. Basic Syntax Rules:\");\n        System.out.println(\"   - Case sensitive: 'variable' ≠ 'Variable'\");\n        System.out.println(\"   - Semicolons required to end statements\");\n        System.out.println(\"   - Curly braces {} define code blocks\");\n        System.out.println(\"   - Main method is entry point: public static void main(String[] args)\");\n        \n        // Valid syntax examples\n        int validVariable = 42;\n        String validString = \"Hello\";\n        boolean isValid = true;\n        \n        System.out.println(\"   Valid: int x = 5;\");\n        System.out.println(\"   Invalid: int x = 5  // Missing semicolon\");\n    }\n    \n    public static void demonstrateNamingConventions() {\n        System.out.println(\"\\n2. Naming Conventions:\");\n        System.out.println(\"   - Classes: PascalCase (MyClass, EmployeeManager)\");\n        System.out.println(\"   - Methods/Variables: camelCase (calculateTotal, userName)\");\n        System.out.println(\"   - Constants: UPPER_SNAKE_CASE (MAX_SIZE, PI_VALUE)\");\n        System.out.println(\"   - Packages: lowercase (com.company.project.util)\");\n        \n        // Examples\n        String userName = \"john_doe\";          // Good\n        int itemCount = 5;                     // Good\n        final int MAX_ITEMS = 100;             // Good\n        // String UserName = \"john\";           // Bad - PascalCase for variable\n    }\n    \n    public static void demonstrateCodeStructure() {\n        System.out.println(\"\\n3. Code Structure:\");\n        System.out.println(\"   // Package declaration (optional but recommended)\");\n        System.out.println(\"   package com.example.mypackage;\");\n        System.out.println(\"   \");\n        System.out.println(\"   // Import statements\");\n        System.out.println(\"   import java.util.List;\");\n        System.out.println(\"   import java.util.ArrayList;\");\n        System.out.println(\"   \");\n        System.out.println(\"   // Class declaration\");\n        System.out.println(\"   public class MyClass {\");\n        System.out.println(\"       \");\n        System.out.println(\"       // Class variables\");\n        System.out.println(\"       private static int classCounter = 0;\");\n        System.out.println(\"       \");\n        System.out.println(\"       // Instance variables\");\n        System.out.println(\"       private String instanceName;\");\n        System.out.println(\"       \");\n        System.out.println(\"       // Constructor\");\n        System.out.println(\"       public MyClass(String name) {\");\n        System.out.println(\"           this.instanceName = name;\");\n        System.out.println(\"           classCounter++;\");\n        System.out.println(\"       }\");\n        System.out.println(\"       \");\n        System.out.println(\"       // Methods\");\n        System.out.println(\"       public void displayInfo() {\");\n        System.out.println(\"           System.out.println(\\\"Name: \\\" + instanceName);\");\n        System.out.println(\"       }\");\n        System.out.println(\"   }\");\n    }\n    \n    public static void demonstrateCommonPatterns() {\n        System.out.println(\"\\n4. Common Syntax Patterns:\");\n        \n        // Variable declaration and initialization\n        int count = 0;                          // Primitive type\n        String message = \"Hello\";               // Reference type\n        final int MAX_VALUE = 100;              // Constant\n        \n        // Control structures\n        if (count < MAX_VALUE) {\n            count++;\n            System.out.println(\"Count incremented: \" + count);\n        }\n        \n        // Loop patterns\n        for (int i = 0; i < 5; i++) {\n            System.out.println(\"Iteration: \" + i);\n        }\n        \n        // Array declaration\n        int[] numbers = {1, 2, 3, 4, 5};\n        String[] names = new String[3];\n        names[0] = \"Alice\";\n        names[1] = \"Bob\";\n        names[2] = \"Charlie\";\n    }\n    \n    public static void demonstrateBestPractices() {\n        System.out.println(\"\\n5. Best Practices:\");\n        System.out.println(\"   - Always use meaningful variable names\");\n        System.out.println(\"   - Follow consistent indentation (4 spaces recommended)\");\n        System.out.println(\"   - Use comments to explain why, not what\");\n        System.out.println(\"   - Keep methods small and focused (≤ 20 lines)\");\n        System.out.println(\"   - Use final for variables that shouldn't change\");\n        System.out.println(\"   - Handle exceptions properly\");\n        System.out.println(\"   - Use try-with-resources for file operations\");\n        \n        // Good practice example\n        final int MAX_RETRIES = 3;\n        int retryCount = 0;\n        boolean success = false;\n        \n        while (retryCount < MAX_RETRIES && !success) {\n            try {\n                // Simulate some operation\n                success = performOperation();\n                retryCount++;\n            } catch (Exception e) {\n                System.err.println(\"Operation failed: \" + e.getMessage());\n                retryCount++;\n            }\n        }\n    }\n    \n    private static boolean performOperation() {\n        // Simulate operation that might fail\n        return Math.random() > 0.3;\n    }\n}\n\n// Additional class demonstrating proper structure\nclass Employee {\n    // Instance variables\n    private String name;\n    private int id;\n    private double salary;\n    \n    // Constructor\n    public Employee(String name, int id, double salary) {\n        this.name = name;\n        this.id = id;\n        this.salary = salary;\n    }\n    \n    // Getter methods\n    public String getName() {\n        return name;\n    }\n    \n    public int getId() {\n        return id;\n    }\n    \n    public double getSalary() {\n        return salary;\n    }\n    \n    // Setter method with validation\n    public void setSalary(double salary) {\n        if (salary >= 0) {\n            this.salary = salary;\n        } else {\n            throw new IllegalArgumentException(\"Salary cannot be negative\");\n        }\n    }\n    \n    // Business method\n    public void giveRaise(double percentage) {\n        if (percentage > 0) {\n            this.salary += this.salary * (percentage / 100);\n        }\n    }\n    \n    // toString method for string representation\n    @Override\n    public String toString() {\n        return String.format(\"Employee[ID: %d, Name: %s, Salary: $%.2f]\", id, name, salary);\n    }\n}"
+  "note": "A complete guide to Java syntax covering class and method structures, data types, operators, control flow, arrays, loops, exception handling, naming conventions, comments, constants, and best practices. Includes modern Java constructs such as enhanced for-loops, switch expressions, and try-with-resources, designed for professional and maintainable code.",
+  "code": "// Java Syntax Masterclass - Expanded\npublic class JavaSyntax {\n\n    // Constants (UPPER_SNAKE_CASE)\n    public static final double PI = 3.14159;\n    public static final int MAX_CONNECTIONS = 100;\n\n    // Class variables (camelCase)\n    private int instanceCount = 0;\n    private static String applicationName = \"SyntaxDemo\";\n\n    public static void main(String[] args) {\n        System.out.println(\"=== Java Syntax Rules and Conventions ===\\n\");\n\n        demonstrateBasicSyntax();\n        demonstrateDataTypesAndOperators();\n        demonstrateControlFlow();\n        demonstrateArraysAndLoops();\n        demonstrateExceptionHandling();\n        demonstrateNamingAndStructure();\n        demonstrateBestPractices();\n    }\n\n    public static void demonstrateBasicSyntax() {\n        System.out.println(\"1. Basic Syntax Rules:\");\n        System.out.println(\"   - Java is case-sensitive: 'variable' != 'Variable'\");\n        System.out.println(\"   - Statements end with semicolons\");\n        System.out.println(\"   - Curly braces {} define code blocks\");\n        System.out.println(\"   - Main method is entry point: public static void main(String[] args)\");\n\n        int validVariable = 42;\n        String validString = \"Hello\";\n        boolean isValid = true;\n\n        System.out.println(\"   Example: int x = 5; // valid\");\n    }\n\n    public static void demonstrateDataTypesAndOperators() {\n        System.out.println(\"\\n2. Data Types and Operators:\");\n        \n        int integerVal = 10;\n        double doubleVal = 5.5;\n        char letter = 'A';\n        boolean flag = true;\n\n        System.out.println(\"Integer: \" + integerVal);\n        System.out.println(\"Double: \" + doubleVal);\n        System.out.println(\"Char: \" + letter);\n        System.out.println(\"Boolean: \" + flag);\n\n        // Arithmetic Operators\n        System.out.println(\"Sum: \" + (integerVal + doubleVal));\n        System.out.println(\"Difference: \" + (integerVal - doubleVal));\n        System.out.println(\"Product: \" + (integerVal * doubleVal));\n        System.out.println(\"Division: \" + (integerVal / doubleVal));\n\n        // Logical and relational operators\n        System.out.println(\"Is integerVal > doubleVal? \" + (integerVal > doubleVal));\n        System.out.println(\"Is flag AND true? \" + (flag && true));\n    }\n\n    public static void demonstrateControlFlow() {\n        System.out.println(\"\\n3. Control Flow Statements:\");\n\n        int number = 7;\n        if (number % 2 == 0) {\n            System.out.println(number + \" is even\");\n        } else {\n            System.out.println(number + \" is odd\");\n        }\n\n        // Switch expression (modern Java)\n        String day = \"MON\";\n        String typeOfDay = switch(day) {\n            case \"SAT\", \"SUN\" -> \"Weekend\";\n            default -> \"Weekday\";\n        };\n        System.out.println(day + \" is a \" + typeOfDay);\n    }\n\n    public static void demonstrateArraysAndLoops() {\n        System.out.println(\"\\n4. Arrays and Loops:\");\n\n        int[] numbers = {1, 2, 3, 4, 5};\n\n        System.out.println(\"Enhanced for-loop:\");\n        for (int num : numbers) {\n            System.out.print(num + \" \");\n        }\n        System.out.println();\n\n        System.out.println(\"Classic for-loop with index:\");\n        for (int i = 0; i < numbers.length; i++) {\n            System.out.print(numbers[i] + \" \");\n        }\n        System.out.println();\n\n        System.out.println(\"While loop example:\");\n        int i = 0;\n        while (i < numbers.length) {\n            System.out.print(numbers[i] + \" \");\n            i++;\n        }\n        System.out.println();\n    }\n\n    public static void demonstrateExceptionHandling() {\n        System.out.println(\"\\n5. Exception Handling:\");\n\n        try {\n            int result = 10 / 0;\n        } catch (ArithmeticException e) {\n            System.err.println(\"Error: \" + e.getMessage());\n        } finally {\n            System.out.println(\"Finally block executed regardless of exception\");\n        }\n\n        // Try-with-resources example (automatic resource management)\n        try (java.util.Scanner scanner = new java.util.Scanner(System.in)) {\n            System.out.print(\"Enter a number: \");\n            int num = scanner.nextInt();\n            System.out.println(\"You entered: \" + num);\n        } catch (Exception e) {\n            System.err.println(\"Input error: \" + e.getMessage());\n        }\n    }\n\n    public static void demonstrateNamingAndStructure() {\n        System.out.println(\"\\n6. Naming Conventions and Code Structure:\");\n        System.out.println(\"   - Classes: PascalCase\");\n        System.out.println(\"   - Methods/Variables: camelCase\");\n        System.out.println(\"   - Constants: UPPER_SNAKE_CASE\");\n        System.out.println(\"   - Packages: lowercase\");\n\n        System.out.println(\"Example Class Structure:\");\n        System.out.println(\"public class MyClass { private int value; public void display() {} }\");\n    }\n\n    public static void demonstrateBestPractices() {\n        System.out.println(\"\\n7. Best Practices:\");\n        System.out.println(\"   - Meaningful variable names\");\n        System.out.println(\"   - Consistent 4-space indentation\");\n        System.out.println(\"   - Small focused methods\");\n        System.out.println(\"   - Use comments to explain why, not what\");\n        System.out.println(\"   - Constants for fixed values\");\n        System.out.println(\"   - Proper exception handling\");\n    }\n\n    private static boolean performOperation() {\n        return Math.random() > 0.3;\n    }\n}\n\nclass Employee {\n    private String name;\n    private int id;\n    private double salary;\n\n    public Employee(String name, int id, double salary) {\n        this.name = name;\n        this.id = id;\n        this.salary = salary;\n    }\n\n    public String getName() { return name; }\n    public int getId() { return id; }\n    public double getSalary() { return salary; }\n\n    public void setSalary(double salary) {\n        if (salary >= 0) this.salary = salary;\n        else throw new IllegalArgumentException(\"Salary cannot be negative\");\n    }\n\n    public void giveRaise(double percent) {\n        if (percent > 0) this.salary += this.salary * (percent / 100);\n    }\n\n    @Override\n    public String toString() {\n        return String.format(\"Employee[ID: %d, Name: %s, Salary: $%.2f]\", id, name, salary);\n    }\n}"
 },
 {
   "title": "Java Output",
-  "note": "Comprehensive output techniques including formatted printing, error output, logging, and advanced console manipulation.",
-  "code": "// Comprehensive Java Output Techniques\nimport java.util.Date;\nimport java.text.SimpleDateFormat;\nimport java.util.Formatter;\n\npublic class JavaOutput {\n    \n    public static void main(String[] args) {\n        System.out.println(\"=== Java Output Methods Masterclass ===\\n\");\n        \n        demonstrateBasicOutput();\n        demonstrateFormattedOutput();\n        demonstrateErrorOutput();\n        demonstrateAdvancedFormatting();\n        demonstrateLogging();\n        demonstrateConsoleClass();\n    }\n    \n    public static void demonstrateBasicOutput() {\n        System.out.println(\"1. Basic Output Methods:\");\n        \n        // System.out.print() - no newline\n        System.out.print(\"Hello, \");\n        System.out.print(\"World! \");\n        \n        // System.out.println() - with newline\n        System.out.println(\"This appears on a new line.\");\n        \n        // System.out.printf() - formatted output\n        String name = \"Alice\";\n        int age = 25;\n        double score = 95.5;\n        \n        System.out.printf(\"Name: %s, Age: %d, Score: %.1f%%\\n\", name, age, score);\n        \n        // Concatenation\n        System.out.println(\"Welcome \" + name + \"! You are \" + age + \" years old.\");\n    }\n    \n    public static void demonstrateFormattedOutput() {\n        System.out.println(\"\\n2. Formatted Output (printf):\");\n        \n        // String formatting\n        System.out.printf(\"%-15s %-10s %-8s\\n\", \"Name\", \"Age\", \"Score\");\n        System.out.printf(\"%-15s %-10d %-8.2f\\n\", \"Alice\", 25, 95.5);\n        System.out.printf(\"%-15s %-10d %-8.2f\\n\", \"Bob\", 30, 88.75);\n        System.out.printf(\"%-15s %-10d %-8.2f\\n\", \"Charlie\", 22, 91.25);\n        \n        // Number formatting\n        double price = 1234.5678;\n        int quantity = 1500;\n        \n        System.out.printf(\"\\nNumber Formatting:\\n\");\n        System.out.printf(\"Price: $%,.2f\\n\", price);\n        System.out.printf(\"Quantity: %,d units\\n\", quantity);\n        System.out.printf(\"Total: $%,.2f\\n\", price * quantity);\n        \n        // Date formatting\n        Date now = new Date();\n        System.out.printf(\"Current date: %tF\\n\", now);\n        System.out.printf(\"Current time: %tT\\n\", now);\n    }\n    \n    public static void demonstrateErrorOutput() {\n        System.out.println(\"\\n3. Error Output (System.err):\");\n        \n        // Regular output\n        System.out.println(\"This is normal output\");\n        \n        // Error output (typically red in consoles)\n        System.err.println(\"This is error output\");\n        System.err.println(\"Warning: Something might be wrong!\");\n        \n        // Demonstrating output vs error stream behavior\n        try {\n            int result = 10 / 0; // This will cause exception\n        } catch (ArithmeticException e) {\n            System.err.println(\"Error: \" + e.getMessage());\n            System.err.println(\"Stack trace:\");\n            e.printStackTrace(); // Goes to stderr\n        }\n    }\n    \n    public static void demonstrateAdvancedFormatting() {\n        System.out.println(\"\\n4. Advanced Formatting Techniques:\");\n        \n        // Using Formatter class\n        Formatter formatter = new Formatter();\n        formatter.format(\"%-20s %-10s %-10s\\n\", \"Product\", \"Price\", \"In Stock\");\n        formatter.format(\"%-20s %-10.2f %-10b\\n\", \"Laptop\", 999.99, true);\n        formatter.format(\"%-20s %-10.2f %-10b\\n\", \"Mouse\", 25.50, false);\n        formatter.format(\"%-20s %-10.2f %-10b\\n\", \"Keyboard\", 75.00, true);\n        \n        System.out.println(formatter.toString());\n        formatter.close();\n        \n        // String.format() for creating formatted strings\n        String formattedString = String.format(\n            \"Customer: %s | Balance: $%,.2f | Status: %s\",\n            \"John Doe\", 12345.67, \"Active\"\n        );\n        System.out.println(formattedString);\n        \n        // Multi-line formatting\n        String multiLine = String.format(\"\"\"\n            Customer Information:\n            =====================\n            Name:   %s\n            Email:  %s\n            Phone:  %s\n            Balance: $%,.2f\n            \"\"\", \"Alice Smith\", \"alice@email.com\", \"(555) 123-4567\", 5432.10);\n        \n        System.out.println(multiLine);\n    }\n    \n    public static void demonstrateLogging() {\n        System.out.println(\"\\n5. Logging Framework (Basic):\");\n        \n        // Simple logging simulation\n        System.out.println(\"[INFO] Application started successfully\");\n        System.out.println(\"[DEBUG] Loading configuration files\");\n        System.out.println(\"[WARN] Configuration file not found, using defaults\");\n        System.out.println(\"[ERROR] Failed to connect to database\");\n        \n        // For production, use proper logging frameworks:\n        System.out.println(\"\\nFor production use:\");\n        System.out.println(\"- java.util.logging (JUL)\");\n        System.out.println(\"- Log4j 2\");\n        System.out.println(\"- SLF4J with Logback\");\n    }\n    \n    public static void demonstrateConsoleClass() {\n        System.out.println(\"\\n6. Console Class (Interactive Input/Output):\");\n        \n        // Note: System.console() may return null in IDEs\n        /*\n        Console console = System.console();\n        if (console != null) {\n            String username = console.readLine(\"Enter username: \");\n            char[] password = console.readPassword(\"Enter password: \");\n            console.printf(\"Welcome, %s!\\n\", username);\n            // Always clear password from memory\n            Arrays.fill(password, ' ');\n        } else {\n            System.out.println(\"Console not available in this environment\");\n        }\n        */\n        \n        System.out.println(\"Console usage is preferred for:\");\n        System.out.println(\"- Password input (masked)\");\n        System.out.println(\"- Interactive command-line applications\");\n        System.out.println(\"- Better control over input/output\");\n    }\n}\n\n// Utility class for output formatting\nclass OutputUtils {\n    \n    public static void printHeader(String title) {\n        System.out.println(\"\\n\" + \"=\".repeat(50));\n        System.out.println(title);\n        System.out.println(\"=\".repeat(50));\n    }\n    \n    public static void printTable(String[] headers, String[][] data) {\n        // Calculate column widths\n        int[] columnWidths = new int[headers.length];\n        for (int i = 0; i < headers.length; i++) {\n            columnWidths[i] = headers[i].length();\n        }\n        \n        for (String[] row : data) {\n            for (int i = 0; i < row.length; i++) {\n                if (row[i] != null && row[i].length() > columnWidths[i]) {\n                    columnWidths[i] = row[i].length();\n                }\n            }\n        }\n        \n        // Print header\n        printTableRow(headers, columnWidths);\n        \n        // Print separator\n        System.out.print(\"+\");\n        for (int width : columnWidths) {\n            System.out.print(\"-\".repeat(width + 2) + \"+\");\n        }\n        System.out.println();\n        \n        // Print data rows\n        for (String[] row : data) {\n            printTableRow(row, columnWidths);\n        }\n    }\n    \n    private static void printTableRow(String[] row, int[] widths) {\n        System.out.print(\"|\");\n        for (int i = 0; i < row.length; i++) {\n            System.out.printf(\" %-\" + widths[i] + \"s |\", row[i]);\n        }\n        System.out.println();\n    }\n    \n    public static void demoTableOutput() {\n        String[] headers = {\"ID\", \"Name\", \"Department\", \"Salary\"};\n        String[][] data = {\n            {\"1\", \"Alice Johnson\", \"Engineering\", \"$85,000\"},\n            {\"2\", \"Bob Smith\", \"Marketing\", \"$72,500\"},\n            {\"3\", \"Charlie Brown\", \"Sales\", \"$68,000\"},\n            {\"4\", \"Diana Prince\", \"Engineering\", \"$92,000\"}\n        };\n        \n        printHeader(\"Employee Directory\");\n        printTable(headers, data);\n    }\n}"
-},
-  
+  "note": "Comprehensive guide to Java output techniques, covering standard printing (print, println), formatted output (printf, String.format, Formatter), error output (System.err), logging simulation, advanced console manipulation, table display, date and number formatting, and best practices for professional console applications. Includes interactive console input and modern Java features for robust and readable output.",
+  "code": "// Java Output Masterclass - Expanded\nimport java.util.Date;\nimport java.text.SimpleDateFormat;\nimport java.util.Formatter;\nimport java.util.Arrays;\nimport java.io.Console;\n\npublic class JavaOutput {\n\n    public static void main(String[] args) {\n        System.out.println(\"=== Java Output Methods Masterclass ===\\n\");\n\n        demonstrateBasicOutput();\n        demonstrateFormattedOutput();\n        demonstrateErrorOutput();\n        demonstrateAdvancedFormatting();\n        demonstrateLogging();\n        demonstrateConsoleClass();\n        OutputUtils.demoTableOutput();\n    }\n\n    public static void demonstrateBasicOutput() {\n        System.out.println(\"1. Basic Output Methods:\");\n\n        // print() - no newline\n        System.out.print(\"Hello, \");\n        System.out.print(\"World! \");\n\n        // println() - with newline\n        System.out.println(\"This appears on a new line.\");\n\n        // printf() - formatted output\n        String name = \"Alice\";\n        int age = 25;\n        double score = 95.5;\n        System.out.printf(\"Name: %s, Age: %d, Score: %.1f%%\\n\", name, age, score);\n\n        // String concatenation\n        System.out.println(\"Welcome \" + name + \"! You are \" + age + \" years old.\");\n    }\n\n    public static void demonstrateFormattedOutput() {\n        System.out.println(\"\\n2. Formatted Output (printf & Formatter):\");\n\n        // Table-style formatting with printf\n        System.out.printf(\"%-15s %-10s %-8s\\n\", \"Name\", \"Age\", \"Score\");\n        System.out.printf(\"%-15s %-10d %-8.2f\\n\", \"Alice\", 25, 95.5);\n        System.out.printf(\"%-15s %-10d %-8.2f\\n\", \"Bob\", 30, 88.75);\n        System.out.printf(\"%-15s %-10d %-8.2f\\n\", \"Charlie\", 22, 91.25);\n\n        // Number formatting\n        double price = 1234.5678;\n        int quantity = 1500;\n        System.out.printf(\"\\nNumber Formatting:\\n\");\n        System.out.printf(\"Price: $%,.2f\\n\", price);\n        System.out.printf(\"Quantity: %,d units\\n\", quantity);\n        System.out.printf(\"Total: $%,.2f\\n\", price * quantity);\n\n        // Date formatting\n        Date now = new Date();\n        System.out.printf(\"Current date: %tF\\n\", now);\n        System.out.printf(\"Current time: %tT\\n\", now);\n\n        // Formatter class for reusable formatted output\n        Formatter formatter = new Formatter();\n        formatter.format(\"%-20s %-10s %-10s\\n\", \"Product\", \"Price\", \"In Stock\");\n        formatter.format(\"%-20s %-10.2f %-10b\\n\", \"Laptop\", 999.99, true);\n        formatter.format(\"%-20s %-10.2f %-10b\\n\", \"Mouse\", 25.50, false);\n        System.out.println(formatter.toString());\n        formatter.close();\n\n        // String.format for creating formatted strings\n        String summary = String.format(\"Customer: %s | Balance: $%,.2f | Status: %s\", \"John Doe\", 12345.67, \"Active\");\n        System.out.println(summary);\n    }\n\n    public static void demonstrateErrorOutput() {\n        System.out.println(\"\\n3. Error Output (System.err):\");\n        System.out.println(\"This is normal output\");\n        System.err.println(\"This is error output\");\n        System.err.println(\"Warning: Something might be wrong!\");\n\n        // Exception demonstration\n        try {\n            int result = 10 / 0;\n        } catch (ArithmeticException e) {\n            System.err.println(\"Error: \" + e.getMessage());\n            e.printStackTrace();\n        }\n    }\n\n    public static void demonstrateAdvancedFormatting() {\n        System.out.println(\"\\n4. Advanced Formatting Techniques:\");\n\n        String multiLine = String.format(\"\"\"\n            Customer Information:\n            =====================\n            Name:   %s\n            Email:  %s\n            Phone:  %s\n            Balance: $%,.2f\n            \"\"\", \"Alice Smith\", \"alice@email.com\", \"(555) 123-4567\", 5432.10);\n        System.out.println(multiLine);\n    }\n\n    public static void demonstrateLogging() {\n        System.out.println(\"\\n5. Logging Simulation:\");\n        System.out.println(\"[INFO] Application started successfully\");\n        System.out.println(\"[DEBUG] Loading configuration files\");\n        System.out.println(\"[WARN] Configuration file not found, using defaults\");\n        System.out.println(\"[ERROR] Failed to connect to database\");\n\n        System.out.println(\"\\nFor production logging, use:\");\n        System.out.println(\"- java.util.logging (JUL)\");\n        System.out.println(\"- Log4j 2\");\n        System.out.println(\"- SLF4J with Logback\");\n    }\n\n    public static void demonstrateConsoleClass() {\n        System.out.println(\"\\n6. Interactive Console I/O:\");\n        Console console = System.console();\n        if (console != null) {\n            String username = console.readLine(\"Enter username: \");\n            char[] password = console.readPassword(\"Enter password: \");\n            console.printf(\"Welcome, %s!\\n\", username);\n            Arrays.fill(password, ' ');\n        } else {\n            System.out.println(\"Console not available (IDEs may not support it)\");\n        }\n    }\n}\n\nclass OutputUtils {\n\n    public static void printHeader(String title) {\n        System.out.println(\"\\n\" + \"=\".repeat(50));\n        System.out.println(title);\n        System.out.println(\"=\".repeat(50));\n    }\n\n    public static void printTable(String[] headers, String[][] data) {\n        int[] widths = new int[headers.length];\n        for (int i = 0; i < headers.length; i++) widths[i] = headers[i].length();\n        for (String[] row : data) for (int i = 0; i < row.length; i++) widths[i] = Math.max(widths[i], row[i].length());\n\n        printTableRow(headers, widths);\n        System.out.print(\"+\");\n        for (int w : widths) System.out.print(\"-\".repeat(w + 2) + \"+\");\n        System.out.println();\n        for (String[] row : data) printTableRow(row, widths);\n    }\n\n    private static void printTableRow(String[] row, int[] widths) {\n        System.out.print(\"|\");\n        for (int i = 0; i < row.length; i++) System.out.printf(\" %-\" + widths[i] + \"s |\", row[i]);\n        System.out.println();\n    }\n\n    public static void demoTableOutput() {\n        String[] headers = {\"ID\", \"Name\", \"Department\", \"Salary\"};\n        String[][] data = {\n            {\"1\", \"Alice Johnson\", \"Engineering\", \"$85,000\"},\n            {\"2\", \"Bob Smith\", \"Marketing\", \"$72,500\"},\n            {\"3\", \"Charlie Brown\", \"Sales\", \"$68,000\"},\n            {\"4\", \"Diana Prince\", \"Engineering\", \"$92,000\"}\n        };\n        printHeader(\"Employee Directory\");\n        printTable(headers, data);\n    }\n}"
+}, 
   {
     "title": "Java Comments",
     "note": "Single-line comments start with // and continue to the end of the line. Multi-line comments are enclosed between /* and */ and can span multiple lines. Comments are ignored by the compiler and are used to explain code, provide documentation, or temporarily disable code execution.",
@@ -5539,7 +5539,8 @@ Rust:
     "code": "// Basic enum\nenum IpAddrKind {\n    V4,\n    V6,\n}\n\n// Enum with data\nenum IpAddr {\n    V4(u8, u8, u8, u8),\n    V6(String),\n}\n\nlet home = IpAddr::V4(127, 0, 0, 1);\nlet loopback = IpAddr::V6(String::from(\"::1\"));\n\n// Variants with different data types\nenum Message {\n    Quit,                       // no data\n    Move { x: i32, y: i32 },    // named fields\n    Write(String),              // single value\n    ChangeColor(i32, i32, i32), // multiple values\n}\n\n// Using enum variants\nlet quit = Message::Quit;\nlet mov = Message::Move { x: 10, y: 20 };\nlet write = Message::Write(String::from(\"hello\"));\nlet color = Message::ChangeColor(255, 0, 0);\n\n// The Option enum (built-in)\n// enum Option<T> {\n//     Some(T),\n//     None,\n// }\nlet some_number = Some(5);\nlet some_string = Some(\"a string\");\nlet absent_number: Option<i32> = None;\n\n// The Result enum (built-in)\n// enum Result<T, E> {\n//     Ok(T),\n//     Err(E),\n// }\nlet ok_result: Result<i32, String> = Ok(42);\nlet err_result: Result<i32, String> = Err(String::from(\"error\"));\n\n// Pattern matching with enums\nfn process_message(msg: Message) {\n    match msg {\n        Message::Quit => println!(\"Quit message\"),\n        Message::Move { x, y } => println!(\"Move to ({}, {})\", x, y),\n        Message::Write(text) => println!(\"Write: {}\", text),\n        Message::ChangeColor(r, g, b) => println!(\"Color: #{:02x}{:02x}{:02x}\", r, g, b),\n    }\n}\n\n// if let syntax\nif let Message::Write(text) = write {\n    println!(\"Writing: {}\", text);\n}\n\n// Methods on enums\nimpl Message {\n    fn call(&self) {\n        // method implementation\n    }\n}\n\nlet m = Message::Write(String::from(\"hello\"));\nm.call();\n\n// Derived traits\n#[derive(Debug, Clone, PartialEq)]\nenum WebEvent {\n    PageLoad,\n    PageUnload,\n    KeyPress(char),\n    Paste(String),\n    Click { x: i64, y: i64 },\n}\n\nlet event = WebEvent::KeyPress('x');\nprintln!(\"{:?}\", event);"
   }
 ],
-ValueJS:[
+ValueJS:
+[
   {
     "title": "Vue.js HOME",
     "note": "Vue.js is a progressive JavaScript framework for building user interfaces. It's designed to be incrementally adoptable and focuses on the view layer. Core resources: Vue.js Documentation, Vue CLI, Vue Router, Pinia (state management), and Vite (build tool).",
@@ -5561,250 +5562,298 @@ ValueJS:[
     "code": "<template>\n  <div>\n    <h1>{{ message }}</h1>\n    <button @click=\"increment\">Clicked {{ count }} times</button>\n  </div>\n</template>\n\n<script setup>\nimport { ref } from 'vue'\nconst message = 'Hello Vue!'\nconst count = ref(0)\nfunction increment() { count.value++ }\n</script>"
   },
   {
-    "title": "Vue.js Output",
-    "note": "Data rendering in Vue uses template syntax. Interpolation with {{ }} automatically updates when data changes thanks to reactivity.",
-    "code": "<p>{{ greeting }}</p>\n\n<script setup>\nimport { ref } from 'vue'\nconst greeting = ref('Hello, World!')\n</script>"
+    "title": "Vue.js Reactivity",
+    "note": "Vue 3 uses the Composition API with ref() and reactive() for state. ref() is for primitives and requires .value access in script, while reactive() is for objects.",
+    "code": "<script setup>\nimport { ref, reactive } from 'vue'\n\nconst count = ref(0) // For primitives\nconst user = reactive({ name: 'Alice', age: 25 }) // For objects\n\nfunction increment() { count.value++ }\nuser.age++ // Direct mutation\n</script>\n\n<template>\n  <p>Count: {{ count }}</p>\n  <button @click=\"increment\">Add</button>\n  <p>{{ user.name }} - {{ user.age }}</p>\n</template>"
+  },
+  {
+    "title": "Vue.js Computed Properties",
+    "note": "Computed properties are used for derived state. They are cached based on their reactive dependencies and only re-evaluate when a dependency changes, making them highly efficient.",
+    "code": "<script setup>\nimport { ref, computed } from 'vue'\n\nconst firstName = ref('John')\nconst lastName = ref('Doe')\n\nconst fullName = computed(() => {\n  return `${firstName.value} ${lastName.value}`\n})\n</script>\n\n<template>\n  <p>Full Name: {{ fullName }}</p>\n</template>"
+  },
+  {
+    "title": "Vue.js Watchers",
+    "note": "Watchers allow you to perform side effects in response to data changes. `watch` tracks a specific source, while `watchEffect` tracks its dependencies automatically.",
+    "code": "<script setup>\nimport { ref, watch } from 'vue'\n\nconst question = ref('')\nconst answer = ref('Questions usually contain a question mark. ;-)')\n\nwatch(question, async (newQuestion, oldQuestion) => {\n  if (newQuestion.includes('?')) {\n    answer.value = 'Thinking...'\n    // Fetching logic here\n  }\n})\n</script>\n\n<template>\n  <input v-model=\"question\" />\n  <p>{{ answer }}</p>\n</template>"
   },
   {
     "title": "Vue.js Directives",
-    "note": "Directives are special attributes with 'v-' prefix. Common ones: v-if, v-for, v-show, v-bind (:), v-on (@), v-model.",
+    "note": "Directives are special attributes with the 'v-' prefix. Common ones include v-if (conditional rendering), v-for (list rendering), v-show (conditional display), v-bind (:), v-on (@), and v-model (two-way binding).",
     "code": "<p v-if=\"isVisible\">Now you see me</p>\n<ul>\n  <li v-for=\"item in items\" :key=\"item.id\">{{ item.name }}</li>\n</ul>\n<input v-model=\"username\" placeholder=\"Enter name\" />"
   },
   {
-    "title": "Vue.js Components",
-    "note": "Components are reusable building blocks. They can be defined in .vue files or inline. Props pass data from parent to child, emits send events back.",
-    "code": "<!-- Parent.vue -->\n<MyButton text=\"Click me\" @clicked=\"handleClick\" />\n\n<!-- MyButton.vue -->\n<template>\n  <button @click=\"$emit('clicked')\">{{ text }}</button>\n</template>\n<script setup>\ndefineProps({ text: String })\n</script>"
+    "title": "Vue.js Lifecycle Hooks",
+    "note": "Lifecycle hooks provide points to run code at different stages of a component's life, such as creation, mounting to the DOM, updating, and unmounting. Common hooks are `onMounted`, `onUpdated`, and `onUnmounted`.",
+    "code": "<script setup>\nimport { onMounted, onUnmounted } from 'vue'\n\nlet intervalId\n\nonMounted(() => {\n  console.log('Component has been mounted!')\n  intervalId = setInterval(() => { /* ... */ }, 1000)\n})\n\nonUnmounted(() => {\n  console.log('Component is about to be unmounted!')\n  clearInterval(intervalId) // Cleanup side effects\n})\n</script>"
   },
   {
-    "title": "Vue.js Reactivity",
-    "note": "Vue 3 uses the Composition API with ref() and reactive() for state. Changes to reactive data automatically update the DOM.",
-    "code": "<script setup>\nimport { ref, reactive } from 'vue'\n\nconst count = ref(0)\nconst user = reactive({ name: 'Alice', age: 25 })\n\nfunction increment() { count.value++ }\n</script>\n\n<template>\n  <p>{{ count }}</p>\n  <button @click=\"increment\">Add</button>\n  <p>{{ user.name }} - {{ user.age }}</p>\n</template>"
+    "title": "Vue.js Components",
+    "note": "Components are reusable building blocks for your UI. Data is passed down from parent to child via `props`, and events are sent up from child to parent using `emits`.",
+    "code": "\n<MyButton label=\"Click me\" @custom-click=\"handleAction\" />\n\n\n<template>\n  <button @click=\"$emit('custom-click')\">{{ label }}</button>\n</template>\n<script setup>\ndefineProps({ label: String })\ndefineEmits(['custom-click'])\n</script>"
+  },
+  {
+    "title": "Vue.js Slots",
+    "note": "Slots are a mechanism for content distribution. They allow you to create flexible, reusable components by passing template fragments from a parent component into designated outlets in a child component.",
+    "code": "\n<template>\n  <div class=\"card\">\n    <header class=\"card-header\">\n      <slot name=\"header\">Default Header</slot>\n    </header>\n    <main class=\"card-content\">\n      <slot>Default Content</slot>\n    </main>\n  </div>\n</template>\n\n\n<Card>\n  <template #header><h1>My Card Title</h1></template>\n  <p>This is the main content of the card.</p>\n</Card>"
+  },
+  {
+    "title": "Vue.js Composables",
+    "note": "Composables are a pattern for extracting and reusing stateful logic using the Composition API. They are functions that encapsulate reactive state and methods, promoting clean and organized code.",
+    "code": "// composables/useMouse.js\nimport { ref, onMounted, onUnmounted } from 'vue'\n\nexport function useMouse() {\n  const x = ref(0)\n  const y = ref(0)\n\n  function update(event) {\n    x.value = event.pageX\n    y.value = event.pageY\n  }\n\n  onMounted(() => window.addEventListener('mousemove', update))\n  onUnmounted(() => window.removeEventListener('mousemove', update))\n\n  return { x, y }\n}\n\n// MyComponent.vue\nimport { useMouse } from './composables/useMouse'\nconst { x, y } = useMouse()"
+  },
+  {
+    "title": "Vue.js Data Fetching",
+    "note": "Data fetching from an API is a common task, typically performed in the `onMounted` lifecycle hook or triggered by a watcher. You can use the native `fetch` API or libraries like Axios.",
+    "code": "<script setup>\nimport { ref, onMounted } from 'vue'\n\nconst data = ref(null)\nconst error = ref(null)\n\nonMounted(async () => {\n  try {\n    const response = await fetch('https://api.example.com/data')\n    data.value = await response.json()\n  } catch (e) {\n    error.value = e\n  }\n})\n</script>\n\n<template>\n  <div v-if=\"error\">Oops! Error: {{ error.message }}</div>\n  <div v-else-if=\"data\">Data loaded: {{ data }}</div>\n  <div v-else>Loading...</div>\n</template>"
   },
   {
     "title": "Vue.js Routing",
-    "note": "Vue Router manages navigation in SPAs. Define routes and map them to components. Use <router-link> and <router-view> in templates.",
+    "note": "Vue Router is the official library for managing client-side navigation in Single-Page Applications. You define routes and map them to components, then use `<router-link>` for navigation and `<router-view>` to display the matched component.",
     "code": "import { createRouter, createWebHistory } from 'vue-router'\nimport Home from './pages/Home.vue'\nimport About from './pages/About.vue'\n\nconst routes = [\n  { path: '/', component: Home },\n  { path: '/about', component: About }\n]\n\nconst router = createRouter({\n  history: createWebHistory(),\n  routes\n})\n\nexport default router"
   },
   {
     "title": "Vue.js State Management",
-    "note": "For global state, Vue 3 recommends Pinia. It's simpler and more type-friendly than Vuex. You define stores with reactive state and actions.",
-    "code": "import { defineStore } from 'pinia'\n\nexport const useCounterStore = defineStore('counter', {\n  state: () => ({ count: 0 }),\n  actions: {\n    increment() { this.count++ }\n  }\n})\n\n// In component\nimport { useCounterStore } from './stores/counter'\nconst counter = useCounterStore()\ncounter.increment()"
-  }
+    "note": "For managing global state shared across multiple components, Vue recommends Pinia. It's a lightweight, type-safe, and intuitive store library that integrates perfectly with the Composition API.",
+    "code": "import { defineStore } from 'pinia'\n\nexport const useCounterStore = defineStore('counter', {\n  state: () => ({ count: 0, name: 'Eduardo' }),\n  getters: {\n    doubleCount: (state) => state.count * 2\n  },\n  actions: {\n    increment() { this.count++ }\n  }\n})\n\n// In component:\nimport { useCounterStore } from './stores/counter'\nconst counterStore = useCounterStore()\ncounterStore.increment()"
+  },
+  {
+    "title": "Vue.js Ecosystem: Nuxt",
+    "note": "Nuxt is a powerful open-source framework built on top of Vue.js. It simplifies the development of universal or single-page Vue apps, providing features like server-side rendering (SSR), static site generation (SSG), file-system based routing, and auto-imports.",
+    "code": "// Create a new Nuxt project:\nnpx nuxi@latest init my-nuxt-app\n\n// Nuxt provides powerful features out-of-the-box.\n// For example, pages/about.vue automatically creates the /about route.\n// Components in the components/ directory are auto-imported."
+  },
 ],
-svelte:[
+svelte:
+  [
   {
     "title": "Svelte HOME",
-    "note": "Svelte is a radical new approach to building user interfaces. Instead of running in the browser, Svelte compiles your components into highly efficient vanilla JavaScript at build time.",
-    "code": "// Official website: https://svelte.dev/\n// Documentation: https://svelte.dev/docs\n// GitHub: https://github.com/sveltejs/svelte\n// Playground: https://svelte.dev/playground"
+    "note": "Svelte is a radical new approach to building user interfaces. Instead of using a virtual DOM, Svelte is a compiler that converts your components into highly efficient, imperative vanilla JavaScript at build time. This results in smaller bundles and faster performance.",
+    "code": "// Official website: https://svelte.dev/\n// Interactive Tutorial: https://svelte.dev/tutorial\n// SvelteKit (App Framework): https://kit.svelte.dev/\n// Playground: https://svelte.dev/repl"
   },
   {
     "title": "Svelte Intro",
-    "note": "Unlike frameworks like React or Vue, Svelte shifts the work into a compile step, producing smaller, faster apps. It has reactivity built-in without a virtual DOM.",
-    "code": "// Key features: \n// - No virtual DOM\n// - Reactive assignments\n// - Single-file components (.svelte)\n// - Stores for state management\n// - Built-in animations and transitions"
+    "note": "Unlike traditional frameworks, Svelte shifts the work from the browser (runtime) to the compiler (build time). This means no virtual DOM diffing, resulting in smaller, faster applications. Its reactivity is built into the language itself, triggered by simple assignments.",
+    "code": "// Key Features:\n// - Compiles to vanilla JS\n// - No Virtual DOM\n// - Truly reactive with less boilerplate\n// - Scoped CSS by default\n// - Built-in stores, transitions, and animations"
   },
   {
     "title": "Svelte Get Started",
-    "note": "You can try Svelte online or set up a project using Vite. Components are written in .svelte files containing <script>, <style>, and markup.",
-    "code": "// Create new Svelte project with Vite:\nnpm create vite@latest my-svelte-app -- --template svelte\ncd my-svelte-app\nnpm install\nnpm run dev"
-  },
-  {
-    "title": "Svelte Syntax",
-    "note": "Svelte templates look like HTML but support reactive syntax. Variables defined in <script> can be used directly in markup.",
-    "code": "<script>\n  let name = 'World'\n</script>\n\n<h1>Hello {name}!</h1>\n<input bind:value={name} />"
+    "note": "The quickest way to start a new Svelte project is with Vite. Svelte components are written in `.svelte` files, which encapsulate a component's logic, template, and styles in a single file.",
+    "code": "// Create a new SvelteKit project (Recommended):\nnpm create svelte@latest my-app\n\n// Create a basic Svelte project with Vite:\nnpm create vite@latest my-svelte-app -- --template svelte\n\ncd my-app\nnpm install\nnpm run dev"
   },
   {
     "title": "Svelte Reactivity",
-    "note": "Svelte uses assignment for reactivity. Updating a variable automatically updates the DOM. Reactive declarations use $:.",
-    "code": "<script>\n  let count = 0;\n  $: doubled = count * 2;\n\n  function increment() {\n    count += 1;\n  }\n</script>\n\n<button on:click={increment}>Count {count}</button>\n<p>Doubled: {doubled}</p>"
+    "note": "Reactivity in Svelte is simple and powerful. Just assign a new value to a variable, and Svelte's compiler will automatically generate the code to update the DOM. For reactive statements that depend on other variables, use the `$: ` label.",
+    "code": "<script>\n  let count = 0;\n\n  // $: marks a reactive declaration.\n  // It re-runs whenever the variables it depends on change.\n  $: doubled = count * 2;\n  $: console.log(`The count is ${count}`);\n\n  function increment() {\n    count += 1;\n  }\n</script>\n\n<button on:click={increment}>Clicked {count} {count === 1 ? 'time' : 'times'}</button>\n<p>{count} * 2 = {doubled}</p>"
   },
   {
-    "title": "Svelte If/Else",
-    "note": "Conditional rendering uses {#if}, {:else if}, and {:else} blocks.",
-    "code": "<script>\n  let loggedIn = false;\n</script>\n\n{#if loggedIn}\n  <p>Welcome back!</p>\n{:else}\n  <p>Please log in.</p>\n{/if}"
-  },
-  {
-    "title": "Svelte Each Loop",
-    "note": "Use {#each} to loop through arrays. Keys help optimize updates.",
-    "code": "<script>\n  let todos = [\n    { id: 1, text: 'Learn Svelte' },\n    { id: 2, text: 'Build an app' }\n  ];\n</script>\n\n<ul>\n  {#each todos as todo (todo.id)}\n    <li>{todo.text}</li>\n  {/each}\n</ul>"
+    "title": "Svelte Logic Blocks",
+    "note": "Svelte provides declarative logic blocks directly in your HTML. Use `{#if...}`, `{#each...}`, and `{#await...}` to conditionally render content, loop through lists, and handle asynchronous operations.",
+    "code": "<script>\n  let loggedIn = true;\n  let colors = ['red', 'green', 'blue'];\n  let promise = fetch('https://api.example.com/data').then(r => r.json());\n</script>\n\n{#if loggedIn}\n  <ul>\n    {#each colors as color}\n      <li>{color}</li>\n    {/each}\n  </ul>\n{/if}\n\n{#await promise}\n  <p>...loading</p>\n{:then data}\n  <p>Data: {data.message}</p>\n{:catch error}\n  <p style=\"color: red\">{error.message}</p>\n{/await}"
   },
   {
     "title": "Svelte Events",
-    "note": "Event listeners use the on: directive. Use functions or inline expressions.",
-    "code": "<button on:click={() => alert('Clicked!')}>Click me</button>\n\n<script>\n  function handleClick() {\n    console.log('Button clicked');\n  }\n</script>\n<button on:click={handleClick}>Another</button>"
+    "note": "Handle DOM events using the `on:` directive. You can pass event modifiers to change their behavior, such as `preventDefault`, `stopPropagation`, `once`, and `self`.",
+    "code": "<script>\n  function handleClick() {\n    alert('Div was clicked, but form will not submit.');\n  }\n</script>\n\n<form on:submit|preventDefault>\n  <div on:click={handleClick}>\n    <button>Click Me</button>\n  </div>\n</form>"
   },
   {
     "title": "Svelte Bindings",
-    "note": "Two-way binding is built in using bind:. Works with inputs, checkboxes, selects, etc.",
-    "code": "<script>\n  let name = '';\n  let agree = false;\n</script>\n\n<input bind:value={name} placeholder=\"Enter your name\" />\n<p>Hello {name}</p>\n\n<input type=\"checkbox\" bind:checked={agree} />\n<p>{agree ? 'Agreed' : 'Not agreed'}</p>"
+    "note": "The `bind:` directive creates two-way bindings between a variable and an element's property. This is commonly used for form inputs, but can also bind to component props or element dimensions like `clientWidth`.",
+    "code": "<script>\n  let name = 'Svelte';\n  let width;\n</script>\n\n<p>What is your name?</p>\n<input bind:value={name} />\n\n<h1 bind:clientWidth={width}>\n  Hello {name}!\n</h1>\n\n<p>The h1 is {width}px wide.</p>"
   },
   {
-    "title": "Svelte Components",
-    "note": "Components are just .svelte files. Props are declared with 'export let'.",
-    "code": "<!-- App.svelte -->\n<script>\n  import Button from './Button.svelte'\n  function sayHello() {\n    alert('Hello from parent!')\n  }\n</script>\n\n<Button text=\"Click me\" on:click={sayHello} />\n\n<!-- Button.svelte -->\n<script>\n  export let text;\n</script>\n\n<button>{text}</button>"
+    "title": "Svelte Components & Props",
+    "note": "Components are the building blocks of Svelte apps. To pass data into a component, you declare properties (props) using the `export let` syntax in the child component's script.",
+    "code": "\n<script>\n  export let name;\n  export let email = 'N/A'; // Default value\n</script>\n\n<div>\n  <h4>{name}</h4>\n  <p>{email}</p>\n</div>\n\n\n<script>\n  import ContactCard from './ContactCard.svelte';\n</script>\n\n<ContactCard name=\"John Doe\" email=\"john@example.com\" />\n<ContactCard name=\"Jane Doe\" />"
+  },
+  {
+    "title": "Svelte Component Events",
+    "note": "To send data from a child component to a parent, the child must dispatch an event. Use `createEventDispatcher` to create a `dispatch` function, which the parent can listen for using the `on:` directive.",
+    "code": "\n<script>\n  import { createEventDispatcher } from 'svelte';\n  const dispatch = createEventDispatcher();\n\n  function notify() {\n    dispatch('message', { text: 'Hello from the child!' });\n  }\n</script>\n\n<button on:click={notify}>Notify Parent</button>\n\n\n<script>\n  import Notifier from './Notifier.svelte';\n  function handleMessage(event) {\n    alert(event.detail.text);\n  }\n</script>\n\n<Notifier on:message={handleMessage} />"
+  },
+  {
+    "title": "Svelte Slots",
+    "note": "Slots allow you to pass markup into a component, making them highly reusable. A component can have one default slot and multiple named slots for more complex layouts.",
+    "code": "\n<div class=\"card\">\n  <div class=\"header\">\n    <slot name=\"header\">Default Header</slot>\n  </div>\n  <div class=\"content\">\n    <slot>Default Content</slot>\n  </div>\n</div>\n\n\n<Card>\n  <h1 slot=\"header\">My Title</h1>\n  <p>Some content for the card.</p>\n</Card>"
   },
   {
     "title": "Svelte Stores",
-    "note": "Stores manage global state. Svelte has writable, readable, and derived stores.",
-    "code": "// store.js\nimport { writable } from 'svelte/store'\nexport const count = writable(0)\n\n// Component.svelte\n<script>\n  import { count } from './store.js'\n</script>\n\n<button on:click={() => $count += 1}>Count {$count}</button>"
+    "note": "Stores are a powerful way to manage state that needs to be shared across multiple components. To use a store's value in a component's template, prefix the store name with `$` for automatic subscription and unsubscription.",
+    "code": "// stores.js\nimport { writable, readable, derived } from 'svelte/store';\n\nexport const count = writable(0);\n\nexport const time = readable(new Date(), function start(set) {\n  const interval = setInterval(() => {\n    set(new Date());\n  }, 1000);\n  return function stop() { clearInterval(interval); };\n});\n\nexport const doubled = derived(count, $count => $count * 2);"
   },
   {
-    "title": "Svelte Lifecycle",
-    "note": "Svelte provides lifecycle functions like onMount, beforeUpdate, afterUpdate, onDestroy.",
-    "code": "<script>\n  import { onMount } from 'svelte';\n\n  let data;\n  onMount(async () => {\n    const res = await fetch('/api/data');\n    data = await res.json();\n  });\n</script>\n\n<p>{data}</p>"
+    "title": "Svelte Transitions & Animations",
+    "note": "Svelte includes a rich set of transition and animation tools to create beautiful UIs. Use the `transition:` directive for elements entering or leaving the DOM, and the `animate:` directive for moving items in a list.",
+    "code": "<script>\n  import { fade, fly } from 'svelte/transition';\n  import { flip } from 'svelte/animate';\n  let visible = true;\n  let todos = [{id: 1, text: 'Learn Svelte'}];\n</script>\n\n<label>\n  <input type=\"checkbox\" bind:checked={visible}>\n  Toggle Visibility\n</label>\n\n{#if visible}\n  <p transition:fly={{ y: -20, duration: 500 }}>Flies in and out</p>\n{/if}\n\n\n{#each todos as todo (todo.id)}\n  <div animate:flip>{todo.text}</div>\n{/each}"
   },
   {
-    "title": "Svelte Animations & Transitions",
-    "note": "Svelte has built-in support for animations and transitions via directives.",
-    "code": "<script>\n  import { fade, fly } from 'svelte/transition';\n  let visible = true;\n</script>\n\n<button on:click={() => visible = !visible}>Toggle</button>\n\n{#if visible}\n  <p transition:fade>Fades in/out</p>\n  <p transition:fly={{ y: 200 }}>Flies in</p>\n{/if}"
+    "title": "Svelte Actions",
+    "note": "An action is a function that runs when an element is created. It's useful for adding custom behavior or integrating with third-party libraries. Apply an action to an element with the `use:` directive.",
+    "code": "<script>\n  function highlight(node, color) {\n    const originalColor = node.style.backgroundColor;\n    node.style.backgroundColor = color;\n    \n    return {\n      // Optional: runs when parameters change\n      update(newColor) { node.style.backgroundColor = newColor; },\n      // Optional: runs when element is destroyed\n      destroy() { node.style.backgroundColor = originalColor; }\n    }\n  }\n</script>\n\n<p use:highlight={'yellow'}>This text is highlighted by an action.</p>"
+  },
+  {
+    "title": "Svelte Ecosystem: SvelteKit",
+    "note": "SvelteKit is the official framework for building full-stack applications with Svelte. It provides a production-ready setup with file-system routing, server-side rendering (SSR), API routes, and adapters for easy deployment to any platform.",
+    "code": "// SvelteKit file-system routing:\n// src/routes/         -> Home page (+page.svelte)\n// src/routes/about    -> About page (+page.svelte)\n// src/routes/blog/[slug] -> Dynamic route (+page.svelte)\n\n// SvelteKit server-side data loading:\n// In a +page.server.js file next to your page\nexport async function load({ params }) {\n  const post = await getPostFromDatabase(params.slug);\n  return { post };\n}"
+  },
+  {
+    "title": "Svelte Free E-Learning",
+    "note": "Ready to master Svelte? These high-quality, free resources are the perfect place to start. From the official interactive tutorial to in-depth video courses, you have everything you need to become a proficient Svelte developer.",
+    "code": "// --- Official Resources ---\n// 1. Svelte Official Tutorial (The best place to start)\n// https://svelte.dev/tutorial\n\n// --- Community & Video Courses ---\n// 2. Svelte School (Free Svelte & SvelteKit courses)\n// https://svelte.school\n\n// 3. Joy of Code (Excellent SvelteKit tutorials on YouTube)\n// https://www.youtube.com/@joyofcode\n\n// 4. Svelte Society (Community events, articles, and talks)\n// https://sveltesociety.dev/\n// https://www.youtube.com/c/SvelteSociety"
   }
 ],
-ruby:[
+ruby:
+[
   {
-    "title": "Ruby HOME",
-    "note": "Ruby is a dynamic, open-source programming language focused on simplicity and productivity. It has an elegant syntax that is natural to read and easy to write. Created by Yukihiro 'Matz' Matsumoto in the mid-1990s. Popular for web development, especially with Ruby on Rails.",
-    "code": "# Official Website: https://www.ruby-lang.org/\n# Documentation: https://ruby-doc.org/\n# Try Online: https://replit.com/languages/ruby\n\nputs 'Hello, Ruby!'"
+    "title": "Ruby HOME & Overview",
+    "note": "Ruby is a dynamic, interpreted, open-source programming language designed for simplicity and productivity. It emphasizes human-friendly syntax, making it natural to read and easy to write. Created by Yukihiro 'Matz' Matsumoto in the mid-1990s, Ruby is highly popular for web development, particularly with Ruby on Rails. It supports object-oriented, functional, and imperative programming styles, and everything in Ruby is an object, including primitive types.",
+    "code": "# Official Website: https://www.ruby-lang.org/\n# Documentation: https://ruby-doc.org/\n# Try Online: https://replit.com/languages/ruby\n\nputs 'Hello, Ruby!'\n\n# Ruby version\nputs RUBY_VERSION"
   },
   {
-    "title": "Ruby Basics",
-    "note": "Ruby is interpreted and dynamically typed. You don't need to declare variable types explicitly. Everything in Ruby is an object, including numbers and booleans.",
-    "code": "name = 'Alice'\nage = 25\nis_active = true\n\nputs \"Name: #{name}, Age: #{age}, Active: #{is_active}\""
+    "title": "Ruby Basics & Syntax",
+    "note": "Ruby is interpreted and dynamically typed, so variable types are determined at runtime. You can define variables without specifying types. Statements end with newlines, semicolons are optional, and comments start with '#'. Everything in Ruby is an object, even numbers and booleans. Simple input/output is done with 'puts' or 'print'.",
+    "code": "name = 'Alice'\nage = 25\nis_active = true\n\nputs \"Name: #{name}, Age: #{age}, Active: #{is_active}\"\n\n# Single-line comment\n# Multi-line strings can use heredoc\nmessage = <<~MSG\n  Hello #{name}!\n  Welcome to Ruby.\nMSG\nputs message"
   },
   {
-    "title": "Ruby Data Types",
-    "note": "Ruby has several core data types: Strings, Numbers (Integer, Float), Symbols, Arrays, Hashes (dictionaries), Ranges, and Booleans.",
-    "code": "str = \"Hello\"\nnum = 42\npi = 3.14\nsym = :token\narr = [1, 2, 3]\nhash = { name: \"Alice\", age: 25 }\nrange = 1..5\n\nputs arr[0]   # 1\nputs hash[:name]  # Alice"
+    "title": "Ruby Data Types & Variables",
+    "note": "Ruby supports several core data types: Strings, Numbers (Integer, Float), Symbols (lightweight constants), Arrays (ordered collections), Hashes (key-value pairs), Ranges, Booleans, and nil. Variables can hold any type without declaration, and types can change dynamically.",
+    "code": "str = \"Hello\"\nnum = 42\npi = 3.14\nsym = :token\narr = [1, 2, 3]\nhash = { name: \"Alice\", age: 25 }\nrange = 1..5\n\nputs arr[0]        # 1\nputs hash[:name]   # Alice\nputs range.to_a    # [1,2,3,4,5]"
   },
   {
-    "title": "Ruby Strings",
-    "note": "Strings can be created with single or double quotes. Double quotes support interpolation and escape sequences. Useful methods: upcase, downcase, strip, split, include?, gsub.",
-    "code": "name = \"Ruby\"\nputs 'Hello ' + name     # Concatenation\nputs \"Hello #{name}\"      # Interpolation\nputs name.upcase         # RUBY\nputs name.include?(\"by\") # true"
+    "title": "Ruby Strings & Manipulations",
+    "note": "Strings can use single or double quotes. Double quotes support interpolation and escape sequences. Ruby provides many useful string methods such as upcase, downcase, strip, split, include?, gsub (global substitution), start_with?, end_with?, and more.",
+    "code": "name = \"Ruby\"\nputs 'Hello ' + name             # Concatenation\nputs \"Hello #{name}\"            # Interpolation\nputs name.upcase                 # RUBY\nputs name.downcase               # ruby\nputs name.include?(\"by\")       # true\nputs name.gsub('by', 'BI')      # RuBI"
   },
   {
-    "title": "Ruby Numbers & Math",
-    "note": "Ruby supports integers and floats with arithmetic operators (+, -, *, /, %, **). It also has math methods like sqrt, sin, cos, and rand.",
-    "code": "a = 10\nb = 3\n\nputs a + b   # 13\nputs a / b   # 3 (integer division)\nputs a.to_f / b   # 3.333...\nputs a ** b  # 1000\n\nputs Math.sqrt(16) # 4.0\nputs rand(1..10)   # random number between 1 and 10"
+    "title": "Ruby Numbers & Math Operations",
+    "note": "Ruby supports integers and floating-point numbers. You can perform arithmetic operations: addition (+), subtraction (-), multiplication (*), division (/), modulo (%), exponentiation (**). Ruby also has a Math module with useful methods like sqrt, sin, cos, tan, log, and random number generation.",
+    "code": "a = 10\nb = 3\n\nputs a + b          # 13\nputs a - b          # 7\nputs a * b          # 30\nputs a / b          # 3 (integer division)\nputs a.to_f / b     # 3.333...\nputs a % b          # 1\nputs a ** b         # 1000\n\nputs Math.sqrt(16)  # 4.0\nputs Math.sin(Math::PI / 2)  # 1.0\nputs rand(1..10)    # random number between 1 and 10"
   },
   {
-    "title": "Ruby Conditionals",
-    "note": "Conditional statements include if/elsif/else, unless (opposite of if), and case/when. Ruby allows inline conditionals for brevity.",
-    "code": "age = 18\n\nif age >= 18\n  puts 'Adult'\nelsif age >= 13\n  puts 'Teen'\nelse\n  puts 'Child'\nend\n\n# Inline conditional\nputs 'Even' if age.even?\n\n# Case statement\ncase age\nwhen 0..12 then puts 'Child'\nwhen 13..17 then puts 'Teen'\nelse puts 'Adult'\nend"
+    "title": "Ruby Conditionals & Logic",
+    "note": "Conditional statements allow branching logic. Ruby uses if/elsif/else, unless (opposite of if), and case/when. Inline conditionals can be used for simple statements. Comparisons include ==, !=, >, <, >=, <=, and logical operators are &&, ||, !.",
+    "code": "age = 18\n\nif age >= 18\n  puts 'Adult'\nelsif age >= 13\n  puts 'Teen'\nelse\n  puts 'Child'\nend\n\n# Inline conditional\nputs 'Even' if age.even?\nputs 'Odd' unless age.even?\n\n# Case statement\ncase age\nwhen 0..12 then puts 'Child'\nwhen 13..17 then puts 'Teen'\nelse puts 'Adult'\nend"
   },
   {
-    "title": "Ruby Loops",
-    "note": "Ruby has several looping constructs: while, until, for, loop do, and iterators like .each and .times.",
-    "code": "i = 0\nwhile i < 3\n  puts i\n  i += 1\nend\n\n3.times { |n| puts \"Times loop #{n}\" }\n\n[1, 2, 3].each do |n|\n  puts \"Number: #{n}\"\nend"
+    "title": "Ruby Loops & Iteration",
+    "note": "Ruby provides multiple looping constructs: while, until, for, loop do, and iterators like .each, .times, .map. Iterators are preferred in idiomatic Ruby.",
+    "code": "i = 0\nwhile i < 3\n  puts i\n  i += 1\nend\n\n3.times { |n| puts \"Times loop #{n}\" }\n\n[1, 2, 3].each do |n|\n  puts \"Number: #{n}\"\nend\n\nfor n in 1..3 do\n  puts \"For loop: #{n}\"\nend"
   },
   {
-    "title": "Ruby Methods",
-    "note": "Methods are defined with 'def' and can take parameters. Default arguments and variable-length arguments are supported. Methods return the last evaluated expression.",
-    "code": "def greet(name = \"Guest\")\n  \"Hello, #{name}!\"\nend\n\nputs greet(\"Alice\")\nputs greet\n\n# Variable-length args\ndef sum(*numbers)\n  numbers.reduce(0, :+)\nend\n\nputs sum(1, 2, 3, 4)  # 10"
+    "title": "Ruby Methods & Functions",
+    "note": "Methods are defined with 'def' and can take parameters. Default values, variable-length arguments, and keyword arguments are supported. Methods return the last evaluated expression. Methods can be defined globally, inside classes, or modules.",
+    "code": "def greet(name = \"Guest\")\n  \"Hello, #{name}!\"\nend\n\nputs greet(\"Alice\")\nputs greet\n\n# Variable-length args\ndef sum(*numbers)\n  numbers.reduce(0, :+)\nend\nputs sum(1, 2, 3, 4)  # 10\n\n# Keyword arguments\ndef info(name:, age:)\n  \"#{name} is #{age} years old\"\nend\nputs info(name: 'Bob', age: 30)"
   },
   {
-    "title": "Ruby Arrays",
-    "note": "Arrays are ordered collections. Support many useful methods: push, pop, shift, unshift, map, select, reject, reduce.",
+    "title": "Ruby Arrays & Iterators",
+    "note": "Arrays are ordered collections of objects. Ruby provides powerful array methods like push, pop, shift, unshift, map, select, reject, reduce, include?, sort, and uniq. Arrays can contain any object type and are dynamic in size.",
     "code": "arr = [1, 2, 3, 4]\narr.push(5)\narr << 6\narr.pop\n\nputs arr.inspect   # [1, 2, 3, 4, 5]\n\nsquares = arr.map { |n| n * n }\nputs squares.inspect  # [1, 4, 9, 16, 25]\n\nevens = arr.select(&:even?)\nputs evens.inspect    # [2, 4]"
   },
   {
-    "title": "Ruby Hashes",
-    "note": "Hashes are key-value pairs. Keys can be symbols or strings. Access values with [], fetch, or dig. Useful methods: keys, values, merge.",
-    "code": "person = { name: \"Alice\", age: 25, active: true }\nputs person[:name]\nputs person.fetch(:age)\n\nperson[:city] = \"Addis Ababa\"\nputs person.dig(:city)   # Addis Ababa"
+    "title": "Ruby Hashes & Key-Value Storage",
+    "note": "Hashes are unordered key-value pairs. Keys are typically symbols or strings. You can access values with [], fetch, or dig. Methods include keys, values, merge, delete, each, and transform_keys. Hashes are widely used for structured data.",
+    "code": "person = { name: \"Alice\", age: 25, active: true }\nputs person[:name]           # Alice\nputs person.fetch(:age)      # 25\n\nperson[:city] = \"Addis Ababa\"\nputs person.dig(:city)       # Addis Ababa\n\nperson.each { |k,v| puts \"#{k}: #{v}\" }"
   },
   {
-    "title": "Ruby Classes & Objects",
-    "note": "Ruby is fully object-oriented. Classes are defined with 'class'. Instance variables begin with @. Methods like initialize define constructors. attr_accessor creates getters/setters.",
+    "title": "Ruby Classes, Objects & OOP",
+    "note": "Ruby is fully object-oriented. Classes are defined with 'class', instance variables start with @, and methods can be public, private, or protected. Constructors are defined using initialize. attr_accessor, attr_reader, and attr_writer generate getters and setters automatically.",
     "code": "class Person\n  attr_accessor :name, :age\n\n  def initialize(name, age)\n    @name = name\n    @age = age\n  end\n\n  def greet\n    \"Hi, I'm #{@name}, age #{@age}\"\n  end\nend\n\np1 = Person.new(\"Alice\", 25)\nputs p1.greet"
   },
   {
     "title": "Ruby Modules & Mixins",
-    "note": "Modules group related methods and constants. They can be used as namespaces or included in classes (mixins).",
-    "code": "module MathUtils\n  def square(x)\n    x * x\n  end\nend\n\nclass Calculator\n  include MathUtils\nend\n\ncalc = Calculator.new\nputs calc.square(5)  # 25"
+    "note": "Modules allow grouping related methods and constants, serve as namespaces, and can be mixed into classes using include. Mixins provide code reuse without using inheritance. Modules can also hold constants and module methods (self.method_name).",
+    "code": "module MathUtils\n  def square(x)\n    x * x\n  end\n\n  def cube(x)\n    x ** 3\n  end\nend\n\nclass Calculator\n  include MathUtils\nend\n\ncalc = Calculator.new\nputs calc.square(5)  # 25\nputs calc.cube(3)    # 27"
   },
   {
-    "title": "Ruby Blocks, Procs, and Lambdas",
-    "note": "Blocks are anonymous chunks of code passed to methods. Procs and lambdas are objects representing blocks. Lambdas check arguments strictly, Procs don’t.",
-    "code": "def repeat(n)\n  n.times { yield }\nend\n\nrepeat(3) { puts 'Hello' }\n\nmy_proc = Proc.new { |x| puts x }\nmy_proc.call(10)\n\nmy_lambda = ->(x) { puts x * 2 }\nmy_lambda.call(5)"
+    "title": "Ruby Blocks, Procs, & Lambdas",
+    "note": "Blocks are anonymous chunks of code passed to methods. Procs and lambdas are objects encapsulating blocks. Lambdas check argument counts strictly, while Procs are more lenient. Blocks enable powerful iteration and callback mechanisms.",
+    "code": "def repeat(n)\n  n.times { yield }\nend\nrepeat(3) { puts 'Hello' }\n\nmy_proc = Proc.new { |x| puts x }\nmy_proc.call(10)\n\nmy_lambda = ->(x) { puts x * 2 }\nmy_lambda.call(5)"
   },
   {
-    "title": "Ruby Exceptions",
-    "note": "Error handling is done with begin/rescue/else/ensure. Raise errors with raise. Custom exceptions inherit from StandardError.",
-    "code": "begin\n  num = 10 / 0\nrescue ZeroDivisionError => e\n  puts \"Error: #{e.message}\"\nelse\n  puts 'No error!'\nensure\n  puts 'Always runs.'\nend"
+    "title": "Ruby Exception Handling",
+    "note": "Ruby handles errors with begin/rescue/else/ensure blocks. Exceptions can be raised using raise. Custom exceptions can be created by inheriting from StandardError. The ensure block always runs for cleanup purposes.",
+    "code": "begin\n  num = 10 / 0\nrescue ZeroDivisionError => e\n  puts \"Error: #{e.message}\"\nelse\n  puts 'No error!'\nensure\n  puts 'Always runs.'\nend\n\n# Custom Exception\nclass MyError < StandardError; end\nraise MyError, 'Something went wrong!'"
   },
   {
-    "title": "Ruby File Handling",
-    "note": "Ruby makes file operations simple. Use File.open with blocks to ensure safe closing. Modes: 'r' (read), 'w' (write), 'a' (append).",
-    "code": "File.open(\"test.txt\", \"w\") do |file|\n  file.puts \"Hello, File!\"\nend\n\ncontent = File.read(\"test.txt\")\nputs content"
+    "title": "Ruby File Handling & I/O",
+    "note": "Ruby provides simple file operations. Use File.open with a block to safely read/write files. Modes include 'r' (read), 'w' (write), 'a' (append), 'r+' (read/write). File methods include read, write, each_line, and File.exist?.",
+    "code": "File.open(\"test.txt\", \"w\") do |file|\n  file.puts \"Hello, File!\"\nend\n\ncontent = File.read(\"test.txt\")\nputs content\n\nFile.foreach(\"test.txt\") { |line| puts line }"
   },
   {
-    "title": "Ruby Gems",
-    "note": "Gems are Ruby libraries packaged for distribution. Managed with RubyGems. Install with gem install or Bundler for project dependencies.",
-    "code": "# Install gem\n# gem install httparty\n\nrequire 'httparty'\n\nresponse = HTTParty.get('https://jsonplaceholder.typicode.com/todos/1')\nputs response.parsed_response"
+    "title": "Ruby Gems & Libraries",
+    "note": "Gems are packaged Ruby libraries. They simplify code reuse and dependency management. RubyGems is the official gem manager. Bundler is used for project dependency management. Gems can provide APIs, utilities, or frameworks like Rails, Sinatra, or HTTParty.",
+    "code": "# Install gem\n# gem install httparty\nrequire 'httparty'\n\nresponse = HTTParty.get('https://jsonplaceholder.typicode.com/todos/1')\nputs response.parsed_response\n\n# Using Bundler\n# gem 'nokogiri'\n# bundle install"
   }
 ],
-javaspring:[
+javaspring:
+  [
   {
-    "title": "Java HOME",
-    "note": "Java is a versatile, object-oriented, class-based programming language developed by Sun Microsystems (now owned by Oracle). It is platform-independent thanks to the JVM (Java Virtual Machine). Widely used for enterprise applications, Android development, backend services, and large-scale systems.",
-    "code": "// Official Website: https://www.oracle.com/java/\n// Documentation: https://docs.oracle.com/javase/\n// Try Online: https://www.jdoodle.com/ or https://replit.com/languages/java10\n\npublic class HelloJava {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, Java!\");\n    }\n}"
+    "title": "Java HOME & Overview",
+    "note": "Java is a versatile, object-oriented, class-based programming language developed by Sun Microsystems (now Oracle). It runs on the JVM, making it platform-independent. Java is widely used for enterprise applications, Android apps, backend services, and large-scale systems. Its syntax is influenced by C/C++ but simplifies memory management with garbage collection.",
+    "code": "// Official Website: https://www.oracle.com/java/\n// Documentation: https://docs.oracle.com/javase/\n// Try Online: https://www.jdoodle.com/ or https://replit.com/languages/java10\n\npublic class HelloJava {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, Java!\");\n        System.out.println(\"Java Version: \" + System.getProperty(\"java.version\"));\n    }\n}"
   },
   {
-    "title": "Java Basics",
-    "note": "Java is statically typed — you must declare variable types. It supports primitive types (int, double, boolean, char) and objects. Every program starts with a class and the main method.",
-    "code": "public class Basics {\n    public static void main(String[] args) {\n        String name = \"Alice\";\n        int age = 25;\n        boolean isActive = true;\n\n        System.out.println(\"Name: \" + name + \", Age: \" + age + \", Active: \" + isActive);\n    }\n}"
+    "title": "Java Basics & Syntax",
+    "note": "Java is statically typed, so you must declare variable types. Variables can be primitive types (int, double, boolean, char) or objects (String, arrays). Every Java program starts with a class and a main method. Comments use // for single-line and /* */ for multi-line.",
+    "code": "public class Basics {\n    public static void main(String[] args) {\n        String name = \"Alice\";\n        int age = 25;\n        boolean isActive = true;\n\n        System.out.println(\"Name: \" + name + \", Age: \" + age + \", Active: \" + isActive);\n        \n        // Multi-line comment example\n        /* This is a multi-line\n           comment in Java */\n    }\n}"
   },
   {
-    "title": "Java Data Types",
-    "note": "Java has primitive types (int, double, boolean, char, byte, short, long, float) and reference types (String, arrays, classes). Strings are objects, not primitives.",
-    "code": "public class DataTypes {\n    public static void main(String[] args) {\n        String str = \"Hello\";\n        int num = 42;\n        double pi = 3.14;\n        char letter = 'A';\n        boolean isTrue = true;\n        int[] arr = {1, 2, 3};\n\n        System.out.println(arr[0]);\n        System.out.println(str.toUpperCase());\n    }\n}"
+    "title": "Java Data Types & Variables",
+    "note": "Java has primitive types (int, double, boolean, char, byte, short, long, float) and reference types (String, arrays, classes). Strings are immutable objects. Variables must be declared before use. Constants are declared with 'final'.",
+    "code": "public class DataTypes {\n    public static void main(String[] args) {\n        String str = \"Hello\";\n        int num = 42;\n        double pi = 3.14;\n        char letter = 'A';\n        boolean isTrue = true;\n        int[] arr = {1, 2, 3};\n        final double TAX = 0.15;\n\n        System.out.println(\"Array first element: \" + arr[0]);\n        System.out.println(str.toUpperCase());\n        System.out.println(\"Tax rate: \" + TAX);\n    }\n}"
   },
   {
-    "title": "Java Conditionals",
-    "note": "Conditionals in Java use if/else, switch-case, and ternary operators. Blocks are wrapped in curly braces {}.",
-    "code": "public class Conditionals {\n    public static void main(String[] args) {\n        int age = 18;\n\n        if (age >= 18) {\n            System.out.println(\"Adult\");\n        } else if (age >= 13) {\n            System.out.println(\"Teen\");\n        } else {\n            System.out.println(\"Child\");\n        }\n\n        // Ternary operator\n        String result = (age % 2 == 0) ? \"Even\" : \"Odd\";\n        System.out.println(result);\n\n        // Switch case\n        switch (age) {\n            case 0,1,2,3 -> System.out.println(\"Toddler\");\n            case 13,14,15,16,17 -> System.out.println(\"Teen\");\n            default -> System.out.println(\"Adult\");\n        }\n    }\n}"
+    "title": "Java Conditionals & Logic",
+    "note": "Conditional statements in Java allow branching. Use if/else, switch-case, and ternary operators. Java uses curly braces {} for code blocks. Logical operators: && (AND), || (OR), ! (NOT). Comparison operators: ==, !=, >, <, >=, <=.",
+    "code": "public class Conditionals {\n    public static void main(String[] args) {\n        int age = 18;\n\n        if (age >= 18) {\n            System.out.println(\"Adult\");\n        } else if (age >= 13) {\n            System.out.println(\"Teen\");\n        } else {\n            System.out.println(\"Child\");\n        }\n\n        // Ternary operator\n        String result = (age % 2 == 0) ? \"Even\" : \"Odd\";\n        System.out.println(result);\n\n        // Switch case (Java 14+ syntax)\n        switch (age) {\n            case 0,1,2,3 -> System.out.println(\"Toddler\");\n            case 13,14,15,16,17 -> System.out.println(\"Teen\");\n            default -> System.out.println(\"Adult\");\n        }\n    }\n}"
   },
   {
-    "title": "Java Loops",
-    "note": "Java supports while, do-while, for, and enhanced-for loops. Iterators are common for collections.",
-    "code": "public class Loops {\n    public static void main(String[] args) {\n        int i = 0;\n        while (i < 3) {\n            System.out.println(i);\n            i++;\n        }\n\n        for (int j = 0; j < 3; j++) {\n            System.out.println(\"For loop \" + j);\n        }\n\n        int[] arr = {1, 2, 3};\n        for (int n : arr) {\n            System.out.println(\"Number: \" + n);\n        }\n    }\n}"
+    "title": "Java Loops & Iteration",
+    "note": "Java supports while, do-while, for, and enhanced-for loops. Iterators are commonly used with collections like Lists, Sets, and Maps. Loops can be nested, and 'break'/'continue' control flow within loops.",
+    "code": "public class Loops {\n    public static void main(String[] args) {\n        // While loop\n        int i = 0;\n        while (i < 3) {\n            System.out.println(i);\n            i++;\n        }\n\n        // For loop\n        for (int j = 0; j < 3; j++) {\n            System.out.println(\"For loop \" + j);\n        }\n\n        // Enhanced for loop\n        int[] arr = {1, 2, 3};\n        for (int n : arr) {\n            System.out.println(\"Number: \" + n);\n        }\n    }\n}"
   },
   {
-    "title": "Java Methods",
-    "note": "Methods are defined inside classes. They can have return types, parameters, and access modifiers. Static methods belong to the class, instance methods belong to objects.",
-    "code": "public class Methods {\n    static String greet(String name) {\n        return \"Hello, \" + name;\n    }\n\n    public static void main(String[] args) {\n        System.out.println(greet(\"Alice\"));\n    }\n}"
+    "title": "Java Methods & Functions",
+    "note": "Methods in Java are defined inside classes. They can have return types, parameters, and access modifiers (public, private, protected). Static methods belong to the class; instance methods belong to objects. Methods return the last evaluated value if non-void.",
+    "code": "public class Methods {\n    // Static method\n    static String greet(String name) {\n        return \"Hello, \" + name;\n    }\n\n    // Instance method\n    String farewell(String name) {\n        return \"Goodbye, \" + name;\n    }\n\n    public static void main(String[] args) {\n        System.out.println(greet(\"Alice\"));\n        Methods obj = new Methods();\n        System.out.println(obj.farewell(\"Bob\"));\n    }\n}"
   },
   {
-    "title": "Java Classes & Objects",
-    "note": "Java is object-oriented. Classes define blueprints, objects are instances. Fields (variables) and methods (functions) define behavior. Constructors initialize objects.",
-    "code": "class Person {\n    String name;\n    int age;\n\n    Person(String name, int age) {\n        this.name = name;\n        this.age = age;\n    }\n\n    void greet() {\n        System.out.println(\"Hi, I'm \" + name + \", age \" + age);\n    }\n}\n\npublic class OOPDemo {\n    public static void main(String[] args) {\n        Person p1 = new Person(\"Alice\", 25);\n        p1.greet();\n    }\n}"
+    "title": "Java Classes, Objects & OOP",
+    "note": "Java is fully object-oriented. Classes define blueprints for objects. Fields (variables) and methods (functions) define object behavior. Constructors initialize objects. Access modifiers control visibility. Inheritance, polymorphism, and encapsulation are key OOP principles.",
+    "code": "class Person {\n    String name;\n    int age;\n\n    Person(String name, int age) {\n        this.name = name;\n        this.age = age;\n    }\n\n    void greet() {\n        System.out.println(\"Hi, I'm \" + name + \", age \" + age);\n    }\n}\n\npublic class OOPDemo {\n    public static void main(String[] args) {\n        Person p1 = new Person(\"Alice\", 25);\n        p1.greet();\n\n        Person p2 = new Person(\"Bob\", 30);\n        p2.greet();\n    }\n}"
   },
   {
-    "title": "Java Exceptions",
-    "note": "Java uses try-catch-finally for error handling. You can throw exceptions manually. Checked exceptions must be declared or handled.",
-    "code": "public class ExceptionsDemo {\n    public static void main(String[] args) {\n        try {\n            int result = 10 / 0;\n        } catch (ArithmeticException e) {\n            System.out.println(\"Error: \" + e.getMessage());\n        } finally {\n            System.out.println(\"Always runs.\");\n        }\n    }\n}"
+    "title": "Java Exception Handling",
+    "note": "Java handles runtime errors using try-catch-finally blocks. You can throw exceptions manually. Checked exceptions must be declared or handled. The finally block always executes. Custom exceptions inherit from Exception or RuntimeException.",
+    "code": "public class ExceptionsDemo {\n    public static void main(String[] args) {\n        try {\n            int result = 10 / 0;\n        } catch (ArithmeticException e) {\n            System.out.println(\"Error: \" + e.getMessage());\n        } finally {\n            System.out.println(\"Cleanup or final code executes.\");\n        }\n\n        // Custom exception\n        try {\n            throw new Exception(\"Custom exception!\");\n        } catch (Exception e) {\n            System.out.println(e.getMessage());\n        }\n    }\n}"
   },
   {
-    "title": "Spring Boot HOME",
-    "note": "Spring Boot is a Java framework for building production-ready web applications quickly. It simplifies Spring framework setup with auto-configuration and an embedded server. Popular for REST APIs and enterprise applications.",
-    "code": "// Official Website: https://spring.io/projects/spring-boot\n// Guides: https://spring.io/guides\n// Try Online: https://start.spring.io/\n\n// Create a new Spring Boot app with: spring init --dependencies=web demo"
+    "title": "Java Collections & Generics",
+    "note": "Java Collections framework includes List, Set, Map, and Queue. Generics allow type-safe collections. Common methods: add, remove, get, size, contains, keySet, values. Iterators and enhanced for loops are used to traverse collections.",
+    "code": "import java.util.*;\n\npublic class CollectionsDemo {\n    public static void main(String[] args) {\n        List<String> fruits = new ArrayList<>();\n        fruits.add(\"Apple\");\n        fruits.add(\"Banana\");\n\n        Set<Integer> numbers = new HashSet<>();\n        numbers.add(1); numbers.add(2);\n\n        Map<String, Integer> scores = new HashMap<>();\n        scores.put(\"Alice\", 90);\n        scores.put(\"Bob\", 85);\n\n        for (String fruit : fruits) System.out.println(fruit);\n        for (Integer n : numbers) System.out.println(n);\n        for (String key : scores.keySet()) System.out.println(key + \": \" + scores.get(key));\n    }\n}"
   },
   {
-    "title": "Spring Boot Basics",
-    "note": "A Spring Boot application starts with a main class annotated with @SpringBootApplication. It embeds Tomcat server so you can run it directly with `mvn spring-boot:run`.",
+    "title": "Spring Boot HOME & Overview",
+    "note": "Spring Boot is a Java framework for building production-ready web applications quickly. It simplifies Spring setup with auto-configuration, embedded servers, and opinionated defaults. Ideal for REST APIs, microservices, and enterprise applications.",
+    "code": "// Official Website: https://spring.io/projects/spring-boot\n// Guides: https://spring.io/guides\n// Try Online: https://start.spring.io/\n\n// Create a Spring Boot app: spring init --dependencies=web demo"
+  },
+  {
+    "title": "Spring Boot Basics & Main Class",
+    "note": "A Spring Boot app starts with a main class annotated with @SpringBootApplication. It embeds a Tomcat server, so you can run it with `mvn spring-boot:run` or `./gradlew bootRun`. Configuration is minimal, thanks to convention over configuration.",
     "code": "import org.springframework.boot.SpringApplication;\nimport org.springframework.boot.autoconfigure.SpringBootApplication;\n\n@SpringBootApplication\npublic class DemoApplication {\n    public static void main(String[] args) {\n        SpringApplication.run(DemoApplication.class, args);\n    }\n}"
   },
   {
     "title": "Spring Boot REST Controller",
-    "note": "REST APIs are built with @RestController and @GetMapping, @PostMapping annotations. The framework handles routing and responses automatically.",
+    "note": "Use @RestController to define REST endpoints. @GetMapping, @PostMapping, @PutMapping, and @DeleteMapping map HTTP requests. Spring Boot automatically converts return values to JSON.",
     "code": "import org.springframework.web.bind.annotation.GetMapping;\nimport org.springframework.web.bind.annotation.RestController;\n\n@RestController\npublic class HelloController {\n    @GetMapping(\"/\")\n    public String home() {\n        return \"Hello, Spring Boot!\";\n    }\n}"
   },
   {
-    "title": "Spring Boot with Parameters",
-    "note": "Spring controllers can accept path variables and query parameters easily. The framework automatically maps HTTP requests to method parameters.",
+    "title": "Spring Boot Controllers with Parameters",
+    "note": "Path variables and query parameters are easily handled with @PathVariable and @RequestParam. Spring maps HTTP requests to method parameters automatically, simplifying REST API development.",
     "code": "import org.springframework.web.bind.annotation.*;\n\n@RestController\n@RequestMapping(\"/api\")\npublic class ApiController {\n\n    @GetMapping(\"/greet/{name}\")\n    public String greet(@PathVariable String name) {\n        return \"Hello, \" + name;\n    }\n\n    @GetMapping(\"/add\")\n    public int add(@RequestParam int a, @RequestParam int b) {\n        return a + b;\n    }\n}"
   },
   {
     "title": "Spring Boot with Database (JPA)",
-    "note": "Spring Boot integrates with databases using Spring Data JPA. You define an entity class and a repository interface; CRUD methods are auto-generated.",
-    "code": "import jakarta.persistence.*;\n\n@Entity\npublic class User {\n    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)\n    private Long id;\n    private String name;\n    private int age;\n\n    // Getters and setters omitted for brevity\n}\n\nimport org.springframework.data.jpa.repository.JpaRepository;\n\npublic interface UserRepository extends JpaRepository<User, Long> {}\n\nimport org.springframework.web.bind.annotation.*;\nimport java.util.List;\n\n@RestController\n@RequestMapping(\"/users\")\npublic class UserController {\n    private final UserRepository repo;\n    public UserController(UserRepository repo) { this.repo = repo; }\n\n    @GetMapping\n    public List<User> all() { return repo.findAll(); }\n\n    @PostMapping\n    public User add(@RequestBody User user) { return repo.save(user); }\n}"
+    "note": "Spring Boot integrates with relational databases using Spring Data JPA. Define entity classes with @Entity, and repositories extending JpaRepository provide CRUD operations automatically. Supports H2, MySQL, PostgreSQL, and more.",
+    "code": "import jakarta.persistence.*;\n\n@Entity\npublic class User {\n    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)\n    private Long id;\n    private String name;\n    private int age;\n    // Getters and setters omitted for brevity\n}\n\nimport org.springframework.data.jpa.repository.JpaRepository;\npublic interface UserRepository extends JpaRepository<User, Long> {}\n\nimport org.springframework.web.bind.annotation.*;\nimport java.util.List;\n\n@RestController\n@RequestMapping(\"/users\")\npublic class UserController {\n    private final UserRepository repo;\n    public UserController(UserRepository repo) { this.repo = repo; }\n\n    @GetMapping\n    public List<User> all() { return repo.findAll(); }\n\n    @PostMapping\n    public User add(@RequestBody User user) { return repo.save(user); }\n}"
   }
 ],
 csharpdotnet:[
@@ -5931,7 +5980,8 @@ goweb:[
     "code": "package main\n\nimport \"github.com/gin-gonic/gin\"\n\nfunc main() {\n    r := gin.Default()\n\n    r.GET(\"/\", func(c *gin.Context) {\n        c.JSON(200, gin.H{\"message\": \"Hello from Gin Web Framework!\"})\n    })\n\n    r.Run(\":8080\")\n}"
   }
 ],
-javaandroid:[
+javaandroid:
+  [
   {
     "title": "Android Java HOME",
     "note": "Android is a mobile operating system developed by Google. Java is one of the primary languages used for Android development. Android apps run on the Android Runtime (ART) and are packaged as APK files. Android Studio is the official IDE.",
@@ -5986,6 +6036,21 @@ javaandroid:[
     "title": "Android Permissions",
     "note": "Android uses runtime permissions for sensitive actions (camera, location, storage). Must declare in Manifest and request at runtime for API 23+.",
     "code": "if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {\n    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 100);\n}"
+  },
+  {
+    "title": "Android Lifecycle",
+    "note": "Every Activity goes through lifecycle stages: onCreate(), onStart(), onResume(), onPause(), onStop(), onDestroy(). Managing these is crucial for saving state and performance.",
+    "code": "@Override\nprotected void onStart() {\n    super.onStart();\n    Log.d(\"LIFECYCLE\", \"Activity Started\");\n}\n\n@Override\nprotected void onPause() {\n    super.onPause();\n    Log.d(\"LIFECYCLE\", \"Activity Paused\");\n}"
+  },
+  {
+    "title": "Android Services",
+    "note": "Services run background tasks without a UI. Examples: music playback, background sync. They can be started or bound to activities.",
+    "code": "public class MyService extends Service {\n    @Override\n    public int onStartCommand(Intent intent, int flags, int startId) {\n        Log.d(\"SERVICE\", \"Service Started\");\n        return START_STICKY;\n    }\n\n    @Override\n    public IBinder onBind(Intent intent) {\n        return null;\n    }\n}"
+  },
+  {
+    "title": "Android Notifications",
+    "note": "Notifications allow apps to alert users outside the app. Built using NotificationManager and NotificationCompat.Builder.",
+    "code": "NotificationCompat.Builder builder = new NotificationCompat.Builder(this, \"default\")\n    .setSmallIcon(R.drawable.ic_launcher)\n    .setContentTitle(\"My Notification\")\n    .setContentText(\"Hello, Android User!\")\n    .setPriority(NotificationCompat.PRIORITY_DEFAULT);\n\nNotificationManagerCompat manager = NotificationManagerCompat.from(this);\nmanager.notify(1, builder.build());"
   }
 ],
 swiftios:[
@@ -6164,7 +6229,8 @@ reactnative:[
     "code": "// Install: npm install @react-native-async-storage/async-storage\nimport AsyncStorage from '@react-native-async-storage/async-storage';\nimport React, { useState, useEffect } from 'react';\nimport { View, Button, Text } from 'react-native';\n\nexport default function StorageDemo() {\n  const [name, setName] = useState('');\n\n  const saveName = async () => { await AsyncStorage.setItem('name', 'Alice'); };\n  const loadName = async () => { const n = await AsyncStorage.getItem('name'); setName(n); };\n\n  useEffect(() => { loadName(); }, []);\n\n  return (\n    <View>\n      <Button title=\"Save Name\" onPress={saveName} />\n      <Text>Saved Name: {name}</Text>\n    </View>\n  );\n}"
   }
 ],
-flutter:[
+flutter:
+[
   {
     "title": "Flutter HOME",
     "note": "Flutter is Google's UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase. It uses the Dart programming language and provides a rich set of pre-designed widgets for fast development.",
@@ -6209,13 +6275,29 @@ flutter:[
     "title": "Flutter Persistent Storage (SharedPreferences)",
     "note": "Use shared_preferences package to store key-value pairs persistently, such as user settings or tokens.",
     "code": "// Add dependency: shared_preferences: ^2.0.0\nimport 'package:flutter/material.dart';\nimport 'package:shared_preferences/shared_preferences.dart';\n\nclass StorageDemo extends StatefulWidget {\n  @override\n  _StorageDemoState createState() => _StorageDemoState();\n}\n\nclass _StorageDemoState extends State<StorageDemo> {\n  String name = '';\n\n  void saveName() async {\n    final prefs = await SharedPreferences.getInstance();\n    await prefs.setString('name', 'Alice');\n  }\n\n  void loadName() async {\n    final prefs = await SharedPreferences.getInstance();\n    setState(() {\n      name = prefs.getString('name') ?? '';\n    });\n  }\n\n  @override\n  void initState() {\n    super.initState();\n    loadName();\n  }\n\n  @override\n  Widget build(BuildContext context) {\n    return Column(\n      children: [\n        ElevatedButton(onPressed: saveName, child: Text('Save Name')),\n        Text('Saved Name: $name')\n      ],\n    );\n  }\n}"
+  },
+  {
+    "title": "Flutter Images & Assets",
+    "note": "Add images in pubspec.yaml under 'assets:'. Use Image.asset for local images or Image.network for remote images.",
+    "code": "import 'package:flutter/material.dart';\n\nclass ImageDemo extends StatelessWidget {\n  @override\n  Widget build(BuildContext context) {\n    return Column(\n      children: [\n        Image.asset('assets/logo.png', width: 100, height: 100),\n        Image.network('https://picsum.photos/200', width: 100, height: 100),\n      ],\n    );\n  }\n}"
+  },
+  {
+    "title": "Flutter Theming & Styling",
+    "note": "Use ThemeData to define global styles. Widgets can be customized with colors, typography, and shapes.",
+    "code": "import 'package:flutter/material.dart';\n\nvoid main() {\n  runApp(MyApp());\n}\n\nclass MyApp extends StatelessWidget {\n  @override\n  Widget build(BuildContext context) {\n    return MaterialApp(\n      theme: ThemeData(\n        primarySwatch: Colors.deepPurple,\n        textTheme: TextTheme(bodyText2: TextStyle(fontSize: 18)),\n      ),\n      home: Scaffold(\n        appBar: AppBar(title: Text('Theming Example')),\n        body: Center(child: Text('Styled with ThemeData')),\n      ),\n    );\n  }\n}"
+  },
+  {
+    "title": "Flutter Animations",
+    "note": "Flutter supports animations via AnimationController, Tween, and built-in widgets like AnimatedContainer or Hero.",
+    "code": "import 'package:flutter/material.dart';\n\nclass AnimationDemo extends StatefulWidget {\n  @override\n  _AnimationDemoState createState() => _AnimationDemoState();\n}\n\nclass _AnimationDemoState extends State<AnimationDemo> {\n  double size = 100;\n\n  @override\n  Widget build(BuildContext context) {\n    return Scaffold(\n      body: Center(\n        child: AnimatedContainer(\n          duration: Duration(seconds: 1),\n          width: size,\n          height: size,\n          color: Colors.blue,\n        ),\n      ),\n      floatingActionButton: FloatingActionButton(\n        onPressed: () {\n          setState(() {\n            size = size == 100 ? 200 : 100;\n          });\n        },\n        child: Icon(Icons.play_arrow),\n      ),\n    );\n  }\n}"
   }
 ],
-ionic:[
+ionic:
+[
   {
     "title": "Ionic HOME",
     "note": "Ionic Framework is a powerful open-source SDK for building cross-platform mobile apps using web technologies like HTML, CSS, and JavaScript. It works with Angular, React, or Vue, and allows building apps for iOS, Android, and the web from a single codebase.",
-    "code": "// Official Website: https://ionicframework.com/\n// Documentation: https://ionicframework.com/docs\n// Try Online: https://stackblitz.com/\n\n// Install Ionic CLI\n// npm install -g @ionic/cli\n\n// Create a new app\n// ionic start myApp blank --type=angular\n\n// Run app\n// ionic serve"
+    "code": "// Official Website: https://ionicframework.com/\n// Documentation: https://ionicframework.com/docs\n// Try Online: https://stackblitz.com/\n\n// Install Ionic CLI\nnpm install -g @ionic/cli\n\n// Create a new app\nionic start myApp blank --type=angular\n\n// Run app\nionic serve"
   },
   {
     "title": "Ionic Components",
@@ -6256,9 +6338,36 @@ ionic:[
     "title": "Ionic Capacitor Plugins",
     "note": "Capacitor provides native device features like Camera, Geolocation, and Push Notifications. Use plugins to access device hardware.",
     "code": "import { Camera, CameraResultType } from '@capacitor/camera';\n\nasync takePhoto() {\n  const image = await Camera.getPhoto({\n    quality: 90,\n    allowEditing: false,\n    resultType: CameraResultType.Uri\n  });\n  console.log(image.webPath);\n}"
+  },
+  {
+    "title": "Ionic Theming",
+    "note": "Ionic supports powerful theming using CSS variables. You can customize colors, dark mode, and component styles globally or locally.",
+    "code": "/* in variables.css */\n:root {\n  --ion-color-primary: #3880ff;\n  --ion-color-secondary: #0cd1e8;\n  --ion-color-tertiary: #7044ff;\n}"
+  },
+  {
+    "title": "Ionic Lifecycle Events",
+    "note": "Ionic components and pages provide lifecycle hooks like ionViewDidEnter, ionViewWillLeave. These are useful for initializing data or cleaning resources when entering or leaving a page.",
+    "code": "ionViewDidEnter() {\n  console.log('Page loaded');\n}\n\nionViewWillLeave() {\n  console.log('Leaving page');\n}"
+  },
+  {
+    "title": "Ionic Tabs",
+    "note": "Tabs are a popular navigation pattern in Ionic apps. You can define multiple tab pages with icons and routes.",
+    "code": "<ion-tabs>\n  <ion-tab-bar slot=\"bottom\">\n    <ion-tab-button tab=\"home\">\n      <ion-icon name=\"home\"></ion-icon>\n      <ion-label>Home</ion-label>\n    </ion-tab-button>\n    <ion-tab-button tab=\"settings\">\n      <ion-icon name=\"settings\"></ion-icon>\n      <ion-label>Settings</ion-label>\n    </ion-tab-button>\n  </ion-tab-bar>\n</ion-tabs>"
+  },
+  {
+    "title": "Ionic Testing",
+    "note": "Ionic apps can be tested using Jasmine, Karma, and Angular Testing utilities. End-to-end testing can be performed using Protractor or Cypress.",
+    "code": "import { TestBed } from '@angular/core/testing';\nimport { AppComponent } from './app.component';\n\ndescribe('AppComponent', () => {\n  beforeEach(async () => {\n    await TestBed.configureTestingModule({\n      declarations: [AppComponent]\n    }).compileComponents();\n  });\n\n  it('should create the app', () => {\n    const fixture = TestBed.createComponent(AppComponent);\n    const app = fixture.componentInstance;\n    expect(app).toBeTruthy();\n  });\n});"
+  },
+  {
+    "title": "Ionic Deployment",
+    "note": "Ionic apps can be deployed to browsers (as PWA), Android (via APK/AAB), and iOS (via IPA). Use 'ionic build', then integrate with Capacitor to generate native builds.",
+    "code": "// Build app for production\nionic build\n\n// Add platforms\nionic cap add android\nionic cap add ios\n\n// Open Android Studio or Xcode\nionic cap open android\nionic cap open ios"
   }
+
 ],
-xamarin:[
+xamarin:
+[
   {
     "title": "Xamarin HOME",
     "note": "Xamarin is a Microsoft-owned framework for building cross-platform mobile apps using C#. It allows developers to write shared code for iOS, Android, and Windows. Xamarin.Forms enables UI sharing, while Xamarin.Android and Xamarin.iOS provide platform-specific control.",
@@ -6333,63 +6442,84 @@ xamarin:[
     "title": "Xamarin Push Notifications",
     "note": "Use Firebase Cloud Messaging (FCM) for Android and APNs for iOS. Integrate via plugins like Plugin.FirebasePushNotification for cross-platform support.",
     "code": "// Configure FCM in MainActivity.cs and AppDelegate.cs\n// Subscribe to notifications\nCrossFirebasePushNotification.Current.OnNotificationReceived += (s, p) => {\n  Console.WriteLine($\"Received: {p.Data}\" );\n};"
+  },
+  {
+    "title": "Xamarin Lifecycle",
+    "note": "Xamarin.Forms Application class has lifecycle events: OnStart, OnSleep, and OnResume. Each page also has OnAppearing and OnDisappearing events.",
+    "code": "protected override void OnStart() {\n  Console.WriteLine(\"App started\");\n}\n\nprotected override void OnSleep() {\n  Console.WriteLine(\"App in background\");\n}\n\nprotected override void OnResume() {\n  Console.WriteLine(\"App resumed\");\n}"
+  },
+  {
+    "title": "Xamarin Theming & Styles",
+    "note": "Xamarin supports theming using ResourceDictionaries in App.xaml. You can define styles for consistency across pages, and switch between light/dark themes.",
+    "code": "<Application.Resources>\n  <ResourceDictionary>\n    <Style TargetType=\"Label\">\n      <Setter Property=\"TextColor\" Value=\"Blue\" />\n      <Setter Property=\"FontSize\" Value=\"20\" />\n    </Style>\n  </ResourceDictionary>\n</Application.Resources>"
+  },
+  {
+    "title": "Xamarin Testing",
+    "note": "Xamarin apps can be tested with NUnit, MSTest, or xUnit for unit tests, and Xamarin.UITest for UI automation tests.",
+    "code": "[Test]\npublic void AddingNumbersWorks() {\n    var result = Calculator.Add(2, 3);\n    Assert.AreEqual(5, result);\n}\n\n// UI Test example\n[Test]\npublic void AppLaunches() {\n    app.Screenshot(\"First screen\");\n    Assert.IsTrue(app.Query(c => c.Marked(\"MainPage\")).Any());\n}"
+  },
+  {
+    "title": "Xamarin Deployment",
+    "note": "Xamarin apps can be deployed as Android APK/AAB, iOS IPA, or Windows UWP app. Use Visual Studio tools for publishing to Google Play or Apple App Store.",
+    "code": "// Android\nRight-click Android project → Archive → Distribute → Google Play\n\n// iOS\nArchive project → Publish → App Store Connect\n\n// UWP\nCreate App Package → Upload to Microsoft Store"
   }
 ],
-sqlite:[
+sqlite:
+[
   {
     "title": "SQLite HOME",
-    "note": "SQLite is a lightweight, file-based relational database. Perfect for mobile apps because it doesn't require a separate server. Xamarin supports SQLite via the SQLite-net-pcl NuGet package, which allows you to define models, perform CRUD operations, and query the database easily.",
+    "note": "SQLite is a lightweight, serverless, self-contained database engine stored in a single file. It is widely used in mobile apps (iOS, Android, Xamarin) and desktop applications because it doesn’t need a separate database server. Xamarin supports SQLite via the sqlite-net-pcl NuGet package, which provides simple APIs for creating models, tables, and executing CRUD operations. SQLite is ACID-compliant, supports transactions, and works offline, making it highly reliable for small to medium data storage needs.",
     "code": "// Official Website: https://www.sqlite.org/\n// SQLite-net-pcl NuGet: https://www.nuget.org/packages/sqlite-net-pcl/\n\n// Install via NuGet in Xamarin.Forms project\n// PM> Install-Package sqlite-net-pcl"
   },
   {
     "title": "SQLite Model Definition",
-    "note": "In SQLite, each table is represented by a C# class. Use attributes [PrimaryKey] and [AutoIncrement] to define primary keys.",
-    "code": "using SQLite;\n\npublic class User {\n    [PrimaryKey, AutoIncrement]\n    public int Id { get; set; }\n    public string Name { get; set; }\n    public int Age { get; set; }\n}"
+    "note": "In SQLite, each table is represented as a C# class (also called a data model). The properties in the class map directly to table columns. Attributes such as [PrimaryKey], [AutoIncrement], [Unique], and [MaxLength] can be used to configure constraints. This allows strong typing and compile-time validation in Xamarin projects.",
+    "code": "using SQLite;\n\npublic class User {\n    [PrimaryKey, AutoIncrement]\n    public int Id { get; set; }\n\n    [MaxLength(50)]\n    public string Name { get; set; }\n\n    public int Age { get; set; }\n    public string Email { get; set; }\n}"
   },
   {
     "title": "SQLite Database Initialization",
-    "note": "Create a SQLite connection and initialize the database file. On mobile, store the database in a platform-specific location using Xamarin.Essentials FileSystem.AppDataDirectory.",
-    "code": "using SQLite;\nusing System.IO;\n\nstring dbPath = Path.Combine(FileSystem.AppDataDirectory, \"appdata.db\");\nvar db = new SQLiteConnection(dbPath);\ndb.CreateTable<User>();"
+    "note": "Before using SQLite, you must establish a connection to the database file. Xamarin.Essentials provides FileSystem.AppDataDirectory, which ensures the database is stored securely in a platform-specific location. Once connected, call CreateTable<T>() to ensure the schema is ready. This process will create tables if they do not already exist.",
+    "code": "using SQLite;\nusing System.IO;\nusing Xamarin.Essentials;\n\nstring dbPath = Path.Combine(FileSystem.AppDataDirectory, \"appdata.db\");\nvar db = new SQLiteConnection(dbPath);\ndb.CreateTable<User>();"
   },
   {
     "title": "SQLite Insert Data",
-    "note": "Insert data into tables using Insert() or InsertAsync(). Supports bulk inserts with InsertAll().",
-    "code": "var user = new User { Name = \"Alice\", Age = 25 };\ndb.Insert(user);\n\n// Async version\n// await db.InsertAsync(user);"
+    "note": "You can insert single or multiple records into a SQLite table. Insert() is synchronous, while InsertAsync() is non-blocking and preferred in mobile apps to prevent UI freezing. For large datasets, InsertAll() improves performance by committing multiple rows in a single transaction.",
+    "code": "var user = new User { Name = \"Alice\", Age = 25, Email = \"alice@mail.com\" };\ndb.Insert(user);\n\n// Async version\n// await db.InsertAsync(user);\n\n// Bulk insert\n// db.InsertAll(new List<User>{ new User{Name=\"Tom\"}, new User{Name=\"Sara\"} });"
   },
   {
     "title": "SQLite Read Data",
-    "note": "Query data using Table<T>(), LINQ expressions, or ExecuteScalar. Supports filtering, ordering, and selecting specific fields.",
-    "code": "// Get all users\nvar users = db.Table<User>().ToList();\n\n// Get a specific user\nvar alice = db.Table<User>().FirstOrDefault(u => u.Name == \"Alice\");\n\n// Async version\n// var usersAsync = await db.Table<User>().ToListAsync();"
+    "note": "Reading data is flexible with SQLite. You can fetch all records, apply filters with LINQ, or use raw SQL queries. Table<T>() returns a queryable table, supporting advanced filtering, sorting, and projection. Async versions (ToListAsync, FirstOrDefaultAsync) prevent UI blocking in Xamarin apps.",
+    "code": "// Get all users\nvar users = db.Table<User>().ToList();\n\n// Filter with LINQ\nvar adults = db.Table<User>().Where(u => u.Age >= 18).ToList();\n\n// Find specific user\nvar alice = db.Table<User>().FirstOrDefault(u => u.Name == \"Alice\");\n\n// Async example\n// var usersAsync = await db.Table<User>().ToListAsync();"
   },
   {
     "title": "SQLite Update Data",
-    "note": "Update existing records using Update() or UpdateAsync(). Modify the object properties and call Update().",
+    "note": "Updating records involves modifying the model object and calling Update(). You can update single or multiple records. With async operations (UpdateAsync), you avoid blocking the UI. Always ensure that the object’s primary key exists, otherwise Update() will fail silently.",
     "code": "alice.Age = 26;\ndb.Update(alice);\n\n// Async version\n// await db.UpdateAsync(alice);"
   },
   {
     "title": "SQLite Delete Data",
-    "note": "Delete records using Delete() with object or primary key. You can also delete all rows using DeleteAll<T>().",
+    "note": "SQLite allows deleting specific rows by passing the object or primary key to Delete(). For clearing entire tables, DeleteAll<T>() is efficient. Be careful with cascading deletes—SQLite does not enable foreign key constraints by default; they must be turned on manually.",
     "code": "// Delete a user\ndb.Delete(alice);\n\n// Delete by Id\ndb.Delete<User>(alice.Id);\n\n// Delete all users\ndb.DeleteAll<User>();"
   },
   {
     "title": "SQLite Query Examples",
-    "note": "Use LINQ queries or Execute to filter, sort, or search data. You can also execute raw SQL if needed.",
+    "note": "You can use both LINQ and raw SQL queries. LINQ ensures type-safety, while raw SQL offers more flexibility for complex operations. SQLite supports joins, aggregations, and parameterized queries to prevent SQL injection.",
     "code": "// LINQ queries\nvar adults = db.Table<User>().Where(u => u.Age >= 18).OrderBy(u => u.Name).ToList();\n\n// Raw SQL query\nvar teens = db.Query<User>(\"SELECT * FROM User WHERE Age BETWEEN ? AND ?\", 13, 19);"
   },
   {
     "title": "SQLite Async Operations",
-    "note": "For mobile apps, using async SQLite operations prevents blocking the UI thread. Methods include InsertAsync, UpdateAsync, DeleteAsync, Table<T>().ToListAsync().",
-    "code": "using SQLite;\n\nvar dbAsync = new SQLiteAsyncConnection(dbPath);\nawait dbAsync.CreateTableAsync<User>();\nawait dbAsync.InsertAsync(new User { Name = \"Bob\", Age = 30 });\nvar users = await dbAsync.Table<User>().ToListAsync();"
+    "note": "Mobile apps should use SQLiteAsyncConnection to avoid blocking the UI. Async methods are essential for smooth scrolling and responsiveness. Always await operations like CreateTableAsync, InsertAsync, UpdateAsync, and DeleteAsync.",
+    "code": "var dbAsync = new SQLiteAsyncConnection(dbPath);\nawait dbAsync.CreateTableAsync<User>();\nawait dbAsync.InsertAsync(new User { Name = \"Bob\", Age = 30 });\nvar users = await dbAsync.Table<User>().ToListAsync();"
   },
   {
     "title": "SQLite Integration with Xamarin.Forms UI",
-    "note": "Bind SQLite data to UI elements like ListView or CollectionView using ObservableCollection. MVVM pattern keeps database logic in ViewModels.",
-    "code": "public class MainViewModel : INotifyPropertyChanged {\n    private SQLiteAsyncConnection _db;\n    public ObservableCollection<User> Users { get; set; } = new ObservableCollection<User>();\n\n    public MainViewModel(string dbPath) {\n        _db = new SQLiteAsyncConnection(dbPath);\n        LoadUsers();\n    }\n\n    public async void LoadUsers() {\n        var list = await _db.Table<User>().ToListAsync();\n        Users.Clear();\n        foreach(var user in list) Users.Add(user);\n    }\n}\n\n// In XAML\n// <ListView ItemsSource=\"{Binding Users}\"><ListView.ItemTemplate><DataTemplate><TextCell Text=\"{Binding Name}\" Detail=\"{Binding Age}\" /></DataTemplate></ListView.ItemTemplate></ListView>"
+    "note": "SQLite integrates with UI via data binding. Use ObservableCollection in ViewModels to automatically reflect changes in UI. Following MVVM pattern keeps database logic separate from UI code, improving maintainability.",
+    "code": "public class MainViewModel : INotifyPropertyChanged {\n    private SQLiteAsyncConnection _db;\n    public ObservableCollection<User> Users { get; set; } = new ObservableCollection<User>();\n\n    public MainViewModel(string dbPath) {\n        _db = new SQLiteAsyncConnection(dbPath);\n        LoadUsers();\n    }\n\n    public async void LoadUsers() {\n        var list = await _db.Table<User>().ToListAsync();\n        Users.Clear();\n        foreach(var user in list) Users.Add(user);\n    }\n}\n\n// XAML\n// <ListView ItemsSource=\"{Binding Users}\">\n//   <ListView.ItemTemplate>\n//     <DataTemplate>\n//       <TextCell Text=\"{Binding Name}\" Detail=\"{Binding Age}\" />\n//     </DataTemplate>\n//   </ListView.ItemTemplate>\n// </ListView>"
   },
   {
     "title": "SQLite Database Migrations",
-    "note": "SQLite-net-pcl doesn't support automatic migrations. To update schemas, use CreateTable with new model versions or manual ALTER TABLE commands.",
-    "code": "// Add new column\n// ALTER TABLE User ADD COLUMN Email TEXT\n// After updating model class with Email property, call CreateTable<User>() to ensure table exists"
+    "note": "Unlike Entity Framework, sqlite-net-pcl doesn’t have built-in migrations. Schema changes must be handled manually. You can use ALTER TABLE commands or re-create tables. A common practice is versioning your database and applying incremental updates on app startup.",
+    "code": "// Example: Add new column\n// ALTER TABLE User ADD COLUMN Email TEXT;\n\n// After updating model class with Email property\n// Call db.CreateTable<User>() again to ensure schema consistency"
   }
 ],
 sqlserver:[
@@ -6541,7 +6671,8 @@ oracle:[
     "code": "import java.sql.*;\n\npublic class OracleDemo {\n    public static void main(String[] args) {\n        try {\n            Class.forName(\"oracle.jdbc.driver.OracleDriver\");\n            Connection conn = DriverManager.getConnection(\n                \"jdbc:oracle:thin:@localhost:1521:XE\", \"myuser\", \"mypassword\");\n\n            Statement stmt = conn.createStatement();\n            ResultSet rs = stmt.executeQuery(\"SELECT Name, Age FROM Employees\");\n            while(rs.next()) {\n                System.out.println(\"Name: \" + rs.getString(\"Name\") + \", Age: \" + rs.getInt(\"Age\"));\n            }\n\n            rs.close();\n            stmt.close();\n            conn.close();\n        } catch(Exception e) {\n            e.printStackTrace();\n        }\n    }\n}"
   }
 ],
-cassandra:[
+cassandra:
+  [
   {
     "title": "Cassandra HOME",
     "note": "Apache Cassandra is a highly scalable, distributed NoSQL database designed for handling large amounts of data across many servers with no single point of failure. It is optimized for high availability, fault tolerance, and linear scalability. It uses a peer-to-peer architecture and a column-family data model.",
@@ -6575,7 +6706,7 @@ cassandra:[
   {
     "title": "Delete Data in Cassandra",
     "note": "Delete rows or columns using DELETE. Always use the primary key or clustering columns. You can also delete an entire table or keyspace.",
-    "code": "DELETE FROM mykeyspace.users WHERE user_id = <uuid>;\n-- Drop table\n-- DROP TABLE mykeyspace.users;\n-- Drop keyspace\n-- DROP KEYSPACE mykeyspace;"
+    "code": "DELETE FROM mykeyspace.users WHERE user_id = <uuid>;\n-- Drop table\nDROP TABLE mykeyspace.users;\n-- Drop keyspace\nDROP KEYSPACE mykeyspace;"
   },
   {
     "title": "Cassandra Primary & Composite Keys",
@@ -6608,305 +6739,408 @@ cassandra:[
     "code": "SELECT * FROM mykeyspace.orders WHERE user_id = <uuid> ORDER BY order_date DESC;"
   },
   {
+    "title": "Cassandra Replication Strategies",
+    "note": "Cassandra supports replication strategies for fault tolerance. SimpleStrategy is used for single data centers, while NetworkTopologyStrategy is recommended for multiple data centers.",
+    "code": "CREATE KEYSPACE ecommerce WITH replication = {\n  'class': 'NetworkTopologyStrategy',\n  'datacenter1': 3,\n  'datacenter2': 2\n};"
+  },
+  {
+    "title": "Cassandra Consistency Levels",
+    "note": "Cassandra allows tuning consistency levels per query: ONE, QUORUM, ALL, LOCAL_QUORUM, EACH_QUORUM. This provides trade-offs between availability and accuracy.",
+    "code": "CONSISTENCY QUORUM;\nSELECT * FROM mykeyspace.users WHERE user_id = <uuid>;"
+  },
+  {
+    "title": "Cassandra Drivers",
+    "note": "Cassandra can be accessed from various programming languages using official drivers: Java, Python, Node.js, C#, Go. The DataStax drivers are most widely used.",
+    "code": "-- Python Example\nfrom cassandra.cluster import Cluster\ncluster = Cluster(['127.0.0.1'])\nsession = cluster.connect('mykeyspace')\nrows = session.execute('SELECT name, age FROM users')\nfor row in rows:\n    print(row.name, row.age)"
+  },
+  {
+    "title": "Cassandra Monitoring & Tools",
+    "note": "Cassandra provides monitoring via JMX (Java Management Extensions). Tools like Nodetool, Prometheus, and Grafana help in cluster health tracking.",
+    "code": "-- Nodetool example\nnodetool status\nnodetool describecluster\nnodetool tpstats"
+  },
+  {
     "title": "Cassandra Connecting with Java (DataStax Java Driver)",
     "note": "Use the DataStax Java driver to connect Cassandra to Java applications. Perform queries using Session and PreparedStatement objects.",
     "code": "import com.datastax.oss.driver.api.core.CqlSession;\nimport com.datastax.oss.driver.api.core.cql.ResultSet;\nimport com.datastax.oss.driver.api.core.cql.Row;\nimport java.net.InetSocketAddress;\n\npublic class CassandraDemo {\n    public static void main(String[] args) {\n        try (CqlSession session = CqlSession.builder()\n            .addContactPoint(new InetSocketAddress(\"127.0.0.1\", 9042))\n            .withKeyspace(\"mykeyspace\")\n            .withLocalDatacenter(\"datacenter1\")\n            .build()) {\n\n            ResultSet rs = session.execute(\"SELECT name, age FROM users\");\n            for (Row row : rs) {\n                System.out.println(\"Name: \" + row.getString(\"name\") + \", Age: \" + row.getInt(\"age\"));\n            }\n        }\n    }\n}"
   }
 ],
-firebase:[
+firebase:
+[
   {
     "title": "Firebase HOME",
-    "note": "Firebase is a Backend-as-a-Service (BaaS) platform developed by Google that provides developers with a suite of cloud-based tools for building web and mobile applications. It includes real-time databases, authentication, cloud storage, serverless functions, analytics, push notifications, and hosting. It enables rapid development without managing your own backend.",
+    "note": "Firebase is a Backend-as-a-Service (BaaS) platform developed by Google that provides developers with a suite of cloud-based tools for building web and mobile applications. It includes real-time databases, authentication, cloud storage, serverless functions, analytics, push notifications, hosting, and more. Firebase accelerates development by eliminating backend management tasks such as infrastructure scaling, authentication handling, and file storage. It is highly integrated with Google Cloud and supports web, Android, iOS, and Unity.",
     "code": "// Official Website: https://firebase.google.com/\n// Documentation: https://firebase.google.com/docs\n// Try Online: https://console.firebase.google.com/"
   },
   {
     "title": "Firebase Setup",
-    "note": "To start with Firebase, you create a project in the Firebase Console. Then, integrate Firebase SDK in your web, Android, or iOS project. You can choose specific services like Authentication, Firestore, Storage, or Functions.",
+    "note": "To get started with Firebase, create a project in the Firebase Console. Add your app (Web, Android, or iOS) to the project. Then, integrate the Firebase SDK. Each app uses a configuration object (Web) or a google-services.json / GoogleService-Info.plist file (Android/iOS). You can enable specific Firebase services such as Authentication, Firestore, Storage, or Functions as needed.",
     "code": "// For Web: Include Firebase SDK in HTML\n<script src=\"https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js\"></script>\n<script src=\"https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js\"></script>\n<script>\n  const firebaseConfig = {\n    apiKey: \"YOUR_API_KEY\",\n    authDomain: \"YOUR_PROJECT_ID.firebaseapp.com\",\n    projectId: \"YOUR_PROJECT_ID\",\n    storageBucket: \"YOUR_PROJECT_ID.appspot.com\",\n    messagingSenderId: \"SENDER_ID\",\n    appId: \"APP_ID\"\n  };\n  const app = firebase.initializeApp(firebaseConfig);\n</script>"
   },
   {
     "title": "Firebase Authentication",
-    "note": "Firebase Authentication allows users to sign up and log in using email/password, phone, or social providers (Google, Facebook, etc.). Authentication state can be observed to manage user sessions.",
-    "code": "import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';\n\nconst auth = getAuth();\n\n// Sign up\ncreateUserWithEmailAndPassword(auth, 'alice@example.com', 'password123')\n  .then(userCredential => console.log(userCredential.user))\n  .catch(error => console.error(error));\n\n// Sign in\nsignInWithEmailAndPassword(auth, 'alice@example.com', 'password123')\n  .then(userCredential => console.log(userCredential.user))\n  .catch(error => console.error(error));"
+    "note": "Firebase Authentication provides secure and easy-to-use methods for signing in users. It supports email/password, phone number authentication, and social providers such as Google, Facebook, Twitter, and GitHub. Firebase also provides Anonymous Authentication for guest users. Authentication state can be tracked in real-time, making it easy to implement user sessions.",
+    "code": "import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';\n\nconst auth = getAuth();\n\n// Sign up\ncreateUserWithEmailAndPassword(auth, 'alice@example.com', 'password123')\n  .then(userCredential => console.log(userCredential.user))\n  .catch(error => console.error(error));\n\n// Sign in\nsignInWithEmailAndPassword(auth, 'alice@example.com', 'password123')\n  .then(userCredential => console.log(userCredential.user))\n  .catch(error => console.error(error));\n\n// Observe auth state\nonAuthStateChanged(auth, (user) => {\n  if (user) console.log('User logged in:', user);\n  else console.log('User logged out');\n});"
   },
   {
     "title": "Firebase Firestore",
-    "note": "Cloud Firestore is Firebase’s NoSQL database. It stores data in collections and documents. Documents are JSON-like objects with key-value pairs. Firestore supports real-time listeners, offline persistence, and querying with filtering and ordering.",
-    "code": "import { getFirestore, collection, addDoc, getDocs } from 'firebase/firestore';\n\nconst db = getFirestore();\n\n// Add a document\nawait addDoc(collection(db, 'users'), { name: 'Alice', age: 25 });\n\n// Read documents\nconst querySnapshot = await getDocs(collection(db, 'users'));\nquerySnapshot.forEach(doc => console.log(doc.id, '=>', doc.data()));"
+    "note": "Cloud Firestore is Firebase’s modern, scalable NoSQL document database. Data is organized into collections and documents. Documents are JSON-like objects with fields (key-value pairs). Firestore supports advanced querying with filters, compound queries, ordering, and real-time listeners. It provides offline persistence, so apps remain functional without internet.",
+    "code": "import { getFirestore, collection, addDoc, getDocs, onSnapshot } from 'firebase/firestore';\n\nconst db = getFirestore();\n\n// Add a document\nawait addDoc(collection(db, 'users'), { name: 'Alice', age: 25 });\n\n// Read documents once\nconst querySnapshot = await getDocs(collection(db, 'users'));\nquerySnapshot.forEach(doc => console.log(doc.id, '=>', doc.data()));\n\n// Real-time listener\nonSnapshot(collection(db, 'users'), (snapshot) => {\n  snapshot.docs.forEach(doc => console.log(doc.data()));\n});"
   },
   {
     "title": "Firebase Realtime Database",
-    "note": "Realtime Database is a cloud-hosted NoSQL database where data is stored as a JSON tree. It allows real-time synchronization between clients and the server. It is optimized for hierarchical data and instant updates.",
-    "code": "import { getDatabase, ref, set, onValue } from 'firebase/database';\n\nconst db = getDatabase();\n\n// Write data\nset(ref(db, 'users/1'), { name: 'Bob', age: 30 });\n\n// Read data in real-time\nonValue(ref(db, 'users/1'), (snapshot) => {\n  const data = snapshot.val();\n  console.log(data);\n});"
+    "note": "The Realtime Database is Firebase’s original NoSQL database. It stores data as a large JSON tree and syncs data in real-time across all connected clients. It is great for chat apps, live feeds, or collaborative tools. Unlike Firestore, it is optimized for simple hierarchical data but has limited querying capabilities.",
+    "code": "import { getDatabase, ref, set, onValue } from 'firebase/database';\n\nconst db = getDatabase();\n\n// Write data\nset(ref(db, 'users/1'), { name: 'Bob', age: 30 });\n\n// Read data in real-time\nonValue(ref(db, 'users/1'), (snapshot) => {\n  console.log(snapshot.val());\n});"
   },
   {
     "title": "Firebase Cloud Storage",
-    "note": "Cloud Storage allows storing large files like images, videos, and PDFs. It is secure, scalable, and integrates with Firebase Authentication for user-level access control.",
+    "note": "Cloud Storage lets you store and serve large user-generated files such as images, videos, and documents. It integrates with Firebase Authentication for security and provides fine-grained access control with Security Rules. Files are stored in Google Cloud Storage buckets.",
     "code": "import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';\n\nconst storage = getStorage();\nconst fileRef = ref(storage, 'images/myPhoto.jpg');\n\n// Upload file\nawait uploadBytes(fileRef, fileInput.files[0]);\n\n// Get download URL\nconst url = await getDownloadURL(fileRef);\nconsole.log('File URL:', url);"
   },
   {
     "title": "Firebase Cloud Functions",
-    "note": "Cloud Functions for Firebase allows you to run backend code in response to events triggered by Firebase features or HTTPS requests. Functions are serverless and scale automatically.",
-    "code": "// index.js\nconst functions = require('firebase-functions');\nconst admin = require('firebase-admin');\nadmin.initializeApp();\n\n// HTTP function\nexports.helloWorld = functions.https.onRequest((request, response) => {\n  response.send('Hello from Firebase Functions!');\n});\n\n// Firestore trigger\nexports.onUserCreate = functions.firestore.document('users/{userId}').onCreate((snap, context) => {\n  const newValue = snap.data();\n  console.log('New user created:', newValue);\n});"
+    "note": "Cloud Functions lets you run server-side code in response to Firebase events or HTTP requests. Functions are written in Node.js and deployed to Firebase's serverless infrastructure. They automatically scale and support triggers for Firestore, Realtime Database, Authentication, Analytics, and Pub/Sub.",
+    "code": "// index.js\nconst functions = require('firebase-functions');\nconst admin = require('firebase-admin');\nadmin.initializeApp();\n\n// HTTP function\nexports.helloWorld = functions.https.onRequest((req, res) => {\n  res.send('Hello from Firebase Functions!');\n});\n\n// Firestore trigger\nexports.onUserCreate = functions.firestore.document('users/{userId}').onCreate((snap, context) => {\n  console.log('New user created:', snap.data());\n});"
   },
   {
     "title": "Firebase Hosting",
-    "note": "Firebase Hosting allows you to deploy web apps and static websites with global CDN, SSL, and custom domains. Supports single-page apps (SPA) and progressive web apps (PWA).",
-    "code": "// Install Firebase CLI: npm install -g firebase-tools\n// Initialize project: firebase init hosting\n// Deploy: firebase deploy\n\n// The app will be live at https://YOUR_PROJECT_ID.web.app"
+    "note": "Firebase Hosting provides fast and secure web hosting for web apps, static content, and microservices. It features global CDN, automatic SSL certificates, and custom domain support. It works seamlessly with SPAs and PWAs.",
+    "code": "// Install Firebase CLI: npm install -g firebase-tools\n// Login: firebase login\n// Initialize project: firebase init hosting\n// Deploy: firebase deploy\n\n// Your app will be live at https://YOUR_PROJECT_ID.web.app"
   },
   {
     "title": "Firebase Push Notifications (Cloud Messaging)",
-    "note": "Firebase Cloud Messaging (FCM) allows sending push notifications to Android, iOS, and web apps. Notifications can be triggered by backend events or scheduled.",
-    "code": "import { getMessaging, getToken, onMessage } from 'firebase/messaging';\n\nconst messaging = getMessaging();\n\n// Request permission & get token\nconst token = await getToken(messaging, { vapidKey: 'YOUR_VAPID_KEY' });\nconsole.log('FCM Token:', token);\n\n// Listen for messages\nonMessage(messaging, (payload) => {\n  console.log('Message received:', payload);\n});"
+    "note": "Firebase Cloud Messaging (FCM) enables sending push notifications to Android, iOS, and web apps. You can target individual devices, groups, or topics. Notifications can be triggered manually, from backend servers, or Cloud Functions.",
+    "code": "import { getMessaging, getToken, onMessage } from 'firebase/messaging';\n\nconst messaging = getMessaging();\n\n// Request permission & get token\nconst token = await getToken(messaging, { vapidKey: 'YOUR_VAPID_KEY' });\nconsole.log('FCM Token:', token);\n\n// Listen for foreground messages\nonMessage(messaging, (payload) => {\n  console.log('Message received:', payload);\n});"
   },
   {
     "title": "Firebase Analytics",
-    "note": "Firebase Analytics provides detailed insights into user behavior, app engagement, and events. It is integrated across Firebase services for tracking performance and engagement.",
-    "code": "// Web: import { getAnalytics, logEvent } from 'firebase/analytics';\nconst analytics = getAnalytics();\nlogEvent(analytics, 'notification_received');"
+    "note": "Firebase Analytics (Google Analytics for Firebase) tracks user engagement, events, and demographics. It integrates with other Firebase services for better insights. You can log custom events and measure conversions. Data is available in Firebase Console and Google BigQuery.",
+    "code": "import { getAnalytics, logEvent } from 'firebase/analytics';\n\nconst analytics = getAnalytics();\n\nlogEvent(analytics, 'notification_received');\nlogEvent(analytics, 'purchase', { item: 'Book', price: 20 });"
+  },
+  {
+    "title": "Firebase Remote Config",
+    "note": "Remote Config lets you change app behavior and appearance without publishing a new app version. You can define parameters in Firebase Console and fetch them in the app. Useful for A/B testing, feature toggles, and dynamic UI updates.",
+    "code": "import { getRemoteConfig, getValue } from 'firebase/remote-config';\n\nconst remoteConfig = getRemoteConfig();\nremoteConfig.settings.minimumFetchIntervalMillis = 3600000;\n\nconst welcomeMessage = getValue(remoteConfig, 'welcome_message').asString();\nconsole.log('Welcome Message:', welcomeMessage);"
+  },
+  {
+    "title": "Firebase Crashlytics",
+    "note": "Crashlytics helps monitor app crashes and stability in real-time. It collects stack traces, device information, and user details for debugging. Developers can prioritize and fix issues quickly.",
+    "code": "// For Android/iOS setup, add Crashlytics SDK\n// Example: FirebaseCrashlytics.getInstance().log(\"App started\");"
+  },
+  {
+    "title": "Firebase Performance Monitoring",
+    "note": "Performance Monitoring helps you track app performance metrics such as startup time, HTTP request latency, and screen rendering speed. Data is sent to Firebase Console for analysis.",
+    "code": "// For Android: implementation 'com.google.firebase:firebase-perf'\n// For iOS: pod 'Firebase/Performance'\n// Example: traces and network monitoring are automatically collected."
+  },
+  {
+    "title": "Firebase Security Rules",
+    "note": "Firebase Security Rules define how your data can be accessed. They control read/write access for Firestore, Realtime Database, and Cloud Storage. Rules use an expression-based language to check authentication, roles, or custom logic.",
+    "code": "// Firestore rules example\nservice cloud.firestore {\n  match /databases/{database}/documents {\n    match /users/{userId} {\n      allow read, write: if request.auth != null && request.auth.uid == userId;\n    }\n  }\n}"
+  },
+  {
+    "title": "Firebase Emulator Suite",
+    "note": "The Emulator Suite lets you develop and test Firebase apps locally. It includes emulators for Authentication, Firestore, Realtime Database, Cloud Functions, Hosting, and more. This reduces costs and allows safe experimentation before deploying.",
+    "code": "// Start emulator\nfirebase emulators:start"
+  },
+  {
+    "title": "Firebase Dynamic Links",
+    "note": "Dynamic Links are smart URLs that work across platforms. They survive app installation and can carry data for personalized onboarding or deep linking into specific app screens.",
+    "code": "// Example: Create Dynamic Link via Console\nhttps://yourapp.page.link/?link=https://yourwebsite.com&apn=com.example.app"
+  },
+  {
+    "title": "Firebase Extensions",
+    "note": "Firebase Extensions are pre-packaged solutions that add functionality to your app. Examples include image resizing, text translation, and trigger-based email sending. They are easy to install and configure via the Firebase Console.",
+    "code": "// Example: Install Image Resize extension\nfirebase ext:install firebase/storage-resize-images"
+  },
+  {
+    "title": "Firebase A/B Testing",
+    "note": "Firebase A/B Testing integrates with Remote Config and Analytics to test different app experiences. It allows you to run experiments and roll out the best-performing version to all users.",
+    "code": "// Example: Use Remote Config parameters to create experiment groups"
   }
 ],
-redis:[
+redis:
+  [
   {
     "title": "Redis HOME",
-    "note": "Redis is an open-source, in-memory data structure store, used as a database, cache, and message broker. It supports strings, hashes, lists, sets, sorted sets, bitmaps, and more. Redis is known for high performance, low latency, and atomic operations. It is widely used for caching, real-time analytics, session management, and pub/sub messaging.",
+    "note": "Redis is an open-source, in-memory data structure store used as a database, cache, and message broker. It supports multiple data types such as strings, hashes, lists, sets, sorted sets, bitmaps, hyperloglogs, and geospatial indexes. Redis is known for ultra-low latency, atomic operations, high performance, and persistence options (RDB snapshots and AOF logs). It is widely used for caching, session management, real-time analytics, leaderboards, rate-limiting, and pub/sub messaging.",
     "code": "// Official Website: https://redis.io/\n// Documentation: https://redis.io/documentation\n// Try Online: https://try.redis.io/"
   },
   {
     "title": "Redis Installation & Setup",
-    "note": "Redis can be installed on Linux, macOS, and Windows. You can run Redis as a server locally or use cloud-hosted Redis (e.g., AWS ElastiCache, Azure Redis Cache, Firebase Redis).",
-    "code": "# Linux: sudo apt install redis-server\n# Start Redis: redis-server\n# Test: redis-cli ping\n# Should respond: PONG"
+    "note": "Redis can be installed on Linux, macOS, and Windows. You can run Redis locally as a server for development or use cloud-hosted solutions such as AWS ElastiCache, Azure Redis Cache, or Redis Enterprise. After installation, verify Redis is running using redis-cli.",
+    "code": "# Linux: sudo apt install redis-server\n# Start Redis server: redis-server\n# Test connection: redis-cli ping\n# Should respond: PONG\n\n# macOS: brew install redis\n# Start service: brew services start redis\n# Windows: Use Redis on WSL or download from Microsoft Open Tech."
   },
   {
     "title": "Redis String Operations",
-    "note": "Strings are the simplest Redis data type. You can set, get, increment, and manipulate string values efficiently. Useful for caching key-value pairs.",
-    "code": "SET name \"Alice\"\nGET name\nINCR counter\nAPPEND name \" Smith\"\nDEL name"
+    "note": "Strings are the simplest Redis data type. You can set, get, increment, decrement, append, and manage string values efficiently. Strings are commonly used for caching key-value pairs, counters, tokens, or configuration flags.",
+    "code": "SET name \"Alice\"\nGET name\nINCR counter\nDECR counter\nAPPEND name \" Smith\"\nDEL name\nMSET key1 val1 key2 val2\nMGET key1 key2"
   },
   {
     "title": "Redis Hashes",
-    "note": "Hashes store key-value pairs inside a single Redis key. Ideal for representing objects or records with multiple fields.",
-    "code": "HSET user:1 name \"Alice\" age 25\nHGET user:1 name\nHGETALL user:1\nHINCRBY user:1 age 1"
+    "note": "Hashes store key-value pairs inside a single Redis key. Ideal for representing objects, user profiles, or records with multiple fields. You can set individual fields, increment numeric values, and fetch all fields.",
+    "code": "HSET user:1 name \"Alice\" age 25 email \"alice@example.com\"\nHGET user:1 name\nHGETALL user:1\nHINCRBY user:1 age 1\nHMSET user:2 name \"Bob\" age 30\nHMGET user:2 name age"
   },
   {
     "title": "Redis Lists",
-    "note": "Lists are ordered collections of strings. Supports push/pop operations from both ends. Useful for queues, logs, and timeline-like data.",
-    "code": "LPUSH mylist \"A\" \"B\" \"C\"\nRPUSH mylist \"D\"\nLRANGE mylist 0 -1\nLPOP mylist\nRPOP mylist"
+    "note": "Lists are ordered collections of strings. Support push/pop operations from both ends (LPUSH, RPUSH, LPOP, RPOP). They are useful for queues, task scheduling, timelines, and messaging.",
+    "code": "LPUSH mylist \"A\" \"B\" \"C\"\nRPUSH mylist \"D\"\nLRANGE mylist 0 -1\nLPOP mylist\nRPOP mylist\nLLEN mylist\nLREM mylist 1 \"B\""
   },
   {
     "title": "Redis Sets",
-    "note": "Sets are unordered collections of unique strings. Useful for tagging, unique items, and membership tests. Supports union, intersection, and difference operations.",
-    "code": "SADD myset \"A\" \"B\" \"C\"\nSREM myset \"B\"\nSMEMBERS myset\nSISMEMBER myset \"A\""
+    "note": "Sets are unordered collections of unique strings. Useful for tags, unique items, and membership checks. Supports set operations such as union, intersection, and difference.",
+    "code": "SADD myset \"A\" \"B\" \"C\"\nSREM myset \"B\"\nSMEMBERS myset\nSISMEMBER myset \"A\"\nSUNION set1 set2\nSINTER set1 set2\nSDIFF set1 set2"
   },
   {
     "title": "Redis Sorted Sets",
-    "note": "Sorted sets store unique strings with a score. Elements are automatically sorted by score. Ideal for leaderboards, ranking systems, and priority queues.",
-    "code": "ZADD leaderboard 100 \"Alice\" 200 \"Bob\" 150 \"Charlie\"\nZRANGE leaderboard 0 -1 WITHSCORES\nZINCRBY leaderboard 50 \"Alice\""
+    "note": "Sorted sets store unique strings with a numeric score. Elements are automatically sorted by score. Ideal for leaderboards, ranking systems, priority queues, and time-based scoring.",
+    "code": "ZADD leaderboard 100 \"Alice\" 200 \"Bob\" 150 \"Charlie\"\nZRANGE leaderboard 0 -1 WITHSCORES\nZREVRANGE leaderboard 0 -1 WITHSCORES\nZINCRBY leaderboard 50 \"Alice\"\nZRANK leaderboard \"Bob\""
   },
   {
     "title": "Redis Expiration & TTL",
-    "note": "You can set expiration times on keys for caching and session management. TTL command shows remaining time. EXPIRE and PERSIST manage key lifetime.",
-    "code": "SET session:1 \"data\" EX 3600\nTTL session:1\nPERSIST session:1"
+    "note": "Keys in Redis can have expiration times, which is essential for caching, session management, and temporary data. Commands like TTL, EXPIRE, EXPIREAT, and PERSIST control key lifetimes.",
+    "code": "SET session:1 \"data\" EX 3600  # 1 hour expiration\nTTL session:1\nPERSIST session:1  # Remove expiration\nEXPIRE session:2 1800  # Set TTL in seconds"
   },
   {
     "title": "Redis Pub/Sub",
-    "note": "Redis provides a lightweight publish/subscribe messaging system. Clients can subscribe to channels and receive messages instantly.",
-    "code": "SUBSCRIBE mychannel\nPUBLISH mychannel \"Hello, subscribers!\""
+    "note": "Redis supports lightweight publish/subscribe messaging. Clients can subscribe to channels and receive messages instantly. Useful for chat systems, notifications, and event broadcasting.",
+    "code": "SUBSCRIBE mychannel\nPUBLISH mychannel \"Hello, subscribers!\"\nUNSUBSCRIBE mychannel"
   },
   {
     "title": "Redis Transactions",
-    "note": "Redis supports transactions with MULTI/EXEC commands. Commands are queued and executed atomically.",
-    "code": "MULTI\nSET key1 \"A\"\nSET key2 \"B\"\nEXEC"
+    "note": "Redis transactions allow grouping multiple commands to execute atomically using MULTI, EXEC, DISCARD, and WATCH. Useful for safe updates and concurrency control.",
+    "code": "MULTI\nSET key1 \"A\"\nSET key2 \"B\"\nEXEC\nWATCH key1 key2\nMULTI\nINCR key1\nEXEC"
   },
   {
     "title": "Redis Lua Scripting",
-    "note": "Redis supports server-side scripting using Lua. Useful for atomic multi-step operations and custom logic.",
-    "code": "EVAL \"return redis.call('SET', KEYS[1], ARGV[1])\" 1 mykey 'value'"
+    "note": "Redis allows server-side scripting using Lua for atomic multi-step operations. Lua scripts execute as a single command and can access keys and arguments.",
+    "code": "EVAL \"return redis.call('SET', KEYS[1], ARGV[1])\" 1 mykey 'value'\nEVAL \"return redis.call('INCRBY', KEYS[1], ARGV[1])\" 1 counter 10"
+  },
+  {
+    "title": "Redis Clustering & High Availability",
+    "note": "Redis supports clustering to partition data across multiple nodes for horizontal scaling. Redis Sentinel provides high availability, monitoring, automatic failover, and notification.",
+    "code": "# Start Redis Sentinel: redis-sentinel sentinel.conf\n# Redis Cluster setup requires multiple nodes and redis-cli --cluster create"
+  },
+  {
+    "title": "Redis Modules",
+    "note": "Redis modules extend Redis functionality with advanced data types and features. Popular modules include RedisJSON, RediSearch, RedisGraph, RedisBloom, RedisTimeSeries, and RedisAI.",
+    "code": "# Example: RedisJSON commands\nJSON.SET user:1 $ '{\"name\":\"Alice\",\"age\":25}'\nJSON.GET user:1 $"
+  },
+  {
+    "title": "Redis Monitoring & Stats",
+    "note": "Redis provides commands to monitor performance, memory usage, and key metrics. Commands include INFO, MONITOR, CLIENT LIST, MEMORY USAGE, and SLOWLOG.",
+    "code": "INFO\nMONITOR\nCLIENT LIST\nMEMORY USAGE key1\nSLOWLOG GET 10"
+  },
+  {
+    "title": "Redis Security & Access Control",
+    "note": "Redis supports password authentication, SSL/TLS encryption, and Access Control Lists (ACLs) to manage permissions per user and command.",
+    "code": "# Set password in redis.conf: requirepass yourpassword\n# ACL Example: ACL SETUSER alice on >password +get +set"
+  },
+  {
+    "title": "Redis Backup & Persistence",
+    "note": "Redis supports persistence via RDB snapshots and AOF (Append Only File). RDB provides point-in-time snapshots, AOF logs every write command for durability. Both can be combined for safety and recovery.",
+    "code": "# RDB save schedule: save 900 1\n# Enable AOF: appendonly yes\n# Redis can restore automatically from RDB or AOF on startup"
   },
   {
     "title": "Redis Client Example (Node.js)",
-    "note": "Redis can be accessed from multiple programming languages. Here’s an example using Node.js with 'redis' package.",
+    "note": "Redis has clients for multiple programming languages. Node.js example using the official 'redis' package.",
     "code": "const redis = require('redis');\nconst client = redis.createClient();\n\nclient.on('error', (err) => console.log('Redis Client Error', err));\n\n(async () => {\n  await client.connect();\n  await client.set('name', 'Alice');\n  const value = await client.get('name');\n  console.log(value); // Alice\n  await client.quit();\n})();"
   },
   {
     "title": "Redis Client Example (Python)",
-    "note": "Redis client for Python using 'redis-py'.",
+    "note": "Python example using the 'redis-py' package to connect, set, and get keys.",
     "code": "import redis\n\nr = redis.Redis(host='localhost', port=6379, db=0)\nr.set('name', 'Alice')\nprint(r.get('name').decode())  # Alice"
   },
   {
     "title": "Redis Use Cases",
-    "note": "Redis is commonly used for:\n1. Caching frequently accessed data\n2. Session management\n3. Real-time leaderboards\n4. Pub/Sub messaging\n5. Rate limiting\n6. Queueing systems\n7. Analytics counters"
+    "note": "Redis is commonly used for:\n1. Caching frequently accessed data\n2. Session storage and management\n3. Real-time leaderboards and ranking systems\n4. Pub/Sub messaging and notification services\n5. Rate limiting and throttling\n6. Task queues, delayed jobs, and background processing\n7. Real-time analytics counters and event tracking\n8. Geospatial queries and location-based services\n9. Message brokering in microservices"
   }
 ],
-  c:[
+  c:
+ [
   {
     "title": "C HOME",
-    "note": "C is a general-purpose, procedural programming language developed by Dennis Ritchie in 1972 at Bell Labs. It is powerful for system programming, embedded systems, operating systems, and high-performance applications. C provides low-level access to memory and a simple set of keywords, making it fast and efficient.",
-    "code": "// Official Reference: https://en.cppreference.com/w/c\n// Try Online: https://www.onlinegdb.com/online_c_compiler\n#include <stdio.h>\n\nint main() {\n    printf(\"Hello, C!\\n\");\n    return 0;\n}"
+    "note": "C is a general-purpose, procedural programming language developed by Dennis Ritchie in 1972 at Bell Labs. It is widely used for system programming, embedded systems, operating systems, and high-performance applications. C provides low-level memory access and simple syntax, which makes it fast, efficient, and highly portable. It also forms the foundation for languages like C++ and C#.",
+    "code": "#include <stdio.h>\n\nint main() {\n    printf(\"Welcome to C Programming!\\n\");\n    printf(\"C is powerful for system-level programming and embedded applications.\\n\");\n    return 0;\n}"
   },
   {
     "title": "C Basics",
-    "note": "C is statically typed; you must declare variable types. Programs are built using functions. Execution starts from the 'main' function. Basic types: int, float, double, char, void. Constants can be declared with 'const'.",
-    "code": "#include <stdio.h>\n\nint main() {\n    int age = 25;\n    float pi = 3.14;\n    char grade = 'A';\n\n    printf(\"Age: %d, Pi: %.2f, Grade: %c\\n\", age, pi, grade);\n    return 0;\n}"
+    "note": "C is statically typed, meaning you must declare variable types explicitly. Programs are composed of functions, with execution starting from the 'main()' function. Basic data types include int, float, double, char, and void. Constants are declared using 'const'. Proper use of semicolons, braces, and indentation ensures readable code.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int age = 25;\n    float pi = 3.14159;\n    char grade = 'A';\n    const double e = 2.718;\n\n    printf(\"Age: %d, Pi: %.2f, Grade: %c, e: %.3f\\n\", age, pi, grade, e);\n    return 0;\n}"
   },
   {
     "title": "C Data Types",
-    "note": "C has primitive data types: int, float, double, char. Derived types: arrays, pointers, structures, unions. Enumerations define symbolic constants. Use sizeof() to check memory size of types.",
-    "code": "#include <stdio.h>\n\nint main() {\n    int num = 10;\n    float f = 3.14;\n    double d = 3.14159;\n    char c = 'A';\n    int arr[3] = {1, 2, 3};\n\n    printf(\"arr[0] = %d\\n\", arr[0]);\n    printf(\"Size of double: %lu bytes\\n\", sizeof(d));\n    return 0;\n}"
+    "note": "C provides primitive data types like int, float, double, and char, as well as derived types like arrays, pointers, structures, and unions. Enumerations (enum) allow symbolic constants. The sizeof() operator can be used to determine the memory size of a variable or type. Understanding data types is crucial for efficient memory management.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int num = 10;\n    float f = 3.14f;\n    double d = 3.141592;\n    char c = 'A';\n    int arr[3] = {1, 2, 3};\n\n    printf(\"Integer: %d\\n\", num);\n    printf(\"Float: %.2f, Double: %.6f\\n\", f, d);\n    printf(\"Char: %c\\n\", c);\n    printf(\"Array element arr[0]: %d\\n\", arr[0]);\n    printf(\"Size of double: %lu bytes\\n\", sizeof(d));\n    return 0;\n}"
   },
   {
     "title": "C Operators",
-    "note": "C supports arithmetic (+, -, *, /, %), relational (==, !=, >, <), logical (&&, ||, !), bitwise (&, |, ^, ~, <<, >>), assignment (=, +=, -=) and ternary (? :) operators.",
-    "code": "#include <stdio.h>\n\nint main() {\n    int a = 10, b = 3;\n    printf(\"a + b = %d\\n\", a + b);\n    printf(\"a %% b = %d\\n\", a % b);\n\n    int max = (a > b) ? a : b;\n    printf(\"Max: %d\\n\", max);\n    return 0;\n}"
+    "note": "C supports various operators including:\n- Arithmetic: +, -, *, /, %\n- Relational: ==, !=, >, <, >=, <=\n- Logical: &&, ||, !\n- Bitwise: &, |, ^, ~, <<, >>\n- Assignment: =, +=, -=, *=, /=\n- Ternary: ? :\nOperators are used to manipulate values, compare data, and control program logic.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int a = 10, b = 3;\n    printf(\"a + b = %d\\n\", a + b);\n    printf(\"a - b = %d\\n\", a - b);\n    printf(\"a * b = %d\\n\", a * b);\n    printf(\"a %% b = %d\\n\", a % b);\n\n    int max = (a > b) ? a : b;\n    printf(\"Max value using ternary operator: %d\\n\", max);\n    return 0;\n}"
   },
   {
     "title": "C Conditionals",
-    "note": "C uses if, if-else, nested if, and switch-case for decision making. Blocks are enclosed in curly braces {}. Use break to exit a switch-case.",
-    "code": "#include <stdio.h>\n\nint main() {\n    int age = 18;\n\n    if (age >= 18) {\n        printf(\"Adult\\n\");\n    } else if (age >= 13) {\n        printf(\"Teen\\n\");\n    } else {\n        printf(\"Child\\n\");\n    }\n\n    switch(age) {\n        case 13: printf(\"Teen 13\\n\"); break;\n        case 18: printf(\"Adult 18\\n\"); break;\n        default: printf(\"Other age\\n\");\n    }\n    return 0;\n}"
+    "note": "Decision making in C is done using if, if-else, nested if, and switch-case statements. Curly braces {} define blocks of code. The break statement exits a switch-case, while continue skips an iteration inside loops. Proper conditional logic ensures correct program flow.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int age = 18;\n\n    if (age >= 18) {\n        printf(\"Adult\\n\");\n    } else if (age >= 13) {\n        printf(\"Teenager\\n\");\n    } else {\n        printf(\"Child\\n\");\n    }\n\n    switch(age) {\n        case 13: printf(\"Age 13 - Teenager\\n\"); break;\n        case 18: printf(\"Age 18 - Adult\\n\"); break;\n        default: printf(\"Other age\\n\");\n    }\n    return 0;\n}"
   },
   {
     "title": "C Loops",
-    "note": "C supports for, while, and do-while loops. Loops are used for repeated execution. break exits the loop, continue skips current iteration.",
-    "code": "#include <stdio.h>\n\nint main() {\n    int i;\n    for(i = 0; i < 3; i++) {\n        printf(\"For loop: %d\\n\", i);\n    }\n\n    i = 0;\n    while(i < 3) {\n        printf(\"While loop: %d\\n\", i);\n        i++;\n    }\n\n    i = 0;\n    do {\n        printf(\"Do-While loop: %d\\n\", i);\n        i++;\n    } while(i < 3);\n\n    return 0;\n}"
+    "note": "C supports for, while, and do-while loops for repeated execution. The break statement exits a loop, and continue skips the current iteration. Loops are essential for iterating over arrays, performing calculations, and automating repetitive tasks.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int i;\n    printf(\"For loop example:\\n\");\n    for(i = 0; i < 3; i++) printf(\"i = %d\\n\", i);\n\n    printf(\"While loop example:\\n\");\n    i = 0;\n    while(i < 3) {\n        printf(\"i = %d\\n\", i);\n        i++;\n    }\n\n    printf(\"Do-While loop example:\\n\");\n    i = 0;\n    do {\n        printf(\"i = %d\\n\", i);\n        i++;\n    } while(i < 3);\n\n    return 0;\n}"
   },
   {
     "title": "C Functions",
-    "note": "Functions in C are blocks of code performing specific tasks. Syntax: return_type function_name(parameters) { body }. Supports recursion. main() is also a function.",
-    "code": "#include <stdio.h>\n\nint add(int a, int b) {\n    return a + b;\n}\n\nint main() {\n    int sum = add(5, 3);\n    printf(\"Sum: %d\\n\", sum);\n    return 0;\n}"
+    "note": "Functions are reusable blocks of code designed to perform specific tasks. Syntax: return_type function_name(parameters) { body }. Functions can call themselves recursively. main() is also a function. Functions improve readability and modularity.",
+    "code": "#include <stdio.h>\n\nint add(int a, int b) {\n    return a + b;\n}\n\nint factorial(int n) {\n    if(n <= 1) return 1;\n    return n * factorial(n - 1);\n}\n\nint main() {\n    int sum = add(5, 3);\n    int fact = factorial(5);\n    printf(\"Sum: %d, Factorial: %d\\n\", sum, fact);\n    return 0;\n}"
   },
   {
     "title": "C Arrays",
-    "note": "Arrays are fixed-size collections of elements of the same type. Indexing starts at 0. Supports multidimensional arrays.",
-    "code": "#include <stdio.h>\n\nint main() {\n    int numbers[3] = {10, 20, 30};\n    printf(\"First element: %d\\n\", numbers[0]);\n\n    int matrix[2][2] = {{1,2},{3,4}};\n    printf(\"matrix[1][1]: %d\\n\", matrix[1][1]);\n    return 0;\n}"
+    "note": "Arrays are fixed-size collections of elements of the same type. Indexing starts at 0. Multidimensional arrays allow tabular data storage. Arrays are essential for storing sequences, matrices, and buffers.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int numbers[3] = {10, 20, 30};\n    printf(\"First element: %d\\n\", numbers[0]);\n\n    int matrix[2][2] = {{1, 2}, {3, 4}};\n    printf(\"matrix[1][1]: %d\\n\", matrix[1][1]);\n    return 0;\n}"
   },
   {
     "title": "C Pointers",
-    "note": "Pointers store memory addresses of variables. Use * to dereference, & to get address. Pointers are essential for dynamic memory, arrays, and function arguments.",
-    "code": "#include <stdio.h>\n\nint main() {\n    int x = 10;\n    int *p = &x;\n    printf(\"Value of x: %d\\n\", *p);\n    printf(\"Address of x: %p\\n\", (void*)p);\n    return 0;\n}"
+    "note": "Pointers store memory addresses of variables. Use * to dereference and & to get the address. Pointers are crucial for dynamic memory allocation, passing arrays to functions, and implementing complex data structures. Proper pointer usage prevents memory errors.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int x = 10;\n    int *p = &x;\n\n    printf(\"Value of x: %d\\n\", *p);\n    printf(\"Address of x: %p\\n\", (void*)p);\n\n    int arr[3] = {1, 2, 3};\n    int *ptr = arr;\n    printf(\"Array first element via pointer: %d\\n\", *ptr);\n    return 0;\n}"
   },
   {
     "title": "C Structures",
-    "note": "Structures allow grouping different types of variables under a single name. Useful for defining complex data objects.",
+    "note": "Structures group variables of different types under a single name. Useful for defining complex data objects such as records. Members are accessed using the dot (.) operator, and pointers to structures use -> operator.",
     "code": "#include <stdio.h>\n\nstruct Person {\n    char name[20];\n    int age;\n};\n\nint main() {\n    struct Person p1 = {\"Alice\", 25};\n    printf(\"Name: %s, Age: %d\\n\", p1.name, p1.age);\n    return 0;\n}"
   },
   {
     "title": "C File I/O",
-    "note": "C allows reading and writing files using FILE pointer and fopen, fclose, fprintf, fscanf, fread, fwrite functions. Modes: r, w, a, rb, wb.",
+    "note": "C allows file handling using FILE pointers and functions like fopen, fclose, fprintf, fscanf, fread, and fwrite. Modes include: r, w, a, rb, wb. Always check if the file is opened successfully to prevent runtime errors.",
+    "code": "#include <stdio.h>\n\nint main() {\n    FILE *file = fopen(\"data.txt\", \"w\");\n    if(file == NULL) {\n        printf(\"Error opening file.\\n\");\n        return 1;\n    }\n    fprintf(file, \"Hello File I/O in C\\n\");\n    fclose(file);\n\n    file = fopen(\"data.txt\", \"r\");\n    char str[50];\n    fscanf(file, \"%[^\"]\", str);\n    printf(\"Read from file: %s\\n\", str);\n    fclose(file);\n    return 0;\n}"
+  },
+  {
+    "title": "C Dynamic Memory",
+    "note": "Dynamic memory allocation in C uses malloc, calloc, realloc, and free. This allows flexible memory management for arrays and data structures. Always check for NULL pointers after allocation to avoid memory errors.",
+    "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int *arr = (int*)malloc(3 * sizeof(int));\n    if(arr == NULL) {\n        printf(\"Memory allocation failed\\n\");\n        return 1;\n    }\n\n    for(int i = 0; i < 3; i++) arr[i] = (i + 1) * 10;\n    for(int i = 0; i < 3; i++) printf(\"%d \", arr[i]);\n    printf(\"\\n\");\n\n    free(arr);\n    return 0;\n}"
+  },
+  {
+    "title": "C Macros & Preprocessor",
+    "note": "Preprocessor directives (#define, #include, #ifdef, #ifndef) are handled before compilation. Macros can define constants or inline functions. They improve code readability and allow conditional compilation for different platforms.",
+    "code": "#include <stdio.h>\n#define PI 3.14159\n#define SQUARE(x) ((x)*(x))\n\nint main() {\n    double radius = 5.0;\n    printf(\"Value of PI: %.2f\\n\", PI);\n    printf(\"Square of 4: %d\\n\", SQUARE(4));\n    printf(\"Area of circle: %.2f\\n\", PI * SQUARE(radius));\n    return 0;\n}"
+  },
+  {
+    "title": "C Common Use Cases",
+    "note": "C is widely used for:\n1. Operating systems like Linux kernel and Windows.\n2. Embedded systems and microcontrollers.\n3. Game engines and graphics programming.\n4. Compilers, interpreters, and virtual machines.\n5. High-performance applications in finance and scientific computing.\n6. Networking, device drivers, and low-level hardware interaction."
+  },
+  {
+    "title": "C Overview",
+    "note": "C is a general-purpose, procedural programming language created by Dennis Ritchie in 1972 at Bell Labs. It is powerful for system programming, embedded systems, operating systems, and high-performance applications. C provides low-level access to memory, uses a simple set of keywords, and offers high efficiency. It serves as the foundation for many modern languages like C++, C#, and Java.",
+    "code": "// Official Reference: https://en.cppreference.com/w/c\n// Try Online: https://www.onlinegdb.com/online_c_compiler\n#include <stdio.h>\n\nint main() {\n    printf(\"Hello, C!\\n\");\n    return 0;\n}"
+  },
+  {
+    "title": "C Basics & Syntax",
+    "note": "C is statically typed; variable types must be declared explicitly. Programs are composed of functions, with execution starting at 'main()'. Basic types include int, float, double, char, and void. Constants can be declared using 'const'. Use proper indentation and semicolons to terminate statements.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int age = 25;\n    float pi = 3.14;\n    char grade = 'A';\n\n    printf(\"Age: %d, Pi: %.2f, Grade: %c\\n\", age, pi, grade);\n    return 0;\n}"
+  },
+  {
+    "title": "C Data Types & Memory",
+    "note": "C provides primitive data types (int, float, double, char), derived types (arrays, pointers, structures, unions), and enumerations for symbolic constants. Use sizeof() to determine memory size of types. Understanding memory representation is key for system-level programming.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int num = 10;\n    float f = 3.14;\n    double d = 3.14159;\n    char c = 'A';\n    int arr[3] = {1, 2, 3};\n\n    printf(\"arr[0] = %d\\n\", arr[0]);\n    printf(\"Size of double: %lu bytes\\n\", sizeof(d));\n    return 0;\n}"
+  },
+  {
+    "title": "C Operators",
+    "note": "C supports arithmetic (+, -, *, /, %), relational (==, !=, >, <), logical (&&, ||, !), bitwise (&, |, ^, ~, <<, >>), assignment (=, +=, -=), and ternary (? :) operators. Operators are used to manipulate variables and expressions efficiently.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int a = 10, b = 3;\n    printf(\"a + b = %d\\n\", a + b);\n    printf(\"a %% b = %d\\n\", a % b);\n\n    int max = (a > b) ? a : b;\n    printf(\"Max: %d\\n\", max);\n    return 0;\n}"
+  },
+  {
+    "title": "C Conditionals & Decision Making",
+    "note": "C uses if, if-else, nested if, and switch-case for conditional execution. Curly braces {} define code blocks. Use break to exit switch-cases and continue to skip iterations in loops. Proper condition handling is crucial for program logic.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int age = 18;\n\n    if (age >= 18) {\n        printf(\"Adult\\n\");\n    } else if (age >= 13) {\n        printf(\"Teen\\n\");\n    } else {\n        printf(\"Child\\n\");\n    }\n\n    switch(age) {\n        case 13: printf(\"Teen 13\\n\"); break;\n        case 18: printf(\"Adult 18\\n\"); break;\n        default: printf(\"Other age\\n\");\n    }\n    return 0;\n}"
+  },
+  {
+    "title": "C Loops & Iteration",
+    "note": "C supports for, while, and do-while loops for repeated execution. Use break to exit a loop and continue to skip the current iteration. Loops are fundamental for tasks like iteration over arrays, counters, and repetitive computations.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int i;\n    for(i = 0; i < 3; i++) printf(\"For loop: %d\\n\", i);\n\n    i = 0;\n    while(i < 3) {\n        printf(\"While loop: %d\\n\", i);\n        i++;\n    }\n\n    i = 0;\n    do {\n        printf(\"Do-While loop: %d\\n\", i);\n        i++;\n    } while(i < 3);\n\n    return 0;\n}"
+  },
+  {
+    "title": "C Functions & Recursion",
+    "note": "Functions in C are reusable blocks of code performing specific tasks. Syntax: return_type function_name(parameters) { body }. Supports recursion for solving problems like factorial and Fibonacci. main() is a function like any other.",
+    "code": "#include <stdio.h>\n\nint add(int a, int b) {\n    return a + b;\n}\n\nint factorial(int n) {\n    if(n <= 1) return 1;\n    return n * factorial(n-1);\n}\n\nint main() {\n    int sum = add(5, 3);\n    int fact = factorial(5);\n    printf(\"Sum: %d, Factorial: %d\\n\", sum, fact);\n    return 0;\n}"
+  },
+  {
+    "title": "C Arrays & Multidimensional Arrays",
+    "note": "Arrays are fixed-size collections of elements of the same type. Indexing starts at 0. Multidimensional arrays allow tabular data representation. Arrays are widely used for lists, matrices, and buffers.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int numbers[3] = {10, 20, 30};\n    printf(\"First element: %d\\n\", numbers[0]);\n\n    int matrix[2][2] = {{1,2},{3,4}};\n    printf(\"matrix[1][1]: %d\\n\", matrix[1][1]);\n    return 0;\n}"
+  },
+  {
+    "title": "C Pointers & Memory Addressing",
+    "note": "Pointers store memory addresses of variables. Use * to dereference and & to get address. Essential for dynamic memory, arrays, function arguments, and system-level programming. Misuse can cause undefined behavior.",
+    "code": "#include <stdio.h>\n\nint main() {\n    int x = 10;\n    int *p = &x;\n    printf(\"Value of x: %d\\n\", *p);\n    printf(\"Address of x: %p\\n\", (void*)p);\n    return 0;\n}"
+  },
+  {
+    "title": "C Structures",
+    "note": "Structures allow grouping variables of different types under a single name. Useful for defining complex data objects, such as records or objects. Members are accessed using dot (.) operator.",
+    "code": "#include <stdio.h>\n\nstruct Person {\n    char name[20];\n    int age;\n};\n\nint main() {\n    struct Person p1 = {\"Alice\", 25};\n    printf(\"Name: %s, Age: %d\\n\", p1.name, p1.age);\n    return 0;\n}"
+  },
+  {
+    "title": "C File I/O",
+    "note": "C supports file reading/writing using FILE pointers and functions: fopen, fclose, fprintf, fscanf, fread, fwrite. Modes include: r, w, a, rb, wb. Proper error checking is essential for reliable file operations.",
     "code": "#include <stdio.h>\n\nint main() {\n    FILE *file = fopen(\"data.txt\", \"w\");\n    if(file == NULL) return 1;\n    fprintf(file, \"Hello File\\n\");\n    fclose(file);\n\n    file = fopen(\"data.txt\", \"r\");\n    char str[50];\n    fscanf(file, \"%[^\"]\", str);\n    printf(\"Read from file: %s\\n\", str);\n    fclose(file);\n    return 0;\n}"
   },
   {
     "title": "C Dynamic Memory",
-    "note": "C supports dynamic memory allocation using malloc, calloc, realloc, and free. Important for flexible data structures.",
+    "note": "Dynamic memory allocation is done using malloc, calloc, realloc, and freed using free. Enables flexible data structures like linked lists and resizable arrays. Always check for NULL pointers to avoid segmentation faults.",
     "code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int *arr = (int*)malloc(3 * sizeof(int));\n    for(int i = 0; i < 3; i++) arr[i] = i+1;\n\n    for(int i = 0; i < 3; i++) printf(\"%d \", arr[i]);\n    free(arr);\n    return 0;\n}"
   },
   {
     "title": "C Macros & Preprocessor",
-    "note": "Preprocessor directives like #define, #include, #ifdef, #ifndef are processed before compilation. Macros define constants or functions inline.",
+    "note": "Preprocessor directives (#define, #include, #ifdef, #ifndef) are handled before compilation. Macros can define constants or inline functions. They improve readability and can conditionally include code.",
     "code": "#include <stdio.h>\n#define PI 3.14\n\nint main() {\n    printf(\"Value of PI: %.2f\\n\", PI);\n    return 0;\n}"
   },
   {
     "title": "C Common Use Cases",
-    "note": "C is commonly used for:\n1. Operating systems (Linux kernel, Windows)\n2. Embedded systems\n3. Game development engines\n4. Compilers and interpreters\n5. High-performance applications\n6. Networking and drivers"
+    "note": "C is widely used in:\n1. Operating systems (Linux kernel, Windows)\n2. Embedded systems\n3. Game development engines\n4. Compilers and interpreters\n5. High-performance scientific and financial applications\n6. Networking, drivers, and system utilities\nIts performance, low-level memory control, and portability make it ideal for critical system software."
   }
 ],
-golang:[
+golang:
+[
   {
-    "title": "Go HOME",
-    "note": "Go, also called Golang, is an open-source, statically typed, compiled language created at Google by Robert Griesemer, Rob Pike, and Ken Thompson in 2009. It is designed for simplicity, concurrency, and performance. Go is widely used for cloud services, backend APIs, DevOps tools, networking, and microservices. It features garbage collection, fast compilation, and built-in support for concurrency through goroutines and channels.",
-    "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    fmt.Println(\"Hello, Go!\")\n}"
+    "title": "Go HOME & Overview",
+    "note": "Go (Golang) is an open-source, statically typed, compiled programming language created by Google in 2009. It emphasizes simplicity, high performance, and maintainability. Go features fast compilation, garbage collection, strong typing, and native support for concurrency with goroutines and channels. It is widely used for backend services, cloud-native applications, DevOps tools, microservices, networking, and high-performance computing. Its clean, readable syntax makes it beginner-friendly yet powerful for building scalable applications.",
+    "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    fmt.Println(\"Hello, Go!\")\n    fmt.Println(\"Go is great for high-performance, concurrent programs.\")\n}"
   },
   {
-    "title": "Go Basics",
-    "note": "Go is statically typed; variable types can be declared using 'var', or ':=' for shorthand. Constants are declared with 'const'. The entry point of a program is the main() function inside package main. Go uses Go modules for dependency management, which makes it easy to organize and version packages.",
-    "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    var name string = \"Alice\"\n    age := 25\n    const isActive bool = true\n\n    fmt.Printf(\"Name: %s, Age: %d, Active: %t\\n\", name, age, isActive)\n}"
+    "title": "Go Basics & Syntax",
+    "note": "Go programs start with a package declaration, typically 'package main'. The 'main()' function serves as the program's entry point. Variables can be declared using 'var' with explicit types or ':=' shorthand which infers types. Constants declared with 'const' are immutable. Go emphasizes simplicity, readability, and modularity. The language uses Go modules (go.mod) for dependency management. Best practices include using meaningful variable names, writing small reusable functions, organizing code in packages, and commenting effectively. Beginners should understand zero values and consistently use 'go fmt' to format code.",
+    "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    var name string = \"Alice\"  // explicit type\n    age := 25                   // shorthand declaration\n    const isActive bool = true  // constant\n\n    fmt.Printf(\"Name: %s, Age: %d, Active: %t\\n\", name, age, isActive)\n\n    // Demonstrating zero values\n    var score int\n    var status bool\n    var message string\n    fmt.Printf(\"Zero values -> score: %d, status: %t, message: '%s'\\n\", score, status, message)\n}"
   },
   {
     "title": "Go Data Types",
-    "note": "Go has basic data types: int, int8/int16/int32/int64, uint, float32/float64, complex64/complex128, bool, string, and byte. Composite types include arrays, slices, maps, structs, and pointers. Zero values are assigned to variables if uninitialized. Strings are immutable and UTF-8 encoded.",
-    "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    var num int = 42\n    var pi float64 = 3.14\n    var letter byte = 'A'\n    var isTrue bool = true\n\n    arr := [3]int{1,2,3}\n    slice := []int{4,5,6}\n    myMap := map[string]int{\"Alice\":25, \"Bob\":30}\n\n    fmt.Println(arr[0], slice[1], myMap[\"Alice\"])\n}"
+    "note": "Go provides primitive types: integers (int, int8/16/32/64), unsigned integers (uint), floating-point numbers (float32, float64), complex numbers (complex64, complex128), booleans (bool), strings, and bytes. Composite types include arrays, slices, maps, structs, and pointers. All variables are initialized to their zero values if not explicitly assigned. Strings are immutable and UTF-8 encoded. Choosing appropriate data types improves performance, readability, and memory efficiency.",
+    "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    var num int = 42\n    var pi float64 = 3.14\n    var letter byte = 'A'\n    var isTrue bool = true\n\n    arr := [3]int{1,2,3}\n    slice := []int{4,5,6}\n    myMap := map[string]int{\"Alice\":25, \"Bob\":30}\n\n    fmt.Println(\"Array element:\", arr[0], \"Slice element:\", slice[1], \"Map value:\", myMap[\"Alice\"])\n}"
   },
   {
     "title": "Go Operators",
-    "note": "Go supports arithmetic (+, -, *, /, %, ** via math.Pow), comparison (==, !=, >, <, >=, <=), logical (&&, ||, !), bitwise (&, |, ^, <<, >>), and assignment operators (=, +=, -=, *=). Go does not have a ternary operator, instead if-else is used.",
-    "code": "package main\n\nimport (\n    \"fmt\"\n    \"math\"\n)\n\nfunc main() {\n    a, b := 10, 3\n    fmt.Println(\"a + b =\", a + b)\n    fmt.Println(\"a % b =\", a % b)\n    fmt.Println(\"a^b =\", a ^ b)\n    fmt.Println(\"a^b float power =\", math.Pow(float64(a), float64(b)))\n}"
+    "note": "Go supports arithmetic operators (+, -, *, /, %), comparison operators (==, !=, >, <, >=, <=), logical operators (&&, ||, !), and bitwise operators (&, |, ^, <<, >>). Assignment operators include =, +=, -=, and *=. Go does not have a ternary operator; conditional logic uses if-else. Arithmetic with float64 requires explicit type conversion when using math functions. Understanding operators is essential for calculations, logic, and data manipulation.",
+    "code": "package main\n\nimport (\n    \"fmt\"\n    \"math\"\n)\n\nfunc main() {\n    a, b := 10, 3\n    fmt.Println(\"a + b =\", a + b)\n    fmt.Println(\"a - b =\", a - b)\n    fmt.Println(\"a * b =\", a * b)\n    fmt.Println(\"a % b =\", a % b)\n    fmt.Println(\"a^b (bitwise XOR) =\", a ^ b)\n    fmt.Println(\"a^b float power =\", math.Pow(float64(a), float64(b)))\n}"
   },
   {
     "title": "Go Conditionals",
-    "note": "Go uses if, if-else, and switch statements. Parentheses around conditions are optional, but braces are mandatory. Switch statements do not fall through by default, but 'fallthrough' keyword can be used to continue to the next case.",
+    "note": "Go uses if, if-else, and switch statements to control program flow. Parentheses are optional, but braces {} are mandatory. Switch statements do not fall through by default; the 'fallthrough' keyword can be used to continue to the next case. Conditionals help implement decision-making, input validation, and program logic branching. Inline if-statements can be used for concise assignments.",
     "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    age := 18\n\n    if age >= 18 {\n        fmt.Println(\"Adult\")\n    } else if age >= 13 {\n        fmt.Println(\"Teen\")\n    } else {\n        fmt.Println(\"Child\")\n    }\n\n    switch age {\n    case 13,14,15,16,17:\n        fmt.Println(\"Teen\")\n    case 18:\n        fmt.Println(\"Adult\")\n    default:\n        fmt.Println(\"Other\")\n    }\n}"
   },
   {
     "title": "Go Loops",
-    "note": "Go has a single 'for' loop construct, which can behave like traditional for, while, or infinite loop. Use 'break' to exit loops, 'continue' to skip iterations, and labels to break nested loops.",
-    "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    for i := 0; i < 3; i++ {\n        fmt.Println(\"For loop:\", i)\n    }\n\n    j := 0\n    for j < 3 {\n        fmt.Println(\"While-style loop:\", j)\n        j++\n    }\n\n    for {\n        fmt.Println(\"Infinite loop, break immediately\")\n        break\n    }\n}"
+    "note": "Go has a single 'for' loop construct, which can act as a traditional for loop, a while-style loop, or an infinite loop. Use 'break' to exit a loop early, 'continue' to skip an iteration, and labels for controlling nested loops. Loops are essential for iterating over arrays, slices, maps, or performing repetitive tasks. Choosing the appropriate loop type improves readability and maintainability.",
+    "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    for i := 0; i < 3; i++ {\n        fmt.Println(\"For loop:\", i)\n    }\n\n    j := 0\n    for j < 3 {\n        fmt.Println(\"While-style loop:\", j)\n        j++\n    }\n\n    for {\n        fmt.Println(\"Infinite loop, breaking immediately\")\n        break\n    }\n}"
   },
   {
     "title": "Go Functions",
-    "note": "Functions are defined with 'func'. Go supports multiple return values, named return variables, variadic parameters, and recursion. Functions are first-class citizens, and can be assigned to variables or passed as arguments.",
+    "note": "Functions in Go are declared using 'func' followed by the function name and parameters. Go supports multiple return values, named return variables, variadic parameters, and recursion. Functions can be passed as arguments, returned from other functions, or assigned to variables. Functions promote modular, reusable, and testable code.",
     "code": "package main\n\nimport \"fmt\"\n\nfunc add(a, b int) int {\n    return a + b\n}\n\nfunc swap(x, y string) (string, string) {\n    return y, x\n}\n\nfunc main() {\n    sum := add(5, 3)\n    a, b := swap(\"Hello\", \"World\")\n    fmt.Println(\"Sum:\", sum)\n    fmt.Println(\"Swap:\", a, b)\n}"
   },
   {
     "title": "Go Arrays & Slices",
-    "note": "Arrays have fixed size and are value types. Slices are dynamic, reference underlying arrays, and are more commonly used. Use append() to add elements. Slices can be sliced using slice[start:end].",
+    "note": "Arrays in Go have fixed size and store elements of the same type. Slices are dynamic, reference underlying arrays, and can grow using append(). Slices include length and capacity, making them memory efficient. Slicing a slice returns a view of the underlying array without copying. Slices are preferred for most applications unless a fixed-size array is required.",
     "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    arr := [3]int{1,2,3}\n    slice := []int{4,5,6}\n    slice = append(slice, 7)\n\n    fmt.Println(\"Array:\", arr)\n    fmt.Println(\"Slice:\", slice)\n}"
   },
   {
     "title": "Go Maps",
-    "note": "Maps store key-value pairs. Keys must be comparable types. Values can be any type. Use make() or map literal to initialize. Accessing a non-existing key returns zero value. Use delete(map, key) to remove keys.",
-    "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    m := make(map[string]int)\n    m[\"Alice\"] = 25\n    m[\"Bob\"] = 30\n\n    fmt.Println(\"Alice's age:\", m[\"Alice\"])\n    delete(m, \"Bob\")\n    fmt.Println(\"Map after delete:\", m)\n}"
-  },
-  {
-    "title": "Go Structs & Methods",
-    "note": "Structs are collections of fields. Methods can be defined on struct types using receiver parameters. Value receivers copy the struct, pointer receivers can modify the struct. Structs allow composition instead of inheritance.",
-    "code": "package main\n\nimport \"fmt\"\n\ntype Person struct {\n    Name string\n    Age  int\n}\n\nfunc (p Person) Greet() {\n    fmt.Printf(\"Hi, I'm %s, age %d\\n\", p.Name, p.Age)\n}\n\nfunc main() {\n    p := Person{\"Alice\", 25}\n    p.Greet()\n}"
-  },
-  {
-    "title": "Go Pointers",
-    "note": "Go supports pointers like C but no pointer arithmetic. Use '&' to get address and '*' to dereference. Pointers are often used to modify values in functions or pass large structs efficiently.",
-    "code": "package main\n\nimport \"fmt\"\n\nfunc increment(a *int) {\n    *a = *a + 1\n}\n\nfunc main() {\n    x := 10\n    increment(&x)\n    fmt.Println(\"x after increment:\", x)\n}"
-  },
-  {
-    "title": "Go Interfaces",
-    "note": "Interfaces define method sets. Types implement interfaces implicitly by having required methods. Interfaces enable polymorphism. The empty interface 'interface{}' can hold values of any type, often used for generic data.",
-    "code": "package main\n\nimport \"fmt\"\n\ntype Speaker interface {\n    Speak() string\n}\n\ntype Person struct {\n    Name string\n}\n\nfunc (p Person) Speak() string {\n    return \"Hello, I'm \" + p.Name\n}\n\nfunc greet(s Speaker) {\n    fmt.Println(s.Speak())\n}\n\nfunc main() {\n    p := Person{\"Alice\"}\n    greet(p)\n}"
-  },
-  {
-    "title": "Go Goroutines & Concurrency",
-    "note": "Go has built-in concurrency with goroutines, which are lightweight threads. Channels provide safe communication between goroutines. Concurrency is central to Go and enables highly scalable systems.",
-    "code": "package main\n\nimport (\n    \"fmt\"\n    \"time\"\n)\n\nfunc worker(id int) {\n    fmt.Printf(\"Worker %d starting\\n\", id)\n    time.Sleep(time.Second)\n    fmt.Printf(\"Worker %d done\\n\", id)\n}\n\nfunc main() {\n    for i := 1; i <= 3; i++ {\n        go worker(i)\n    }\n    time.Sleep(2 * time.Second) // Wait for goroutines to finish\n}"
-  },
-  {
-    "title": "Go Channels",
-    "note": "Channels enable communication between goroutines. Use make(chan type) to create channels. Send data with 'ch <- value' and receive with 'value := <-ch'. Buffered channels allow storing multiple values.",
-    "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    ch := make(chan int, 2) // buffered channel\n    ch <- 42\n    ch <- 99\n\n    fmt.Println(<-ch)\n    fmt.Println(<-ch)\n}"
-  },
-  {
-    "title": "Go Error Handling",
-    "note": "Go handles errors via explicit return values, not exceptions. Check errors with 'if err != nil'. Custom errors can be created using errors.New() or fmt.Errorf(). This encourages clear, predictable error handling.",
-    "code": "package main\n\nimport (\n    \"errors\"\n    \"fmt\"\n)\n\nfunc divide(a, b int) (int, error) {\n    if b == 0 {\n        return 0, errors.New(\"division by zero\")\n    }\n    return a / b, nil\n}\n\nfunc main() {\n    result, err := divide(10, 0)\n    if err != nil {\n        fmt.Println(\"Error:\", err)\n    } else {\n        fmt.Println(\"Result:\", result)\n    }\n}"
-  },
-  {
-    "title": "Go File I/O",
-    "note": "Go provides os, io, and io/ioutil packages for file operations. Files must be closed after use; defer is commonly used for this. ReadFile and WriteFile simplify common tasks.",
-    "code": "package main\n\nimport (\n    \"fmt\"\n    \"io/ioutil\"\n)\n\nfunc main() {\n    data := []byte(\"Hello, Go File!\")\n    ioutil.WriteFile(\"test.txt\", data, 0644)\n\n    content, err := ioutil.ReadFile(\"test.txt\")\n    if err != nil {\n        fmt.Println(err)\n        return\n    }\n    fmt.Println(\"File content:\", string(content))\n}"
-  },
-  {
-    "title": "Go JSON Handling",
-    "note": "Go provides encoding/json package to work with JSON data. Struct fields can have tags to match JSON keys. Use json.Marshal() to encode and json.Unmarshal() to decode.",
-    "code": "package main\n\nimport (\n    \"encoding/json\"\n    \"fmt\"\n)\n\ntype User struct {\n    Name string `json:\"name\"`\n    Age  int    `json:\"age\"`\n}\n\nfunc main() {\n    user := User{\"Alice\", 25}\n    jsonData, _ := json.Marshal(user)\n    fmt.Println(\"JSON:\", string(jsonData))\n\n    var decoded User\n    json.Unmarshal(jsonData, &decoded)\n    fmt.Println(\"Decoded:\", decoded)\n}"
-  },
-  {
-    "title": "Go HTTP & REST API",
-    "note": "Go's net/http package allows building web servers and REST APIs. Handlers respond to requests. Use http.ListenAndServe to start a server. Middleware can be implemented using http.Handler functions.",
-    "code": "package main\n\nimport (\n    \"fmt\"\n    \"net/http\"\n)\n\nfunc helloHandler(w http.ResponseWriter, r *http.Request) {\n    fmt.Fprintln(w, \"Hello, Go HTTP!\")\n}\n\nfunc main() {\n    http.HandleFunc(\"/\", helloHandler)\n    fmt.Println(\"Server running at http://localhost:8080\")\n    http.ListenAndServe(\":8080\", nil)\n}"
-  },
-  {
-    "title": "Go Database Access (SQL)",
-    "note": "Go provides database/sql package to interact with SQL databases. Use drivers like go-sql-driver/mysql or lib/pq for PostgreSQL. Use db.Query, db.Exec for queries, and defer rows.Close() for resource management.",
-    "code": "package main\n\nimport (\n    \"database/sql\"\n    \"fmt\"\n    _ \"github.com/go-sql-driver/mysql\"\n)\n\nfunc main() {\n    db, err := sql.Open(\"mysql\", \"user:password@tcp(localhost:3306)/testdb\")\n    if err != nil {\n        panic(err)\n    }\n    defer db.Close()\n\n    rows, err := db.Query(\"SELECT id, name FROM users\")\n    if err != nil {\n        panic(err)\n    }\n    defer rows.Close()\n\n    for rows.Next() {\n        var id int\n        var name string\n        rows.Scan(&id, &name)\n        fmt.Println(id, name)\n    }\n}"
-  },
-  {
-    "title": "Go Modules & Packages",
-    "note": "Go uses modules (go.mod) for dependency management. Packages are collections of related Go files. The standard library provides extensive functionality. Import using 'import \"package\"'. Use go get to install external modules.",
-    "code": "package main\n\nimport (\n    \"fmt\"\n    \"math\"\n)\n\nfunc main() {\n    fmt.Println(\"Sqrt(16) =\", math.Sqrt(16))\n}"
+    "note": "Maps are unordered collections of key-value pairs. Keys must be comparable types. Values can be any type. Maps are initialized using make() or map literals. Accessing a missing key returns the zero value of the value type. Use delete() to remove a key. Maps are useful for fast lookups, counting occurrences, and associating unique keys with values. Iterate using 'range' for processing all key-value pairs.",
+    "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    m := make(map[string]int)\n    m[\"Alice\"] = 25\n    m[\"Bob\"] = 30\n\n    fmt.Println(\"Alice's age:\", m[\"Alice\"])\n    delete(m, \"Bob\")\n    fmt.Println(\"Map after delete:\", m)\n\n    fmt.Println(\"Iterating over map:\")\n    for key, value := range m {\n        fmt.Println(key, \"->\", value)\n    }\n}"
   }
 ],
 rlang:[
@@ -7043,66 +7277,57 @@ matlab:[
     "code": "% OOP class\nclassdef Person\n    properties\n        Name\n        Age\n    end\n    methods\n        function obj = Person(name, age)\n            obj.Name = name;\n            obj.Age = age;\n        end\n        function greet(obj)\n            fprintf('Hi, I am %s, age %d\\n', obj.Name, obj.Age);\n        end\n    end\nend\n\np = Person('Alice',25);\np.greet();\n\n% Parallel loop example\nparfor i = 1:4\n    disp(['Parallel iteration: ', num2str(i)])\nend"
   }
 ],
-scala:[
+scala:
+  [
   {
-    "title": "Scala HOME",
-    "note": "Scala is a modern, high-level programming language that combines object-oriented and functional programming paradigms. It runs on the JVM (Java Virtual Machine), making it compatible with Java libraries. Scala is widely used for web development, big data (Apache Spark), and concurrent applications.",
-    "code": "// Official Website: https://www.scala-lang.org/\n// Documentation: https://docs.scala-lang.org/\n// Try Online: https://scastie.scala-lang.org/\n\nobject HelloScala {\n  def main(args: Array[String]): Unit = {\n    println(\"Hello, Scala!\")\n  }\n}"
+    "title": "Scala HOME & Overview",
+    "note": "Scala is a modern, high-level programming language that integrates object-oriented and functional programming paradigms. Running on the JVM, it is fully compatible with Java libraries. Scala is used for web development, big data processing (e.g., Apache Spark), concurrent applications, and distributed systems. Its expressive syntax, type inference, and functional features make it concise and powerful for scalable, high-performance software.",
+    "code": "// Official Website: https://www.scala-lang.org/\n// Documentation: https://docs.scala-lang.org/\n// Try Online: https://scastie.scala-lang.org/\n\nobject HelloScala {\n  def main(args: Array[String]): Unit = {\n    println(\"Hello, Scala!\")\n    println(\"Scala combines object-oriented and functional programming.\")\n  }\n}"
   },
   {
-    "title": "Scala Basics",
-    "note": "Scala is statically typed, but type inference reduces boilerplate. Variables can be immutable (val) or mutable (var). The main entry point is usually an object with a main method.",
-    "code": "object Basics {\n  def main(args: Array[String]): Unit = {\n    val name: String = \"Alice\"  // Immutable\n    var age: Int = 25            // Mutable\n    val isActive: Boolean = true\n\n    println(s\"Name: $name, Age: $age, Active: $isActive\")\n  }\n}"
+    "title": "Scala Basics & Syntax",
+    "note": "Scala is statically typed but supports type inference, reducing boilerplate code. Variables can be immutable (val) or mutable (var). The program entry point is usually an object with a main method. Scala emphasizes concise, readable code with functional programming constructs such as expressions and immutability. Expressions return values, which allows chaining operations. Beginners should learn the difference between val and var, and prefer immutability for safer code.",
+    "code": "object Basics {\n  def main(args: Array[String]): Unit = {\n    val name: String = \"Alice\"  // Immutable\n    var age: Int = 25            // Mutable\n    val isActive: Boolean = true\n\n    println(s\"Name: $name, Age: $age, Active: $isActive\")\n\n    // Demonstrating type inference\n    val score = 100\n    println(s\"Score: $score\")\n  }\n}"
   },
   {
-    "title": "Scala Data Types",
-    "note": "Scala has primitive types (Int, Double, Boolean, Char) and reference types (String, Array, List, Map, Option). Collections are immutable by default but mutable versions exist.",
-    "code": "object DataTypes {\n  def main(args: Array[String]): Unit = {\n    val str: String = \"Hello\"\n    val num: Int = 42\n    val pi: Double = 3.14\n    val isTrue: Boolean = true\n    val arr: Array[Int] = Array(1, 2, 3)\n    val list: List[Int] = List(1, 2, 3)\n    val map: Map[String, Int] = Map(\"Alice\" -> 25, \"Bob\" -> 30)\n\n    println(arr(0))\n    println(str.toUpperCase)\n    println(list.head)\n    println(map(\"Alice\"))\n  }\n}"
+    "title": "Scala Data Types & Collections",
+    "note": "Scala has primitive types: Int, Double, Boolean, Char, and reference types: String, Array, List, Map, Option. Collections are immutable by default for safety and functional programming, but mutable versions exist. Arrays are fixed-size, Lists are linked lists, and Maps store key-value pairs. Option is used to represent optional values, reducing null errors. Proper use of types and collections ensures performance, readability, and robustness.",
+    "code": "object DataTypes {\n  def main(args: Array[String]): Unit = {\n    val str: String = \"Hello\"\n    val num: Int = 42\n    val pi: Double = 3.14\n    val isTrue: Boolean = true\n    val arr: Array[Int] = Array(1, 2, 3)\n    val list: List[Int] = List(1, 2, 3)\n    val map: Map[String, Int] = Map(\"Alice\" -> 25, \"Bob\" -> 30)\n    val maybeValue: Option[Int] = Some(100)\n\n    println(arr(0))\n    println(str.toUpperCase)\n    println(list.head)\n    println(map(\"Alice\"))\n    println(maybeValue.getOrElse(0))\n  }\n}"
   },
   {
-    "title": "Scala Conditionals",
-    "note": "Scala supports if-else expressions, pattern matching (similar to switch), and ternary-like expressions. All conditionals are expressions and return values.",
-    "code": "object Conditionals {\n  def main(args: Array[String]): Unit = {\n    val age = 18\n\n    if (age >= 18) println(\"Adult\")\n    else if (age >= 13) println(\"Teen\")\n    else println(\"Child\")\n\n    // Ternary-like\n    val result = if (age % 2 == 0) \"Even\" else \"Odd\"\n    println(result)\n\n    // Pattern matching\n    age match {\n      case x if x < 13 => println(\"Child\")\n      case x if x < 18 => println(\"Teen\")\n      case _ => println(\"Adult\")\n    }\n  }\n}"
+    "title": "Scala Conditionals & Pattern Matching",
+    "note": "Scala supports if-else expressions, which return values. Pattern matching is a more powerful alternative to switch-case, enabling matching on types, values, and structures. Conditional expressions and pattern matching allow concise, readable decision-making. Ternary-like behavior can be achieved with inline if expressions. Pattern matching is especially useful for case classes and decomposing complex data.",
+    "code": "object Conditionals {\n  def main(args: Array[String]): Unit = {\n    val age = 18\n\n    if (age >= 18) println(\"Adult\")\n    else if (age >= 13) println(\"Teen\")\n    else println(\"Child\")\n\n    // Inline if expression (ternary-like)\n    val result = if (age % 2 == 0) \"Even\" else \"Odd\"\n    println(result)\n\n    // Pattern matching\n    age match {\n      case x if x < 13 => println(\"Child\")\n      case x if x < 18 => println(\"Teen\")\n      case _ => println(\"Adult\")\n    }\n  }\n}"
   },
   {
-    "title": "Scala Loops",
-    "note": "Scala supports while, do-while, for loops, and for-comprehensions for collections. For-comprehensions are powerful for iterating and filtering data.",
-    "code": "object Loops {\n  def main(args: Array[String]): Unit = {\n    var i = 0\n    while (i < 3) {\n      println(i)\n      i += 1\n    }\n\n    for (j <- 0 until 3) {\n      println(s\"For loop $j\")\n    }\n\n    val arr = Array(1,2,3)\n    for (n <- arr) println(s\"Number: $n\")\n\n    // For-comprehension with filter\n    val evens = for (n <- arr if n % 2 == 0) yield n\n    println(evens.mkString(\", \"))\n  }\n}"
+    "title": "Scala Loops & For-Comprehensions",
+    "note": "Scala supports while, do-while, for loops, and for-comprehensions. For-comprehensions provide a functional approach to iterating and transforming collections. They can include guards (filters) and yield new collections. Loops are used for repeated execution, iteration over arrays, lists, maps, and more complex transformations. Choosing functional constructs often leads to more concise and readable code than imperative loops.",
+    "code": "object Loops {\n  def main(args: Array[String]): Unit = {\n    var i = 0\n    while (i < 3) {\n      println(i)\n      i += 1\n    }\n\n    for (j <- 0 until 3) println(s\"For loop $j\")\n\n    val arr = Array(1,2,3)\n    for (n <- arr) println(s\"Number: $n\")\n\n    // For-comprehension with filter\n    val evens = for (n <- arr if n % 2 == 0) yield n\n    println(evens.mkString(\", \"))\n  }\n}"
   },
   {
-    "title": "Scala Functions",
-    "note": "Functions in Scala are defined with def, can return multiple values using tuples, and support default and variable-length arguments. Anonymous functions (lambdas) are supported using => syntax.",
+    "title": "Scala Functions & Lambdas",
+    "note": "Functions are declared with def and can have default arguments, variable-length parameters, multiple return values via tuples, and recursion. Anonymous functions (lambdas) use the => syntax. Functions are first-class citizens: they can be passed as parameters, returned from other functions, or stored in variables. This enables functional programming patterns, modular code, and higher-order operations on collections.",
     "code": "object Functions {\n  def add(a: Int, b: Int): Int = a + b\n  def greet(name: String = \"Guest\"): String = s\"Hello, $name\"\n\n  def main(args: Array[String]): Unit = {\n    println(add(5,3))\n    println(greet(\"Alice\"))\n    println(greet())\n\n    // Anonymous function\n    val square = (x: Int) => x * x\n    println(square(5))\n  }\n}"
   },
   {
-    "title": "Scala Collections",
-    "note": "Scala provides immutable collections (List, Map, Set, Vector) and mutable ones. Common operations include map, filter, reduce, fold, foreach, and flatMap.",
-    "code": "object Collections {\n  def main(args: Array[String]): Unit = {\n    val list = List(1,2,3,4,5)\n\n    val squares = list.map(x => x * x)\n    println(squares)\n\n    val evens = list.filter(_ % 2 == 0)\n    println(evens)\n\n    val sum = list.reduce(_ + _)\n    println(sum)\n\n    val nested = List(List(1,2), List(3,4))\n    val flattened = nested.flatten\n    println(flattened)\n  }\n}"
+    "title": "Scala Collections - Advanced Operations",
+    "note": "Scala collections support functional operations such as map, filter, reduce, fold, foreach, flatMap, and zip. Lazy collections (Streams) allow deferred computation for efficiency. Parallel collections enable parallel processing for high-performance computation. These features are essential for big data processing, transforming datasets, and writing concise functional code.",
+    "code": "object CollectionsAdvanced {\n  def main(args: Array[String]): Unit = {\n    val nums = (1 to 10).toList\n\n    val squares = nums.map(x => x * x).filter(_ % 2 == 0)\n    println(squares)\n\n    // Lazy collection\n    val lazySeq = LazyList.from(1)\n    println(lazySeq.take(5).toList)\n\n    // Parallel collection\n    val parSum = nums.par.map(_ * 2).sum\n    println(parSum)\n  }\n}"
   },
   {
-    "title": "Scala Classes & Objects",
-    "note": "Scala supports object-oriented programming. Classes have fields, methods, constructors, and support inheritance. Singleton objects use object keyword. Case classes are used for immutable data structures and pattern matching.",
+    "title": "Scala Classes, Objects & Case Classes",
+    "note": "Scala supports object-oriented programming. Classes can have fields, methods, and constructors. Singleton objects are declared with object keyword. Case classes provide immutable data structures with auto-generated methods like equals, hashCode, toString, and support pattern matching. Proper use of classes and objects enables modular, reusable, and testable code.",
     "code": "class Person(val name: String, val age: Int) {\n  def greet(): Unit = println(s\"Hi, I'm $name, age $age\")\n}\n\nobject OOPDemo {\n  def main(args: Array[String]): Unit = {\n    val p1 = new Person(\"Alice\",25)\n    p1.greet()\n\n    // Case class\n    case class User(name: String, age: Int)\n    val user = User(\"Bob\",30)\n    println(user)\n  }\n}"
   },
   {
     "title": "Scala Traits & Mixins",
-    "note": "Traits are similar to interfaces in Java but can have method implementations. Classes can mix in multiple traits to compose behavior.",
+    "note": "Traits in Scala are similar to interfaces but can contain method implementations. Classes can mix in multiple traits to compose behavior. Traits enable code reuse, modular design, and polymorphism without deep inheritance hierarchies.",
     "code": "trait Greeter {\n  def greet(): Unit = println(\"Hello!\")\n}\n\nclass Person(name: String) extends Greeter {\n  override def greet(): Unit = println(s\"Hi, $name\")\n}\n\nobject TraitDemo {\n  def main(args: Array[String]): Unit = {\n    val p = new Person(\"Alice\")\n    p.greet()\n  }\n}"
   },
   {
-    "title": "Scala Pattern Matching",
-    "note": "Pattern matching in Scala is powerful for checking values, types, and decomposing data. It is used in match expressions, case classes, and extractors.",
-    "code": "object PatternMatch {\n  def main(args: Array[String]): Unit = {\n    val x: Any = 42\n\n    x match {\n      case i: Int => println(s\"Integer: $i\")\n      case s: String => println(s\"String: $s\")\n      case _ => println(\"Other\")\n    }\n\n    // Match tuple\n    val point = (1,2)\n    point match {\n      case (0,0) => println(\"Origin\")\n      case (x,y) => println(s\"Point: ($x,$y)\")\n    }\n  }\n}"
-  },
-  {
     "title": "Scala Concurrency (Futures & Threads)",
-    "note": "Scala provides concurrency support using Futures, Promises, and Actors (Akka). Futures represent asynchronous computations and can be composed with map, flatMap, and for-comprehensions.",
-    "code": "import scala.concurrent.Future\nimport scala.concurrent.ExecutionContext.Implicits.global\nimport scala.util.{Success, Failure}\n\nobject ConcurrencyDemo {\n  def main(args: Array[String]): Unit = {\n    val f = Future {\n      Thread.sleep(1000)\n      42\n    }\n\n    f.onComplete {\n      case Success(value) => println(s\"Result: $value\")\n      case Failure(e) => println(s\"Error: ${e.getMessage}\")\n    }\n\n    Thread.sleep(2000) // Wait for future\n  }\n}"
-  },
-  {
-    "title": "Scala Collections - Advanced",
-    "note": "Scala collections can be used with higher-order functions, comprehensions, and for parallel processing. Streams provide lazy evaluation for large data.",
-    "code": "object CollectionsAdvanced {\n  def main(args: Array[String]): Unit = {\n    val nums = (1 to 10).toList\n    val squares = nums.map(x => x * x).filter(_ % 2 == 0)\n    println(squares)\n\n    // Lazy collection\n    val lazySeq = Stream.from(1)\n    println(lazySeq.take(5).toList)\n\n    // Parallel collection\n    val parSum = nums.par.map(_ * 2).sum\n    println(parSum)\n  }\n}"
+    "note": "Scala supports concurrency using Futures, Promises, and Actors (via Akka). Futures represent asynchronous computations and can be composed using map, flatMap, or for-comprehensions. This enables non-blocking, parallel, and scalable applications. Futures require an implicit ExecutionContext for thread management.",
+    "code": "import scala.concurrent.Future\nimport scala.concurrent.ExecutionContext.Implicits.global\nimport scala.util.{Success, Failure}\n\nobject ConcurrencyDemo {\n  def main(args: Array[String]): Unit = {\n    val f = Future {\n      Thread.sleep(1000)\n      42\n    }\n\n    f.onComplete {\n      case Success(value) => println(s\"Result: $value\")\n      case Failure(e) => println(s\"Error: ${e.getMessage}\")\n    }\n\n    Thread.sleep(2000) // Wait for future to complete\n  }\n}"
   }
 ],
 };
