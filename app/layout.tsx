@@ -5,7 +5,7 @@ import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 
 export const metadata: Metadata = {
-  title: 'Devvoltz Technology',
+  title: 'DevVoltz Technology',
   keywords: [
     'Devvoltz',
     'Technology',
@@ -90,7 +90,7 @@ export const metadata: Metadata = {
     'DEVVOLTZ TECHNOLOGY ETHIOPIA',   
     'DEVVOLTZ TECHNOLOGY ETHIOPIA',
   ],
-  authors: [{ name: 'Smegn Destew Molla', url: 'https://smegndestewportfolio.vercel.app' }],
+  authors: [{ name: 'DevVoltz Tech plc.', url: 'https://smegndestewportfolio.vercel.app' }],
   openGraph: {
     title: 'Devvoltz Technology',
     description: 'Empowering the future of tech through education, innovation, and community.',
@@ -98,7 +98,7 @@ export const metadata: Metadata = {
     siteName: 'Devvoltz Technology',
     images: [
       {
-        url: '/public/Devvoltzlogow.jpg',
+        url: '/Devvoltzlogow.jpg',
         width: 1200,
         height: 630,
         alt: 'Devvoltz Technology - Empowering the future of tech through education, innovation, and community.',
