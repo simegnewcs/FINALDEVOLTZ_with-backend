@@ -90,15 +90,15 @@ export const metadata: Metadata = {
     'DEVVOLTZ TECHNOLOGY ETHIOPIA',   
     'DEVVOLTZ TECHNOLOGY ETHIOPIA',
   ],
-  authors: [{ name: 'DevVoltz Tech plc.', url: 'https://smegndestewportfolio.vercel.app' }],
+ 
   openGraph: {
     title: 'Devvoltz Technology',
     description: 'Empowering the future of tech through education, innovation, and community.',
-    url: 'https://devvoltz-website.vercel.app',
+    url: 'https://devoltz.vercel.app',
     siteName: 'Devvoltz Technology',
     images: [
       {
-        url: '/Devvoltzlogow.jpg',
+        url: '/Devvoltz logo.jpg',
         width: 1200,
         height: 630,
         alt: 'Devvoltz Technology - Empowering the future of tech through education, innovation, and community.',
@@ -112,7 +112,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Devvoltz Technology',
     description: 'Empowering the future of tech through education, innovation, and community.',
-    images: ['/Devvoltzlogow.jpg'],
+    images: ['/Devvoltz logo.jpg'],
   },
   themeColor: '#ffffff',
   colorScheme: 'light dark',
