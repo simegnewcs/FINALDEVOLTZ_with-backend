@@ -28,14 +28,14 @@ export default function AboutPage() {
       name: "BIRTUKAN",
       role: "CMO and Co-Founer",
       bio: "Digital Marketing Specialist and Social Media Manager dedicated to growing online presence, building strong brand identities, and creating impactful digital campaigns.",
-      image: "/placeholder.svg?height=300&width=300",
+      image: "/Birte.jpg?height=300&width=300",
       linkedin: "#",
     },
     {
       name: "NARDOS",
       role: "CXO and Co-Founder",
       bio: "Digital Marketing Specialist and Content Creator passionate about building engaging brand stories, driving online growth, and creating impactful digital experiences.",
-      image: "/placeholder.svg?height=300&width=300",
+      image: "/Nardi.jpg?height=300&width=300",
       linkedin: "#",
     },
   ]
@@ -66,29 +66,29 @@ export default function AboutPage() {
 
   const milestones = [
     {
-      year: "2022",
+      year: "2023",
       title: "DevVoltz Founded",
-      description: "Started in Addis Ababa with a vision to democratize tech education in Ethiopia",
+      description: "Started in Bahir Dar with a strong vision to drive tech evolutions and make technology education more accessible and impactful for communities across Ethiopia.",
     },
     {
-      year: "2023",
-      title: "1000+ Students",
-      description: "Reached our first milestone of 1000 students across our e-learning platform",
+      year: "2024",
+      title: "Bootcamps Launched",
+      description: "Started our first intensive bootcamps in programming, AI, and digital marketing, providing learners with hands-on training and real-world projects.",
     },
     {
-      year: "2023",
+      year: "2024",
       title: "Freelance Marketplace Launch",
-      description: "Launched our freelance platform connecting Ethiopian developers with global opportunities",
+      description: "Introduced our freelance platform, connecting talented Ethiopian developers and digital professionals with global clients and opportunities.",
     },
     {
-      year: "2024",
-      title: "Dubai Expansion",
-      description: "Opened our Dubai office to serve the Middle East market and attract international talent",
+      year: "2025",
+      title: "Addis Ababa Expansion",
+      description: "Expanded operations to Addis Ababa, establishing a stronger presence in Ethiopia’s capital to better serve local businesses, support talent development, and connect with international partners.",
     },
     {
-      year: "2024",
-      title: "Bootcamp Program",
-      description: "Launched intensive bootcamp programs with 95% job placement rate",
+      year: "2025",
+      title: "Integrated Services Launch",
+      description: "Brought together all five core services Free E-Learning, Freelance & Digital Marketing, Software Solutions, Bootcamps, and Product Marketing into a fully integrated ecosystem, providing clients and learners with end-to-end support for education,innovation,and business growth.",
     },
   ]
 
