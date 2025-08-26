@@ -24,13 +24,7 @@ export default function AboutPage() {
       image: "/HMY.jpg?height=300&width=300",
       linkedin: "#",
     },
-    {
-      name: "BIRTUKAN",
-      role: "CMO and Co-Founer",
-      bio: "Digital Marketing Specialist and Social Media Manager dedicated to growing online presence, building strong brand identities, and creating impactful digital campaigns.",
-      image: "/Birte.jpg?height=300&width=300",
-      linkedin: "#",
-    },
+    
     {
       name: "NARDOS",
       role: "CXO and Co-Founder",
