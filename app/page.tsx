@@ -52,7 +52,7 @@ export default function HomePage() {
       icon: GraduationCap,
       title: "E-Learning Platform",
       description:
-        "Master modern web development with interactive courses, hands-on projects, and real-world applications.",
+        "Master modern  development with interactive courses, hands-on projects, and real-world applications.",
       features: ["Interactive Code Editor", "Progress Tracking", "Certificates", "24/7 Support"],
       route: "elearning",
     },

@@ -1,14 +1,15 @@
 "use client"
 
 import type React from "react"
-
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { Eye, EyeOff, Mail, Lock } from "lucide-react"
+import { Eye, EyeOff, Mail, Lock, AlertCircle, User } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { login, checkHealth } from "@/app/lib/api"
 
 export default function SignInPage() {
   const router = useRouter()
@@ -18,16 +19,51 @@ export default function SignInPage() {
     password: "",
   })
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState("")
+  const [backendStatus, setBackendStatus] = useState<"checking" | "connected" | "disconnected">("checking")
+
+  // Check backend connection on component mount
+  useEffect(() => {
+    const checkConnection = async () => {
+      const isConnected = await checkHealth()
+      setBackendStatus(isConnected ? "connected" : "disconnected")
+    }
+    
+    checkConnection()
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setError("")
     setIsLoading(true)
 
-    // Simulate authentication
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    try {
+      const data = await login({
+        email: formData.email,
+        password: formData.password,
+      })
 
-    // Redirect to dashboard or previous page
-    router.push("/dashboard")
+      if (data.error) {
+        setError(data.error)
+      } else {
+        // Save token in localStorage
+        localStorage.setItem("token", data.token)
+        localStorage.setItem("user", JSON.stringify(data.user))
+        
+        // Redirect to dashboard
+        router.push("/dashboard")
+      }
+    } catch (err: any) {
+      console.error("Login error", err)
+      
+      if (err.message.includes("Failed to fetch")) {
+        setError("Cannot connect to server. Please try again later.")
+      } else {
+        setError("Invalid email or password. Please try again.")
+      }
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,13 +73,19 @@ export default function SignInPage() {
     })
   }
 
+  const retryConnection = async () => {
+    setBackendStatus("checking")
+    const isConnected = await checkHealth()
+    setBackendStatus(isConnected ? "connected" : "disconnected")
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center px-4 py-8">
       <Card className="w-full max-w-md border-0 shadow-xl">
         <CardHeader className="text-center px-4 sm:px-6">
           <Link href="/" className="flex items-center justify-center space-x-2 mb-4">
             <div className="w-8 h-8 bg-gradient-to-r from-blue-700 to-coral-500 rounded-lg flex items-center justify-center">
-              <Mail className="w-5 h-5 text-white" />
+              <User className="w-5 h-5 text-white" />
             </div>
             <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-700 to-coral-500 bg-clip-text text-transparent">
               DevVoltz
@@ -52,7 +94,39 @@ export default function SignInPage() {
           <CardTitle className="text-xl sm:text-2xl font-bold text-slate-900">Welcome Back</CardTitle>
           <p className="text-slate-600 text-sm sm:text-base">Sign in to your DevVoltz account</p>
         </CardHeader>
+        
         <CardContent className="px-4 sm:px-6">
+          {/* Backend Status Indicator */}
+          {backendStatus !== "connected" && (
+            <Alert variant={backendStatus === "disconnected" ? "destructive" : "default"} className="mb-4">
+              <AlertCircle className="h-4 w-4" />
+              <AlertTitle>
+                {backendStatus === "checking" ? "Checking connection..." : "Connection issue"}
+              </AlertTitle>
+              <AlertDescription className="flex flex-col gap-2">
+                {backendStatus === "disconnected" ? (
+                  <>
+                    <span>Cannot connect to backend server.</span>
+                    <Button variant="outline" size="sm" onClick={retryConnection} className="mt-2">
+                      Retry Connection
+                    </Button>
+                  </>
+                ) : (
+                  "Verifying server connection..."
+                )}
+              </AlertDescription>
+            </Alert>
+          )}
+
+          {/* Error Message */}
+          {error && (
+            <Alert variant="destructive" className="mb-4">
+              <AlertCircle className="h-4 w-4" />
+              <AlertTitle>Error</AlertTitle>
+              <AlertDescription>{error}</AlertDescription>
+            </Alert>
+          )}
+
           <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
@@ -69,6 +143,7 @@ export default function SignInPage() {
                   required
                   className="pl-10 h-12"
                   placeholder="Enter your email"
+                  disabled={backendStatus !== "connected"}
                 />
               </div>
             </div>
@@ -88,6 +163,7 @@ export default function SignInPage() {
                   required
                   className="pl-10 pr-10 h-12"
                   placeholder="Enter your password"
+                  disabled={backendStatus !== "connected"}
                 />
                 <button
                   type="button"
@@ -101,7 +177,11 @@ export default function SignInPage() {
 
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
               <label className="flex items-center">
-                <input type="checkbox" className="rounded border-slate-300 text-coral-500 focus:ring-coral-500" />
+                <input 
+                  type="checkbox" 
+                  className="rounded border-slate-300 text-coral-500 focus:ring-coral-500" 
+                  disabled={backendStatus !== "connected"}
+                />
                 <span className="ml-2 text-sm text-slate-600">Remember me</span>
               </label>
               <Link href="/auth/forgot-password" className="text-sm text-blue-700 hover:text-coral-500">
@@ -111,7 +191,7 @@ export default function SignInPage() {
 
             <Button
               type="submit"
-              disabled={isLoading}
+              disabled={isLoading || backendStatus !== "connected"}
               className="w-full bg-gradient-to-r from-blue-700 to-coral-500 hover:from-blue-800 hover:to-coral-600 h-12"
             >
               {isLoading ? "Signing in..." : "Sign In"}

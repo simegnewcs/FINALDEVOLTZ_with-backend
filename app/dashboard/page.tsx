@@ -1,17 +1,69 @@
 "use client"
-
+import type React from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { BookOpen, Briefcase, Code, GraduationCap, User, Settings, LogOut } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
 
+interface UserData {
+  id: number
+  name: string
+  email: string
+}
+
 export default function DashboardPage() {
   const router = useRouter()
+  const [user, setUser] = useState<UserData | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    // Check if user is logged in
+    const checkAuth = () => {
+      const token = localStorage.getItem("token")
+      const userData = localStorage.getItem("user")
+      
+      if (!token || !userData) {
+        router.push("/auth/signin")
+        return
+      }
+      
+      try {
+        setUser(JSON.parse(userData))
+      } catch (error) {
+        console.error("Error parsing user data:", error)
+        router.push("/auth/signin")
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    checkAuth()
+  }, [router])
 
   const handleLogout = () => {
-    // In a real app, this would clear authentication tokens
-    router.push("/")
+    // Clear authentication data
+    localStorage.removeItem("token")
+    localStorage.removeItem("user")
+    router.push("/auth/signin")
+  }
+
+  // Show loading state while checking authentication
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-slate-600">Loading dashboard...</p>
+        </div>
+      </div>
+    )
+  }
+
+  // Don't render anything if not authenticated (will redirect)
+  if (!user) {
+    return null
   }
 
   return (
@@ -29,6 +81,7 @@ export default function DashboardPage() {
               </span>
             </Link>
             <div className="flex items-center space-x-4">
+              <span className="text-sm text-slate-600 hidden sm:block">Welcome, {user.name}</span>
               <Button variant="ghost" size="icon">
                 <Settings className="w-5 h-5" />
               </Button>
@@ -42,7 +95,7 @@ export default function DashboardPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         <div className="mb-6 sm:mb-8">
-          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">Welcome back, John!</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">Welcome back, {user.name}</h1>
           <p className="text-slate-600 text-sm sm:text-base">Continue your learning journey with DevVoltz</p>
         </div>
 

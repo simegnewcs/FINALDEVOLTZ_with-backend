@@ -1,14 +1,28 @@
 "use client"
 
 import type React from "react"
-
-import { useState } from "react"
+import { signup } from "@/app/lib/api"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { Eye, EyeOff, Mail, Lock, User } from "lucide-react"
+import { Eye, EyeOff, Mail, Lock, User, AlertCircle, Server, Database, WifiOff } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+
+// Function to check if backend is reachable
+async function checkBackendConnection(): Promise<boolean> {
+  try {
+    const response = await fetch("http://localhost:5000/api/auth/health", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    })
+    return response.ok
+  } catch (error) {
+    return false
+  }
+}
 
 export default function SignUpPage() {
   const router = useRouter()
@@ -20,6 +34,17 @@ export default function SignUpPage() {
     confirmPassword: "",
   })
   const [isLoading, setIsLoading] = useState(false)
+  const [backendStatus, setBackendStatus] = useState<"checking" | "connected" | "disconnected">("checking")
+
+  // Check backend connection on component mount
+  useEffect(() => {
+    const checkConnection = async () => {
+      const isConnected = await checkBackendConnection()
+      setBackendStatus(isConnected ? "connected" : "disconnected")
+    }
+    
+    checkConnection()
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -31,11 +56,35 @@ export default function SignUpPage() {
 
     setIsLoading(true)
 
-    // Simulate registration
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    try {
+      const data = await signup({
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+      })
 
-    alert("Account created successfully! Please check your email to verify your account.")
-    router.push("/auth/signin")
+      if (data.error) {
+        alert(data.error)
+      } else {
+        localStorage.setItem("token", data.token)
+        alert("Account created successfully ✅")
+        router.push("/auth/signin")
+      }
+    } catch (err) {
+      console.error("Signup error", err)
+      
+      // Check backend connection again on error
+      const isConnected = await checkBackendConnection()
+      setBackendStatus(isConnected ? "connected" : "disconnected")
+      
+      if (!isConnected) {
+        alert("Cannot connect to the server. Please make sure the backend is running on port 5000.")
+      } else {
+        alert("Something went wrong. Please try again.")
+      }
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,9 +94,15 @@ export default function SignUpPage() {
     })
   }
 
+  const retryConnection = async () => {
+    setBackendStatus("checking")
+    const isConnected = await checkBackendConnection()
+    setBackendStatus(isConnected ? "connected" : "disconnected")
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center px-4 py-8">
-      <Card className="w-full max-w-md border-0 shadow-xl">
+      <Card className="w-full max-w-md border-0 shadow-xl relative">
         <CardHeader className="text-center px-4 sm:px-6">
           <Link href="/" className="flex items-center justify-center space-x-2 mb-4">
             <div className="w-8 h-8 bg-gradient-to-r from-blue-700 to-coral-500 rounded-lg flex items-center justify-center">
@@ -60,7 +115,46 @@ export default function SignUpPage() {
           <CardTitle className="text-xl sm:text-2xl font-bold text-slate-900">Create Account</CardTitle>
           <p className="text-slate-600 text-sm sm:text-base">Join DevVoltz and start your journey</p>
         </CardHeader>
+        
         <CardContent className="px-4 sm:px-6">
+          {/* Backend Status Indicator */}
+          {backendStatus !== "connected" && (
+            <Alert variant={backendStatus === "disconnected" ? "destructive" : "default"} className="mb-4">
+              <AlertCircle className="h-4 w-4" />
+              <AlertTitle>
+                {backendStatus === "checking" ? "Checking connection..." : "Connection issue"}
+              </AlertTitle>
+              <AlertDescription className="flex flex-col gap-2">
+                {backendStatus === "disconnected" ? (
+                  <>
+                    <span>Cannot connect to backend server.</span>
+                    <Button variant="outline" size="sm" onClick={retryConnection} className="mt-2">
+                      Retry Connection
+                    </Button>
+                  </>
+                ) : (
+                  "Verifying server connection..."
+                )}
+              </AlertDescription>
+            </Alert>
+          )}
+
+          {/* Troubleshooting Guide */}
+          {backendStatus === "disconnected" && (
+            <div className="mb-6 p-4 bg-slate-100 rounded-lg text-sm">
+              <h3 className="font-semibold mb-2 flex items-center gap-2">
+                <WifiOff className="w-4 h-4" />
+                Troubleshooting steps:
+              </h3>
+              <ol className="list-decimal list-inside space-y-1 ml-2">
+                <li>Ensure backend server is running</li>
+                <li>Check if backend is on port 5000</li>
+                <li>Verify no other services are using port 5000</li>
+                <li>Restart the backend server if needed</li>
+              </ol>
+            </div>
+          )}
+
           <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">
@@ -76,6 +170,7 @@ export default function SignUpPage() {
                   required
                   className="pl-10 h-12"
                   placeholder="Enter your full name"
+                  disabled={backendStatus !== "connected"}
                 />
               </div>
             </div>
@@ -95,6 +190,7 @@ export default function SignUpPage() {
                   required
                   className="pl-10 h-12"
                   placeholder="Enter your email"
+                  disabled={backendStatus !== "connected"}
                 />
               </div>
             </div>
@@ -114,6 +210,7 @@ export default function SignUpPage() {
                   required
                   className="pl-10 pr-10 h-12"
                   placeholder="Create a password"
+                  disabled={backendStatus !== "connected"}
                 />
                 <button
                   type="button"
@@ -140,6 +237,7 @@ export default function SignUpPage() {
                   required
                   className="pl-10 h-12"
                   placeholder="Confirm your password"
+                  disabled={backendStatus !== "connected"}
                 />
               </div>
             </div>
@@ -149,6 +247,7 @@ export default function SignUpPage() {
                 type="checkbox"
                 required
                 className="rounded border-slate-300 text-blue-700 focus:ring-coral-500 mt-1"
+                disabled={backendStatus !== "connected"}
               />
               <span className="ml-2 text-sm text-slate-600">
                 I agree to the{" "}
@@ -164,7 +263,7 @@ export default function SignUpPage() {
 
             <Button
               type="submit"
-              disabled={isLoading}
+              disabled={isLoading || backendStatus !== "connected"}
               className="w-full bg-gradient-to-r from-blue-700 to-coral-500 hover:from-blue-800 hover:to-coral-600 h-12"
             >
               {isLoading ? "Creating Account..." : "Create Account"}
