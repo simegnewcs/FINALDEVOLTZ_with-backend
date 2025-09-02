@@ -18,6 +18,8 @@ import {
   X,
   UserPlus,
   UserCheck,
+  SlidersHorizontal,
+  Check,
 } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -108,6 +110,19 @@ export default function FreelancePage() {
     role: null,
     isLoggedIn: false
   })
+  const [showFilterSidebar, setShowFilterSidebar] = useState(false)
+  const [filterOptions, setFilterOptions] = useState({
+    minBudget: "",
+    maxBudget: "",
+    skills: "",
+    timePosted: "",
+    sortBy: "newest",
+    minRate: "",
+    maxRate: "",
+    availability: "",
+    skillLevel: "",
+  })
+
   const router = useRouter()
 
   // Check if user is logged in (from localStorage)
@@ -169,6 +184,7 @@ export default function FreelancePage() {
     }
   }
 
+
   const handleApplyNow = (projectId: number) => {
     if (!user.isLoggedIn) {
       setShowRoleSelectionModal(true)
@@ -185,46 +201,45 @@ export default function FreelancePage() {
     }
   }
 
-  const handleSubmitApplication = async () => {
-    if (!selectedProjectId) return
-    
-    try {
-      const response = await fetch(`http://localhost:5000/api/projects/${selectedProjectId}/apply`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          project_id: selectedProjectId,
-          user_id: user.id,
-          proposal: proposalData.proposal,
-          price: proposalData.price
-        }),
-      })
-
-      if (response.ok) {
-        showNotificationMessage("Application submitted successfully!")
-        setShowApplyModal(false)
-        setProposalData({ proposal: "", price: "" })
-        
-        // Refresh projects to update proposal count
-        const projectsResponse = await fetch("http://localhost:5000/api/projects")
-        if (projectsResponse.ok) {
-          const data = await projectsResponse.json()
-          setProjects(data)
-        }
-      } else {
-        const data = await response.json()
-        showNotificationMessage(data.message || "Error applying to project")
-      }
-    } catch (err) {
-      console.error("Application error:", err)
-      showNotificationMessage("Server error. Please try again later.")
+  // Enhanced Hire Now function
+  const handleHireNow = async (freelancerId: number) => {
+    if (!user.isLoggedIn) {
+      setShowRoleSelectionModal(true)
+      return
     }
-  }
+    
+    if (user.role === 'client') {
+      try {
+        // In a real implementation, you would have a project ID context
+        // For now, we'll use a placeholder project ID
+        const projectId = 1; // This should come from context or selection
+        
+        const response = await fetch(`http://localhost:5000/api/projects/${projectId}/hire`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            freelancerId: freelancerId,
+            // Add authentication token in real implementation
+          }),
+        })
 
-  const handleHireNow = (freelancerId: number) => {
-    router.push(`/freelance/freelancer/${freelancerId}/hire`)
+        if (response.ok) {
+          showNotificationMessage("Freelancer hired successfully! They have been notified.")
+        } else {
+          const data = await response.json()
+          showNotificationMessage(data.message || "Error hiring freelancer")
+        }
+      } catch (err) {
+        console.error("Hire error:", err)
+        showNotificationMessage("Server error. Please try again later.")
+      }
+    } else if (user.role === 'freelancer') {
+      showNotificationMessage("Not allowed for freelancers. Only clients can hire.")
+    } else {
+      setShowRoleSelectionModal(true)
+    }
   }
 
   const handleStartChat = (userId: number) => {
@@ -322,6 +337,44 @@ export default function FreelancePage() {
     }
   }
 
+  const handleSubmitApplication = async () => {
+    if (!selectedProjectId) return
+    
+    try {
+      const response = await fetch(`http://localhost:5000/api/projects/${selectedProjectId}/apply`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          project_id: selectedProjectId,
+          user_id: user.id,
+          proposal: proposalData.proposal,
+          price: proposalData.price
+        }),
+      })
+
+      if (response.ok) {
+        showNotificationMessage("Application submitted successfully!")
+        setShowApplyModal(false)
+        setProposalData({ proposal: "", price: "" })
+        
+        // Refresh projects to update proposal count
+        const projectsResponse = await fetch("http://localhost:5000/api/projects")
+        if (projectsResponse.ok) {
+          const data = await projectsResponse.json()
+          setProjects(data)
+        }
+      } else {
+        const data = await response.json()
+        showNotificationMessage(data.message || "Error applying to project")
+      }
+    } catch (err) {
+      console.error("Application error:", err)
+      showNotificationMessage("Server error. Please try again later.")
+    }
+  }
+
   const handleRegister = async (role: 'freelancer' | 'client') => {
     setRegistrationData(prev => ({ ...prev, role }))
     
@@ -391,6 +444,93 @@ export default function FreelancePage() {
       role: ""
     })
     setErrors({})
+  }
+
+  // Apply filters
+  const applyFilters = async () => {
+    setLoading(true)
+    try {
+      let url = ""
+      const params = new URLSearchParams()
+      
+      if (activeTab === "projects") {
+        url = "http://localhost:5000/api/filter/projects"
+        if (filterOptions.minBudget) params.append("minBudget", filterOptions.minBudget)
+        if (filterOptions.maxBudget) params.append("maxBudget", filterOptions.maxBudget)
+        if (filterOptions.skills) params.append("skills", filterOptions.skills)
+        if (filterOptions.timePosted) params.append("timePosted", filterOptions.timePosted)
+        if (filterOptions.sortBy) params.append("sortBy", filterOptions.sortBy)
+      } else {
+        url = "http://localhost:5000/api/filter/freelancers"
+        if (filterOptions.minRate) params.append("minRate", filterOptions.minRate)
+        if (filterOptions.maxRate) params.append("maxRate", filterOptions.maxRate)
+        if (filterOptions.skills) params.append("skills", filterOptions.skills)
+        if (filterOptions.availability) params.append("availability", filterOptions.availability)
+        if (filterOptions.skillLevel) params.append("skillLevel", filterOptions.skillLevel)
+        if (filterOptions.sortBy) params.append("sortBy", filterOptions.sortBy)
+      }
+      
+      const queryString = params.toString()
+      const fullUrl = queryString ? `${url}?${queryString}` : url
+      
+      const response = await fetch(fullUrl)
+      if (!response.ok) throw new Error("Failed to fetch filtered data")
+      
+      const data = await response.json()
+      
+      if (activeTab === "projects") {
+        setProjects(data)
+      } else {
+        setFreelancers(data)
+      }
+      
+      setShowFilterSidebar(false)
+    } catch (err) {
+      setError("Failed to apply filters. Please try again.")
+      console.error("Filter error:", err)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  // Reset filters
+  const resetFilters = () => {
+    setFilterOptions({
+      minBudget: "",
+      maxBudget: "",
+      skills: "",
+      timePosted: "",
+      sortBy: "newest",
+      minRate: "",
+      maxRate: "",
+      availability: "",
+      skillLevel: "",
+    })
+    
+    // Refetch original data
+    const fetchData = async () => {
+      setLoading(true)
+      try {
+        if (activeTab === "projects") {
+          const response = await fetch("http://localhost:5000/api/projects")
+          if (!response.ok) throw new Error("Failed to fetch projects")
+          const data = await response.json()
+          setProjects(data)
+        } else {
+          const response = await fetch("http://localhost:5000/api/users/freelancers")
+          if (!response.ok) throw new Error("Failed to fetch freelancers")
+          const data = await response.json()
+          setFreelancers(data)
+        }
+      } catch (err) {
+        setError("Failed to load data. Please try again later.")
+        console.error("Fetch error:", err)
+      } finally {
+        setLoading(false)
+      }
+    }
+    
+    fetchData()
   }
 
   // Format date to relative time (e.g., "2 days ago")
@@ -833,6 +973,189 @@ export default function FreelancePage() {
         </div>
       )}
 
+      {/* Filter Sidebar */}
+      {showFilterSidebar && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex z-50 animate-fadeIn">
+          <div className="bg-white w-80 h-full overflow-y-auto animate-slideInRight">
+            <div className="sticky top-0 bg-white border-b border-slate-200 p-4 flex justify-between items-center">
+              <h2 className="text-xl font-bold text-slate-900">Filter Options</h2>
+              <button
+                onClick={() => setShowFilterSidebar(false)}
+                className="text-slate-500 hover:text-slate-700 transition-colors"
+                aria-label="Close filter"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            
+            <div className="p-4 space-y-6">
+              {activeTab === "projects" ? (
+                <>
+                  <div>
+                    <h3 className="font-semibold text-slate-900 mb-3">Budget Range ($)</h3>
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <label className="block text-sm text-slate-600 mb-1">Min</label>
+                        <input
+                          type="number"
+                          value={filterOptions.minBudget}
+                          onChange={(e) => setFilterOptions({...filterOptions, minBudget: e.target.value})}
+                          className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                          placeholder="0"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm text-slate-600 mb-1">Max</label>
+                        <input
+                          type="number"
+                          value={filterOptions.maxBudget}
+                          onChange={(e) => setFilterOptions({...filterOptions, maxBudget: e.target.value})}
+                          className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                          placeholder="10000"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h3 className="font-semibold text-slate-900 mb-3">Skills</h3>
+                    <input
+                      type="text"
+                      value={filterOptions.skills}
+                      onChange={(e) => setFilterOptions({...filterOptions, skills: e.target.value})}
+                      className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                      placeholder="React, Node.js, Design"
+                    />
+                  </div>
+                  
+                  <div>
+                    <h3 className="font-semibold text-slate-900 mb-3">Time Posted</h3>
+                    <select
+                      value={filterOptions.timePosted}
+                      onChange={(e) => setFilterOptions({...filterOptions, timePosted: e.target.value})}
+                      className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                    >
+                      <option value="">Any time</option>
+                      <option value="24h">Last 24 hours</option>
+                      <option value="3d">Last 3 days</option>
+                      <option value="7d">Last week</option>
+                      <option value="30d">Last month</option>
+                    </select>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div>
+                    <h3 className="font-semibold text-slate-900 mb-3">Hourly Rate ($)</h3>
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <label className="block text-sm text-slate-600 mb-1">Min</label>
+                        <input
+                          type="number"
+                          value={filterOptions.minRate}
+                          onChange={(e) => setFilterOptions({...filterOptions, minRate: e.target.value})}
+                          className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                          placeholder="0"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm text-slate-600 mb-1">Max</label>
+                        <input
+                          type="number"
+                          value={filterOptions.maxRate}
+                          onChange={(e) => setFilterOptions({...filterOptions, maxRate: e.target.value})}
+                          className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                          placeholder="200"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h3 className="font-semibold text-slate-900 mb-3">Skills</h3>
+                    <input
+                      type="text"
+                      value={filterOptions.skills}
+                      onChange={(e) => setFilterOptions({...filterOptions, skills: e.target.value})}
+                      className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                      placeholder="React, Node.js, Design"
+                    />
+                  </div>
+                  
+                  <div>
+                    <h3 className="font-semibold text-slate-900 mb-3">Availability</h3>
+                    <select
+                      value={filterOptions.availability}
+                      onChange={(e) => setFilterOptions({...filterOptions, availability: e.target.value})}
+                      className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                    >
+                      <option value="">Any availability</option>
+                      <option value="Available">Available</option>
+                      <option value="Busy">Busy</option>
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <h3 className="font-semibold text-slate-900 mb-3">Skill Level</h3>
+                    <select
+                      value={filterOptions.skillLevel}
+                      onChange={(e) => setFilterOptions({...filterOptions, skillLevel: e.target.value})}
+                      className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                    >
+                      <option value="">Any level</option>
+                      <option value="beginner">Beginner</option>
+                      <option value="intermediate">Intermediate</option>
+                      <option value="expert">Expert</option>
+                    </select>
+                  </div>
+                </>
+              )}
+              
+              <div>
+                <h3 className="font-semibold text-slate-900 mb-3">Sort By</h3>
+                <select
+                  value={filterOptions.sortBy}
+                  onChange={(e) => setFilterOptions({...filterOptions, sortBy: e.target.value})}
+                  className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                >
+                  {activeTab === "projects" ? (
+                    <>
+                      <option value="newest">Newest First</option>
+                      <option value="oldest">Oldest First</option>
+                      <option value="budget_high">Budget: High to Low</option>
+                      <option value="budget_low">Budget: Low to High</option>
+                    </>
+                  ) : (
+                    <>
+                      <option value="rating_high">Rating: High to Low</option>
+                      <option value="rating_low">Rating: Low to High</option>
+                      <option value="rate_high">Rate: High to Low</option>
+                      <option value="rate_low">Rate: Low to High</option>
+                      <option value="projects_high">Projects: High to Low</option>
+                    </>
+                  )}
+                </select>
+              </div>
+              
+              <div className="flex space-x-3 pt-4">
+                <button
+                  onClick={resetFilters}
+                  className="flex-1 px-4 py-2 border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-100 transition-colors"
+                >
+                  Reset
+                </button>
+                <button
+                  onClick={applyFilters}
+                  className="flex-1 px-4 py-2 bg-gradient-to-r from-blue-700 to-coral-500 text-white rounded-lg hover:shadow-lg transition-all"
+                >
+                  Apply Filters
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Navigation */}
       <nav className="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -939,11 +1262,10 @@ export default function FreelancePage() {
         </div>
       </section>
 
-      {/* Rest of the component remains the same as before */}
       {/* Search and Filter Section */}
       <section className="py-12 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col gap-4 mb-8">
+          <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <div className="flex-1 relative">
               <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
               <input
@@ -954,8 +1276,11 @@ export default function FreelancePage() {
                 className="w-full pl-12 pr-4 py-3 rounded-lg border border-slate-200 focus:border-coral-500 focus:ring-2 focus:ring-blue-200 outline-none"
               />
             </div>
-            <button className="flex items-center justify-center px-6 py-3 border border-slate-200 rounded-lg hover:border-coral-500 transition-colors">
-              <Filter className="w-5 h-5 mr-2" />
+            <button 
+              onClick={() => setShowFilterSidebar(true)}
+              className="flex items-center justify-center px-6 py-3 border border-slate-200 rounded-lg hover:border-coral-500 transition-colors"
+            >
+              <SlidersHorizontal className="w-5 h-5 mr-2" />
               Filters
             </button>
           </div>
@@ -1260,9 +1585,7 @@ export default function FreelancePage() {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <div className="w-8 h-8 bg-gradient-to-r from-blue-700 to-coral-500 rounded-lg flex items-center justify-center">
-                  <Zap className="w-5 h-5 text-white" />
-                  <img src="../logodvwhitey.png" alt="" className="w-30 h-10  border-rounded " style={{ borderRadius: "50%" }} // ✅ correct
-                />
+                  <img src="../logodvwhitey.png" alt="" className="w-30 h-10  border-rounded " style={{ borderRadius: "50%" }} />
                 </div>
                 <span className="text-2xl font-bold">DevVoltz</span>
               </div>
@@ -1361,11 +1684,18 @@ export default function FreelancePage() {
           from { transform: scale(0.95); opacity: 0; }
           to { transform: scale(1); opacity: 1; }
         }
+        @keyframes slideInRight {
+          from { transform: translateX(100%); }
+          to { transform: translateX(0); }
+        }
         .animate-fadeIn {
           animation: fadeIn 0.2s ease-out;
         }
         .animate-scaleIn {
           animation: scaleIn 0.2s ease-out;
+        }
+        .animate-slideInRight {
+          animation: slideInRight 0.3s ease-out;
         }
       `}</style>
     </div>

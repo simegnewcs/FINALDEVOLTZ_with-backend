@@ -7,21 +7,21 @@ import { useEffect, useState } from "react"
 const allCourses = [
   // Web Development - Frontend
   {
-    id: "html",
+    id: "DEVVOLTZ/E-Learnig-platform/e-learn-courses/html-course.html",
     title: "HTML Basics",
     category: "web-development",
     description: "Structure web content using HTML.",
     image: "/Html1.png/?height=200&width=300",
   },
   {
-    id: "css",
+    id: "DEVVOLTZ/E-Learnig-platform/e-learn-courses/css-course.html",
     title: "CSS Styling",
     category: "web-development",
     description: "Style websites with CSS.",
     image: "/css.png?height=200&width=300",
   },
   {
-    id: "javascript",
+    id: "DEVVOLTZ/E-Learnig-platform/e-learn-courses/javascript-course.html",
     title: "JavaScript Essentials",
     category: "web-development",
     description: "Make web pages interactive using JavaScript.",
@@ -278,7 +278,7 @@ const allCourses = [
     image: "/C Language.png?height=200&width=300",
   },
   {
-    id: "Cplusplus",
+    id: "DEVVOLTZ/E-Learnig-platform/e-learn-courses/cpp-course.html",
     title: "C++ Programming",
     category: "programming",
     description: "High-performance programming with OOP and low-level features.",
@@ -366,7 +366,7 @@ export default function CategoryPage() {
                   <h2 className="text-lg font-bold text-slate-900 mb-2">{course.title}</h2>
                   <p className="text-sm text-slate-600 line-clamp-2">{course.description}</p>
                   <button
-                    onClick={() => router.push(`/elearning/course/${course.id}`)}
+                    onClick={() => router.push(`/${course.id}`)}
                     className="mt-4 w-full bg-gradient-to-r from-blue-700 to-orange-500 text-white py-2 rounded-lg text-sm font-medium hover:shadow-lg transition"
                   >
                     View Course

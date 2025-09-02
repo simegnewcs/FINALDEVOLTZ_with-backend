@@ -89,6 +89,62 @@ export const applyForProject = (req, res) => {
 };
 
 // ✅ Hire a freelancer for a project
+// export const hireFreelancer = (req, res) => {
+//   const { projectId } = req.params;
+//   const { freelancerId } = req.body;
+
+//   if (!projectId || !freelancerId) {
+//     return res.status(400).json({ message: "Project ID and Freelancer ID are required" });
+//   }
+
+//   const sql = "UPDATE applications SET status = 'hired' WHERE project_id = ? AND user_id = ?";
+//   db.query(sql, [projectId, freelancerId], (err, result) => {
+//     if (err) return res.status(500).json({ message: "Database error", error: err });
+    
+//     // Update project status
+//     const updateSql = "UPDATE projects SET status = 'in_progress' WHERE id = ?";
+//     db.query(updateSql, [projectId], (err) => {
+//       if (err) console.error("Error updating project status:", err);
+//     });
+    
+//     res.status(200).json({ message: "Freelancer hired successfully" });
+//   });
+// };
+
+
+// Add this new function for hiring validation
+export const validateHireRequest = (req, res, next) => {
+  const { freelancerId } = req.body;
+  const clientId = req.user?.id; // Assuming you have user authentication
+
+  if (!clientId) {
+    return res.status(401).json({ message: "Authentication required" });
+  }
+
+  // Check if user is a client
+  const checkClientSql = "SELECT role FROM users WHERE id = ?";
+  db.query(checkClientSql, [clientId], (err, results) => {
+    if (err) return res.status(500).json({ message: "Database error", error: err });
+    
+    if (results.length === 0 || results[0].role !== 'client') {
+      return res.status(403).json({ message: "Only clients can hire freelancers" });
+    }
+    
+    // Check if freelancer exists
+    const checkFreelancerSql = "SELECT id FROM users WHERE id = ? AND role = 'freelancer'";
+    db.query(checkFreelancerSql, [freelancerId], (err, freelancerResults) => {
+      if (err) return res.status(500).json({ message: "Database error", error: err });
+      
+      if (freelancerResults.length === 0) {
+        return res.status(404).json({ message: "Freelancer not found" });
+      }
+      
+      next(); // Proceed to hire function
+    });
+  });
+};
+
+// Update the hireFreelancer function to use validation
 export const hireFreelancer = (req, res) => {
   const { projectId } = req.params;
   const { freelancerId } = req.body;
@@ -107,8 +163,14 @@ export const hireFreelancer = (req, res) => {
       if (err) console.error("Error updating project status:", err);
     });
     
+    // Create a notification for the freelancer
+    const notificationSql = "INSERT INTO notifications (user_id, message, type) VALUES (?, ?, ?)";
+    const notificationMessage = `You've been hired for project #${projectId}!`;
+    db.query(notificationSql, [freelancerId, notificationMessage, 'hire'], (err) => {
+      if (err) console.error("Error creating notification:", err);
+    });
+    
     res.status(200).json({ message: "Freelancer hired successfully" });
   });
 };
-
 

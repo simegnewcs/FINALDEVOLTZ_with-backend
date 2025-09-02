@@ -1,4 +1,4 @@
-/* each-course.css */
+each-course.css
 
 /* Brand Colors */
 :root {
@@ -232,9 +232,7 @@ font-size: 20px;
   .prose {
     font-size: 0.95rem;
   }
-  .hamburger{
-    display: block;
-  }
+ 
 
   .mainCon{
  
@@ -244,9 +242,7 @@ font-size: 20px;
  
 }
 
-.wholeleft{
-  display: none;
-}
+
 
 .footerpart{
   padding-left: 15px;
@@ -278,4 +274,18 @@ pre {
 
 pre:hover {
   box-shadow: 0 6px 20px rgb(41 157 213 / 0.6);
+}
+
+.whytog{
+  display: none;
+}
+
+
+@media(max-width:768px){
+  .whytog{
+    display:block;
+  }
+  .whytog.active{
+    display:none;
+  }
 }
