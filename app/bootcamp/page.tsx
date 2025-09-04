@@ -20,6 +20,10 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 
 export default function BootcampPage() {
+  const [isOpen, setIsOpen] = useState(false);
+ const [showPayment, setShowPayment] = useState(false);
+
+ 
   const [activeTab, setActiveTab] = useState("upcoming")
   const [showRegistrationModal, setShowRegistrationModal] = useState(false)
   const [selectedBootcamp, setSelectedBootcamp] = useState("")
@@ -78,6 +82,12 @@ export default function BootcampPage() {
     setShowRegistrationModal(true)
   }
 
+  const handleScroll = (e) => {
+    const { scrollTop, scrollHeight, clientHeight } = e.target;
+    if (scrollTop + clientHeight >= scrollHeight - 40) {
+      setShowPayment(true);
+    }
+  };
   const handleDownloadCurriculum = (bootcampId: string) => {
     // Only run on client side
     if (isClient) {
@@ -226,20 +236,20 @@ export default function BootcampPage() {
       title: "Full Stack Web Development Bootcamp",
       description:
         "Comprehensive 16-week program covering frontend, backend, and deployment. From zero to job-ready developer.",
-      duration: "16 weeks",
-      format: "Hybrid (Online + In-person)",
-      startDate: "March 15, 2024",
-      endDate: "July 8, 2024",
-      schedule: "Mon-Fri, 6:00 PM - 9:00 PM",
-      price: "$1,999",
-      earlyBird: "$1,599",
-      location: "Addis Ababa & Online",
-      instructor: "Sarah Johnson & Team",
+      duration: "Four Month",
+      format: "Online",
+      startDate: "Any time there is Registration",
+      endDate: "",
+      schedule: "Three Days per Week for two hour",
+      price: "12,000 Birr",
+      earlyBird: "10,000 Birr",
+      location: "Online",
+      instructor: "",
       spots: 25,
       enrolled: 18,
       rating: 4.9,
-      image: "/placeholder.svg?height=300&width=400",
-      skills: ["HTML/CSS", "JavaScript", "React", "Node.js", "MongoDB", "AWS"],
+      image: "/fullbootcamp.png?height=300&width=300",
+      skills: ["HTML/CSS", "Bootstrap","JavaScript", "React", "Node.js","My SQL", "MongoDB", "AWS"],
       outcomes: [
         "Build 5+ Portfolio Projects",
         "Job Placement Assistance",
@@ -254,17 +264,17 @@ export default function BootcampPage() {
         "Learn to build native and cross-platform mobile apps for iOS and Android using React Native and Flutter.",
       duration: "12 weeks",
       format: "Online",
-      startDate: "April 1, 2024",
-      endDate: "June 24, 2024",
-      schedule: "Tue/Thu/Sat, 7:00 PM - 10:00 PM",
-      price: "$1,499",
-      earlyBird: "$1,199",
+      startDate: "Any time there is registration",
+      endDate: "",
+      schedule: "Three Days per a week for 2 hour",
+      price: "15,000 Birr",
+      earlyBird: "13500 Birr",
       location: "Online",
-      instructor: "Ahmed Hassan",
+      instructor: "",
       spots: 20,
       enrolled: 12,
       rating: 4.8,
-      image: "/placeholder.svg?height=300&width=400",
+      image: "/MOBILEAPPBOOTCAMP.png?height=300&width=400",
       skills: ["React Native", "Flutter", "Firebase", "App Store Deployment", "UI/UX Design"],
       outcomes: ["Build 3 Mobile Apps", "App Store Publishing", "Freelance Opportunities", "Industry Connections"],
     },
@@ -274,36 +284,89 @@ export default function BootcampPage() {
       description:
         "Master data analysis, machine learning, and visualization tools to become a data-driven professional.",
       duration: "14 weeks",
-      format: "Hybrid (Online + In-person)",
-      startDate: "May 6, 2024",
-      endDate: "August 12, 2024",
-      schedule: "Mon/Wed/Fri, 6:30 PM - 9:30 PM",
-      price: "$1,799",
-      earlyBird: "$1,399",
-      location: "Dubai & Online",
-      instructor: "Dr. Meron Tadesse",
+      format: "Online",
+      startDate:"Any time there is registration",
+      endDate: "",
+      schedule: "Three days per a week for 2 hour",
+      price: "9000 Birr",
+      earlyBird: "8000 Birr",
+      location: "Online",
+      instructor: "",
       spots: 15,
       enrolled: 8,
       rating: 4.9,
-      image: "/placeholder.svg?height=300&width=400",
+      image: "/databootcamp.png?height=300&width=400",
       skills: ["Python", "SQL", "Machine Learning", "Tableau", "Statistics", "Big Data"],
       outcomes: ["Real-world Projects", "Industry Certification", "Job Placement Support", "Data Portfolio"],
     },
+
+    {
+  "id": "frontend-web-dev",
+  "title": "Frontend Web Development Bootcamp",
+  "description": "12-week intensive program focusing on building beautiful, responsive, and interactive user interfaces using modern frontend technologies.",
+  "duration": "Three Month",
+  "format": "Online",
+  "startDate": "Any time there is Registration",
+  "endDate": "",
+  "schedule": "Three Days per Week for two hour",
+  "price": "8,000 Birr",
+  "earlyBird": "6,500 Birr",
+  "location": "Online",
+  "instructor": "",
+  "spots": 25,
+  "enrolled": 12,
+  "rating": 4.8,
+  "image": "/frontnd bootcamp.png?height=300&width=300",
+  "skills": ["HTML", "CSS", "Bootstrap", "JavaScript", "React"],
+  "outcomes": [
+    "Build 3+ Portfolio Projects",
+    "Master modern UI design principles",
+    "Industry Mentorship",
+    "Certificate of Completion"
+  ]
+},
+   {
+  "id": "backend-web-dev",
+  "title": "Backend Web Development Bootcamp",
+  "description": "12-week program designed to master server-side development, databases, and deployment to build scalable and secure applications.",
+  "duration": "Three Month",
+  "format": "Online",
+  "startDate": "Any time there is Registration",
+  "endDate": "",
+  "schedule": "Three Days per Week for two hour",
+  "price": "9,000 Birr",
+  "earlyBird": "7,500 Birr",
+  "location": "Online",
+  "instructor": "",
+  "spots": 25,
+  "enrolled": 10,
+  "rating": 4.85,
+  "image": "/bacendbootcamp.png?height=300&width=300",
+  "skills": ["Node.js", "MySQL", "MongoDB", "Express.js", "AWS"],
+  "outcomes": [
+    "Develop RESTful APIs",
+    "Build secure & scalable applications",
+    "Job Placement Assistance",
+    "Certificate of Completion"
+  ]
+},
+ 
+    
   ]
 
   const completedBootcamps = [
     {
       id: "web-dev-jan-2024",
       title: "Full Stack Web Development - January 2024",
-      graduates: 22,
+      graduates: 122,
       jobPlacement: "95%",
-      avgSalary: "$45,000",
+      avgSalary: "$4500",
       duration: "16 weeks",
       completionDate: "January 2024",
       testimonials: [
         {
           name: "Daniel Bekele",
-          role: "Full Stack Developer at TechCorp",
+          role: "Full Stack Developer",
           content: "The bootcamp transformed my career completely. Now I'm working at my dream company!",
           rating: 5,
         },
@@ -314,13 +377,13 @@ export default function BootcampPage() {
       title: "Mobile App Development - November 2023",
       graduates: 18,
       jobPlacement: "89%",
-      avgSalary: "$42,000",
+      avgSalary: "$4000",
       duration: "12 weeks",
       completionDate: "November 2023",
       testimonials: [
         {
           name: "Hanan Ahmed",
-          role: "Mobile Developer at StartupXYZ",
+          role: "Mobile Developer",
           content: "Excellent curriculum and supportive instructors. I built my first app during the bootcamp!",
           rating: 5,
         },
@@ -362,7 +425,7 @@ export default function BootcampPage() {
   ]
 
   const stats = [
-    { number: "500+", label: "Graduates" },
+    { number: "250+", label: "Graduates" },
     { number: "95%", label: "Job Placement Rate" },
     { number: "$48K", label: "Average Starting Salary" },
     { number: "4.9/5", label: "Student Rating" },
@@ -947,9 +1010,9 @@ export default function BootcampPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link href="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r  rounded-lg flex items-center justify-center">
-                <Zap className="w-5 h-5 text-white" />
-                 <img src="../logodvwhitey.png" alt="" className="w-20 h-10  border-rounded " style={{ borderRadius: "50%" }} // ✅ correct
+              <div className="">
+                
+                 <img src="../logobest.jpg" alt="" className="w-30 h-12  border-rounded " style={{ borderRadius: "50%" }} // ✅ correct
                 />
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-blue-700 to-coral-500 bg-clip-text text-transparent">
@@ -995,12 +1058,69 @@ export default function BootcampPage() {
               in months, not years.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={() => handleApplyNow("fullstack-web-dev")}
-                className="bg-gradient-to-r from-blue-700 to-coral-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:shadow-xl transition-all"
-              >
-                Apply Now
-              </button>
+
+                          {/* <button 
+                      
+                            // onClick={() => handleApplyNow(bootcamp.id)}
+                            className="bg-gradient-to-r from-blue-700 to-coral-500 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-all text-sm sm:text-base"
+                          >
+                            Apply Now
+                          </button>  */}
+
+    <div className="p-6">
+      {/* Apply Now Button */}
+      <button
+        onClick={() => setIsOpen(true)}
+        className="bg-gradient-to-r from-blue-700 to-coral-500 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-all text-sm sm:text-base"
+      >
+        Apply Now
+      </button>
+
+      {/* Modal */}
+      {isOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50">
+          <div className="bg-white rounded-2xl shadow-2xl w-[90%] max-w-2xl p-4 relative">
+            
+            {/* Close Button */}
+            <button
+              onClick={() => {
+                setIsOpen(false);
+                setShowPayment(false);
+              }}
+              className="absolute top-2 right-2 text-gray-600 hover:text-gray-900 text-xl font-bold"
+            >
+              ×
+            </button>
+
+            {/* Scrollable Container for Google Form */}
+            <div
+              className="overflow-y-auto rounded-lg"
+              style={{ maxHeight: "800px" }}
+              onScroll={handleScroll}
+            >
+              <iframe
+                src="https://forms.gle/LnKkd3TY7tMqQwKK6"
+                width="100%"
+                height="800"
+                frameBorder="0"
+                className="rounded-lg"
+                title="Google Form"
+              ></iframe>
+            </div>
+
+            {/* Payment Info Popup */}
+            {showPayment && (
+              <div className="mt-4 bg-gradient-to-r from-yellow-300 to-orange-400 text-black p-4 rounded-xl shadow-lg text-center animate-bounce">
+                <h3 className="text-lg font-bold">💳 Payment Accounts</h3>
+                <p className="mt-2">📱 TeleBirr: <span className="font-semibold">0912345678</span></p>
+                <p>🏦 CBE: <span className="font-semibold">1000123456789</span></p>
+                <p className="text-sm mt-2 text-gray-700">Please send your payment after submitting the form.</p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
               <button
                 onClick={handleContactInfo}
                 className="border-2 border-slate-300 text-slate-700 px-8 py-4 rounded-lg text-lg font-semibold hover:border-coral-500 hover:text-coral-500 transition-all"
@@ -1086,7 +1206,7 @@ export default function BootcampPage() {
                       <img
                         src={bootcamp.image || "/placeholder.svg"}
                         alt={bootcamp.title}
-                        className="w-full h-48 lg:h-full object-cover"
+                        className="h-38 sm:h-full "
                       />
                       <div className="absolute top-4 left-4">
                         <span className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">
@@ -1158,18 +1278,66 @@ export default function BootcampPage() {
                           </span>
                         </div>
                         <div className="flex flex-col sm:flex-row gap-3">
-                          <button
+                          {/* <button
                             onClick={() => handleDownloadCurriculum(bootcamp.id)}
                             className="px-4 py-2 border border-slate-300 rounded-lg hover:border-coral-500 hover:text-coral-500 transition-all text-sm sm:text-base"
                           >
                             Download Curriculum
-                          </button>
-                          <button
-                            onClick={() => handleApplyNow(bootcamp.id)}
-                            className="bg-gradient-to-r from-blue-700 to-coral-500 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-all text-sm sm:text-base"
-                          >
-                            Apply Now
-                          </button>
+                          </button> */}
+                         <div className="p-6">
+      {/* Apply Now Button */}
+      <button
+        onClick={() => setIsOpen(true)}
+        className="bg-gradient-to-r from-blue-700 to-coral-500 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-all text-sm sm:text-base"
+      >
+        Apply Now
+      </button>
+
+      {/* Modal */}
+      {isOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50">
+          <div className="bg-white rounded-2xl shadow-2xl w-[90%] max-w-2xl p-4 relative">
+            
+            {/* Close Button */}
+            <button
+              onClick={() => {
+                setIsOpen(false);
+                setShowPayment(false);
+              }}
+              className="absolute top-2 right-2 text-gray-600 hover:text-gray-900 text-xl font-bold"
+            >
+              ×
+            </button>
+
+            {/* Scrollable Container for Google Form */}
+            <div
+              className="overflow-y-auto rounded-lg"
+              style={{ maxHeight: "800px" }}
+              onScroll={handleScroll}
+            >
+              <iframe
+                src="https://forms.gle/LnKkd3TY7tMqQwKK6"
+                width="100%"
+                height="800"
+                frameBorder="0"
+                className="rounded-lg"
+                title="Google Form"
+              ></iframe>
+            </div>
+
+            {/* Payment Info Popup */}
+            {showPayment && (
+              <div className="mt-4 bg-gradient-to-r from-yellow-300 to-orange-400 text-black p-4 rounded-xl shadow-lg text-center animate-bounce">
+                <h3 className="text-lg font-bold">💳 Payment Accounts</h3>
+                <p className="mt-2">📱 TeleBirr: <span className="font-semibold">0912345678</span></p>
+                <p>🏦 CBE: <span className="font-semibold">1000123456789</span></p>
+                <p className="text-sm mt-2 text-gray-700">Please send your payment after submitting the form.</p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
                         </div>
                       </div>
                     </div>
@@ -1236,12 +1404,12 @@ export default function BootcampPage() {
             Join hundreds of successful graduates who transformed their careers with our intensive bootcamp programs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
+            {/* <button
               onClick={() => handleApplyNow("fullstack-web-dev")}
               className="bg-white text-blue-700 px-8 py-4 rounded-lg text-lg font-semibold hover:shadow-xl transition-all"
             >
               Apply to Bootcamp
-            </button>
+            </button> */}
             <button
               onClick={handleContactInfo}
               className="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-blue-700 transition-all"
@@ -1258,9 +1426,9 @@ export default function BootcampPage() {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-700 to-coral-500 rounded-lg flex items-center justify-center">
-                  <Zap className="w-5 h-5 text-white" />
-                  <img src="../logodvwhitey.png" alt="" className="w-30 h-10  border-rounded " style={{ borderRadius: "50%" }} // ✅ correct
+                <div className="">
+                  {/* <Zap className="w-5 h-5 text-white" /> */}
+                  <img src="../logobest.jpg" alt="" className="w-30 h-12  border-rounded " style={{ borderRadius: "50%" }} // ✅ correct
                 />
                 </div>
                 <span className="text-2xl font-bold">DevVoltz</span>

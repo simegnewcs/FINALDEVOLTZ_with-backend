@@ -41,9 +41,9 @@ export default function HomePage() {
   }
 
   const stats = [
-    { number: "1100+", label: "Students Trained", icon: Users },
-    { number: "200+", label: "Projects Completed", icon: Briefcase },
-    { number: "50+", label: "Software Solutions", icon: Code },
+    { number: "130+", label: "Students Trained", icon: Users },
+    { number: "38+", label: "Projects Completed", icon: Briefcase },
+    { number: "21+", label: "Software Solutions", icon: Code },
     { number: "95%", label: "Job Placement Rate", icon: Award },
   ]
 
@@ -119,7 +119,7 @@ export default function HomePage() {
             <Link href="/" className="flex items-center space-x-2">
               <div className="d-flex">
                 {/* <Zap className="w-5 h-5 text-white" /> */}
-                <img src="../logodvwhitey.png" alt="" className="w-30 h-12  border-rounded " style={{ borderRadius: "50%" }} // ✅ correct
+                <img src="../logobest.jpg" alt="" className="w-30 h-12  border-rounded " style={{ borderRadius: "50%" }} // ✅ correct
                 />
                  
               </div>
@@ -397,12 +397,14 @@ export default function HomePage() {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-700 to-coral-500 rounded-lg flex items-center justify-center">
-                  <Zap className="w-5 h-5 text-white" />
+                <div className="">
+                  {/* <Zap className="w-5 h-5 text-white" /> */}
+                  <img src="../logobest.jpg" alt="" className="w-30 h-12  border-rounded " style={{ borderRadius: "50%" }} // ✅ correct
+                />
                 </div>
                 <span className="text-2xl font-bold">DevVoltz</span>
               </div>
-              <p className="text-slate-400">Empowering Africa's tech future from Addis Ababa to Dubai and beyond.</p>
+              <p className="text-slate-400">Empowering Africa's tech future.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-4">Services</h3>
@@ -481,7 +483,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="border-t border-slate-800 pt-8 text-center text-slate-400">
-            <p>&copy; 2024 DevVoltz. All rights reserved. Made with Devvoltz in Addis Ababa & Dubai</p>
+            <p>&copy; 2024 DevVoltz. All rights reserved. Made with Devvoltz.</p>
           </div>
         </div>
       </footer>

@@ -8,7 +8,7 @@ export default function AboutPage() {
       role: "CEO and Founder",
       bio: "Full Stack Developer, Software Engineer, Computer Scientist, and Project Manager with a passion for building innovative solutions and leading impactful projects.",
       image: "/semegn.jpg?height=300&width=300",
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/smegn/",
     },
     {
       name: "MELKAMU WALLE",
@@ -30,6 +30,15 @@ export default function AboutPage() {
       role: "CXO and Co-Founder",
       bio: "Digital Marketing Specialist and Content Creator passionate about building engaging brand stories, driving online growth, and creating impactful digital experiences.",
       image: "/Nardi.jpg?height=300&width=300",
+      linkedin: "#",
+    },
+
+
+      {
+      name: "Birtukan",
+      role: "CXO and Co-Founder",
+      bio: "Digital Marketing Specialist and Content Creator passionate about building engaging brand stories, driving online growth, and creating impactful digital experiences.",
+      image: "/Birte.jpg?height=300&width=300",
       linkedin: "#",
     },
   ]
@@ -108,9 +117,9 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link href="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-700 to-coral-500 rounded-lg flex items-center justify-center">
-                <Zap className="w-5 h-5 text-white" />
-                <img src="../logodvwhitey.png" alt="" className="w-30 h-10  border-rounded " style={{ borderRadius: "50%" }} // ✅ correct
+              <div className="">
+               
+                <img src="../logobest.jpg" alt="" className="w-30 h-10  border-rounded " style={{ borderRadius: "50%" }} // ✅ correct
                 />
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-blue-700 to-coral-500 bg-clip-text text-transparent">
@@ -331,9 +340,9 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-700 to-coral-500 rounded-lg flex items-center justify-center">
-                  <Zap className="w-5 h-5 text-white" />
-                     <img src="../logodvwhitey.png" alt="" className="w-30 h-10  border-rounded " style={{ borderRadius: "50%" }} // ✅ correct
+                <div className="">
+                
+                     <img src="../logobest.jpg" alt="" className="w-30 h-10  border-rounded " style={{ borderRadius: "50%" }} // ✅ correct
                 />
                 </div>
                 <span className="text-2xl font-bold">DevVoltz</span>

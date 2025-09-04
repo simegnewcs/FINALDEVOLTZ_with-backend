@@ -28,21 +28,21 @@ const allCourses = [
     image: "/JS.jpg?height=200&width=300",
   },
   {
-    id: "typescript",
+    id: "DEVVOLTZ/E-Learnig-platform/e-learn-courses/typescript-course.html",
     title: "TypeScript",
     category: "web-development",
     description: "Enhance JavaScript with static typing.",
     image: "/TS.png?height=200&width=300",
   },
   {
-    id: "react",
+    id: "DEVVOLTZ/E-Learnig-platform/e-learn-courses/react-course.html",
     title: "React.js",
     category: "web-development",
     description: "Build user interfaces with React.",
     image:"/react.jpg?height=200&width=300",
   },
   {
-    id: "ValueJS",
+    id: "DEVVOLTZ/E-Learnig-platform/e-learn-courses/vue-course.html",
     title: "Vue.js",
     category: "web-development",
     description: "Progressive JavaScript framework for building UI.",
@@ -65,21 +65,21 @@ const allCourses = [
 
   // Web Development - Backend
   {
-    id: "nodejs",
+    id: "DEVVOLTZ/E-Learnig-platform/e-learn-courses/nodejs-course.html",
     title: "Node.js",
     category: "web-development",
     description: "Run JavaScript on the server-side.",
     image: "/node.jpg?height=200&width=300",
   },
   {
-    id: "PHP",
+    id: "DEVVOLTZ/E-Learnig-platform/e-learn-courses/php-course.html",
     title: "PHP",
     category: "web-development",
     description: "Server-side scripting for dynamic web content.",
     image: "/php.jpg?height=200&width=300",
   },
   {
-    id: "Django",
+    id: "DEVVOLTZ/E-Learnig-platform/e-learn-courses/python-course.html",
     title: "Python (Django)",
     category: "web-development",
     description: "High-level Python web framework.",

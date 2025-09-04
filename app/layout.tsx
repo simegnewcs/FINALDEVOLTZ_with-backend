@@ -101,7 +101,8 @@ export const metadata: Metadata = {
       {
         url: '/Devvoltz logo.jpg',
         width: 1200,
-        height: 630,
+        height: 1030,
+      
         alt: 'Devvoltz Technology - Empowering the future of tech through education, innovation, and community.',
       },
     ],

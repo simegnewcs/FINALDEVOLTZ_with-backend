@@ -562,8 +562,8 @@ export default function FreelancePage() {
   )
 
   const stats = [
-    { number: "10,000+", label: "Active Freelancers" },
-    { number: "5,000+", label: "Projects Completed" },
+    { number: "1000+", label: "Active Freelancers" },
+    { number: "500+", label: "Projects Completed" },
     { number: "$2M+", label: "Total Earnings" },
     { number: "98%", label: "Client Satisfaction" },
   ]
@@ -1161,8 +1161,8 @@ export default function FreelancePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link href="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-700 to-coral-500 rounded-lg flex items-center justify-center">
-                <img src="../logodvwhitey.png" alt="" className="w-50 h-15  border-rounded " style={{ borderRadius: "50%" }} // ✅ correct
+              <div className="">
+                <img src="../logobest.jpg" alt="" className="w-30 h-12  border-rounded " style={{ borderRadius: "50%" }} // ✅ correct
                 />
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-blue-700 to-coral-500 bg-clip-text text-transparent">
@@ -1584,8 +1584,8 @@ export default function FreelancePage() {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-700 to-coral-500 rounded-lg flex items-center justify-center">
-                  <img src="../logodvwhitey.png" alt="" className="w-30 h-10  border-rounded " style={{ borderRadius: "50%" }} />
+                <div className="">
+                  <img src="../logobest.jpg" alt="" className="w-30 h-10  border-rounded " style={{ borderRadius: "50%" }} />
                 </div>
                 <span className="text-2xl font-bold">DevVoltz</span>
               </div>
@@ -1670,7 +1670,7 @@ export default function FreelancePage() {
             </div>
           </div>
           <div className="border-t border-slate-800 pt-8 text-center text-slate-400">
-            <p>&copy; 2024 DevVoltz. All rights reserved. Made with ❤️ in Addis Ababa & Dubai</p>
+            <p>&copy; 2024 DevVoltz. All rights reserved. Made with ❤️ DevVoltz.</p>
           </div>
         </div>
       </footer>
