@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Node.js Advanced Tutorial</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    header {
+      background-color: #D4EBF7;
+    }
+    pre {
+      background-color: #f3f4f6;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+    }
+    #sidebar {
+      transition: transform 0.3s ease-in-out;
+    }
+    #sidebar a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.375rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    #sidebar a:hover {
+      background-color: #1e40af;
+      color: #ffffff;
+      transform: translateX(5px);
+    }
+    #sidebar a.active {
+      background-color: #3b82f6;
+      font-weight: bold;
+      color: white;
+    }
+    #main-content {
+      width: 75.4%;
+    }
+    @media (max-width: 768px) {
+      #sidebar {
+        transform: translateX(-100%);
+      }
+      #sidebar.open {
+        transform: translateX(0);
+      }
+      #main-content {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <!-- Sidebar -->
+  <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-gray-900 text-white p-4 overflow-y-auto md:transform-none z-50">
+    <h2 class="text-xl font-bold mb-4">Node.js Advanced Tutorial</h2>
+    <div class="mt-6">
+      <h3 class="font-semibold mb-2">Advanced Communication</h3>
+      <ul class="space-y-1 text-sm">
+        <li><a href="#graphql" class="text-gray-300 block">GraphQL</a></li>
+        <li><a href="#socket-io" class="text-gray-300 block">Socket.IO</a></li>
+        <li><a href="#websockets" class="text-gray-300 block">WebSockets</a></li>
+      </ul>
+      <h3 class="font-semibold mb-2 mt-4">Testing & Debugging</h3>
+      <ul class="space-y-1 text-sm">
+        <li><a href="#node-adv-debugging" class="text-gray-300 block">Node Advanced Debugging</a></li>
+        <li><a href="#node-testing-apps" class="text-gray-300 block">Node Testing Apps</a></li>
+        <li><a href="#node-test-frameworks" class="text-gray-300 block">Node Test Frameworks</a></li>
+        <li><a href="#node-test-runner" class="text-gray-300 block">Node Test Runner</a></li>
+      </ul>
+      <h3 class="font-semibold mb-2 mt-4">Node.js Deployment</h3>
+      <ul class="space-y-1 text-sm">
+        <li><a href="#node-env-variables" class="text-gray-300 block">Node Env Variables</a></li>
+        <li><a href="#node-dev-vs-prod" class="text-gray-300 block">Node Dev vs Prod</a></li>
+        <li><a href="#node-ci-cd" class="text-gray-300 block">Node CI/CD</a></li>
+        <li><a href="#node-security" class="text-gray-300 block">Node Security</a></li>
+        <li><a href="#node-deployment" class="text-gray-300 block">Node Deployment</a></li>
+      </ul>
+      <h3 class="font-semibold mb-2 mt-4">Performance & Scaling</h3>
+      <ul class="space-y-1 text-sm">
+        <li><a href="#node-logging" class="text-gray-300 block">Node Logging</a></li>
+        <li><a href="#node-monitoring" class="text-gray-300 block">Node Monitoring</a></li>
+        <li><a href="#node-performance" class="text-gray-300 block">Node Performance</a></li>
+        <li><a href="#child-process-module" class="text-gray-300 block">Child Process Module</a></li>
+        <li><a href="#cluster-module" class="text-gray-300 block">Cluster Module</a></li>
+        <li><a href="#worker-threads" class="text-gray-300 block">Worker Threads</a></li>
+      </ul>
+      <h3 class="font-semibold mb-2 mt-4">Node.js Advanced</h3>
+      <ul class="space-y-1 text-sm">
+        <li><a href="#microservices" class="text-gray-300 block">Microservices</a></li>
+        <li><a href="#node-webassembly" class="text-gray-300 block">Node WebAssembly</a></li>
+        <li><a href="#http2-module" class="text-gray-300 block">HTTP2 Module</a></li>
+        <li><a href="#perf-hooks-module" class="text-gray-300 block">Perf_hooks Module</a></li>
+        <li><a href="#vm-module" class="text-gray-300 block">VM Module</a></li>
+        <li><a href="#tls-ssl-module" class="text-gray-300 block">TLS/SSL Module</a></li>
+        <li><a href="#net-module" class="text-gray-300 block">Net Module</a></li>
+        <li><a href="#zlib-module" class="text-gray-300 block">Zlib Module</a></li>
+        <li><a href="#real-world-examples" class="text-gray-300 block">Real-World Examples</a></li>
+      </ul>
+      <h3 class="font-semibold mb-2 mt-4">Hardware & IoT</h3>
+      <ul class="space-y-1 text-sm">
+        <li><a href="#raspi-get-started" class="text-gray-300 block">RasPi Get Started</a></li>
+        <li><a href="#raspi-gpio-introduction" class="text-gray-300 block">RasPi GPIO Introduction</a></li>
+        <li><a href="#raspi-blinking-led" class="text-gray-300 block">RasPi Blinking LED</a></li>
+        <li><a href="#raspi-led-pushbutton" class="text-gray-300 block">RasPi LED & Pushbutton</a></li>
+        <li><a href="#raspi-flowing-leds" class="text-gray-300 block">RasPi Flowing LEDs</a></li>
+        <li><a href="#raspi-websocket" class="text-gray-300 block">RasPi WebSocket</a></li>
+        <li><a href="#raspi-rgb-led-websocket" class="text-gray-300 block">RasPi RGB LED WebSocket</a></li>
+        <li><a href="#raspi-components" class="text-gray-300 block">RasPi Components</a></li>
+      </ul>
+      <h3 class="font-semibold mb-2 mt-4">Node.js Reference</h3>
+      <ul class="space-y-1 text-sm">
+        <li><a href="#event-emitter" class="text-gray-300 block">EventEmitter (events)</a></li>
+        <li><a href="#worker-cluster" class="text-gray-300 block">Worker (cluster)</a></li>
+        <li><a href="#cipher-crypto" class="text-gray-300 block">Cipher (crypto)</a></li>
+        <li><a href="#decipher-crypto" class="text-gray-300 block">Decipher (crypto)</a></li>
+        <li><a href="#diffie-hellman-crypto" class="text-gray-300 block">DiffieHellman (crypto)</a></li>
+        <li><a href="#ecdh-crypto" class="text-gray-300 block">ECDH (crypto)</a></li>
+        <li><a href="#hash-crypto" class="text-gray-300 block">Hash (crypto)</a></li>
+        <li><a href="#hmac-crypto" class="text-gray-300 block">Hmac (crypto)</a></li>
+        <li><a href="#sign-crypto" class="text-gray-300 block">Sign (crypto)</a></li>
+        <li><a href="#verify-crypto" class="text-gray-300 block">Verify (crypto)</a></li>
+        <li><a href="#socket-dgram-net-tls" class="text-gray-300 block">Socket (dgram, net, tls)</a></li>
+        <li><a href="#readstream-fs-stream" class="text-gray-300 block">ReadStream (fs, stream)</a></li>
+        <li><a href="#writestream-fs-stream" class="text-gray-300 block">WriteStream (fs, stream)</a></li>
+        <li><a href="#server-http-https-net-tls" class="text-gray-300 block">Server (http, https, net, tls)</a></li>
+        <li><a href="#agent-http-https" class="text-gray-300 block">Agent (http, https)</a></li>
+        <li><a href="#request-http" class="text-gray-300 block">Request (http)</a></li>
+        <li><a href="#response-http" class="text-gray-300 block">Response (http)</a></li>
+        <li><a href="#message-http" class="text-gray-300 block">Message (http)</a></li>
+        <li><a href="#interface-readline" class="text-gray-300 block">Interface (readline)</a></li>
+      </ul>
+    </div>
+    <button id="close-sidebar" class="md:hidden mt-4 bg-red-600 px-4 py-2 rounded-md">Close</button>
+  </aside>
+
+  <!-- Mobile Toggle Button -->
+  <button id="open-sidebar" class="md:hidden fixed top-4 left-4 z-50 bg-blue-600 text-white p-2 rounded-md">
+    ☰ Menu
+  </button>
+
+  <!-- Header -->
+  <header class="py-6 md:ml-64">
+    <div class="container mx-auto px-4">
+      <h1 class="text-3xl font-bold">Advanced Node.js Tutorial</h1>
+      <p class="mt-2">Explore advanced Node.js concepts for building scalable, real-time, and IoT applications.</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8 md:ml-64 space-y-12" id="main-content">
+    <section class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200" id="welcome">
+      <h2 class="text-3xl font-bold text-blue-900 mb-4 flex items-center gap-2">
+        <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M5 4v16h14V4H5zm13 1v2H6V5h12zM6 8h12v11H6V8z"/>
+        </svg>
+        Welcome to Advanced Node.js
+      </h2>
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        This tutorial covers advanced Node.js topics, including real-time communication, testing, deployment, performance optimization, and IoT integration.
+      </p>
+      <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6">
+        <h3 class="text-xl font-semibold text-blue-800 mb-2">📌 What is Node.js?</h3>
+        <ul class="list-disc pl-6 text-gray-700 space-y-1">
+          <li>Node.js is a JavaScript runtime for server-side development.</li>
+          <li>Enables real-time apps with WebSockets and GraphQL.</li>
+          <li>Scales with modules like Cluster and Worker Threads.</li>
+          <li>Ideal for IoT with Raspberry Pi integration.</li>
+        </ul>
+        <div class="mt-3 bg-white rounded-md p-3 border">
+          <p class="text-sm text-gray-800 mb-2"><strong>Example:</strong> Simple HTTP server</p>
+          <pre class="overflow-auto text-sm"><code>const http = require('http');
+http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('Hello Node.js!');
+}).listen(3000);</code></pre>
+        </div>
+      </div>
+      <div class="text-center mt-8">
+        <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-full shadow transition">
+          🎯 Start Learning
+        </a>
+      </div>
+      <p class="text-gray-600 mt-6 text-center">📚 Select a topic from the sidebar to dive in!</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-4 mt-8 md:ml-64">
+    <div class="container mx-auto px-4 text-center">
+      <p>© 2025 Node.js Advanced Tutorial. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    const topicContents = {
+      "graphql": {
+        title: "GraphQL",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">GraphQL</h2>
+            <p class="mb-4">GraphQL is a query language for APIs, allowing clients to request specific data. It’s efficient for Node.js apps with complex data structures.</p>
+            <h3 class="text-xl font-semibold mb-2">Key Features</h3>
+            <ul class="list-disc list-inside mb-4">
+              <li>Client-specified queries</li>
+              <li>Single endpoint for data</li>
+              <li>Strong typing system</li>
+            </ul>
+            <h3 class="text-xl font-semibold mb-2">Example: GraphQL Server</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const express = require('express');
+const { graphqlHTTP } = require('express-graphql');
+const { buildSchema } = require('graphql');
+const schema = buildSchema(\`
+  type Query {
+    books: [Book!]!
+  }
+  type Book {
+    id: ID!
+    title: String!
+  }
+\`);
+const root = { books: () => [{ id: '1', title: 'Node.js Guide' }] };
+const app = express();
+app.use('/graphql', graphqlHTTP({ schema, rootValue: root }));
+app.listen(4000);</code></pre>
+            <p class="mb-4">Run queries at <code>/graphql</code> using tools like GraphiQL.</p>[](https://www.w3schools.com/nodejs/nodejs_graphql.asp)
+          </section>
+        `
+      },
+      "socket-io": {
+        title: "Socket.IO",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Socket.IO</h2>
+            <p class="mb-4">Socket.IO is a library for real-time, bidirectional communication, built on WebSockets with fallbacks for older browsers.</p>
+            <h3 class="text-xl font-semibold mb-2">Features</h3>
+            <ul class="list-disc list-inside mb-4">
+              <li>Multiplexing for multiple channels</li>
+              <li>Automatic reconnection</li>
+              <li>Binary data support</li>
+            </ul>
+            <h3 class="text-xl font-semibold mb-2">Example: Chat App</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const { Server } = require('socket.io');
+const http = require('http');
+const server = http.createServer();
+const io = new Server(server);
+io.on('connection', (socket) => {
+  socket.on('message', (msg) => {
+    io.emit('message', msg);
+  });
+});
+server.listen(3000);</code></pre>
+            <p class="mb-4">Use Socket.IO for reliable real-time apps like chats.</p>[](https://www.w3schools.com/nodejs/nodejs_socketio.asp)
+          </section>
+        `
+      },
+      "websockets": {
+        title: "WebSockets",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">WebSockets</h2>
+            <p class="mb-4">WebSockets provide a persistent, bidirectional connection for real-time communication.</p>
+            <h3 class="text-xl font-semibold mb-2">Example: WebSocket Server</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const WebSocket = require('ws');
+const server = new WebSocket.Server({ port: 8080 });
+server.on('connection', (ws) => {
+  ws.on('message', (msg) => {
+    ws.send(\`Echo: \${msg}\`);
+  });
+});</code></pre>
+            <p class="mb-4">Use <code>ws</code> for lightweight WebSocket servers, or Socket.IO for added features.</p>[](https://www.w3schools.com/nodejs/nodejs_websockets.asp)
+          </section>
+        `
+      },
+      "node-adv-debugging": {
+        title: "Node Advanced Debugging",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Node Advanced Debugging</h2>
+            <p class="mb-4">Advanced debugging in Node.js uses tools like Chrome DevTools and Clinic.js for diagnosing issues.</p>
+            <h3 class="text-xl font-semibold mb-2">Example: Chrome DevTools</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>node --inspect app.js</code></pre>
+            <p class="mb-4">Access via <code>chrome://inspect</code>. Use Clinic.js for performance profiling:</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>npm install -g clinic
+clinic doctor -- node app.js</code></pre>
+            <p class="mb-4">Debug memory leaks and race conditions effectively.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "node-testing-apps": {
+        title: "Node Testing Apps",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Node Testing Apps</h2>
+            <p class="mb-4">Test Node.js apps to ensure reliability using frameworks like Mocha or Jest.</p>
+            <h3 class="text-xl font-semibold mb-2">Example: Mocha Test</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const assert = require('assert');
+describe('Array', () => {
+  it('should return -1 when not found', () => {
+    assert.strictEqual([1, 2, 3].indexOf(4), -1);
+  });
+});</code></pre>
+            <p class="mb-4">Run with <code>mocha</code>.</p>[](https://www.w3schools.com/nodejs/nodejs_testing.asp)
+          </section>
+        `
+      },
+      "node-test-frameworks": {
+        title: "Node Test Frameworks",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Node Test Frameworks</h2>
+            <p class="mb-4">Popular frameworks include Mocha, Jest, and Vitest for unit and integration testing.</p>
+            <p class="mb-4">Mocha is flexible, Jest is feature-rich, and Vitest is fast with Vite.</p>
+          </section>
+        `
+      },
+      "node-test-runner": {
+        title: "Node Test Runner",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Node Test Runner</h2>
+            <p class="mb-4">Node.js includes a built-in test runner since v18.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>import test from 'node:test';
+import assert from 'node:assert';
+test('example', () => {
+  assert.strictEqual(1 + 1, 2);
+});</code></pre>
+            <p class="mb-4">Run with <code>node --test</code>.</p>[](https://www.w3schools.com/nodejs/nodejs_testing.asp)
+          </section>
+        `
+      },
+      "node-env-variables": {
+        title: "Node Env Variables",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Node Env Variables</h2>
+            <p class="mb-4">Use environment variables to configure apps securely.</p>
+            <h3 class="text-xl font-semibold mb-2">Example: .env File</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>require('dotenv').config();
+console.log(process.env.API_KEY);</code></pre>
+            <p class="mb-4">Use <code>dotenv</code> for loading variables.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "node-dev-vs-prod": {
+        title: "Node Dev vs Prod",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Node Dev vs Prod</h2>
+            <p class="mb-4">Development uses tools like nodemon, while production focuses on stability and performance.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>NODE_ENV=production node app.js</code></pre>
+          </section>
+        `
+      },
+      "node-ci-cd": {
+        title: "Node CI/CD",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Node CI/CD</h2>
+            <p class="mb-4">Automate testing and deployment with GitHub Actions or Jenkins.</p>
+            <h3 class="text-xl font-semibold mb-2">Example: GitHub Actions</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>name: CI
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm test</code></pre>
+            <p class="mb-4">Ensures code quality and deployment.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "node-security": {
+        title: "Node Security",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Node Security</h2>
+            <p class="mb-4">Secure Node.js apps with JWT, HTTPS, and input validation.</p>
+            <h3 class="text-xl font-semibold mb-2">Example: JWT Authentication</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const jwt = require('jsonwebtoken');
+const token = jwt.sign({ user: 'id' }, 'secret');
+jwt.verify(token, 'secret', (err, decoded) => {
+  if (!err) console.log(decoded);
+});</code></pre>
+            <p class="mb-4">Use helmet for HTTP headers and sanitize inputs.</p>[](https://www.w3schools.com/nodejs/nodejs_websockets.asp)
+          </section>
+        `
+      },
+      "node-deployment": {
+        title: "Node Deployment",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Node Deployment</h2>
+            <p class="mb-4">Deploy Node.js apps to platforms like AWS, Heroku, or Docker.</p>
+            <h3 class="text-xl font-semibold mb-2">Example: Docker</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>FROM node:16
+WORKDIR /app
+COPY . .
+RUN npm install
+CMD ["node", "app.js"]</code></pre>
+            <p class="mb-4">Use PM2 for process management.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "node-logging": {
+        title: "Node Logging",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Node Logging</h2>
+            <p class="mb-4">Use Winston or Pino for structured logging.</p>
+            <h3 class="text-xl font-semibold mb-2">Example: Winston</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const winston = require('winston');
+const logger = winston.createLogger({
+  transports: [new winston.transports.File({ filename: 'app.log' })]
+});
+logger.info('App started');</code></pre>
+            <p class="mb-4">Log to files or external services.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "node-monitoring": {
+        title: "Node Monitoring",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Node Monitoring</h2>
+            <p class="mb-4">Monitor apps with tools like Prometheus or New Relic.</p>
+            <h3 class="text-xl font-semibold mb-2">Example: Prometheus</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const client = require('prom-client');
+const counter = new client.Counter({
+  name: 'http_requests_total',
+  help: 'Total HTTP requests'
+});
+counter.inc();</code></pre>
+            <p class="mb-4">Track metrics for performance.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "node-performance": {
+        title: "Node Performance",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Node Performance</h2>
+            <p class="mb-4">Optimize with profiling and load balancing.</p>
+            <h3 class="text-xl font-semibold mb-2">Example: Clinic.js</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>clinic flame -- node app.js</code></pre>
+            <p class="mb-4">Analyze CPU usage and bottlenecks.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "child-process-module": {
+        title: "Child Process Module",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Child Process Module</h2>
+            <p class="mb-4">Run external processes in Node.js.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const { exec } = require('child_process');
+exec('ls', (err, stdout) => {
+  if (!err) console.log(stdout);
+});</code></pre>
+            <p class="mb-4">Useful for CPU-intensive tasks.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "cluster-module": {
+        title: "Cluster Module",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Cluster Module</h2>
+            <p class="mb-4">Scale Node.js across multiple CPU cores.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const cluster = require('cluster');
+if (cluster.isMaster) {
+  cluster.fork();
+} else {
+  require('./app');
+}</code></pre>
+            <p class="mb-4">Improves performance for multi-core systems.</p>[](https://dev.to/imsushant12/websockets-socketio-and-real-time-communication-with-nodejs-4ea0)
+          </section>
+        `
+      },
+      "worker-threads": {
+        title: "Worker Threads",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Worker Threads</h2>
+            <p class="mb-4">Run JavaScript in parallel threads.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const { Worker } = require('worker_threads');
+new Worker('./worker.js');</code></pre>
+            <p class="mb-4">Ideal for CPU-bound tasks.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "microservices": {
+        title: "Microservices",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Microservices</h2>
+            <p class="mb-4">Build scalable apps with microservices using Node.js.</p>
+            <h3 class="text-xl font-semibold mb-2">Example: Express Microservice</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const express = require('express');
+const app = express();
+app.get('/service', (req, res) => res.json({ status: 'up' }));
+app.listen(3001);</code></pre>
+            <p class="mb-4">Use message queues like RabbitMQ for communication.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "node-webassembly": {
+        title: "Node WebAssembly",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Node WebAssembly</h2>
+            <p class="mb-4">Run high-performance code in Node.js using WebAssembly.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const fs = require('fs');
+const wasm = fs.readFileSync('example.wasm');
+WebAssembly.instantiate(wasm).then(result => {
+  console.log(result.instance.exports.add(2, 3));
+});</code></pre>
+            <p class="mb-4">Use for performance-critical tasks.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "http2-module": {
+        title: "HTTP2 Module",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">HTTP2 Module</h2>
+            <p class="mb-4">Use HTTP/2 for faster connections.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const http2 = require('http2');
+const server = http2.createServer();
+server.on('stream', (stream) => {
+  stream.respond({ ':status': 200 });
+  stream.end('Hello HTTP/2');
+});
+server.listen(3000);</code></pre>
+            <p class="mb-4">Supports server push and multiplexing.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "perf-hooks-module": {
+        title: "Perf_hooks Module",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Perf_hooks Module</h2>
+            <p class="mb-4">Measure performance with high-resolution timers.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const { performance } = require('perf_hooks');
+performance.mark('start');
+setTimeout(() => {
+  performance.mark('end');
+  console.log(performance.measure('Task', 'start', 'end').duration);
+}, 1000);</code></pre>
+            <p class="mb-4">Track execution time.</p>[](https://www.w3schools.com/nodejs/nodejs_perf_hooks.asp)
+          </section>
+        `
+      },
+      "vm-module": {
+        title: "VM Module",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">VM Module</h2>
+            <p class="mb-4">Run JavaScript in isolated contexts.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const vm = require('vm');
+const context = vm.createContext({});
+vm.runInContext('x = 1', context);
+console.log(context.x);</code></pre>
+            <p class="mb-4">Useful for sandboxing code.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "tls-ssl-module": {
+        title: "TLS/SSL Module",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">TLS/SSL Module</h2>
+            <p class="mb-4">Secure network communication with TLS/SSL.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const tls = require('tls');
+const fs = require('fs');
+const server = tls.createServer({
+  key: fs.readFileSync('server-key.pem'),
+  cert: fs.readFileSync('server-cert.pem')
+});
+server.listen(443);</code></pre>
+            <p class="mb-4">Use for secure servers.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "net-module": {
+        title: "Net Module",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Net Module</h2>
+            <p class="mb-4">Create TCP servers and clients.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const net = require('net');
+const server = net.createServer((socket) => {
+  socket.write('Hello');
+});
+server.listen(3000);</code></pre>
+            <p class="mb-4">Handle raw TCP connections.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "zlib-module": {
+        title: "Zlib Module",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Zlib Module</h2>
+            <p class="mb-4">Compress and decompress data.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const zlib = require('zlib');
+zlib.gzip('Hello', (err, buffer) => {
+  if (!err) console.log(buffer);
+});</code></pre>
+            <p class="mb-4">Optimize data transfer.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "real-world-examples": {
+        title: "Real-World Examples",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Real-World Examples</h2>
+            <p class="mb-4">Build apps like chat systems, IoT dashboards, or microservices.</p>
+            <h3 class="text-xl font-semibold mb-2">Example: Chat App</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const io = require('socket.io')(3000);
+io.on('connection', (socket) => {
+  socket.on('chat', (msg) => io.emit('chat', msg));
+});</code></pre>
+            <p class="mb-4">Combine Socket.IO, GraphQL, and microservices for robust apps.</p>[](https://dev.to/imsushant12/websockets-socketio-and-real-time-communication-with-nodejs-4ea0)
+          </section>
+        `
+      },
+      "raspi-get-started": {
+        title: "RasPi Get Started",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">RasPi Get Started</h2>
+            <p class="mb-4">Use Node.js on Raspberry Pi for IoT projects.</p>
+            <h3 class="text-xl font-semibold mb-2">Setup</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>sudo apt update
+sudo apt install nodejs npm</code></pre>
+            <p class="mb-4">Install Node.js on Raspberry Pi.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "raspi-gpio-introduction": {
+        title: "RasPi GPIO Introduction",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">RasPi GPIO Introduction</h2>
+            <p class="mb-4">Control GPIO pins with Node.js.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const Gpio = require('onoff').Gpio;
+const led = new Gpio(18, 'out');
+led.write(1);</code></pre>
+            <p class="mb-4">Use <code>onoff</code> for GPIO control.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "raspi-blinking-led": {
+        title: "RasPi Blinking LED",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">RasPi Blinking LED</h2>
+            <p class="mb-4">Blink an LED using Node.js.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const Gpio = require('onoff').Gpio;
+const led = new Gpio(18, 'out');
+setInterval(() => led.writeSync(led.readSync() ^ 1), 1000);</code></pre>
+            <p class="mb-4">Toggle LED every second.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "raspi-led-pushbutton": {
+        title: "RasPi LED & Pushbutton",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">RasPi LED & Pushbutton</h2>
+            <p class="mb-4">Control LED with a pushbutton.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const Gpio = require('onoff').Gpio;
+const led = new Gpio(18, 'out');
+const button = new Gpio(4, 'in', 'both');
+button.watch((err, value) => {
+  led.writeSync(value);
+});</code></pre>
+            <p class="mb-4">LED toggles with button press.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "raspi-flowing-leds": {
+        title: "RasPi Flowing LEDs",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">RasPi Flowing LEDs</h2>
+            <p class="mb-4">Create flowing LED patterns.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const Gpio = require('onoff').Gpio;
+const leds = [new Gpio(18, 'out'), new Gpio(23, 'out')];
+let index = 0;
+setInterval(() => {
+  leds.forEach(led => led.writeSync(0));
+  leds[index].writeSync(1);
+  index = (index + 1) % leds.length;
+}, 500);</code></pre>
+            <p class="mb-4">Cycle through LEDs.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "raspi-websocket": {
+        title: "RasPi WebSocket",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">RasPi WebSocket</h2>
+            <p class="mb-4">Control Raspberry Pi via WebSocket.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const WebSocket = require('ws');
+const Gpio = require('onoff').Gpio;
+const led = new Gpio(18, 'out');
+const wss = new WebSocket.Server({ port: 8080 });
+wss.on('connection', (ws) => {
+  ws.on('message', (msg) => {
+    led.writeSync(msg === 'on' ? 1 : 0);
+  });
+});</code></pre>
+            <p class="mb-4">Control LED remotely.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "raspi-rgb-led-websocket": {
+        title: "RasPi RGB LED WebSocket",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">RasPi RGB LED WebSocket</h2>
+            <p class="mb-4">Control RGB LED with WebSocket.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const WebSocket = require('ws');
+const Gpio = require('onoff').Gpio;
+const rgb = [new Gpio(18, 'out'), new Gpio(23, 'out'), new Gpio(24, 'out')];
+const wss = new WebSocket.Server({ port: 8080 });
+wss.on('connection', (ws) => {
+  ws.on('message', (data) => {
+    const { r, g, b } = JSON.parse(data);
+    rgb[0].writeSync(r);
+    rgb[1].writeSync(g);
+    rgb[2].writeSync(b);
+  });
+});</code></pre>
+            <p class="mb-4">Set RGB colors via WebSocket.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "raspi-components": {
+        title: "RasPi Components",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">RasPi Components</h2>
+            <p class="mb-4">Integrate sensors and actuators with Node.js.</p>
+            <h3 class="text-xl font-semibold mb-2">Example: Temperature Sensor</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const sensor = require('node-dht-sensor');
+sensor.read(11, 4, (err, temp) => {
+  if (!err) console.log(\`Temp: \${temp}°C\`);
+});</code></pre>
+            <p class="mb-4">Use libraries like <code>node-dht-sensor</code>.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "event-emitter": {
+        title: "EventEmitter (events)",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">EventEmitter (events)</h2>
+            <p class="mb-4">Handle events in Node.js.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const EventEmitter = require('events');
+const emitter = new EventEmitter();
+emitter.on('event', () => console.log('Event fired'));
+emitter.emit('event');</code></pre>
+            <p class="mb-4">Core for asynchronous programming.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "worker-cluster": {
+        title: "Worker (cluster)",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Worker (cluster)</h2>
+            <p class="mb-4">Manage worker processes in cluster.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const cluster = require('cluster');
+if (cluster.isWorker) {
+  console.log('Worker running');
+}</code></pre>
+            <p class="mb-4">Scales apps across processes.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "cipher-crypto": {
+        title: "Cipher (crypto)",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Cipher (crypto)</h2>
+            <p class="mb-4">Encrypt data with Node.js.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const crypto = require('crypto');
+const cipher = crypto.createCipher('aes-256-cbc', 'secret');
+let encrypted = cipher.update('text', 'utf8', 'hex');
+encrypted += cipher.final('hex');
+console.log(encrypted);</code></pre>
+            <p class="mb-4">Secure sensitive data.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "decipher-crypto": {
+        title: "Decipher (crypto)",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Decipher (crypto)</h2>
+            <p class="mb-4">Decrypt data with Node.js.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const crypto = require('crypto');
+const decipher = crypto.createDecipher('aes-256-cbc', 'secret');
+let decrypted = decipher.update(encrypted, 'hex', 'utf8');
+decrypted += decipher.final('utf8');
+console.log(decrypted);</code></pre>
+            <p class="mb-4">Reverse encryption securely.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "diffie-hellman-crypto": {
+        title: "DiffieHellman (crypto)",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">DiffieHellman (crypto)</h2>
+            <p class="mb-4">Generate shared keys securely.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const crypto = require('crypto');
+const dh = crypto.createDiffieHellman(2048);
+const key = dh.generateKeys();
+console.log(key.toString('hex'));</code></pre>
+            <p class="mb-4">Used for key exchange.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "ecdh-crypto": {
+        title: "ECDH (crypto)",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">ECDH (crypto)</h2>
+            <p class="mb-4">Elliptic Curve Diffie-Hellman for key exchange.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const crypto = require('crypto');
+const ecdh = crypto.createECDH('secp256k1');
+ecdh.generateKeys();
+console.log(ecdh.getPublicKey('hex'));</code></pre>
+            <p class="mb-4">Efficient key exchange.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "hash-crypto": {
+        title: "Hash (crypto)",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Hash (crypto)</h2>
+            <p class="mb-4">Create data hashes.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const crypto = require('crypto');
+const hash = crypto.createHash('sha256');
+hash.update('text');
+console.log(hash.digest('hex'));</code></pre>
+            <p class="mb-4">Use for data integrity.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "hmac-crypto": {
+        title: "Hmac (crypto)",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Hmac (crypto)</h2>
+            <p class="mb-4">Create keyed hashes.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const crypto = require('crypto');
+const hmac = crypto.createHmac('sha256', 'secret');
+hmac.update('text');
+console.log(hmac.digest('hex'));</code></pre>
+            <p class="mb-4">Secure message authentication.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "sign-crypto": {
+        title: "Sign (crypto)",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Sign (crypto)</h2>
+            <p class="mb-4">Sign data for verification.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const crypto = require('crypto');
+const sign = crypto.createSign('RSA-SHA256');
+sign.update('text');
+const signature = sign.sign(privateKey, 'hex');
+console.log(signature);</code></pre>
+            <p class="mb-4">Ensure data authenticity.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "verify-crypto": {
+        title: "Verify (crypto)",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Verify (crypto)</h2>
+            <p class="mb-4">Verify signed data.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const crypto = require('crypto');
+const verify = crypto.createVerify('RSA-SHA256');
+verify.update('text');
+console.log(verify.verify(publicKey, signature, 'hex'));</code></pre>
+            <p class="mb-4">Validate signatures.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "socket-dgram-net-tls": {
+        title: "Socket (dgram, net, tls)",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Socket (dgram, net, tls)</h2>
+            <p class="mb-4">Handle UDP, TCP, and TLS sockets.</p>
+            <h3 class="text-xl font-semibold mb-2">Example: UDP Socket</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const dgram = require('dgram');
+const socket = dgram.createSocket('udp4');
+socket.send('Hello', 41234, 'localhost');</code></pre>
+            <p class="mb-4">Use for low-level networking.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "readstream-fs-stream": {
+        title: "ReadStream (fs, stream)",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">ReadStream (fs, stream)</h2>
+            <p class="mb-4">Stream data from files.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const fs = require('fs');
+const readStream = fs.createReadStream('file.txt');
+readStream.on('data', (chunk) => console.log(chunk));</code></pre>
+            <p class="mb-4">Efficient for large files.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "writestream-fs-stream": {
+        title: "WriteStream (fs, stream)",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">WriteStream (fs, stream)</h2>
+            <p class="mb-4">Write data to files via streams.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const fs = require('fs');
+const writeStream = fs.createWriteStream('file.txt');
+writeStream.write('Hello');</code></pre>
+            <p class="mb-4">Handle large data writes.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "server-http-https-net-tls": {
+        title: "Server (http, https, net, tls)",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Server (http, https, net, tls)</h2>
+            <p class="mb-4">Create servers for various protocols.</p>
+            <h3 class="text-xl font-semibold mb-2">Example: HTTPS Server</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const https = require('https');
+const fs = require('fs');
+https.createServer({
+  key: fs.readFileSync('server-key.pem'),
+  cert: fs.readFileSync('server-cert.pem')
+}, (req, res) => {
+  res.end('Secure');
+}).listen(443);</code></pre>
+            <p class="mb-4">Secure server communication.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "agent-http-https": {
+        title: "Agent (http, https)",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Agent (http, https)</h2>
+            <p class="mb-4">Manage HTTP/HTTPS connections.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const http = require('http');
+const agent = new http.Agent({ maxSockets: 10 });
+http.request({ agent }).end();</code></pre>
+            <p class="mb-4">Control connection pooling.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "request-http": {
+        title: "Request (http)",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Request (http)</h2>
+            <p class="mb-4">Make HTTP requests.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const http = require('http');
+http.request({ host: 'example.com', path: '/' }, (res) => {
+  res.on('data', (chunk) => console.log(chunk.toString()));
+}).end();</code></pre>
+            <p class="mb-4">Fetch data from APIs.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "response-http": {
+        title: "Response (http)",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Response (http)</h2>
+            <p class="mb-4">Handle HTTP responses.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const http = require('http');
+http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('OK');
+}).listen(3000);</code></pre>
+            <p class="mb-4">Send responses to clients.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "message-http": {
+        title: "Message (http)",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Message (http)</h2>
+            <p class="mb-4">Handle HTTP message objects.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const http = require('http');
+http.createServer((req) => {
+  console.log(req.headers);
+}).listen(3000);</code></pre>
+            <p class="mb-4">Access request metadata.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      },
+      "interface-readline": {
+        title: "Interface (readline)",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Interface (readline)</h2>
+            <p class="mb-4">Read input line by line.</p>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const readline = require('readline');
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+rl.question('Name? ', (answer) => {
+  console.log(\`Hello \${answer}\`);
+  rl.close();
+});</code></pre>
+            <p class="mb-4">Build CLI tools.</p>[](https://www.w3schools.com/nodejs/nodejs_performance.asp)
+          </section>
+        `
+      }
+    };
+
+    // Sidebar toggle (mobile)
+    document.getElementById('open-sidebar').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.add('open');
+    });
+
+    document.getElementById('close-sidebar').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.remove('open');
+    });
+
+    // Sidebar link click handler
+    document.querySelectorAll('#sidebar a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const topicId = link.getAttribute('href').substring(1);
+        loadTopicContent(topicId);
+
+        // Update active state
+        document.querySelectorAll('#sidebar a').forEach(a => a.classList.remove('active'));
+        link.classList.add('active');
+
+        // Close sidebar on mobile after clicking
+        document.getElementById('sidebar').classList.remove('open');
+      });
+    });
+
+    function loadTopicContent(topicId) {
+      const mainContent = document.getElementById('main-content');
+      const topic = topicContents[topicId];
+      if (topic) {
+        mainContent.innerHTML = `
+          <section class="bg-white p-6 rounded-lg shadow-md">
+            ${topic.content}
+            <button onclick="document.getElementById('main-content').innerHTML = document.getElementById('welcome').outerHTML" 
+                    class="mt-6 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+              Back to Welcome
+            </button>
+          </section>
+        `;
+      } else {
+        mainContent.innerHTML = `
+          <section class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold mb-4">Topic Not Found</h2>
+            <p>No content available for this topic.</p>
+            <button onclick="document.getElementById('main-content').innerHTML = document.getElementById('welcome').outerHTML" 
+                    class="mt-6 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+              Back to Welcome
+            </button>
+          </section>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>

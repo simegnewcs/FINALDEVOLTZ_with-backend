@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced HTML Tutorial</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    pre {
+      background-color: #f3f4f6;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+    }
+    #sidebar {
+      transition: transform 0.3s ease-in-out;
+    }
+    @media (max-width: 768px) {
+      #sidebar {
+        transform: translateX(-100%);
+      }
+      #sidebar.open {
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <!-- Sidebar -->
+  <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-gray-900 text-white p-4 overflow-y-auto md:transform-none z-50">
+    <h2 class="text-xl font-bold mb-4">Lesson Contents</h2>
+    <ul id="sidebar-links" class="space-y-2"></ul>
+    <button id="close-sidebar" class="md:hidden mt-4 bg-red-600 px-4 py-2 rounded-md">Close</button>
+  </aside>
+
+  <!-- Mobile Toggle Button -->
+  <button id="open-sidebar" class="md:hidden fixed top-4 left-4 z-50 bg-blue-600 text-white p-2 rounded-md">
+    ☰ Menu
+  </button>
+
+  <!-- Header -->
+  <header class="bg-blue-600 text-white py-6 md:ml-64">
+    <div class="container mx-auto px-4">
+      <h1 class="text-3xl font-bold">Lesson 1: Advanced HTML</h1>
+      <p class="mt-2">Explore semantic HTML, forms, and accessibility on the E-Learn platform.</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8 md:ml-64">
+    <section class="bg-white p-6 rounded-lg shadow-md">
+      <h2 id="semantic-html" class="text-2xl font-semibold mb-4">Semantic HTML</h2>
+      <p class="mb-4">
+        Semantic HTML uses elements that describe their meaning, improving accessibility and SEO. Examples include `<header>`, `<nav>`, `<main>`, and `<footer>`.
+      </p>
+      <pre class="mb-4"><code><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Semantic HTML</title>
+</head>
+<body>
+  <header>
+    <h1>My Website</h1>
+  </header>
+  <nav>
+    <a href="#home">Home</a> | <a href="#about">About</a>
+  </nav>
+  <main>
+    <section>
+      <h2>Welcome</h2>
+      <p>This is the main content.</p>
+    </section>
+  </main>
+  <footer>
+    <p>© 2025 My Website</p>
+  </footer>
+</body>
+</html></code></pre>
+      <h3 class="text-xl font-semibold mb-2">Try It Live</h3>
+      <iframe
+        class="w-full h-64 border border-gray-300 rounded-md mb-4"
+        srcdoc='<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Semantic HTML</title>
+</head>
+<body>
+  <header>
+    <h1>My Website</h1>
+  </header>
+  <nav>
+    <a href="#home">Home</a> | <a href="#about">About</a>
+  </nav>
+  <main>
+    <section>
+      <h2>Welcome</h2>
+      <p>This is the main content.</p>
+    </section>
+  </main>
+  <footer>
+    <p>© 2025 My Website</p>
+  </footer>
+</body>
+</html>'
+      ></iframe>
+
+      <h2 id="html-forms" class="text-2xl font-semibold mb-4 mt-6">HTML Forms</h2>
+      <p class="mb-4">
+        Forms collect user input using elements like `<input>`, `<label>`, and `<button>`. Here’s an example:
+      </p>
+      <pre class="mb-4"><code><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Example</title>
+</head>
+<body>
+  <form>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html></code></pre>
+      <h3 class="text-xl font-semibold mb-2">Try It Live</h3>
+      <iframe
+        class="w-full h-64 border border-gray-300 rounded-md mb-4"
+        srcdoc='<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Example</title>
+</head>
+<body>
+  <form>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>'
+      ></iframe>
+
+      <h2 id="web-accessibility" class="text-2xl font-semibold mb-4 mt-6">Web Accessibility</h2>
+      <p class="mb-4">
+        Accessibility ensures websites are usable by everyone. Use attributes like `aria-label` and semantic elements. Example:
+      </p>
+      <pre class="mb-4"><code><button aria-label="Close menu">X</button></code></pre>
+      <h3 class="text-xl font-semibold mb-2">Try It Live</h3>
+      <iframe
+        class="w-full h-24 border border-gray-300 rounded-md mb-4"
+        srcdoc='<button aria-label="Close menu">X</button>'
+      ></iframe>
+
+      <h2 id="practice-exercise" class="text-2xl font-semibold mb-4 mt-6">Practice Exercise</h2>
+      <p class="mb-4">
+        Create an HTML page with:
+        <ul class="list-disc pl-6">
+          <li>A semantic structure using `<header>`, `<nav>`, `<main>`, and `<footer>`.</li>
+          <li>A form with text and email inputs, including labels.</li>
+          <li>An accessible button with an `aria-label` attribute.</li>
+        </ul>
+      </p>
+    </section>
+
+    <!-- Navigation Links -->
+    <nav class="mt-8 flex justify-start md:ml-64">
+      <a
+        href="mysql-course.html"
+        class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+      >
+        Previous Lesson: Introduction to MySQL
+      </a>
+    </nav>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-4 mt-8 md:ml-64">
+    <div class="container mx-auto px-4 text-center">
+      <p>© 2025 E-Learn Platform. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Sidebar -->
+  <script>
+    // Generate sidebar links
+    const headings = document.querySelectorAll('h2');
+    const sidebarLinks = document.getElementById('sidebar-links');
+    headings.forEach(heading => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = `#${heading.id}`;
+      a.textContent = heading.textContent;
+      a.className = 'hover:text-blue-400';
+      li.appendChild(a);
+      sidebarLinks.appendChild(li);
+    });
+
+    // Toggle sidebar on mobile
+    const openSidebar = document.getElementById('open-sidebar');
+    const closeSidebar = document.getElementById('close-sidebar');
+    const sidebar = document.getElementById('sidebar');
+
+    openSidebar.addEventListener('click', () => {
+      sidebar.classList.add('open');
+    });
+
+    closeSidebar.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+    });
+  </script>
+</body>
+</html>

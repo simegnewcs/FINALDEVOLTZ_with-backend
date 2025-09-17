@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-Learning Platform</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    :root {
+      --primary: #4361ee;
+      --primary-light: #4895ef;
+      --secondary: #3f37c9;
+      --dark: #212529;
+      --light: #f8f9fa;
+      --transition: all 0.3s ease;
+    }
+    
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      transition: var(--transition);
+    }
+    
+    body.dark-mode {
+      background-color: #121212;
+      color: #ffffff;
+    }
+    
+    .dark-mode .card {
+      background-color: #1e1e1e;
+      color: white;
+      border-color: #333;
+    }
+    
+    .dark-mode .bg-light {
+      background-color: #2c2c2c !important;
+    }
+    
+    .navbar {
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .card {
+      transition: var(--transition);
+      border: none;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .btn {
+      border-radius: 8px;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--secondary);
+      border-color: var(--secondary);
+    }
+    
+    .sidebar {
+      box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+    }
+    
+    .nav-link {
+      border-radius: 8px;
+      margin: 2px 0;
+      transition: var(--transition);
+    }
+    
+    .nav-link:hover {
+      background-color: rgba(67, 97, 238, 0.1);
+    }
+    
+    @media (max-width: 768px) {
+      .sidebar {
+        position: fixed;
+        z-index: 1000;
+        height: 100vh;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+      }
+      .sidebar.show {
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">E-Learn</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <input type="text" id="searchInput" class="form-control mb-3" placeholder="Search lessons...">
+        <button class="btn btn-outline-light mb-3 ms-2" id="searchButton">Search</button>
+        <button class="btn btn-outline-secondary ms-3" onclick="toggleDarkMode()">🌙</button>
+
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Courses</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form onsubmit="handleLogin(event)">
+          <div class="modal-header">
+            <h5 class="modal-title">Login</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <input type="text" class="form-control mb-2" placeholder="Username" id="loginUsername" required>
+            <input type="password" class="form-control" placeholder="Password" id="loginPassword" required>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Action Button -->
+  <button class="btn btn-primary rounded-circle d-md-none" id="sidebarToggle" style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    z-index: 1001;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  ">
+    ≡
+  </button>
+
+  <!-- Sidebar + Content -->
+  <div class="container-fluid mt-5 pt-4">
+    <div class="row">
+      <!-- Sidebar -->
+      <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" id="sidebarMenu">
+        <div class="position-sticky pt-3">
+          <ul class="nav flex-column" id="courseList">
+            <li class="nav-item"><a class="nav-link" href="e-learn-courses/html-course.html">HTML</a></li>
+            <li class="nav-item"><a class="nav-link" href="e-learn-courses/css-course.html">CSS</a></li>
+            <li class="nav-item"><a class="nav-link" href="e-learn-courses/javascript-course.html">JavaScript</a></li>
+            <li class="nav-item"><a class="nav-link" href="e-learn-courses/bootstrap-course.html">Bootstrap</a></li>
+            <li class="nav-item"><a class="nav-link" href="e-learn-courses/react-course.html">React</a></li>
+            <li class="nav-item"><a class="nav-link" href="e-learn-courses/reactnative-course.html">React Native</a></li>
+            <li class="nav-item"><a class="nav-link" href="e-learn-courses/nodejs-course.html">Node.js</a></li>
+            <li class="nav-item"><a class="nav-link" href="e-learn-courses/express-course.html">Express</a></li>
+            <li class="nav-item"><a class="nav-link" href="e-learn-courses/mongodb-course.html">MongoDB</a></li>
+            <li class="nav-item"><a class="nav-link" href="e-learn-courses/mysql-course.html">MySQL</a></li>
+            <li class="nav-item"><a class="nav-link" href="e-learn-courses/php-course.html">PHP</a></li>
+            <li class="nav-item"><a class="nav-link" href="e-learn-courses/python-course.html">Python</a></li>
+            <li class="nav-item"><a class="nav-link" href="e-learn-courses/java-course.html">Java</a></li>
+            <li class="nav-item"><a class="nav-link" href="e-learn-courses/cpp-course.html">C++</a></li>
+            <li class="nav-item"><a class="nav-link" href="e-learn-courses/django-course.html">Django</a></li>
+            <li class="nav-item"><a class="nav-link" href="e-learn-courses/typescript-course.html">TypeScript</a></li>
+            <li class="nav-item"><a class="nav-link" href="e-learn-courses/postgresql-course.html">PostgreSQL</a></li>
+            <li class="nav-item"><a class="nav-link" href="e-learn-courses/sql-course.html">SQL</a></li>
+            <li class="nav-item"><a class="nav-link" href="e-learn-courses/git-course.html">Git</a></li>
+            <li class="nav-item"><a class="nav-link" href="e-learn-courses/jquery-course.html">jQuery</a></li>
+            <li class="nav-item"><a class="nav-link" href="e-learn-courses/ai-course.html">AI</a></li>
+            <li class="nav-item"><a class="nav-link" href="e-learn-courses/flutter-course.html">Flutter</a></li>
+            <li class="nav-item"><a class="nav-link" href="e-learn-courses/devvoltzcss-course.html">Devvoltz.css</a></li>
+            <li class="nav-item"><a class="nav-link" href="e-learn-courses/devvoltzframe-course.html">DevvoltzFrame</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Main content -->
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <h2 class="mt-4">Welcome to E-Learn</h2>
+        <p>Learn web development interactively, just like W3Schools!</p>
+        <div class="row" id="courseCards">
+          <!-- Cards will be generated by JavaScript -->
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const courses = [
+      "html", "css", "javascript", "bootstrap", "react", "reactnative", "nodejs", "express", "mongodb",
+      "mysql", "php", "python", "java", "cpp", "django", "typescript", "postgresql", "sql",
+      "git", "jquery", "ai", "flutter", "devvoltzcss", "devvoltzframe"
+    ];
+
+    const courseCardsContainer = document.getElementById("courseCards");
+    courses.forEach(course => {
+      const col = document.createElement("div");
+      col.className = "col-md-4 mb-4";
+      col.innerHTML = `
+        <div class="card h-100">
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="card-title mb-0">${course.charAt(0).toUpperCase() + course.slice(1)}</h5>
+              <span class="badge bg-primary-light text-primary rounded-pill">New</span>
+            </div>
+            <p class="card-text text-muted">Master ${course} with interactive tutorials and projects.</p>
+            <div class="mt-auto">
+              <div class="progress mb-3" style="height: 6px;">
+                <div class="progress-bar" style="width: ${Math.floor(Math.random() * 100)}%"></div>
+              </div>
+              <a href="e-learn-courses/${course}-course.html" class="btn btn-primary w-100">
+                Start Learning <i class="bi bi-arrow-right ms-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      `;
+      courseCardsContainer.appendChild(col);
+    });
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+      localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const user = document.getElementById("loginUsername").value;
+      localStorage.setItem("loggedInUser", user);
+      alert("Logged in as " + user);
+      location.reload();
+    }
+
+    window.onload = function () {
+      if (localStorage.getItem("darkMode") === "true") {
+        document.body.classList.add("dark-mode");
+      }
+    };
+  </script>
+  <script>
+    // Sidebar toggle for mobile
+    document.getElementById('sidebarToggle').addEventListener('click', function() {
+      document.getElementById('sidebarMenu').classList.toggle('show');
+    });
+
+    // Close sidebar when clicking outside
+    document.addEventListener('click', function(e) {
+      const sidebar = document.getElementById('sidebarMenu');
+      const toggleBtn = document.getElementById('sidebarToggle');
+      
+      if (!sidebar.contains(e.target) && !toggleBtn.contains(e.target) && window.innerWidth < 768) {
+        sidebar.classList.remove('show');
+      }
+    });
+
+    // Add loading animation
+    document.addEventListener('DOMContentLoaded', function() {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((card, index) => {
+        setTimeout(() => {
+          card.style.opacity = '1';
+        }, index * 100);
+      });
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</body>
+</html>

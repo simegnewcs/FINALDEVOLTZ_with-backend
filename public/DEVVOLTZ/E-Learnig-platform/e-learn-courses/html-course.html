@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" s/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HTML Tutorial</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    pre {
+      background-color: #f3f4f6;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+    }
+
+    #sidebar {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    #sidebar a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.375rem;
+      transition: background 0.2s;
+    }
+
+    #sidebar a:hover {
+      background-color: #1e40af;
+      color: #ffffff;
+    }
+
+    #sidebar a.active {
+      background-color: #3b82f6;
+      font-weight: bold;
+      color: white !important;
+    }
+
+    @media (max-width: 768px) {
+      #sidebar {
+        transform: translateX(-100%);
+      }
+
+      #sidebar.open {
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-gray-900 text-white p-4 overflow-y-auto md:transform-none z-50">
+    <h2 class="text-xl font-bold mb-4">Lesson Contents</h2>
+    <ul id="sidebar-links" class="space-y-2">
+      <li>
+        <a href="../HTML_PACKAGES/what-is-html.html" class="hover:text-blue-400 block">What is HTML?</a>
+      </li>
+      <li>
+        <a href="#basic-html-structure" class="hover:text-blue-400 block">Basic HTML Structure</a>
+      </li>
+      <li>
+        <a href="#common-html-elements" class="hover:text-blue-400 block">Common HTML Elements</a>
+      </li>
+      <li>
+        <a href="#practice-exercise" class="hover:text-blue-400 block">Practice Exercise</a>
+      </li>
+    </ul>
+
+    <div class="mt-6">
+      <h3 class="font-semibold mb-2">HTML Topics</h3>
+      <ul class="space-y-1 text-sm">
+        <li><a href="#evolution" class="text-gray-300 hover:text-blue-400 block">The Evolution of HTML</a></li>
+        <li><a href="#importance" class="text-gray-300 hover:text-blue-400 block">Importance of HTML</a></li>
+        <li><a href="#editors" class="text-gray-300 hover:text-blue-400 block">Writing HTML Editors</a></li>
+        <li><a href="#structure" class="text-gray-300 hover:text-blue-400 block">HTML Document Structure</a></li>
+        <li><a href="#elements" class="text-gray-300 hover:text-blue-400 block">Understanding HTML Elements & Attributes</a></li>
+        <li><a href="#headings" class="text-gray-300 hover:text-blue-400 block">Headings, Paragraphs & Line Breaks</a></li>
+        <li><a href="#formatting" class="text-gray-300 hover:text-blue-400 block">Inline Style & Formatting Text</a></li>
+        <li><a href="#quoting" class="text-gray-300 hover:text-blue-400 block">Quoting Text, Comments</a></li>
+        <li><a href="#color" class="text-gray-300 hover:text-blue-400 block">Adding Color and CSS</a></li>
+        <li><a href="#favicon" class="text-gray-300 hover:text-blue-400 block">Favicon and Page Title</a></li>
+        <li><a href="#tables" class="text-gray-300 hover:text-blue-400 block">Tables, Lists (Ordered/Unordered)</a></li>
+        <li><a href="#attributes" class="text-gray-300 hover:text-blue-400 block">Class and ID Attributes</a></li>
+        <li><a href="#iframe" class="text-gray-300 hover:text-blue-400 block">Using iframe</a></li>
+        <li><a href="#javascript" class="text-gray-300 hover:text-blue-400 block">JavaScript in HTML</a></li>
+        <li><a href="#paths" class="text-gray-300 hover:text-blue-400 block">Understanding File Paths</a></li>
+        <li><a href="#layout" class="text-gray-300 hover:text-blue-400 block">Layout Techniques & Responsive Design</a></li>
+        <li><a href="#semantic" class="text-gray-300 hover:text-blue-400 block">Semantic HTML</a></li>
+        <li><a href="#clean-code" class="text-gray-300 hover:text-blue-400 block">Writing Clean Code</a></li>
+        <li><a href="#entities" class="text-gray-300 hover:text-blue-400 block">HTML Entities, Symbols, Images</a></li>
+        <li><a href="#encoding" class="text-gray-300 hover:text-blue-400 block">Charset & URL Encoding</a></li>
+        <li><a href="#forms" class="text-gray-300 hover:text-blue-400 block">HTML Forms & Input Types</a></li>
+        <li><a href="#validation" class="text-gray-300 hover:text-blue-400 block">Form Attributes & Validation</a></li>
+        <li><a href="#canvas" class="text-gray-300 hover:text-blue-400 block">Canvas and SVG Basics</a></li>
+        <li><a href="#media" class="text-gray-300 hover:text-blue-400 block">Embedding Audio, Video, Plugins</a></li>
+      </ul>
+    </div>
+
+
+
+    <button id="close-sidebar" class="md:hidden mt-4 bg-red-600 px-4 py-2 rounded-md">Close</button>
+  </aside>
+
+  <!-- Mobile Toggle Button -->
+  <button id="open-sidebar" class="md:hidden fixed top-4 left-4 z-50 bg-blue-600 text-white p-2 rounded-md">
+    ☰ Menu
+  </button>
+
+  <!-- Header -->
+  <header class="bg-blue-600 text-white py-6 md:ml-64">
+    <div class="container mx-auto px-4">
+      <h1 class="text-3xl font-bold">Lesson 1: Introduction to HTML</h1>
+      <p class="mt-2">Begin your journey into web development with HTML on the E-Learn platform.</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8 md:ml-64 space-y-12">
+    <section class="bg-white p-6 rounded-lg shadow-md" id="basic-html-structure">
+      <h2 class="text-2xl font-semibold mb-4">Basic HTML Structure</h2>
+      <p class="mb-4">An HTML document starts with a `&lt;!DOCTYPE html&gt;` declaration, followed by `&lt;html&gt;`, `&lt;head&gt;`, and `&lt;body&gt;` tags. Here's an example:</p>
+      <pre class="mb-4"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;My First Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hello, World!&lt;/h1&gt;
+  &lt;p&gt;This is my first web page.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+      <h3 class="text-xl font-semibold mb-2">Try It Live</h3>
+      <iframe class="w-full h-64 border border-gray-300 rounded-md mb-4"
+        srcdoc='<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>My First Page</title></head>
+<body><h1>Hello, World!</h1><p>This is my first web page.</p></body>
+</html>'>
+      </iframe>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow-md" id="common-html-elements">
+      <h2 class="text-2xl font-semibold mb-4">Common HTML Elements</h2>
+      <ul class="list-disc pl-6 mb-4">
+        <li><code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code>: Define headings of different levels.</li>
+        <li><code>&lt;p&gt;</code>: Create paragraphs for text content.</li>
+        <li><code>&lt;a href="..."&gt;</code>: Add hyperlinks to other pages or resources.</li>
+        <li><code>&lt;img src="..." alt="..."&gt;</code>: Embed images.</li>
+      </ul>
+
+      <h3 class="text-xl font-semibold mb-2">Example: Adding a Link</h3>
+      <pre class="mb-4"><code>&lt;a href="https://example.com"&gt;Visit Example&lt;/a&gt;</code></pre>
+      <iframe
+        class="w-full h-24 border border-gray-300 rounded-md mb-4"
+        srcdoc='<a href="https://example.com">Visit Example</a>'>
+      </iframe>
+    </section>
+
+    <section class="bg-white p-6 rounded-lg shadow-md" id="practice-exercise">
+      <h2 class="text-2xl font-semibold mb-4">Practice Exercise</h2>
+      <p class="mb-4">Create an HTML page with the following:</p>
+      <ul class="list-disc pl-6">
+        <li>A main heading (<code>&lt;h1&gt;</code>) with your name.</li>
+        <li>A paragraph describing your favorite hobby.</li>
+        <li>A link to a website you like.</li>
+      </ul>
+    </section>
+
+    <!-- Navigation Links -->
+    <nav class="flex justify-end">
+      <a
+        href="css-course.html"
+        class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300"
+      >
+        Next Lesson: Introduction to CSS
+      </a>
+    </nav>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-4 mt-8 md:ml-64">
+    <div class="container mx-auto px-4 text-center">
+      <p>© 2025 E-Learn Platform. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Sidebar -->
+  <script>
+    // Sidebar toggle (mobile)
+    document.getElementById('open-sidebar').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.add('open');
+    });
+
+    document.getElementById('close-sidebar').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.remove('open');
+    });
+
+    // Content loading
+    document.querySelectorAll('#sidebar a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (link.getAttribute('href').startsWith('#')) {
+          e.preventDefault();
+          const topicId = link.getAttribute('href').substring(1);
+          loadTopicContent(topicId);
+          
+          // Update active state
+          document.querySelectorAll('#sidebar a').forEach(a => a.classList.remove('active'));
+          link.classList.add('active');
+        }
+      });
+    });
+
+    function loadTopicContent(topicId) {
+      // In a real implementation, this would fetch content from server
+      // For now we'll just show a placeholder
+      const mainContent = document.querySelector('main');
+      mainContent.innerHTML = `
+        <section class="bg-white p-6 rounded-lg shadow-md">
+          <h2 class="text-2xl font-semibold mb-4">${topicId.replace('-', ' ').toUpperCase()}</h2>
+          <p>Content for ${topicId.replace('-', ' ')} will be loaded here.</p>
+          <p class="mt-4">In a complete implementation, this would fetch detailed content about the topic from the server.</p>
+        </section>
+      `;
+    }
+   
+  // Sidebar toggle (mobile)
+  document.getElementById('open-sidebar').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.add('open');
+  });
+
+  document.getElementById('close-sidebar').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.remove('open');
+  });
+
+  // Topic content data
+  const topicContents = {
+   evolution: {
+  title: "The Evolution of HTML",
+  content: `
+    <h2 class="text-xl font-bold text-blue-700 mb-2">📘 The Evolution of HTML</h2>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4 mb-1">📌 Introduction</h3>
+    <p class="text-gray-700 leading-relaxed">
+      HTML (HyperText Markup Language) is the core language used to create web pages. It has evolved significantly since its creation in the early 1990s, gaining features that made the web more interactive, accessible, and modern.
+    </p>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4 mb-1">🕰️ HTML Evolution Timeline</h3>
+    <table class="table-auto border border-gray-400 text-sm w-full my-2">
+      <thead>
+        <tr class="bg-gray-100">
+          <th class="border px-3 py-1 text-left">Version</th>
+          <th class="border px-3 py-1 text-left">Year</th>
+          <th class="border px-3 py-1 text-left">Key Features</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border px-3 py-1">HTML 1.0</td>
+          <td class="border px-3 py-1">1993</td>
+          <td class="border px-3 py-1">Simple; only basic tags like headings, paragraphs, and links.</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border px-3 py-1">HTML 2.0</td>
+          <td class="border px-3 py-1">1995</td>
+          <td class="border px-3 py-1">Standardized HTML; included forms and tables.</td>
+        </tr>
+        <tr>
+          <td class="border px-3 py-1">HTML 3.2</td>
+          <td class="border px-3 py-1">1997</td>
+          <td class="border px-3 py-1">Introduced styles, scripts, and applets.</td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td class="border px-3 py-1">HTML 4.01</td>
+          <td class="border px-3 py-1">1999</td>
+          <td class="border px-3 py-1">Supported CSS and better structure for layout.</td>
+        </tr>
+        <tr>
+          <td class="border px-3 py-1">HTML5</td>
+          <td class="border px-3 py-1">2014–Now</td>
+          <td class="border px-3 py-1">Supports audio, video, canvas, local storage, semantic tags, and mobile-friendly design.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4 mb-1">🌐 Why the Evolution Was Important</h3>
+    <ul class="list-disc list-inside text-gray-700 leading-relaxed">
+      <li>Older versions were limited to static content.</li>
+      <li>Newer versions brought structure, multimedia, and interactivity.</li>
+      <li>HTML5 made websites more responsive, powerful, and mobile-compatible.</li>
+    </ul>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4 mb-1">✅ Summary of Major Milestones</h3>
+    <ul class="list-disc list-inside text-gray-700 leading-relaxed">
+      <li><strong>HTML 1.0</strong> – Birth of HTML with basic tags only.</li>
+      <li><strong>HTML 4.01</strong> – Introduced separation of content and style (via CSS).</li>
+      <li><strong>HTML5</strong> – Supports media, canvas, semantic structure, and modern web standards.</li>
+    </ul>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4 mb-1">🧠 Key Terms</h3>
+    <ul class="list-disc list-inside text-gray-700 leading-relaxed">
+      <li><strong>Semantic Tags</strong>: Tags like <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;header&gt;</code> that give meaning to content.</li>
+      <li><strong>Canvas</strong>: A tag for drawing graphics using JavaScript.</li>
+      <li><strong>Responsive Design</strong>: Layouts that adjust to screen size using CSS techniques.</li>
+    </ul>
+  `
+},
+
+   importance: {
+  title: "Importance of HTML",
+  content: `
+    <h2 class="text-xl font-bold text-blue-700 mb-2">🌐 Importance of HTML</h2>
+
+    <p class="text-gray-700 leading-relaxed mb-4">
+      HTML (HyperText Markup Language) is the <strong>backbone of the web</strong>. Every webpage you visit—from Google to social media platforms—is built on HTML. It defines the structure of content and tells the browser how to display text, images, links, and more.
+    </p>
+
+    <h3 class="text-lg font-semibold text-gray-800 mb-2">📌 Why HTML is Essential</h3>
+    <ul class="list-disc list-inside text-gray-700 leading-relaxed mb-4">
+      <li><strong>Structures Content:</strong> Without HTML, browsers wouldn’t know how to organize or present web content.</li>
+      <li><strong>Universal Language:</strong> HTML is understood by all web browsers.</li>
+      <li><strong>Accessibility:</strong> Helps screen readers and other assistive technologies interpret content.</li>
+      <li><strong>SEO Friendly:</strong> Search engines use HTML structure to understand and rank pages.</li>
+    </ul>
+
+    <h3 class="text-lg font-semibold text-gray-800 mb-2">✅ Real-Life Example</h3>
+    <pre class="bg-gray-100 p-3 rounded text-sm text-gray-800 overflow-auto">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My First Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Welcome to HTML&lt;/h1&gt;
+    &lt;p&gt;This is the foundation of the web.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+    </pre>
+
+    <p class="text-gray-700 mt-4">
+      💡 <em>Without HTML, web browsers would not be able to display websites correctly. It's like the bones of a human body—everything else builds on it.</em>
+    </p>
+  `
+}
+,
+    editors: {
+  title: "Writing HTML Editors",
+  content: `
+    <h2 class="text-xl font-bold text-blue-700 mb-2">🛠️ Writing HTML Editors</h2>
+
+    <p class="text-gray-700 leading-relaxed">
+      You can write HTML using any text editor, but using a <strong>specialized code editor</strong> makes development faster and easier. These editors offer features like syntax highlighting, auto-completion, and live preview.
+    </p>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">📌 Common HTML Editors</h3>
+    <ul class="list-disc list-inside text-gray-700 leading-relaxed mb-3">
+      <li><strong>Notepad:</strong> Basic text editor on Windows. Simple and lightweight.</li>
+      <li><strong>Visual Studio Code (VS Code):</strong> A free and powerful editor with extensions, IntelliSense, and live server preview.</li>
+      <li><strong>Sublime Text:</strong> A fast, minimalist editor with great performance and customization.</li>
+      <li><strong>Atom:</strong> Open-source and beginner-friendly, though no longer officially supported.</li>
+    </ul>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">✅ Sample Steps in VS Code</h3>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+1. Open VS Code.
+2. Create a file named index.html
+3. Type the following code:
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My First Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Welcome to HTML&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+
+    <p class="text-muted">
+      💡 <em>Using a feature-rich editor helps prevent errors and improves productivity. Choose the one that fits your workflow.</em>
+    </p>
+  `
+}
+,
+    structure: {
+  title: "HTML Document Structure",
+  content: `
+    <h2 class="text-xl font-bold text-blue-700 mb-2">📄 HTML Document Structure</h2>
+
+    <p class="text-gray-700 leading-relaxed">
+      Every HTML document follows a specific structure to help browsers understand and render content correctly. The basic layout includes a document declaration, root element, metadata section, and the content body.
+    </p>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">📌 Essential Tags</h3>
+    <ul class="list-disc list-inside text-gray-700 leading-relaxed mb-3">
+      <li><code>&lt;!DOCTYPE html&gt;</code> – Declares the document type (HTML5).</li>
+      <li><code>&lt;html&gt;</code> – Root element of the page.</li>
+      <li><code>&lt;head&gt;</code> – Contains metadata like title, styles, and links.</li>
+      <li><code>&lt;body&gt;</code> – Holds the visible content (text, images, buttons, etc.).</li>
+    </ul>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">✅ Example Structure</h3>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My First Web Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Welcome to My Website&lt;/h1&gt;
+    &lt;p&gt;This is a basic HTML structure.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+
+    <p class="text-muted">
+      💡 <em>Memorizing this basic layout is crucial when you're starting web development. It forms the skeleton of every webpage.</em>
+    </p>
+  `
+}
+,
+   elements: {
+  title: "Understanding HTML Elements & Attributes",
+  content: `
+    <h2 class="text-xl font-bold text-blue-700 mb-2">🔧 HTML Elements & Attributes</h2>
+
+    <p class="text-gray-700 leading-relaxed">
+      HTML elements are the <strong>building blocks</strong> of web pages. They define the structure and content of a page. Elements usually come in pairs: an opening tag and a closing tag.
+    </p>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">📌 What is an HTML Element?</h3>
+    <p class="text-gray-700 leading-relaxed mb-2">
+      An element typically consists of:
+    </p>
+    <ul class="list-disc list-inside text-gray-700 leading-relaxed mb-3">
+      <li>An opening tag <code>&lt;tagname&gt;</code></li>
+      <li>Content</li>
+      <li>A closing tag <code>&lt;/tagname&gt;</code></li>
+    </ul>
+
+    <p class="text-gray-700 mb-3">
+      Example:
+    </p>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+&lt;p&gt;This is a paragraph.&lt;/p&gt;
+    </code></pre>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">📎 What are Attributes?</h3>
+    <p class="text-gray-700 leading-relaxed mb-2">
+      Attributes provide <strong>additional information</strong> about HTML elements. They are written in the opening tag and usually come in name/value pairs like:
+    </p>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+&lt;a href="https://example.com"&gt;Visit Example&lt;/a&gt;
+&lt;img src="image.jpg" alt="Sample Image"&gt;
+    </code></pre>
+
+    <ul class="list-disc list-inside text-gray-700 leading-relaxed mb-3">
+      <li><code>href</code> – Specifies the URL for a link.</li>
+      <li><code>src</code> – Specifies the path of an image.</li>
+      <li><code>alt</code> – Provides alternative text for images.</li>
+      <li><code>class</code> and <code>id</code> – Used for styling and scripting.</li>
+    </ul>
+
+    <p class="text-muted">
+      💡 <em>Always use attributes within the opening tag. Most attributes are optional but make your HTML more useful and accessible.</em>
+    </p>
+  `
+}
+,
+   headings: {
+  title: "Headings, Paragraphs & Line Breaks",
+  content: `
+    <h2 class="text-xl font-bold text-blue-700 mb-2">📝 Headings, Paragraphs & Line Breaks</h2>
+
+    <p class="text-gray-700 leading-relaxed">
+      HTML provides a set of tags to structure your text content clearly:
+    </p>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">📌 Headings (&lt;h1&gt; to &lt;h6&gt;)</h3>
+    <p class="text-gray-700 mb-2">
+      Headings organize content into sections, with <code>&lt;h1&gt;</code> as the most important and <code>&lt;h6&gt;</code> as the least.
+    </p>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+&lt;h1&gt;Main Heading&lt;/h1&gt;
+&lt;h2&gt;Subheading&lt;/h2&gt;
+&lt;h3&gt;Section Title&lt;/h3&gt;
+    </code></pre>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">📄 Paragraphs (&lt;p&gt;)</h3>
+    <p class="text-gray-700 mb-2">
+      Use <code>&lt;p&gt;</code> to group sentences into paragraphs.
+    </p>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+&lt;p&gt;This is a paragraph of text.&lt;/p&gt;
+    </code></pre>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">↩️ Line Breaks (&lt;br&gt;)</h3>
+    <p class="text-gray-700 mb-2">
+      The <code>&lt;br&gt;</code> tag inserts a line break without starting a new paragraph.
+    </p>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+This is line one.&lt;br&gt;
+This is line two after a break.
+    </code></pre>
+
+    <p class="text-muted">
+      💡 <em>Use headings to create a hierarchy, paragraphs for blocks of text, and line breaks for spacing within lines.</em>
+    </p>
+  `
+}
+,
+    formatting: {
+  title: "Inline Style & Formatting Text",
+  content: `
+    <h2 class="text-xl font-bold text-blue-700 mb-2">🎨 Inline Style & Formatting Text</h2>
+
+    <p class="text-gray-700 leading-relaxed">
+      You can format parts of your text inline using HTML tags to emphasize or style specific sections without affecting entire blocks.
+    </p>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">📌 Common Formatting Tags</h3>
+    <ul class="list-disc list-inside text-gray-700 leading-relaxed mb-3">
+      <li><code>&lt;b&gt;</code> — Makes text <strong>bold</strong>.</li>
+      <li><code>&lt;i&gt;</code> — Makes text <em>italic</em>.</li>
+      <li><code>&lt;u&gt;</code> — Underlines the text.</li>
+      <li><code>&lt;mark&gt;</code> — Highlights text.</li>
+      <li><code>&lt;small&gt;</code> — Makes text smaller.</li>
+      <li><code>&lt;del&gt;</code> — Shows deleted (strikethrough) text.</li>
+    </ul>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">🎨 Inline Styles</h3>
+    <p class="text-gray-700 leading-relaxed mb-3">
+      You can apply custom styles directly using the <code>style</code> attribute:
+    </p>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+&lt;span style="color: red; font-weight: bold;"&gt;Important Text&lt;/span&gt;
+    </code></pre>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">✅ Examples</h3>
+    <p class="text-gray-700 mb-2">
+      Here are some examples of formatted text:
+    </p>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+&lt;p&gt;This is &lt;b&gt;bold&lt;/b&gt; and this is &lt;i&gt;italic&lt;/i&gt; text.&lt;/p&gt;
+
+&lt;p&gt;Here is a &lt;span style="color:blue;"&gt;blue colored text&lt;/span&gt;.&lt;/p&gt;
+    </code></pre>
+
+    <p class="text-muted">
+      💡 <em>Use these tags and styles to emphasize important parts of your content without affecting the entire paragraph.</em>
+    </p>
+  `
+}
+,
+    quoting: {
+  title: "Quoting Text, Comments",
+  content: `
+    <h2 class="text-xl font-bold text-blue-700 mb-2">💬 Quoting Text & Adding Comments</h2>
+
+    <p class="text-gray-700 leading-relaxed">
+      In HTML, you can include quotations and comments to clarify your content and your code.
+    </p>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">📌 Quoting Text</h3>
+    <ul class="list-disc list-inside text-gray-700 leading-relaxed mb-3">
+      <li>
+        <code>&lt;blockquote&gt;</code>: Use for longer, block-level quotes. Browsers usually indent blockquotes to distinguish them.
+      </li>
+      <li>
+        <code>&lt;q&gt;</code>: Use for short, inline quotations inside a paragraph. Browsers typically add quotation marks automatically.
+      </li>
+    </ul>
+
+    <h4 class="text-md font-semibold text-gray-800">Examples:</h4>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+&lt;blockquote&gt;
+  This is a long quote that stands out as a separate block of text.
+&lt;/blockquote&gt;
+
+&lt;p&gt;He said, &lt;q&gt;This is a short inline quote.&lt;/q&gt;&lt;/p&gt;
+    </code></pre>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">📝 Adding Comments</h3>
+    <p class="text-gray-700 leading-relaxed mb-3">
+      Comments are notes in your HTML code that <strong>do not appear in the browser</strong>. They help explain the code for yourself or other developers.
+    </p>
+
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto"><code>
+&lt;!-- This is a comment. It will not be visible on the webpage --&gt;
+    </code></pre>
+
+    <p class="text-muted mt-3">
+      💡 <em>Use comments generously to document your code and make maintenance easier.</em>
+    </p>
+  `
+}
+,
+    color: {
+  title: "Adding Color and CSS",
+  content: `
+    <h2 class="text-xl font-bold text-blue-700 mb-2">🎨 Adding Color and CSS</h2>
+
+    <p class="text-gray-700 leading-relaxed">
+      You can style your HTML content by adding colors and other design properties using CSS (Cascading Style Sheets). CSS can be applied inline, embedded in the page, or linked as an external stylesheet.
+    </p>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">📌 Adding Color Inline</h3>
+    <p class="text-gray-700 mb-3">
+      Use the <code>style</code> attribute directly on an HTML element to change its color:
+    </p>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+&lt;p style="color: red;"&gt;This text is red.&lt;/p&gt;
+&lt;h1 style="color: #007BFF;"&gt;This heading is blue.&lt;/h1&gt;
+    </code></pre>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">📌 Using CSS Classes</h3>
+    <p class="text-gray-700 mb-3">
+      Define colors in CSS classes and apply them to multiple elements:
+    </p>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+&lt;style&gt;
+  .text-red { color: red; }
+  .text-green { color: green; }
+&lt;/style&gt;
+
+&lt;p class="text-red"&gt;This text is red.&lt;/p&gt;
+&lt;p class="text-green"&gt;This text is green.&lt;/p&gt;
+    </code></pre>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">📌 External Stylesheets</h3>
+    <p class="text-gray-700 mb-3">
+      You can also put all your CSS rules in a separate file (e.g., <code>styles.css</code>) and link it in your HTML:
+    </p>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+&lt;link rel="stylesheet" href="styles.css"&gt;
+    </code></pre>
+
+    <p class="text-muted">
+      💡 <em>Using CSS to add color makes your site visually appealing and easier to maintain. Avoid inline styles for larger projects and prefer CSS classes or external stylesheets.</em>
+    </p>
+  `
+}
+,
+    favicon: {
+  title: "Favicon and Page Title",
+  content: `
+    <h2 class="text-xl font-bold text-blue-700 mb-2">🌐 Favicon and Page Title</h2>
+
+    <p class="text-gray-700 leading-relaxed">
+      Every webpage should have a <strong>title</strong> that appears in the browser tab, and a <strong>favicon</strong>, the small icon displayed next to the page title.
+    </p>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">📌 Setting the Page Title</h3>
+    <p class="text-gray-700 mb-3">
+      Use the <code>&lt;title&gt;</code> tag inside the <code>&lt;head&gt;</code> section to set the page title:
+    </p>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+&lt;head&gt;
+  &lt;title&gt;My Awesome Website&lt;/title&gt;
+&lt;/head&gt;
+    </code></pre>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">📌 Adding a Favicon</h3>
+    <p class="text-gray-700 mb-3">
+      The favicon is usually a small image file like <code>favicon.ico</code> or PNG. Add it using the <code>&lt;link&gt;</code> tag in the <code>&lt;head&gt;</code>:
+    </p>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+&lt;head&gt;
+  &lt;link rel="icon" href="favicon.ico" type="image/x-icon"&gt;
+&lt;/head&gt;
+    </code></pre>
+
+    <p class="text-muted">
+      💡 <em>Favicons help users identify your site quickly among browser tabs and bookmarks.</em>
+    </p>
+  `
+}
+,
+    tables: {
+  title: "Tables, Lists (Ordered/Unordered)",
+  content: `
+    <h2 class="text-xl font-bold text-blue-700 mb-2">📊 Tables, Ordered & Unordered Lists</h2>
+
+    <p class="text-gray-700 leading-relaxed">
+      HTML provides special tags to display data in tabular form and organize content using lists.
+    </p>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">📌 Tables</h3>
+    <p class="text-gray-700 mb-3">
+      Use the <code>&lt;table&gt;</code> tag to display data in rows and columns. Common table elements include:
+    </p>
+    <ul class="list-disc list-inside text-gray-700 leading-relaxed mb-3">
+      <li><code>&lt;tr&gt;</code> – Table row</li>
+      <li><code>&lt;th&gt;</code> – Table header cell (bold and centered)</li>
+      <li><code>&lt;td&gt;</code> – Table data cell</li>
+    </ul>
+
+    <h4 class="text-md font-semibold text-gray-800">Example Table:</h4>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+&lt;table border="1"&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Name&lt;/th&gt;
+    &lt;th&gt;Age&lt;/th&gt;
+    &lt;th&gt;City&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Alice&lt;/td&gt;
+    &lt;td&gt;30&lt;/td&gt;
+    &lt;td&gt;New York&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Bob&lt;/td&gt;
+    &lt;td&gt;25&lt;/td&gt;
+    &lt;td&gt;Los Angeles&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+    </code></pre>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">📌 Lists</h3>
+    <p class="text-gray-700 mb-3">
+      Organize items using lists:
+    </p>
+    <ul class="list-disc list-inside text-gray-700 leading-relaxed mb-3">
+      <li><code>&lt;ul&gt;</code> — Unordered list (bulleted)</li>
+      <li><code>&lt;ol&gt;</code> — Ordered list (numbered)</li>
+      <li><code>&lt;li&gt;</code> — List item, used inside both <code>&lt;ul&gt;</code> and <code>&lt;ol&gt;</code></li>
+    </ul>
+
+    <h4 class="text-md font-semibold text-gray-800">Example Lists:</h4>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+&lt;ul&gt;
+  &lt;li&gt;Apple&lt;/li&gt;
+  &lt;li&gt;Banana&lt;/li&gt;
+  &lt;li&gt;Cherry&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;First Item&lt;/li&gt;
+  &lt;li&gt;Second Item&lt;/li&gt;
+  &lt;li&gt;Third Item&lt;/li&gt;
+&lt;/ol&gt;
+    </code></pre>
+
+    <p class="text-muted">
+      💡 <em>Tables are best for displaying structured data, while lists help organize content logically.</em>
+    </p>
+  `
+}
+,
+    attributes: {
+  title: "Class and ID Attributes",
+  content: `
+    <h2 class="text-xl font-bold text-blue-700 mb-2">🏷️ Class and ID Attributes</h2>
+
+    <p class="text-gray-700 leading-relaxed">
+      The <code>class</code> and <code>id</code> attributes are used to uniquely identify or group HTML elements. These attributes are essential for applying styles with CSS and manipulating elements with JavaScript.
+    </p>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">📌 The <code>class</code> Attribute</h3>
+    <p class="text-gray-700 mb-3">
+      - The <code>class</code> attribute assigns one or more classes to an element.<br>
+      - Multiple elements can share the same class.<br>
+      - Classes are commonly used to apply styles to groups of elements.
+    </p>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+&lt;div class="card highlight"&gt;
+  This is a card with two classes.
+&lt;/div&gt;
+
+&lt;p class="text-red"&gt;This text is red.&lt;/p&gt;
+    </code></pre>
+
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">📌 The <code>id</code> Attribute</h3>
+    <p class="text-gray-700 mb-3">
+      - The <code>id</code> attribute assigns a unique identifier to an element.<br>
+      - An <code>id</code> must be unique on the entire page.<br>
+      - Useful for styling single elements or accessing them via JavaScript.
+    </p>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+&lt;h1 id="main-title"&gt;Welcome to My Site&lt;/h1&gt;
+
+&lt;script&gt;
+  const title = document.getElementById('main-title');
+  title.style.color = 'blue';
+&lt;/script&gt;
+    </code></pre>
+
+    <p class="text-muted">
+      💡 <em>Use classes for styling multiple elements and IDs for unique elements and JavaScript targeting.</em>
+    </p>
+  `
+}
+,
+    iframe: {
+  title: "Using iframe",
+  content: `
+    <h2 class="text-xl font-bold text-blue-700 mb-2">📺 Using &lt;iframe&gt;</h2>
+    <p class="text-gray-700 leading-relaxed">
+      The <code>&lt;iframe&gt;</code> tag allows you to embed another HTML page within your current page. It is commonly used for embedding videos, maps, or other external content.
+    </p>
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">Example:</h3>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+&lt;iframe src="https://www.example.com" width="600" height="400"&gt;&lt;/iframe&gt;
+    </code></pre>
+    <p class="text-muted">
+      💡 Use iframes carefully — they can affect page load time and security.
+    </p>
+  `
+},
+
+javascript: {
+  title: "JavaScript in HTML",
+  content: `
+    <h2 class="text-xl font-bold text-blue-700 mb-2">⚙️ JavaScript in HTML</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Add interactivity to your web pages by including JavaScript using the <code>&lt;script&gt;</code> tag.
+    </p>
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">Example:</h3>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+&lt;script&gt;
+  alert('Hello, world!');
+&lt;/script&gt;
+    </code></pre>
+    <p class="text-muted">
+      💡 JavaScript can be placed in the <code>&lt;head&gt;</code> or just before <code>&lt;/body&gt;</code> for better page loading.
+    </p>
+  `
+},
+
+paths: {
+  title: "Understanding File Paths",
+  content: `
+    <h2 class="text-xl font-bold text-blue-700 mb-2">🗂️ Understanding File Paths</h2>
+    <p class="text-gray-700 leading-relaxed">
+      File paths tell the browser where to find resources like images, CSS files, or other pages.
+    </p>
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">Types of Paths:</h3>
+    <ul class="list-disc list-inside text-gray-700 mb-3">
+      <li><strong>Relative Path:</strong> Location relative to the current file. Example: <code>images/photo.jpg</code></li>
+      <li><strong>Absolute Path:</strong> Full URL starting with a protocol. Example: <code>https://example.com/images/photo.jpg</code></li>
+      <li><strong>Root-relative Path:</strong> Starts from website root. Example: <code>/images/photo.jpg</code></li>
+    </ul>
+    <p class="text-muted">
+      💡 Use relative paths for easier project portability.
+    </p>
+  `
+},
+
+layout: {
+  title: "Layout Techniques & Responsive Design",
+  content: `
+    <h2 class="text-xl font-bold text-blue-700 mb-2">📐 Layout Techniques & Responsive Design</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Use CSS techniques like Flexbox, Grid, and media queries to build layouts that adapt smoothly to different screen sizes and devices.
+    </p>
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">Key Techniques:</h3>
+    <ul class="list-disc list-inside text-gray-700 mb-3">
+      <li><strong>Flexbox:</strong> One-dimensional layout for rows or columns.</li>
+      <li><strong>Grid:</strong> Two-dimensional layout system with rows and columns.</li>
+      <li><strong>Media Queries:</strong> Apply styles conditionally based on screen size or device.</li>
+    </ul>
+    <p class="text-muted">
+      💡 Responsive design ensures your site looks great on phones, tablets, and desktops.
+    </p>
+  `
+},
+
+semantic: {
+  title: "Semantic HTML",
+  content: `
+    <h2 class="text-xl font-bold text-blue-700 mb-2">📚 Semantic HTML</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Semantic HTML uses meaningful tags that describe the purpose of the content, improving accessibility and SEO.
+    </p>
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">Common Semantic Tags:</h3>
+    <ul class="list-disc list-inside text-gray-700 mb-3">
+      <li><code>&lt;header&gt;</code> - Defines introductory content or navigation.</li>
+      <li><code>&lt;nav&gt;</code> - Contains navigation links.</li>
+      <li><code>&lt;main&gt;</code> - Represents the main content.</li>
+      <li><code>&lt;article&gt;</code> - Self-contained composition.</li>
+      <li><code>&lt;section&gt;</code> - Thematic grouping of content.</li>
+      <li><code>&lt;footer&gt;</code> - Footer section with info about the page.</li>
+    </ul>
+    <p class="text-muted">
+      💡 Use semantic tags to make your markup more meaningful and accessible.
+    </p>
+  `
+},
+
+"clean-code": {
+  title: "Writing Clean Code",
+  content: `
+    <h2 class="text-xl font-bold text-blue-700 mb-2">🧹 Writing Clean Code</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Writing clean, well-structured HTML makes your code easier to read, maintain, and debug.
+    </p>
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">Tips for Clean Code:</h3>
+    <ul class="list-disc list-inside text-gray-700 mb-3">
+      <li>Use proper indentation for nested elements.</li>
+      <li>Add comments to explain sections.</li>
+      <li>Use meaningful tag and attribute names.</li>
+      <li>Avoid inline styles when possible; prefer CSS classes.</li>
+      <li>Keep your code DRY (Don't Repeat Yourself).</li>
+    </ul>
+    <p class="text-muted">
+      💡 Clean code is a sign of professionalism and helps teamwork.
+    </p>
+  `
+},
+
+entities: {
+  title: "HTML Entities, Symbols, Images",
+  content: `
+    <h2 class="text-xl font-bold text-blue-700 mb-2">🔣 HTML Entities, Symbols, Images</h2>
+    <p class="text-gray-700 leading-relaxed">
+      HTML entities are special codes used to display reserved characters like &amp;, <, >, and copyright symbols.
+    </p>
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">Common Entities:</h3>
+    <ul class="list-disc list-inside text-gray-700 mb-3">
+      <li><code>&amp;amp;</code> - &amp;</li>
+      <li><code>&amp;lt;</code> - &lt;</li>
+      <li><code>&amp;gt;</code> - &gt;</li>
+      <li><code>&amp;copy;</code> - ©</li>
+      <li><code>&amp;reg;</code> - ®</li>
+    </ul>
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">Embedding Images:</h3>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+&lt;img src="image.jpg" alt="Description"&gt;
+    </code></pre>
+    <p class="text-muted">
+      💡 Always use the <code>alt</code> attribute to describe images for accessibility.
+    </p>
+  `
+},
+
+encoding: {
+  title: "Charset & URL Encoding",
+  content: `
+    <h2 class="text-xl font-bold text-blue-700 mb-2">🔤 Charset & URL Encoding</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Set the character encoding to UTF-8 to support most characters worldwide using the meta tag:
+    </p>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+&lt;meta charset="UTF-8"&gt;
+    </code></pre>
+    <p class="text-gray-700 leading-relaxed">
+      URL encoding is used to encode special characters in URLs, replacing spaces and reserved characters with codes like %20.
+    </p>
+    <p class="text-muted">
+      💡 Always include the charset meta tag early in your HTML <code>&lt;head&gt;</code>.
+    </p>
+  `
+},
+
+forms: {
+  title: "HTML Forms & Input Types",
+  content: `
+    <h2 class="text-xl font-bold text-blue-700 mb-2">📝 HTML Forms & Input Types</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Forms collect user input and are built using the <code>&lt;form&gt;</code> tag with various input types.
+    </p>
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">Common Input Types:</h3>
+    <ul class="list-disc list-inside text-gray-700 mb-3">
+      <li><code>text</code> – Single line text input</li>
+      <li><code>password</code> – Password input</li>
+      <li><code>email</code> – Email input with validation</li>
+      <li><code>number</code> – Numeric input</li>
+      <li><code>checkbox</code> – Multiple choices</li>
+      <li><code>radio</code> – Single choice</li>
+      <li><code>submit</code> – Button to submit form</li>
+    </ul>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+&lt;form action="/submit" method="post"&gt;
+  &lt;input type="text" name="username" required&gt;
+  &lt;input type="email" name="email"&gt;
+  &lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt;
+    </code></pre>
+    <p class="text-muted">
+      💡 Always use appropriate input types for better user experience and built-in validation.
+    </p>
+  `
+},
+
+validation: {
+  title: "Form Attributes & Validation",
+  content: `
+    <h2 class="text-xl font-bold text-blue-700 mb-2">✅ Form Attributes & Validation</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Use HTML attributes to validate user input before submitting a form.
+    </p>
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">Common Validation Attributes:</h3>
+    <ul class="list-disc list-inside text-gray-700 mb-3">
+      <li><code>required</code> – Makes a field mandatory.</li>
+      <li><code>minlength</code> / <code>maxlength</code> – Set minimum/maximum length of input.</li>
+      <li><code>pattern</code> – Regular expression to enforce input format.</li>
+      <li><code>type="email"</code> – Validates email format.</li>
+      <li><code>type="number"</code> – Validates numeric input within a range.</li>
+    </ul>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+&lt;input type="text" name="username" required minlength="3" pattern="[A-Za-z]+"&gt;
+    </code></pre>
+    <p class="text-muted">
+      💡 These attributes improve form usability and reduce errors.
+    </p>
+  `
+},
+
+canvas: {
+  title: "Canvas and SVG Basics",
+  content: `
+    <h2 class="text-xl font-bold text-blue-700 mb-2">🎨 Canvas and SVG Basics</h2>
+    <p class="text-gray-700 leading-relaxed">
+      Use the <code>&lt;canvas&gt;</code> element with JavaScript to draw graphics dynamically, or <code>&lt;svg&gt;</code> for scalable vector graphics defined in markup.
+    </p>
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">Example Canvas:</h3>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+&lt;canvas id="myCanvas" width="200" height="100"&gt;&lt;/canvas&gt;
+
+&lt;script&gt;
+  const canvas = document.getElementById('myCanvas');
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = 'green';
+  ctx.fillRect(10, 10, 150, 75);
+&lt;/script&gt;
+    </code></pre>
+    <p class="text-muted">
+      💡 SVG images scale without loss of quality, ideal for logos and icons.
+    </p>
+  `
+},
+
+media: {
+  title: "Embedding Audio, Video, Plugins",
+  content: `
+    <h2 class="text-xl font-bold text-blue-700 mb-2">🎥 Embedding Audio, Video, Plugins</h2>
+    <p class="text-gray-700 leading-relaxed">
+      HTML5 introduced native support for audio and video with the <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code> tags, making plugins mostly obsolete.
+    </p>
+    <h3 class="text-lg font-semibold text-gray-800 mt-4">Example Video Embed:</h3>
+    <pre class="bg-gray-100 border p-3 rounded text-sm text-gray-800 overflow-auto mb-3"><code>
+&lt;video width="320" height="240" controls&gt;
+  &lt;source src="movie.mp4" type="video/mp4"&gt;
+  Your browser does not support the video tag.
+&lt;/video&gt;
+    </code></pre>
+    <p class="text-muted">
+      💡 Use multiple <code>&lt;source&gt;</code> elements to support different formats for better browser compatibility.
+    </p>
+  `
+}
+
+  };
+
+  // Sidebar link click handler
+  document.querySelectorAll('#sidebar ul.space-y-1 a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      if (link.getAttribute('href').startsWith('#')) {
+        e.preventDefault();
+        const topicId = link.getAttribute('href').substring(1);
+        loadTopicContent(topicId);
+
+        // Update active state
+        document.querySelectorAll('#sidebar a').forEach(a => a.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  });
+
+  function loadTopicContent(topicId) {
+    const mainContent = document.querySelector('main');
+    const topic = topicContents[topicId];
+    if (topic) {
+      mainContent.innerHTML = `
+        <section class="bg-white p-6 rounded-lg shadow-md">
+          <h2 class="text-2xl font-semibold mb-4">${topic.title}</h2>
+          ${topic.content}
+          <button onclick="window.location.reload()" class="mt-6 bg-blue-600 text-white px-4 py-2 rounded-md">Back to Lessons</button>
+        </section>
+      `;
+    } else {
+      mainContent.innerHTML = `
+        <section class="bg-white p-6 rounded-lg shadow-md">
+          <h2 class="text-2xl font-semibold mb-4">Topic Not Found</h2>
+          <p>No content available for this topic.</p>
+        </section>
+      `;
+    }
+  }
+
+  </script>
+</body>
+</html>

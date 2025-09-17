@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PHP Tutorial</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    header {
+      background-color: #D4EBF7;
+    }
+    pre {
+      background-color: #f3f4f6;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+    }
+    #sidebar {
+      transition: transform 0.3s ease-in-out;
+    }
+    #sidebar a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.375rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    #sidebar a:hover {
+      background-color: #1e40af;
+      color: #ffffff;
+      transform: translateX(5px);
+    }
+    #sidebar a.active {
+      background-color: #3b82f6;
+      font-weight: bold;
+      color: white;
+    }
+    #main-content {
+      width: 75.4%;
+    }
+    @media (max-width: 768px) {
+      #sidebar {
+        transform: translateX(-100%);
+      }
+      #sidebar.open {
+        transform: translateX(0);
+      }
+      #main-content {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <!-- Sidebar -->
+  <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-gray-900 text-white p-4 overflow-y-auto md:transform-none z-50">
+    <h2 class="text-xl font-bold mb-4">PHP Tutorial</h2>
+    <div class="mt-6">
+      <h3 class="font-semibold mb-2">PHP Basics</h3>
+      <ul class="space-y-1 text-sm">
+        <li><a href="#php-home" class="text-gray-300 block">PHP HOME</a></li>
+        <li><a href="#php-intro" class="text-gray-300 block">PHP Intro</a></li>
+        <li><a href="#php-install" class="text-gray-300 block">PHP Install</a></li>
+        <li><a href="#php-syntax" class="text-gray-300 block">PHP Syntax</a></li>
+        <li><a href="#php-comments" class="text-gray-300 block">PHP Comments</a></li>
+        <li><a href="#php-variables" class="text-gray-300 block">PHP Variables</a></li>
+        <li><a href="#php-echo-print" class="text-gray-300 block">PHP Echo / Print</a></li>
+        <li><a href="#php-data-types" class="text-gray-300 block">PHP Data Types</a></li>
+        <li><a href="#php-strings" class="text-gray-300 block">PHP Strings</a></li>
+        <li><a href="#php-numbers" class="text-gray-300 block">PHP Numbers</a></li>
+        <li><a href="#php-casting" class="text-gray-300 block">PHP Casting</a></li>
+        <li><a href="#php-math" class="text-gray-300 block">PHP Math</a></li>
+        <li><a href="#php-constants" class="text-gray-300 block">PHP Constants</a></li>
+        <li><a href="#php-magic-constants" class="text-gray-300 block">PHP Magic Constants</a></li>
+        <li><a href="#php-operators" class="text-gray-300 block">PHP Operators</a></li>
+        <li><a href="#php-if-else-elseif" class="text-gray-300 block">PHP If...Else...Elseif</a></li>
+        <li><a href="#php-switch" class="text-gray-300 block">PHP Switch</a></li>
+        <li><a href="#php-loops" class="text-gray-300 block">PHP Loops</a></li>
+        <li><a href="#php-functions" class="text-gray-300 block">PHP Functions</a></li>
+        <li><a href="#php-arrays" class="text-gray-300 block">PHP Arrays</a></li>
+        <li><a href="#php-superglobals" class="text-gray-300 block">PHP Superglobals</a></li>
+        <li><a href="#php-regex" class="text-gray-300 block">PHP RegEx</a></li>
+      </ul>
+      <h3 class="font-semibold mb-2 mt-4">PHP Forms</h3>
+      <ul class="space-y-1 text-sm">
+        <li><a href="#php-form-handling" class="text-gray-300 block">PHP Form Handling</a></li>
+        <li><a href="#php-form-validation" class="text-gray-300 block">PHP Form Validation</a></li>
+        <li><a href="#php-form-required" class="text-gray-300 block">PHP Form Required</a></li>
+        <li><a href="#php-form-url-email" class="text-gray-300 block">PHP Form URL/E-mail</a></li>
+        <li><a href="#php-form-complete" class="text-gray-300 block">PHP Form Complete</a></li>
+      </ul>
+      <h3 class="font-semibold mb-2 mt-4">PHP Advanced</h3>
+      <ul class="space-y-1 text-sm">
+        <li><a href="#php-date-time" class="text-gray-300 block">PHP Date and Time</a></li>
+        <li><a href="#php-include" class="text-gray-300 block">PHP Include</a></li>
+        <li><a href="#php-file-handling" class="text-gray-300 block">PHP File Handling</a></li>
+        <li><a href="#php-file-open-read" class="text-gray-300 block">PHP File Open/Read</a></li>
+        <li><a href="#php-file-create-write" class="text-gray-300 block">PHP File Create/Write</a></li>
+        <li><a href="#php-file-upload" class="text-gray-300 block">PHP File Upload</a></li>
+        <li><a href="#php-cookies" class="text-gray-300 block">PHP Cookies</a></li>
+        <li><a href="#php-sessions" class="text-gray-300 block">PHP Sessions</a></li>
+        <li><a href="#php-filters" class="text-gray-300 block">PHP Filters</a></li>
+        <li><a href="#php-filters-advanced" class="text-gray-300 block">PHP Filters Advanced</a></li>
+        <li><a href="#php-callback-functions" class="text-gray-300 block">PHP Callback Functions</a></li>
+        <li><a href="#php-json" class="text-gray-300 block">PHP JSON</a></li>
+        <li><a href="#php-exceptions" class="text-gray-300 block">PHP Exceptions</a></li>
+      </ul>
+      <h3 class="font-semibold mb-2 mt-4">PHP OOP</h3>
+      <ul class="space-y-1 text-sm">
+        <li><a href="#php-what-is-oop" class="text-gray-300 block">PHP What is OOP</a></li>
+        <li><a href="#php-classes-objects" class="text-gray-300 block">PHP Classes/Objects</a></li>
+        <li><a href="#php-constructor" class="text-gray-300 block">PHP Constructor</a></li>
+        <li><a href="#php-destructor" class="text-gray-300 block">PHP Destructor</a></li>
+        <li><a href="#php-access-modifiers" class="text-gray-300 block">PHP Access Modifiers</a></li>
+        <li><a href="#php-inheritance" class="text-gray-300 block">PHP Inheritance</a></li>
+        <li><a href="#php-constants-oop" class="text-gray-300 block">PHP Constants</a></li>
+        <li><a href="#php-abstract-classes" class="text-gray-300 block">PHP Abstract Classes</a></li>
+        <li><a href="#php-interfaces" class="text-gray-300 block">PHP Interfaces</a></li>
+        <li><a href="#php-traits" class="text-gray-300 block">PHP Traits</a></li>
+        <li><a href="#php-static-methods" class="text-gray-300 block">PHP Static Methods</a></li>
+        <li><a href="#php-static-properties" class="text-gray-300 block">PHP Static Properties</a></li>
+        <li><a href="#php-namespaces" class="text-gray-300 block">PHP Namespaces</a></li>
+        <li><a href="#php-iterables" class="text-gray-300 block">PHP Iterables</a></li>
+      </ul>
+      <h3 class="font-semibold mb-2 mt-4">MySQL Database</h3>
+      <ul class="space-y-1 text-sm">
+        <li><a href="#mysql-database" class="text-gray-300 block">MySQL Database</a></li>
+        <li><a href="#mysql-connect" class="text-gray-300 block">MySQL Connect</a></li>
+        <li><a href="#mysql-create-db" class="text-gray-300 block">MySQL Create DB</a></li>
+        <li><a href="#mysql-create-table" class="text-gray-300 block">MySQL Create Table</a></li>
+        <li><a href="#mysql-insert-data" class="text-gray-300 block">MySQL Insert Data</a></li>
+        <li><a href="#mysql-get-last-id" class="text-gray-300 block">MySQL Get Last ID</a></li>
+        <li><a href="#mysql-insert-multiple" class="text-gray-300 block">MySQL Insert Multiple</a></li>
+        <li><a href="#mysql-prepared" class="text-gray-300 block">MySQL Prepared</a></li>
+        <li><a href="#mysql-select-data" class="text-gray-300 block">MySQL Select Data</a></li>
+        <li><a href="#mysql-where" class="text-gray-300 block">MySQL Where</a></li>
+        <li><a href="#mysql-order-by" class="text-gray-300 block">MySQL Order By</a></li>
+        <li><a href="#mysql-delete-data" class="text-gray-300 block">MySQL Delete Data</a></li>
+        <li><a href="#mysql-update-data" class="text-gray-300 block">MySQL Update Data</a></li>
+        <li><a href="#mysql-limit-data" class="text-gray-300 block">MySQL Limit Data</a></li>
+      </ul>
+      <h3 class="font-semibold mb-2 mt-4">PHP XML</h3>
+      <ul class="space-y-1 text-sm">
+        <li><a href="#php-xml-parsers" class="text-gray-300 block">PHP XML Parsers</a></li>
+        <li><a href="#php-simplexml-parser" class="text-gray-300 block">PHP SimpleXML Parser</a></li>
+        <li><a href="#php-simplexml-get" class="text-gray-300 block">PHP SimpleXML - Get</a></li>
+        <li><a href="#php-xml-expat" class="text-gray-300 block">PHP XML Expat</a></li>
+        <li><a href="#php-xml-dom" class="text-gray-300 block">PHP XML DOM</a></li>
+      </ul>
+      <h3 class="font-semibold mb-2 mt-4">PHP - AJAX</h3>
+      <ul class="space-y-1 text-sm">
+        <li><a href="#ajax-intro" class="text-gray-300 block">AJAX Intro</a></li>
+        <li><a href="#ajax-php" class="text-gray-300 block">AJAX PHP</a></li>
+        <li><a href="#ajax-database" class="text-gray-300 block">AJAX Database</a></li>
+        <li><a href="#ajax-xml" class="text-gray-300 block">AJAX XML</a></li>
+        <li><a href="#ajax-live-search" class="text-gray-300 block">AJAX Live Search</a></li>
+        <li><a href="#ajax-poll" class="text-gray-300 block">AJAX Poll</a></li>
+      </ul>
+      <h3 class="font-semibold mb-2 mt-4">PHP Examples</h3>
+      <ul class="space-y-1 text-sm">
+        <li><a href="#php-examples" class="text-gray-300 block">PHP Examples</a></li>
+        <li><a href="#php-compiler" class="text-gray-300 block">PHP Compiler</a></li>
+        <li><a href="#php-quiz" class="text-gray-300 block">PHP Quiz</a></li>
+        <li><a href="#php-exercises" class="text-gray-300 block">PHP Exercises</a></li>
+        <li><a href="#php-server" class="text-gray-300 block">PHP Server</a></li>
+        <li><a href="#php-syllabus" class="text-gray-300 block">PHP Syllabus</a></li>
+        <li><a href="#php-study-plan" class="text-gray-300 block">PHP Study Plan</a></li>
+        <li><a href="#php-certificate" class="text-gray-300 block">PHP Certificate</a></li>
+      </ul>
+      <h3 class="font-semibold mb-2 mt-4">PHP Reference</h3>
+      <ul class="space-y-1 text-sm">
+        <li><a href="#php-overview" class="text-gray-300 block">PHP Overview</a></li>
+        <li><a href="#php-array" class="text-gray-300 block">PHP Array</a></li>
+        <li><a href="#php-calendar" class="text-gray-300 block">PHP Calendar</a></li>
+        <li><a href="#php-date" class="text-gray-300 block">PHP Date</a></li>
+        <li><a href="#php-directory" class="text-gray-300 block">PHP Directory</a></li>
+        <li><a href="#php-error" class="text-gray-300 block">PHP Error</a></li>
+        <li><a href="#php-exception" class="text-gray-300 block">PHP Exception</a></li>
+        <li><a href="#php-filesystem" class="text-gray-300 block">PHP Filesystem</a></li>
+        <li><a href="#php-filter" class="text-gray-300 block">PHP Filter</a></li>
+        <li><a href="#php-ftp" class="text-gray-300 block">PHP FTP</a></li>
+        <li><a href="#php-json-ref" class="text-gray-300 block">PHP JSON</a></li>
+        <li><a href="#php-keywords" class="text-gray-300 block">PHP Keywords</a></li>
+        <li><a href="#php-libxml" class="text-gray-300 block">PHP Libxml</a></li>
+        <li><a href="#php-mail" class="text-gray-300 block">PHP Mail</a></li>
+        <li><a href="#php-math-ref" class="text-gray-300 block">PHP Math</a></li>
+        <li><a href="#php-misc" class="text-gray-300 block">PHP Misc</a></li>
+        <li><a href="#php-mysqli" class="text-gray-300 block">PHP MySQLi</a></li>
+        <li><a href="#php-network" class="text-gray-300 block">PHP Network</a></li>
+        <li><a href="#php-output-control" class="text-gray-300 block">PHP Output Control</a></li>
+        <li><a href="#php-regex-ref" class="text-gray-300 block">PHP RegEx</a></li>
+        <li><a href="#php-simplexml-ref" class="text-gray-300 block">PHP SimpleXML</a></li>
+        <li><a href="#php-stream" class="text-gray-300 block">PHP Stream</a></li>
+        <li><a href="#php-string" class="text-gray-300 block">PHP String</a></li>
+        <li><a href="#php-variable-handling" class="text-gray-300 block">PHP Variable Handling</a></li>
+        <li><a href="#php-xml-parser" class="text-gray-300 block">PHP XML Parser</a></li>
+        <li><a href="#php-zip" class="text-gray-300 block">PHP Zip</a></li>
+        <li><a href="#php-timezones" class="text-gray-300 block">PHP Timezones</a></li>
+      </ul>
+    </div>
+    <button id="close-sidebar" class="md:hidden mt-4 bg-red-600 px-4 py-2 rounded-md">Close</button>
+  </aside>
+
+  <!-- Mobile Toggle Button -->
+  <button id="open-sidebar" class="md:hidden fixed top-4 left-4 z-50 bg-blue-600 text-white p-2 rounded-md">
+    ☰ Menu
+  </button>
+
+  <!-- Header -->
+  <header class="py-6 md:ml-64">
+    <div class="container mx-auto px-4">
+      <h1 class="text-3xl font-bold">PHP Tutorial</h1>
+      <p class="mt-2">Learn PHP from basics to advanced topics for building dynamic web applications.</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8 md:ml-64 space-y-12" id="main-content">
+    <section class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200" id="welcome">
+      <h2 class="text-3xl font-bold text-blue-900 mb-4 flex items-center gap-2">
+        <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M5 4v16h14V4H5zm13 1v2H6V5h12zM6 8h12v11H6V8z"/>
+        </svg>
+        Welcome to PHP
+      </h2>
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        PHP is a server-side scripting language designed for web development. This tutorial covers everything from basic syntax to advanced OOP and database integration.
+      </p>
+      <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6">
+        <h3 class="text-xl font-semibold text-blue-800 mb-2">📌 What is PHP?</h3>
+        <ul class="list-disc pl-6 text-gray-700 space-y-1">
+          <li>PHP stands for Hypertext Preprocessor.</li>
+          <li>Used for dynamic web content.</li>
+          <li>Integrates with MySQL, XML, and AJAX.</li>
+          <li>Open-source and widely supported.</li>
+        </ul>
+        <div class="mt-3 bg-white rounded-md p-3 border">
+          <p class="text-sm text-gray-800 mb-2"><strong>Example:</strong> Basic PHP</p>
+          <pre class="overflow-auto text-sm"><code>&lt;?php
+echo "Hello, World!";
+?&gt;</code></pre>
+        </div>
+      </div>
+      <div class="text-center mt-8">
+        <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-full shadow transition">
+          🎯 Start Learning
+        </a>
+      </div>
+      <p class="text-gray-600 mt-6 text-center">📚 Select a topic from the sidebar to begin!</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-4 mt-8 md:ml-64">
+    <div class="container mx-auto px-4 text-center">
+      <p>© 2025 PHP Tutorial. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    const topicContents = {
+      "php-home": {
+        title: "PHP HOME",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP HOME</h2>
+            <p class="mb-4">Welcome to the PHP Tutorial. PHP is a powerful server-side language for building dynamic websites.</p>
+            <h3 class="text-xl font-semibold mb-2">Why Learn PHP?</h3>
+            <ul class="list-disc list-inside mb-4">
+              <li>Drives platforms like WordPress.</li>
+              <li>Easy to learn and widely used.</li>
+              <li>Supports databases like MySQL.</li>
+            </ul>
+            <h3 class="text-xl font-semibold mb-2">Example</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+echo "Welcome to PHP!";
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-intro": {
+        title: "PHP Intro",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Intro</h2>
+            <p class="mb-4">PHP is a server-side scripting language for web development.</p>
+            <h3 class="text-xl font-semibold mb-2">Features</h3>
+            <ul class="list-disc list-inside mb-4">
+              <li>Dynamic content generation.</li>
+              <li>Database integration.</li>
+              <li>Cross-platform.</li>
+            </ul>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+echo "Hello, PHP!";
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-install": {
+        title: "PHP Install",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Install</h2>
+            <p class="mb-4">Install PHP using XAMPP or manually via php.net.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>sudo apt install php</code></pre>
+            <p class="mb-4">Verify with <code>php -v</code>.</p>
+          </section>
+        `
+      },
+      "php-syntax": {
+        title: "PHP Syntax",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Syntax</h2>
+            <p class="mb-4">PHP scripts start with <code>&lt;?php</code> and end with <code>?&gt;</code>.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+echo "Hello, World!";
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-comments": {
+        title: "PHP Comments",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Comments</h2>
+            <p class="mb-4">Use <code>//</code> or <code>/* */</code> for comments.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+// Single-line comment
+/* Multi-line
+comment */
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-variables": {
+        title: "PHP Variables",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Variables</h2>
+            <p class="mb-4">Variables start with <code>$</code>.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$name = "John";
+echo $name;
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-echo-print": {
+        title: "PHP Echo / Print",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Echo / Print</h2>
+            <p class="mb-4"><code>echo</code> and <code>print</code> output data.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+echo "Hello";
+print "World";
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-data-types": {
+        title: "PHP Data Types",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Data Types</h2>
+            <p class="mb-4">Includes strings, integers, arrays, objects, etc.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$int = 42;
+$str = "Hello";
+$arr = [1, 2, 3];
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-strings": {
+        title: "PHP Strings",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Strings</h2>
+            <p class="mb-4">Manipulate strings with functions like <code>strlen</code>.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+echo strlen("Hello");
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-numbers": {
+        title: "PHP Numbers",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Numbers</h2>
+            <p class="mb-4">Integers, floats, and numeric operations.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$num = 42.5;
+echo is_int($num); // false
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-casting": {
+        title: "PHP Casting",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Casting</h2>
+            <p class="mb-4">Convert data types with casting.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$str = "123";
+$int = (int)$str;
+echo $int;
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-math": {
+        title: "PHP Math",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Math</h2>
+            <p class="mb-4">Use math functions like <code>abs</code>, <code>round</code>.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+echo abs(-6.7); // 6.7
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-constants": {
+        title: "PHP Constants",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Constants</h2>
+            <p class="mb-4">Define constants with <code>define</code>.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+define("PI", 3.14);
+echo PI;
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-magic-constants": {
+        title: "PHP Magic Constants",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Magic Constants</h2>
+            <p class="mb-4">Predefined constants like <code>__FILE__</code>.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+echo __FILE__;
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-operators": {
+        title: "PHP Operators",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Operators</h2>
+            <p class="mb-4">Arithmetic, comparison, logical operators.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$a = 10;
+$b = 5;
+echo $a + $b;
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-if-else-elseif": {
+        title: "PHP If...Else...Elseif",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP If...Else...Elseif</h2>
+            <p class="mb-4">Conditional statements for control flow.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$age = 18;
+if ($age >= 18) {
+  echo "Adult";
+} else {
+  echo "Minor";
+}
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-switch": {
+        title: "PHP Switch",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Switch</h2>
+            <p class="mb-4">Use switch for multiple conditions.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$day = "Monday";
+switch ($day) {
+  case "Monday":
+    echo "Start of week";
+    break;
+  default:
+    echo "Other day";
+}
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-loops": {
+        title: "PHP Loops",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Loops</h2>
+            <p class="mb-4">Use <code>for</code>, <code>while</code>, <code>foreach</code>.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+for ($i = 0; $i < 5; $i++) {
+  echo $i;
+}
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-functions": {
+        title: "PHP Functions",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Functions</h2>
+            <p class="mb-4">Define reusable functions.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+function greet($name) {
+  return "Hello, $name";
+}
+echo greet("John");
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-arrays": {
+        title: "PHP Arrays",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Arrays</h2>
+            <p class="mb-4">Indexed, associative, and multidimensional arrays.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$fruits = ["Apple", "Banana"];
+echo $fruits[0];
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-superglobals": {
+        title: "PHP Superglobals",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Superglobals</h2>
+            <p class="mb-4">Access global variables like <code>$_GET</code>, <code>$_POST</code>.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+echo $_SERVER['HTTP_HOST'];
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-regex": {
+        title: "PHP RegEx",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP RegEx</h2>
+            <p class="mb-4">Use regular expressions for pattern matching.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+if (preg_match("/[a-z]/", "test")) {
+  echo "Match found";
+}
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-form-handling": {
+        title: "PHP Form Handling",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Form Handling</h2>
+            <p class="mb-4">Process form data with <code>$_POST</code> or <code>$_GET</code>.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;form method="post"&gt;
+  &lt;input type="text" name="name"&gt;
+  &lt;input type="submit"&gt;
+&lt;/form&gt;
+&lt;?php
+if ($_POST) {
+  echo $_POST['name'];
+}
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-form-validation": {
+        title: "PHP Form Validation",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Form Validation</h2>
+            <p class="mb-4">Validate form inputs to ensure data integrity.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$name = $_POST['name'];
+if (empty($name)) {
+  echo "Name is required";
+}
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-form-required": {
+        title: "PHP Form Required",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Form Required</h2>
+            <p class="mb-4">Ensure required fields are filled.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+if (empty($_POST['email'])) {
+  echo "Email is required";
+}
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-form-url-email": {
+        title: "PHP Form URL/E-mail",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Form URL/E-mail</h2>
+            <p class="mb-4">Validate URLs and emails.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$email = $_POST['email'];
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+  echo "Invalid email";
+}
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-form-complete": {
+        title: "PHP Form Complete",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Form Complete</h2>
+            <p class="mb-4">Complete form with validation and processing.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;form method="post"&gt;
+  &lt;input type="text" name="name"&gt;
+  &lt;input type="submit"&gt;
+&lt;/form&gt;
+&lt;?php
+if ($_POST) {
+  $name = htmlspecialchars($_POST['name']);
+  if (!empty($name)) {
+    echo "Welcome, $name!";
+  } else {
+    echo "Name required";
+  }
+}
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-date-time": {
+        title: "PHP Date and Time",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Date and Time</h2>
+            <p class="mb-4">Handle dates with <code>date</code> function.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+echo date("Y-m-d H:i:s");
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-include": {
+        title: "PHP Include",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Include</h2>
+            <p class="mb-4">Include external PHP files.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+include 'header.php';
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-file-handling": {
+        title: "PHP File Handling",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP File Handling</h2>
+            <p class="mb-4">Read, write, and manage files.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$content = file_get_contents("file.txt");
+echo $content;
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-file-open-read": {
+        title: "PHP File Open/Read",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP File Open/Read</h2>
+            <p class="mb-4">Open and read files with <code>fopen</code>.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$file = fopen("file.txt", "r");
+echo fread($file, filesize("file.txt"));
+fclose($file);
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-file-create-write": {
+        title: "PHP File Create/Write",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP File Create/Write</h2>
+            <p class="mb-4">Create and write to files.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$file = fopen("file.txt", "w");
+fwrite($file, "Hello");
+fclose($file);
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-file-upload": {
+        title: "PHP File Upload",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP File Upload</h2>
+            <p class="mb-4">Handle file uploads with <code>$_FILES</code>.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;form method="post" enctype="multipart/form-data"&gt;
+  &lt;input type="file" name="file"&gt;
+  &lt;input type="submit"&gt;
+&lt;/form&gt;
+&lt;?php
+if ($_FILES) {
+  move_uploaded_file($_FILES["file"]["tmp_name"], "uploads/" . $_FILES["file"]["name"]);
+}
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-cookies": {
+        title: "PHP Cookies",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Cookies</h2>
+            <p class="mb-4">Store data in cookies.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+setcookie("user", "John", time() + 3600);
+echo $_COOKIE["user"];
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-sessions": {
+        title: "PHP Sessions",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Sessions</h2>
+            <p class="mb-4">Manage user sessions with <code>$_SESSION</code>.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+session_start();
+$_SESSION["user"] = "John";
+echo $_SESSION["user"];
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-filters": {
+        title: "PHP Filters",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Filters</h2>
+            <p class="mb-4">Sanitize and validate data.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$email = filter_var("test@ex.com", FILTER_VALIDATE_EMAIL);
+echo $email;
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-filters-advanced": {
+        title: "PHP Filters Advanced",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Filters Advanced</h2>
+            <p class="mb-4">Custom filter options.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+filter_var("123", FILTER_VALIDATE_INT, ["options" => ["min_range" => 1]]);
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-callback-functions": {
+        title: "PHP Callback Functions",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Callback Functions</h2>
+            <p class="mb-4">Pass functions as arguments.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+function myCallback($item) {
+  return $item * 2;
+}
+echo array_map("myCallback", [1, 2, 3])[0];
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-json": {
+        title: "PHP JSON",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP JSON</h2>
+            <p class="mb-4">Encode and decode JSON.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$data = ["name" => "John"];
+echo json_encode($data);
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-exceptions": {
+        title: "PHP Exceptions",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Exceptions</h2>
+            <p class="mb-4">Handle errors with try-catch.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+try {
+  throw new Exception("Error");
+} catch (Exception $e) {
+  echo $e->getMessage();
+}
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-what-is-oop": {
+        title: "PHP What is OOP",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP What is OOP</h2>
+            <p class="mb-4">Object-Oriented Programming in PHP.</p>
+            <p class="mb-4">Uses classes and objects for structured code.</p>
+          </section>
+        `
+      },
+      "php-classes-objects": {
+        title: "PHP Classes/Objects",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Classes/Objects</h2>
+            <p class="mb-4">Define classes and create objects.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+class Car {
+  public $name = "Toyota";
+}
+$car = new Car();
+echo $car->name;
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-constructor": {
+        title: "PHP Constructor",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Constructor</h2>
+            <p class="mb-4">Initialize objects with <code>__construct</code>.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+class Car {
+  public $name;
+  public function __construct($name) {
+    $this->name = $name;
+  }
+}
+$car = new Car("Toyota");
+echo $car->name;
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-destructor": {
+        title: "PHP Destructor",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Destructor</h2>
+            <p class="mb-4">Clean up with <code>__destruct</code>.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+class Car {
+  public function __destruct() {
+    echo "Object destroyed";
+  }
+}
+$car = new Car();
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-access-modifiers": {
+        title: "PHP Access Modifiers",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Access Modifiers</h2>
+            <p class="mb-4">Use <code>public</code>, <code>private</code>, <code>protected</code>.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+class Car {
+  private $name = "Toyota";
+}
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-inheritance": {
+        title: "PHP Inheritance",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Inheritance</h2>
+            <p class="mb-4">Extend classes for code reuse.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+class Vehicle {
+  public $name = "Vehicle";
+}
+class Car extends Vehicle {}
+$car = new Car();
+echo $car->name;
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-constants-oop": {
+        title: "PHP Constants",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Constants</h2>
+            <p class="mb-4">Define class constants.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+class Car {
+  const BRAND = "Toyota";
+}
+echo Car::BRAND;
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-abstract-classes": {
+        title: "PHP Abstract Classes",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Abstract Classes</h2>
+            <p class="mb-4">Define abstract classes for inheritance.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+abstract class Vehicle {
+  abstract public function move();
+}
+class Car extends Vehicle {
+  public function move() {
+    echo "Driving";
+  }
+}
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-interfaces": {
+        title: "PHP Interfaces",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Interfaces</h2>
+            <p class="mb-4">Define contracts with interfaces.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+interface Vehicle {
+  public function move();
+}
+class Car implements Vehicle {
+  public function move() {
+    echo "Driving";
+  }
+}
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-traits": {
+        title: "PHP Traits",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Traits</h2>
+            <p class="mb-4">Reuse methods with traits.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+trait Drive {
+  public function drive() {
+    echo "Driving";
+  }
+}
+class Car {
+  use Drive;
+}
+$car = new Car();
+$car->drive();
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-static-methods": {
+        title: "PHP Static Methods",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Static Methods</h2>
+            <p class="mb-4">Access methods without instantiation.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+class Car {
+  public static function drive() {
+    echo "Driving";
+  }
+}
+Car::drive();
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-static-properties": {
+        title: "PHP Static Properties",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Static Properties</h2>
+            <p class="mb-4">Share properties across instances.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+class Car {
+  public static $count = 0;
+}
+Car::$count++;
+echo Car::$count;
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-namespaces": {
+        title: "PHP Namespaces",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Namespaces</h2>
+            <p class="mb-4">Organize code with namespaces.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+namespace App;
+class Car {}
+$car = new Car();
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-iterables": {
+        title: "PHP Iterables",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP Iterables</h2>
+            <p class="mb-4">Use iterables with <code>foreach</code>.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+function getIterable(): iterable {
+  return [1, 2, 3];
+}
+foreach (getIterable() as $value) {
+  echo $value;
+}
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "mysql-database": {
+        title: "MySQL Database",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">MySQL Database</h2>
+            <p class="mb-4">Integrate PHP with MySQL for data storage.</p>
+            <p class="mb-4">Use MySQLi or PDO for database operations.</p>
+          </section>
+        `
+      },
+      "mysql-connect": {
+        title: "MySQL Connect",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">MySQL Connect</h2>
+            <p class="mb-4">Connect to MySQL database.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$conn = new mysqli("localhost", "user", "pass", "db");
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "mysql-create-db": {
+        title: "MySQL Create DB",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">MySQL Create DB</h2>
+            <p class="mb-4">Create a new database.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$conn = new mysqli("localhost", "user", "pass");
+$conn->query("CREATE DATABASE myDB");
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "mysql-create-table": {
+        title: "MySQL Create Table",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">MySQL Create Table</h2>
+            <p class="mb-4">Create a table in MySQL.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$conn = new mysqli("localhost", "user", "pass", "db");
+$conn->query("CREATE TABLE users (id INT PRIMARY KEY, name VARCHAR(50))");
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "mysql-insert-data": {
+        title: "MySQL Insert Data",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">MySQL Insert Data</h2>
+            <p class="mb-4">Insert data into a table.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$conn = new mysqli("localhost", "user", "pass", "db");
+$conn->query("INSERT INTO users (id, name) VALUES (1, 'John')");
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "mysql-get-last-id": {
+        title: "MySQL Get Last ID",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">MySQL Get Last ID</h2>
+            <p class="mb-4">Retrieve last inserted ID.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$conn = new mysqli("localhost", "user", "pass", "db");
+$conn->query("INSERT INTO users (name) VALUES ('John')");
+echo $conn->insert_id;
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "mysql-insert-multiple": {
+        title: "MySQL Insert Multiple",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">MySQL Insert Multiple</h2>
+            <p class="mb-4">Insert multiple rows.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$conn = new mysqli("localhost", "user", "pass", "db");
+$conn->query("INSERT INTO users (id, name) VALUES (1, 'John'), (2, 'Jane')");
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "mysql-prepared": {
+        title: "MySQL Prepared",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">MySQL Prepared</h2>
+            <p class="mb-4">Use prepared statements for security.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$conn = new mysqli("localhost", "user", "pass", "db");
+$stmt = $conn->prepare("INSERT INTO users (name) VALUES (?)");
+$stmt->bind_param("s", $name);
+$name = "John";
+$stmt->execute();
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "mysql-select-data": {
+        title: "MySQL Select Data",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">MySQL Select Data</h2>
+            <p class="mb-4">Retrieve data from tables.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$conn = new mysqli("localhost", "user", "pass", "db");
+$result = $conn->query("SELECT * FROM users");
+while ($row = $result->fetch_assoc()) {
+  echo $row['name'];
+}
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "mysql-where": {
+        title: "MySQL Where",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">MySQL Where</h2>
+            <p class="mb-4">Filter data with WHERE clause.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$conn = new mysqli("localhost", "user", "pass", "db");
+$result = $conn->query("SELECT * FROM users WHERE id = 1");
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "mysql-order-by": {
+        title: "MySQL Order By",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">MySQL Order By</h2>
+            <p class="mb-4">Sort data with ORDER BY.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$conn = new mysqli("localhost", "user", "pass", "db");
+$result = $conn->query("SELECT * FROM users ORDER BY name");
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "mysql-delete-data": {
+        title: "MySQL Delete Data",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">MySQL Delete Data</h2>
+            <p class="mb-4">Delete data from tables.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$conn = new mysqli("localhost", "user", "pass", "db");
+$conn->query("DELETE FROM users WHERE id = 1");
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "mysql-update-data": {
+        title: "MySQL Update Data",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">MySQL Update Data</h2>
+            <p class="mb-4">Update table records.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$conn = new mysqli("localhost", "user", "pass", "db");
+$conn->query("UPDATE users SET name = 'Jane' WHERE id = 1");
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "mysql-limit-data": {
+        title: "MySQL Limit Data",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">MySQL Limit Data</h2>
+            <p class="mb-4">Limit query results.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$conn = new mysqli("localhost", "user", "pass", "db");
+$result = $conn->query("SELECT * FROM users LIMIT 5");
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-xml-parsers": {
+        title: "PHP XML Parsers",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP XML Parsers</h2>
+            <p class="mb-4">Parse XML with SimpleXML or DOM.</p>
+            <p class="mb-4">Supports structured data handling.</p>
+          </section>
+        `
+      },
+      "php-simplexml-parser": {
+        title: "PHP SimpleXML Parser",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP SimpleXML Parser</h2>
+            <p class="mb-4">Parse XML easily with SimpleXML.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$xml = simplexml_load_string("&lt;note&gt;&lt;body&gt;Hello&lt;/body&gt;&lt;/note&gt;");
+echo $xml->body;
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-simplexml-get": {
+        title: "PHP SimpleXML - Get",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP SimpleXML - Get</h2>
+            <p class="mb-4">Access XML attributes and elements.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$xml = simplexml_load_string("&lt;note id='1'&gt;&lt;body&gt;Hello&lt;/body&gt;&lt;/note&gt;");
+echo $xml['id'];
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-xml-expat": {
+        title: "PHP XML Expat",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP XML Expat</h2>
+            <p class="mb-4">Use Expat parser for event-based XML parsing.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$parser = xml_parser_create();
+xml_set_element_handler($parser, "start", "stop");
+xml_parse($parser, "&lt;note&gt;Hello&lt;/note&gt;");
+function start($parser, $name, $attrs) {
+  echo "Start: $name";
+}
+function stop($parser, $name) {
+  echo "End: $name";
+}
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "php-xml-dom": {
+        title: "PHP XML DOM",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">PHP XML DOM</h2>
+            <p class="mb-4">Manipulate XML with DOMDocument.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;?php
+$doc = new DOMDocument();
+$doc->loadXML("&lt;note&gt;Hello&lt;/note&gt;");
+echo $doc->getElementsByTagName("note")->item(0)->nodeValue;
+?&gt;</code></pre>
+          </section>
+        `
+      },
+      "ajax-intro": {
+        title: "AJAX Intro",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">AJAX Intro</h2>
+            <p class="mb-4">AJAX enables asynchronous web requests.</p>
+            <p class="mb-4">Works with PHP for dynamic content.</p>
+          </section>
+        `
+      },
+      "ajax-php": {
+        title: "AJAX PHP",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">AJAX PHP</h2>
+            <p class="mb-4">Use AJAX to call PHP scripts.</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;script&gt;
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "script.php", true);
+xhr.send();
+&lt;/script&gt;
+&lt;?php
+echo "Response from PHP";
+?&gt;</code></pre>
+          </section>
+        `
+      },
+    }
+
+       // Sidebar toggle (mobile)
+    document.getElementById('open-sidebar').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.add('open');
+    });
+
+    document.getElementById('close-sidebar').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.remove('open');
+    });
+
+    // Sidebar link click handler
+    document.querySelectorAll('#sidebar-links a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const topicId = link.getAttribute('href').substring(1);
+        loadTopicContent(topicId);
+
+        // Update active state
+        document.querySelectorAll('#sidebar-links a').forEach(a => a.classList.remove('active'));
+        link.classList.add('active');
+
+        // Close sidebar on mobile after clicking
+        document.getElementById('sidebar').classList.remove('open');
+      });
+    });
+
+    function loadTopicContent(topicId) {
+      const mainContent = document.getElementById('main-content');
+      const topic = topicContents[topicId];
+      if (topic) {
+        mainContent.innerHTML = `
+          <section class="bg-white p-6 rounded-lg shadow-md">
+            ${topic.content}
+            <button onclick="document.getElementById('main-content').innerHTML = document.getElementById('welcome').outerHTML" 
+                    class="mt-6 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+              Back to Welcome
+            </button>
+          </section>
+        `;
+      } else {
+        mainContent.innerHTML = `
+          <section class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold mb-4">Topic Not Found</h2>
+            <p>No content available for this topic.</p>
+            <button onclick="document.getElementById('main-content').innerHTML = document.getElementById('welcome').outerHTML" 
+                    class="mt-6 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+              Back to Welcome
+            </button>
+          </section>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>
+    

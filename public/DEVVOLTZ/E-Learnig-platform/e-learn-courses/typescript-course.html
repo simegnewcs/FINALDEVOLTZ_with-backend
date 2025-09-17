@@ -1,0 +1,1942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Devvoltz js Tutorial</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+header{
+  background-color: #D4EBF7;
+}
+    pre {
+      background-color: #f3f4f6;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+    }
+
+    #sidebar {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    #sidebar a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.375rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #sidebar a:hover {
+      background-color: #1e40af;
+      color: #ffffff;
+      transform: translateX(5px);
+    }
+
+    #sidebar a.active {
+      background-color: #3b82f6;
+      font-weight: bold;
+      color: white;
+    }
+
+    #main-content{
+      
+      width: 75.4%;
+    }
+
+    @media (max-width: 768px) {
+      #sidebar {
+        transform: translateX(-100%);
+      }
+
+      #sidebar.open {
+        transform: translateX(0);
+      }
+
+         #main-content{
+      background-color: #2d9dd5;
+      width: 100%;
+    }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <!-- Sidebar -->
+<aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-gray-900 text-white p-4 overflow-y-auto md:transform-none z-50">
+  <h2 class="text-xl font-bold mb-4">TypeScript Tutorial</h2>
+  <div class="mt-6">
+    <h3 class="font-semibold mb-2">TS Topics</h3>
+    <ul class="space-y-1 text-sm" id="sidebar-links"> 
+      <li><a href="#ts-home" class="text-gray-300 block">TS HOME</a></li>
+      <li><a href="#ts-introduction" class="text-gray-300 block">TS Introduction</a></li>
+      <li><a href="#ts-get-started" class="text-gray-300 block">TS Get Started</a></li>
+      <li><a href="#ts-simple-types" class="text-gray-300 block">TS Simple Types</a></li>
+      <li><a href="#ts-explicit-inference" class="text-gray-300 block">TS Explicit & Inference</a></li>
+      <li><a href="#ts-special-types" class="text-gray-300 block">TS Special Types</a></li>
+      <li><a href="#ts-arrays" class="text-gray-300 block">TS Arrays</a></li>
+      <li><a href="#ts-tuples" class="text-gray-300 block">TS Tuples</a></li>
+      <li><a href="#ts-object-types" class="text-gray-300 block">TS Object Types</a></li>
+      <li><a href="#ts-enums" class="text-gray-300 block">TS Enums</a></li>
+      <li><a href="#ts-aliases-interfaces" class="text-gray-300 block">TS Aliases & Interfaces</a></li>
+      <li><a href="#ts-union-types" class="text-gray-300 block">TS Union Types</a></li>
+      <li><a href="#ts-functions" class="text-gray-300 block">TS Functions</a></li>
+      <li><a href="#ts-casting" class="text-gray-300 block">TS Casting</a></li>
+      <li><a href="#ts-classes" class="text-gray-300 block">TS Classes</a></li>
+      <li><a href="#ts-generics" class="text-gray-300 block">TS Basic Generics</a></li>
+      <li><a href="#ts-utility-types" class="text-gray-300 block">TS Utility Types</a></li>
+      <li><a href="#ts-keyof" class="text-gray-300 block">TS Keyof</a></li>
+      <li><a href="#ts-null" class="text-gray-300 block">TS Null</a></li>
+      <li><a href="#ts-definitely-typed" class="text-gray-300 block">TS Definitely Typed</a></li>
+      <li><a href="#ts-5-updates" class="text-gray-300 block">TS 5 Updates</a></li>
+      <li><a href="#ts-configuration" class="text-gray-300 block">TS Configuration</a></li>
+      <li><a href="#ts-nodejs" class="text-gray-300 block">TS with Node.js</a></li>
+      <li><a href="#ts-react" class="text-gray-300 block">TS with React</a></li>
+      <!-- <li><a href="#ts-tooling" class="text-gray-300 block">TS Tooling</a></li>
+      <li><a href="#ts-advanced-types" class="text-gray-300 block">TS Advanced Types</a></li>
+      <li><a href="#ts-type-guards" class="text-gray-300 block">TS Type Guards</a></li>
+      <li><a href="#ts-conditional-types" class="text-gray-300 block">TS Conditional Types</a></li>
+      <li><a href="#ts-mapped-types" class="text-gray-300 block">TS Mapped Types</a></li>
+      <li><a href="#ts-type-inference" class="text-gray-300 block">TS Type Inference</a></li>
+      <li><a href="#ts-literal-types" class="text-gray-300 block">TS Literal Types</a></li>
+      <li><a href="#ts-namespaces" class="text-gray-300 block">TS Namespaces</a></li>
+      <li><a href="#ts-index-signatures" class="text-gray-300 block">TS Index Signatures</a></li>
+      <li><a href="#ts-declaration-merging" class="text-gray-300 block">TS Declaration Merging</a></li>
+      <li><a href="#ts-async-programming" class="text-gray-300 block">TS Async Programming</a></li>
+      <li><a href="#ts-decorators" class="text-gray-300 block">TS Decorators</a></li>
+      <li><a href="#ts-in-js" class="text-gray-300 block">TS in JS Projects</a></li>
+      <li><a href="#ts-migration" class="text-gray-300 block">TS Migration</a></li>
+      <li><a href="#ts-error-handling" class="text-gray-300 block">TS Error Handling</a></li>
+      <li><a href="#ts-best-practices" class="text-gray-300 block">TS Best Practices</a></li> -->
+    </ul>
+  </div>
+  <button id="close-sidebar" class="md:hidden mt-4 bg-red-600 px-4 py-2 rounded-md">Close</button>
+</aside>
+
+
+  <!-- Mobile Toggle Button -->
+  <button id="open-sidebar" class="md:hidden fixed top-4 left-4 z-50 bg-blue-600 text-white p-2 rounded-md">
+    ☰ Menu
+  </button>
+
+  <!-- Header -->
+  <header class="py-6 md:ml-64">
+    <div class="container mx-auto px-4">
+      <h1 class="text-3xl font-bold">Introduction to TypeScript</h1>
+      <p class="mt-2">Learn the essentials of Typescript programming  in web pages  Devvoltz platform.</p>
+    </div>
+  </header>
+
+ <!-- Main Content -->
+<main class="container mx-auto px-4 py-8 md:ml-64 space-y-12" id="main-content">
+  <section class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200" id="welcome">
+    <!-- Heading -->
+    <h2 class="text-3xl font-bold text-blue-900 mb-4 flex items-center gap-2">
+      <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M5 4v16h14V4H5zm13 1v2H6V5h12zM6 8h12v11H6V8z"/>
+      </svg>
+      Welcome to TypeScript
+    </h2>
+
+    <!-- Intro Paragraph -->
+    <p class="text-gray-700 mb-4 leading-relaxed">
+      <span class="font-semibold text-blue-800">TypeScript</span> is the most widely used programming language for web development. 
+      This tutorial will guide you through key TypeScript concepts with practical examples.
+    </p>
+
+  <!-- What is TypeScript -->
+<div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6">
+  <h3 class="text-xl font-semibold text-blue-800 mb-2">📌 What is TypeScript?</h3>
+  <ul class="list-disc pl-6 text-gray-700 space-y-1">
+    <li>TypeScript is a <strong>superset of JavaScript</strong> that adds <strong>static typing</strong> and modern language features.</li>
+    <li>It helps catch errors at <strong>compile-time</strong> and makes large codebases easier to maintain.</li>
+    <li>TypeScript code is <strong>transpiled to JavaScript</strong>, so it runs anywhere JavaScript runs (browser, Node.js).</li>
+    <li>Works seamlessly with existing JS and libraries—<strong>gradual adoption</strong> is possible.</li>
+    <li>TypeScript files typically use the <code class="bg-gray-100 px-1 rounded text-sm text-blue-800">.ts</code> (or <code class="bg-gray-100 px-1 rounded text-sm text-blue-800">.tsx</code>) extension.</li>
+  </ul>
+
+  <!-- Optional mini example -->
+  <div class="mt-3 bg-white rounded-md p-3 border">
+    <p class="text-sm text-gray-800 mb-2"><strong>Example:</strong> Type-safe function</p>
+    <pre class="overflow-auto text-sm"><code>// add.ts
+function add(a: number, b: number): number {
+  return a + b;
+}
+// add(5, "10"); // ❌ Compile-time error
+</code></pre>
+  </div>
+</div>
+
+<!-- Why Use TypeScript --> 
+<div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400 mb-6">
+  <h3 class="text-xl font-semibold text-green-800 mb-2">💡 Why Use TypeScript?</h3>
+  <p class="text-gray-700 leading-relaxed">
+    TypeScript makes your code <strong>safer, more structured, and easier to maintain</strong>. 
+    It helps you catch errors before running the program, improves code readability with types, 
+    and provides powerful tooling support like auto-completion and refactoring. 
+    TypeScript is especially valuable in <strong>large-scale applications</strong> where reliability and maintainability are important.
+  </p>
+</div>
+
+
+  <!-- TypeScript Example -->
+<div class="bg-gray-100 p-4 rounded-lg border border-gray-300 mb-6">
+  <h3 class="text-xl font-semibold text-gray-800 mb-2">🧪 TypeScript Example:</h3>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>
+// app.ts
+const demoElement = document.getElementById("demo") as HTMLElement;
+demoElement.innerHTML = "Hello TypeScript!";
+</code>
+  </pre>
+  <p class="text-sm mt-2 text-gray-600">
+    This example shows how TypeScript uses <strong>type assertions</strong> to ensure 
+    <code>demoElement</code> is an <code>HTMLElement</code>.  
+    You can compile it with <code>tsc app.ts</code> which generates <code>app.js</code>, 
+    and then run it in your HTML with an element like 
+    <code>&lt;p id="demo"&gt;&lt;/p&gt;</code>.
+  </p>
+</div>
+
+    <!-- Try it -->
+    <div class="text-center mt-8">
+      <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-full shadow transition">
+        🎯 Try It Yourself
+      </a>
+    </div>
+
+    <!-- Navigation Prompt -->
+    <p class="text-gray-600 mt-6 text-center">📚 Select a topic from the sidebar to begin learning!</p>
+  </section>
+</main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-4 mt-8 md:ml-64">
+    <div class="container mx-auto px-4 text-center">
+      <p>© 2025 Devvoltz Platform. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+   // Topic content data
+const topicContents = {
+
+  "ts-home": {
+    title: "TS HOME",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">TypeScript Home</h2>
+      <p class="mb-4">
+        Welcome to the TypeScript Tutorial. TypeScript is a strongly typed superset of JavaScript that adds static type definitions. It helps developers write safer, more maintainable code, and is widely used in modern web and backend development.
+      </p>
+
+      <h3 class="text-xl font-semibold mb-2">Why Learn TypeScript?</h3>
+      <ul class="list-disc list-inside mb-4">
+        <li>Provides type safety and reduces runtime errors.</li>
+        <li>Improves developer productivity with IntelliSense and autocompletion.</li>
+        <li>Works seamlessly with JavaScript libraries and frameworks.</li>
+        <li>Highly recommended for large-scale projects.</li>
+      </ul>
+
+      <h3 class="text-xl font-semibold mb-2">How This Tutorial Works</h3>
+      <p class="mb-4">
+        This tutorial teaches TypeScript step by step. Each chapter includes explanations and code examples that you can run and modify.
+      </p>
+      <div class="bg-gray-100 p-3 rounded mb-4">
+        <strong>Example:</strong><br>
+        <code>let message: string = "Hello TypeScript";<br>console.log(message);</code>
+      </div>
+
+      <h3 class="text-xl font-semibold mb-2">Suggested Learning Path</h3>
+      <p class="mb-4">
+        We recommend starting from the basics, such as simple types and functions, and then progressing to advanced concepts like generics, decorators, and configuration.
+      </p>
+
+      <h3 class="text-xl font-semibold mb-2">Learn by Examples</h3>
+      <p class="mb-4">
+        Examples make learning easier. This tutorial is packed with hands-on examples that clarify each TypeScript concept. Practicing them will rapidly improve your coding skills.
+      </p>
+
+      <h3 class="text-xl font-semibold mb-2">Core Benefits of TypeScript</h3>
+      <p class="mb-4">
+        TypeScript enhances:
+        <ul class="list-disc list-inside">
+          <li><strong>Maintainability</strong> – Catch bugs at compile time</li>
+          <li><strong>Scalability</strong> – Great for large projects</li>
+          <li><strong>Integration</strong> – Works with Node.js, React, Angular, Vue</li>
+        </ul>
+      </p>
+
+      <h3 class="text-xl font-semibold mb-2">Versions of TypeScript</h3>
+      <p class="mb-4">
+        This tutorial covers important TypeScript versions, including the latest TS 5 updates.
+      </p>
+
+      <h3 class="text-xl font-semibold mb-2">FAQs</h3>
+      <ul class="list-disc list-inside mb-4">
+        <li><strong>Do I need to install TypeScript?</strong><br> Yes. Install it globally using <code>npm install -g typescript</code>.</li>
+        <li><strong>Can I use TypeScript with JavaScript projects?</strong><br> Yes, you can gradually migrate JS projects to TS.</li>
+      </ul>
+
+      <p class="text-center font-semibold mt-6">🎯 Let’s start your TypeScript journey now!</p>
+    `
+  },
+
+  "ts-introduction": {
+    title: "TS Introduction",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">TypeScript Introduction</h2>
+
+        <h3 class="text-2xl font-semibold text-green-700 mb-2">📌 What is TypeScript?</h3>
+        <p class="mb-4">
+          TypeScript is an open-source programming language developed by Microsoft. It is a superset of JavaScript, meaning all JavaScript code is valid in TypeScript, but TypeScript adds optional static typing and advanced features.
+        </p>
+        <ul class="list-disc list-inside text-gray-700 mb-6 pl-4">
+          <li>Provides static type checking</li>
+          <li>Improves developer experience with better tooling</li>
+          <li>Compiles to plain JavaScript for execution</li>
+        </ul>
+
+        <h3 class="text-2xl font-semibold text-green-700 mb-2">🎯 Why Study TypeScript?</h3>
+        <p class="mb-4">TypeScript is essential for modern web development because:</p>
+        <ol class="list-decimal list-inside mb-6 text-gray-700 pl-4">
+          <li>It reduces bugs with type safety</li>
+          <li>It scales well for enterprise-level projects</li>
+          <li>It integrates seamlessly with frameworks like React, Angular, and Node.js</li>
+        </ol>
+
+        <h3 class="text-2xl font-semibold text-green-700 mb-2">📝 TypeScript Example</h3>
+        <p class="mb-2">Here’s a simple TypeScript program:</p>
+        <pre class="bg-gray-900 text-white rounded p-3 overflow-x-auto mb-4 text-sm"><code>function greet(name: string): string {
+  return "Hello, " + name;
+}
+
+console.log(greet("World"));</code></pre>
+
+        <h3 class="text-2xl font-semibold text-green-700 mb-2">💡 Did You Know?</h3>
+        <ul class="list-disc list-inside text-gray-700 pl-4 mb-6">
+          <li>TypeScript was released in 2012 by Microsoft.</li>
+          <li>It has become the <strong>standard language</strong> for large-scale JavaScript applications.</li>
+          <li>It compiles to JavaScript, so it runs anywhere JS runs.</li>
+        </ul>
+
+        <p class="text-center font-semibold text-blue-800 mt-10 text-lg">🚀 TypeScript helps you code with confidence. Let’s explore it in depth!</p>
+      </section>
+    `
+  }
+,
+
+"ts-get-started": {
+  title: "Getting Started",
+  content: `
+    <section class="prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">🚀 TypeScript Getting Started</h2>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">⚙️ TypeScript Compiler</h3>
+      <p class="mb-4">
+        TypeScript is <strong>transpiled</strong> into JavaScript using a compiler.  
+        Since it converts to JavaScript, it can run <strong>anywhere JavaScript runs</strong> — browsers, Node.js, and more!
+      </p>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">📦 Installing the Compiler</h3>
+      <p class="mb-4">
+        TypeScript has an official compiler that you can install using <code>npm</code>.
+      </p>
+      <pre class="bg-gray-900 text-yellow-300 p-3 rounded text-sm overflow-x-auto mb-4"><code>npm install typescript --save-dev</code></pre>
+
+      <p class="mb-4">✅ Example output:</p>
+      <pre class="bg-gray-900 text-green-400 p-3 rounded text-sm overflow-x-auto mb-4"><code>added 1 package, and audited 2 packages in 2s
+found 0 vulnerabilities</code></pre>
+
+      <p class="mb-4">
+        The compiler will be installed inside <code>node_modules</code> and can be run with:
+      </p>
+      <pre class="bg-gray-900 text-yellow-300 p-3 rounded text-sm overflow-x-auto mb-6"><code>npx tsc</code></pre>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">🛠️ Configuring the Compiler</h3>
+      <p class="mb-4">
+        By default, <code>tsc</code> shows help when run in an empty project.  
+        To configure it, create a <code>tsconfig.json</code> file:
+      </p>
+      <pre class="bg-gray-900 text-yellow-300 p-3 rounded text-sm overflow-x-auto mb-4"><code>npx tsc --init</code></pre>
+
+      <p class="mb-4">✅ Example output:</p>
+      <pre class="bg-gray-900 text-green-400 p-3 rounded text-sm overflow-x-auto mb-6"><code>Created a new tsconfig.json with:
+  target: es2016
+  module: commonjs
+  strict: true
+  esModuleInterop: true
+  skipLibCheck: true
+  forceConsistentCasingInFileNames: true</code></pre>
+
+      <p class="mb-4">Here’s an example with extra options:</p>
+      <pre class="bg-gray-900 text-white p-3 rounded text-sm overflow-x-auto mb-6"><code>{
+  "include": ["src"],
+  "compilerOptions": {
+    "outDir": "./build"
+  }
+}</code></pre>
+
+      <p class="mb-6">
+        This tells the compiler to transpile <code>src/</code> TypeScript files into JavaScript inside the <code>build/</code> directory.
+      </p>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">👨‍💻 Your First TypeScript Program</h3>
+      <p class="mb-4">Let’s create a simple <strong>"Hello, World!"</strong> program.</p>
+      <pre class="bg-gray-900 text-green-300 p-4 rounded text-sm overflow-x-auto mb-4"><code>// hello.ts
+function greet(name: string): string {
+  return \`Hello, \${name}!\`;
+}
+
+const message: string = greet("World");
+console.log(message);
+</code></pre>
+
+      <p class="mb-4">Compile your code:</p>
+      <pre class="bg-gray-900 text-yellow-300 p-3 rounded text-sm overflow-x-auto mb-4"><code>npx tsc hello.ts</code></pre>
+
+      <p class="mb-4">The compiler generates <code>hello.js</code>:</p>
+      <pre class="bg-gray-900 text-green-300 p-4 rounded text-sm overflow-x-auto mb-4"><code>function greet(name) {
+  return "Hello, ".concat(name, "!");
+}
+
+const message = greet("World");
+console.log(message);
+</code></pre>
+
+      <p class="mb-4">Run the compiled JavaScript with Node.js:</p>
+      <pre class="bg-gray-900 text-yellow-300 p-3 rounded text-sm overflow-x-auto mb-4"><code>node hello.js</code></pre>
+
+      <p class="font-semibold text-center text-purple-700 mt-6">✅ Output: Hello, World!</p>
+
+      <p class="text-center text-blue-800 font-semibold mt-10 text-lg">
+        🎉 Congratulations! You’ve installed TypeScript, configured it, and run your first program.
+      </p>
+    </section>
+  `
+},
+
+"ts-simple-types": {
+  title: "Simple Types",
+  content: `
+    <section class="prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">🔹 TypeScript Simple Types</h2>
+
+      <p class="mb-4">
+        TypeScript enhances JavaScript by adding <strong>static types</strong>.  
+        The most basic building blocks are called <strong>primitives</strong>, and they help you write safer, more predictable code.
+      </p>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-4">📌 JavaScript & TypeScript Primitives</h3>
+      <p class="mb-6">
+        These primitives form the foundation for more complex types.  
+        TypeScript includes all JavaScript primitives plus additional type features.
+      </p>
+
+      <h3 class="text-xl font-semibold text-purple-700 mb-2">✅ Boolean</h3>
+      <p class="mb-2">Represents <code>true</code> or <code>false</code>. Commonly used for flags, toggles, and conditions.</p>
+      <pre class="bg-gray-900 text-green-300 p-3 rounded text-sm overflow-x-auto mb-6"><code>let isActive: boolean = true;
+let hasPermission = false; // TypeScript infers 'boolean'</code></pre>
+
+      <h3 class="text-xl font-semibold text-purple-700 mb-2">✅ Number</h3>
+      <p class="mb-2">Represents all numbers: integers, floats, hex, binary, and octal.</p>
+      <pre class="bg-gray-900 text-green-300 p-3 rounded text-sm overflow-x-auto mb-6"><code>let decimal: number = 6;
+let hex: number = 0xf00d;    // Hexadecimal
+let binary: number = 0b1010; // Binary
+let octal: number = 0o744;   // Octal
+let float: number = 3.14;    // Floating point</code></pre>
+
+      <h3 class="text-xl font-semibold text-purple-700 mb-2">✅ String</h3>
+      <p class="mb-2">Represents text. Supports single quotes, double quotes, and template literals.</p>
+      <pre class="bg-gray-900 text-green-300 p-3 rounded text-sm overflow-x-auto mb-6"><code>let color: string = "blue";
+let fullName: string = 'John Doe';
+let age: number = 30;
+
+let sentence: string = \`Hello, my name is \${fullName} and I'll be \${age + 1} next year.\`;</code></pre>
+
+      <h3 class="text-xl font-semibold text-purple-700 mb-2">✅ BigInt (ES2020+)</h3>
+      <p class="mb-2">Represents whole numbers larger than <code>2^53 - 1</code>.  
+      Add <code>n</code> at the end of the number or use <code>BigInt()</code>.</p>
+      <pre class="bg-gray-900 text-green-300 p-3 rounded text-sm overflow-x-auto mb-6"><code>const bigNumber: bigint = 9007199254740991n;
+const hugeNumber = BigInt(9007199254740991);</code></pre>
+
+      <h3 class="text-xl font-semibold text-purple-700 mb-2">✅ Symbol</h3>
+      <p class="mb-2">Creates <strong>unique identifiers</strong>. Useful for object keys and constants.</p>
+      <pre class="bg-gray-900 text-green-300 p-3 rounded text-sm overflow-x-auto mb-6"><code>const uniqueKey: symbol = Symbol('description');
+
+const obj = {
+  [uniqueKey]: 'This is a unique property'
+};
+
+console.log(obj[uniqueKey]); // "This is a unique property"</code></pre>
+
+      <p class="text-center text-blue-800 font-semibold mt-10 text-lg">
+        🚀 These simple types are the foundation of TypeScript. Next, let’s explore more advanced types!
+      </p>
+    </section>
+  `
+},
+
+"ts-explicit-inference": {
+  title: "TypeScript Explicit vs Inference",
+  content: `
+    <section class="prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">✍️ Explicit vs Inferred Types</h2>
+
+      <p class="mb-4">
+        TypeScript allows you to define types explicitly <strong>or</strong> let the compiler infer them automatically.
+      </p>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-3">✅ Explicit Typing</h3>
+      <p class="mb-2">You specify the type directly:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>let age: number = 21;
+let username: string = "Simegnew";
+let isStudent: boolean = true;</code></pre>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-3">🤖 Type Inference</h3>
+      <p class="mb-2">TypeScript can guess the type from the value you assign:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>let city = "Bahir Dar";   // inferred as string
+let year = 2025;          // inferred as number
+let active = false;       // inferred as boolean</code></pre>
+
+      <h3 class="text-2xl font-semibold text-purple-700 mb-3">⚠️ When to Use Explicit Types</h3>
+      <ul class="list-disc list-inside mb-6">
+        <li>When working with functions (parameters & return types)</li>
+        <li>When the variable starts as <code>null</code> or <code>undefined</code></li>
+        <li>When clarity is more important than brevity</li>
+      </ul>
+
+      <p class="text-center font-semibold text-blue-800">🚀 Use inference for simplicity, explicit typing for clarity.</p>
+    </section>
+  `
+},
+
+"ts-special-types": {
+  title: "TypeScript Special Types",
+  content: `
+    <section class="prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold text-indigo-700 mb-6 border-b pb-2">⭐ Special Types in TypeScript</h2>
+
+      <p class="mb-4">
+        TypeScript provides several special types for flexibility and advanced scenarios.
+      </p>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3"><code>any</code></h3>
+      <p class="mb-2">Disables type checking — use sparingly:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6"><code>let data: any = 42;
+data = "hello";
+data = true;</code></pre>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3"><code>unknown</code></h3>
+      <p class="mb-2">Safer alternative to <code>any</code> — must check type before using:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6"><code>let value: unknown = "hello";
+
+if (typeof value === "string") {
+  console.log(value.toUpperCase());
+}</code></pre>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3"><code>void</code></h3>
+      <p class="mb-2">Used for functions that don’t return a value:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6"><code>function logMessage(msg: string): void {
+  console.log(msg);
+}</code></pre>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3"><code>never</code></h3>
+      <p class="mb-2">Represents functions that never finish normally:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6"><code>function error(message: string): never {
+  throw new Error(message);
+}</code></pre>
+
+      <p class="text-center text-purple-800 font-semibold">💡 Use special types carefully for robust code!</p>
+    </section>
+  `
+},
+
+"ts-arrays": {
+  title: "TypeScript Arrays",
+  content: `<!-- TS Arrays -->
+<div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400 mb-6">
+  <h3 class="text-xl font-semibold text-yellow-800 mb-2">📚 TypeScript Arrays</h3>
+  <p class="text-gray-700 leading-relaxed">
+    TypeScript provides a specific syntax for typing arrays, ensuring that all elements conform to a defined type.
+  </p>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">✅ Basic Array Typing</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>const names: string[] = [];
+names.push("Dylan"); // ✅ no error
+// names.push(3);    // ❌ Error: number is not assignable to type string
+</code>
+  </pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">🔒 Readonly Arrays</h4>
+  <p class="text-gray-700 mb-2">
+    Use <code>readonly</code> to prevent modifications to the array:
+  </p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>const names: readonly string[] = ["Dylan"];
+names.push("Jack"); // ❌ Error: Property 'push' does not exist on type 'readonly string[]'</code>
+  </pre>
+  <p class="text-sm text-gray-600">
+    Remove <code>readonly</code> if you want to allow modifications.
+  </p>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">🔍 Type Inference</h4>
+  <p class="text-gray-700 mb-2">
+    TypeScript can infer the array type based on initial values:
+  </p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>const numbers = [1, 2, 3]; // inferred as number[]
+numbers.push(4); // ✅ no error
+// numbers.push("2"); // ❌ Error: string not assignable to number
+
+let head: number = numbers[0]; // ✅ no error
+</code>
+  </pre>
+</div>
+`},
+
+  "ts-tuples": {
+  title: "TS Tuples",
+  content:`
+  <!-- TS Tuples -->
+<div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6">
+  <h3 class="text-xl font-semibold text-blue-800 mb-2">📊 TypeScript Tuples</h3>
+  <p class="text-gray-700 leading-relaxed">
+    A tuple is a <strong>typed array with a pre-defined length and types</strong> for each index.  
+    Tuples allow each element in the array to be a known type of value.
+  </p>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">✅ Defining Tuples</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>// define our tuple
+let ourTuple: [number, boolean, string];
+
+// initialize correctly
+ourTuple = [5, false, "Coding God was here"];
+</code>
+  </pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚠️ Wrong Order Error</h4>
+  <pre class="bg-black text-red-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>// define our tuple
+let ourTuple: [number, boolean, string];
+
+// initialized incorrectly (throws error)
+ourTuple = [false, "Coding God was mistaken", 5];
+</code>
+  </pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">🔒 Readonly Tuples</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>// define our tuple
+let ourTuple: [number, boolean, string];
+ourTuple = [5, false, "Coding God was here"];
+
+// Tuples only enforce types for initial values
+ourTuple.push("Something new and wrong");
+console.log(ourTuple);
+</code>
+  </pre>
+
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>// define readonly tuple
+const ourReadonlyTuple: readonly [number, boolean, string] = [5, true, "The Real Coding God"];
+
+// ❌ Error: cannot push to readonly tuple
+ourReadonlyTuple.push("Coding God took a day off");
+</code>
+  </pre>
+  <p class="text-sm text-gray-600">
+    To learn more about <code>readonly</code>, see <strong>TypeScript Classes</strong>.
+  </p>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚛️ Tuples in React</h4>
+  <p class="text-gray-700 leading-relaxed">
+    If you’ve ever used React, you’ve probably worked with tuples.  
+    <code>useState</code> returns a tuple of the value and a setter function:
+  </p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>const [firstName, setFirstName] = useState("Dylan");</code>
+  </pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">🏷️ Named Tuples</h4>
+  <p class="text-gray-700">Named tuples give more context to values at each index.</p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>const graph: [x: number, y: number] = [55.2, 41.3];</code>
+  </pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">🔓 Destructuring Tuples</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>const graph: [number, number] = [55.2, 41.3];
+const [x, y] = graph;</code>
+  </pre>
+</div>
+
+  `}
+,
+  "ts-object-types": {
+  title: "TS Object Types",
+  content: `<!-- TS Object Types -->
+<div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6">
+  <h3 class="text-xl font-semibold text-blue-800 mb-2">📝 TypeScript Object Types</h3>
+  <p class="text-gray-700 leading-relaxed">
+    TypeScript provides a specific syntax for typing objects, ensuring properties conform to defined types.
+  </p>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">✅ Basic Object Typing</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>const car: { type: string, model: string, year: number } = {
+  type: "Toyota",
+  model: "Corolla",
+  year: 2009
+};</code>
+  </pre>
+  <p class="text-sm text-gray-600">
+    Object types can also be written separately and reused (see interfaces for advanced usage).
+  </p>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">🔍 Type Inference</h4>
+  <p class="text-gray-700 mb-2">
+    TypeScript can infer property types based on values:
+  </p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>const car = { type: "Toyota" };
+car.type = "Ford";  // ✅ no error
+// car.type = 2;    // ❌ Error: number not assignable to string</code>
+  </pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">✨ Optional Properties</h4>
+  <p class="text-gray-700 mb-2">
+    Optional properties don't have to be defined when creating an object.
+  </p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>// Required property (will throw error)
+const car1: { type: string, mileage: number } = {
+  type: "Toyota"
+};
+// car1.mileage is missing ❌
+
+// Optional property (no error)
+const car2: { type: string, mileage?: number } = {
+  type: "Toyota"
+};
+car2.mileage = 2000; ✅</code>
+  </pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">🔑 Index Signatures</h4>
+  <p class="text-gray-700 mb-2">
+    Use index signatures for objects without a defined list of properties:
+  </p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>const nameAgeMap: { [index: string]: number } = {};
+nameAgeMap.Jack = 25;   // ✅ no error
+// nameAgeMap.Mark = "Fifty"; // ❌ Error: string not assignable to number</code>
+  </pre>
+</div>
+`}
+,
+  "ts-enums": {
+  title: "TS Enums",
+  content: `<!-- TS Enums -->
+<div class="bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-400 mb-6">
+  <h3 class="text-xl font-semibold text-indigo-800 mb-2">🔹 TypeScript Enums</h3>
+  <p class="text-gray-700 leading-relaxed mb-4">
+    Enums are special types that define a set of named constants. They can be numeric or string-based.
+  </p>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">🔢 Numeric Enums – Default</h4>
+  <p class="text-gray-700 mb-2">
+    By default, numeric enums start at 0 and increment automatically:
+  </p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>enum CardinalDirections {
+  North,
+  East,
+  South,
+  West
+}
+
+let currentDirection = CardinalDirections.North;
+console.log(currentDirection); // 0
+// currentDirection = 'North'; // ❌ Error: string not assignable to type 'CardinalDirections'</code>
+  </pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">🔢 Numeric Enums – Initialized</h4>
+  <p class="text-gray-700 mb-2">
+    You can initialize the first value and auto-increment subsequent values:
+  </p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>enum CardinalDirections {
+  North = 1,
+  East,
+  South,
+  West
+}
+
+console.log(CardinalDirections.North); // 1
+console.log(CardinalDirections.West);  // 4</code>
+  </pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">🔢 Numeric Enums – Fully Initialized</h4>
+  <p class="text-gray-700 mb-2">
+    Assign unique numbers for each value, preventing auto-increment:
+  </p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>enum StatusCodes {
+  NotFound = 404,
+  Success = 200,
+  Accepted = 202,
+  BadRequest = 400
+}
+
+console.log(StatusCodes.NotFound); // 404
+console.log(StatusCodes.Success);  // 200</code>
+  </pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">📝 String Enums</h4>
+  <p class="text-gray-700 mb-2">
+    String enums are more readable and explicit:
+  </p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>enum CardinalDirections {
+  North = 'North',
+  East  = 'East',
+  South = 'South',
+  West  = 'West'
+}
+
+console.log(CardinalDirections.North); // "North"
+console.log(CardinalDirections.West);  // "West"</code>
+  </pre>
+</div>
+`}
+,
+  "ts-aliases-interfaces": {
+  title: "TS Aliases & Interfaces",
+  content:`<!-- TS Aliases & Interfaces -->
+<div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400 mb-6">
+  <h3 class="text-xl font-semibold text-yellow-800 mb-2">🔹 TypeScript Type Aliases & Interfaces</h3>
+  <p class="text-gray-700 leading-relaxed mb-4">
+    TypeScript allows you to define types separately from the variables that use them. This makes your code more reusable and readable.
+  </p>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">📝 Type Aliases</h4>
+  <p class="text-gray-700 mb-2">
+    Type aliases allow you to define a type with a custom name (alias). They work with primitives, objects, arrays, unions, and intersections.
+  </p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>type CarYear  = number;
+type CarType  = string;
+type CarModel = string;
+
+type Car = {
+  year: CarYear,
+  type: CarType,
+  model: CarModel
+}
+
+const carYear: CarYear = 2001;
+const carType: CarType = "Toyota";
+const carModel: CarModel = "Corolla";
+
+const car: Car = {
+  year: carYear,
+  type: carType,
+  model: carModel
+};</code>
+  </pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Union & Intersection Types</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>type Animal = { name: string };
+type Bear = Animal & { honey: boolean };
+
+const bear: Bear = { name: "Winnie", honey: true };
+
+type Status = "success" | "error";
+let response: Status = "success";</code>
+  </pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">📝 Interfaces</h4>
+  <p class="text-gray-700 mb-2">
+    Interfaces are similar to type aliases but only for object types. They are extendable and support declaration merging.
+  </p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>interface Rectangle {
+  height: number;
+  width: number;
+}
+
+const rectangle: Rectangle = {
+  height: 20,
+  width: 10
+};</code>
+  </pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">🧩 Extending Interfaces</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>interface ColoredRectangle extends Rectangle {
+  color: string;
+}
+
+const coloredRectangle: ColoredRectangle = {
+  height: 20,
+  width: 10,
+  color: "red"
+};</code>
+  </pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">💡 Type vs Interface</h4>
+  <ul class="list-disc list-inside text-gray-700 mb-4 pl-4">
+    <li><strong>Extending:</strong> Both can be extended, but interfaces support declaration merging.</li>
+    <li><strong>Unions/Intersections:</strong> Only type aliases support union and intersection types.</li>
+    <li><strong>Implements:</strong> Classes can implement either.</li>
+    <li><strong>Recommendation:</strong> Use interface for objects, type for everything else.</li>
+  </ul>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">✅ Best Practices</h4>
+  <ul class="list-disc list-inside text-gray-700 pl-4">
+    <li>Use interface for object shapes and public APIs.</li>
+    <li>Use type for unions, intersections, and primitives.</li>
+    <li>Favor composition over inheritance for types.</li>
+    <li>Document your types and interfaces for clarity.</li>
+  </ul>
+</div>
+`}
+,
+  // ... continue for the remaining topics
+ "ts-union-types": {
+  title: "Union Types",
+  content: `
+<!-- TS Union Types -->
+<div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400 mb-6">
+  <h3 class="text-xl font-semibold text-yellow-800 mb-2">🔹 TypeScript Union Types</h3>
+  <p class="text-gray-700 leading-relaxed mb-4">
+    Union types are used when a value can be more than a single type. For example, a property might be a <code>string</code> or <code>number</code>.
+  </p>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Using the <code>|</code> Operator (OR)</h4>
+  <p class="text-gray-700 mb-2">
+    Using <code>|</code> allows a parameter to accept multiple types:
+  </p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>function printStatusCode(code: string | number) {
+  console.log(\`My status code is \${code}.\`);
+}
+
+printStatusCode(404);
+printStatusCode('404');</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Union Type Errors</h4>
+  <p class="text-gray-700 mb-2">
+    When using union types, TypeScript requires you to check the type before using methods specific to one type:
+  </p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>function printStatusCode(code: string | number) {
+  console.log(\`My status code is \${code.toUpperCase()}.\`); 
+  // Error: Property 'toUpperCase' does not exist on type 'string | number'.
+}
+</code></pre>
+
+  <p class="text-gray-700 italic mt-2">
+    ✅ Tip: Use type narrowing or type guards to safely access methods on union types.
+  </p>
+</div>
+`
+},
+
+  "ts-functions": {
+  title: "TS Functions",
+  content:`<!-- TS Functions -->
+<div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6">
+  <h3 class="text-xl font-semibold text-blue-800 mb-2">🔹 TypeScript Functions</h3>
+  <p class="text-gray-700 leading-relaxed mb-4">
+    TypeScript allows you to type function parameters and return values, making your code safer and more predictable.
+  </p>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">🔗 Return Type</h4>
+  <p class="text-gray-700 mb-2">
+    Explicitly define the type of value a function returns:
+  </p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>function getTime(): number {
+  return new Date().getTime();
+}</code>
+  </pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Void Return Type</h4>
+  <p class="text-gray-700 mb-2">
+    Use <code>void</code> when a function does not return any value:
+  </p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>function printHello(): void {
+  console.log('Hello!');
+}</code>
+  </pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">🔹 Parameters</h4>
+  <p class="text-gray-700 mb-2">
+    Function parameters are typed like variables:
+  </p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>function multiply(a: number, b: number): number {
+  return a * b;
+}</code>
+  </pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Optional Parameters</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>function add(a: number, b: number, c?: number): number {
+  return a + b + (c || 0);
+}</code>
+  </pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Default Parameters</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>function pow(value: number, exponent: number = 10): number {
+  return value ** exponent;
+}</code>
+  </pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">🔹 Named Parameters</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>function divide({ dividend, divisor }: { dividend: number, divisor: number }): number {
+  return dividend / divisor;
+}</code>
+  </pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Rest Parameters</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>function add(a: number, b: number, ...rest: number[]): number {
+  return a + b + rest.reduce((p, c) => p + c, 0);
+}</code>
+  </pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">🔹 Type Aliases for Functions</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>type Negate = (value: number) => number;
+
+const negateFunction: Negate = (value) => value * -1;</code>
+  </pre>
+
+  <p class="text-gray-700 italic mt-2">
+    ✅ Tip: Using type aliases for functions helps with code readability and reusability.
+  </p>
+</div>
+`},
+ "ts-casting": {
+  title: "TS Castings",
+  content: `<!-- TS Casting -->
+<div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-400 mb-6">
+  <h3 class="text-xl font-semibold text-purple-800 mb-2">🔹 TypeScript Casting</h3>
+  <p class="text-gray-700 leading-relaxed mb-4">
+    Sometimes you need to override the type of a variable, such as when working with a library that returns an incorrect type. This process is called <strong>casting</strong>.
+  </p>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Casting with <code>as</code></h4>
+  <p class="text-gray-700 mb-2">
+    The <code>as</code> keyword allows you to explicitly tell TypeScript the type of a variable:
+  </p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>let x: unknown = 'hello';
+console.log((x as string).length);</code>
+  </pre>
+  <p class="text-gray-700 mb-2 italic">
+    Note: Casting does not actually change the runtime type. For example:
+  </p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>let x: unknown = 4;
+console.log((x as string).length); // undefined, numbers don't have length</code>
+  </pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Casting with <code>&lt;&gt;</code></h4>
+  <p class="text-gray-700 mb-2">
+    You can also use the angle-bracket syntax for casting (not allowed in TSX/React files):
+  </p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>let x: unknown = 'hello';
+console.log((<string>x).length);</code>
+  </pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Force Casting</h4>
+  <p class="text-gray-700 mb-2">
+    To bypass TypeScript's type checking, first cast to <code>unknown</code>, then to the target type:
+  </p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>let x = 'hello';
+console.log(((x as unknown) as number).length); // undefined, x is not actually a number</code>
+  </pre>
+
+  <p class="text-gray-700 italic mt-2">
+    ✅ Tip: Use casting sparingly. Incorrect casts can lead to runtime errors.
+  </p>
+</div>
+`}
+,
+ "ts-classes": {
+  title: "TS Classes",
+  content: `
+<!-- TS Classes --> 
+<div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6">
+  <h3 class="text-xl font-semibold text-blue-800 mb-2">🔹 TypeScript Classes</h3>
+  <p class="text-gray-700 leading-relaxed mb-4">
+    TypeScript builds on JavaScript classes by adding types and visibility modifiers for safer and more readable object-oriented programming.
+  </p>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Members: Types</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>class Person {
+  name: string;
+}
+
+const person = new Person();
+person.name = "Jane";</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Members: Visibility</h4>
+  <p class="text-gray-700 mb-2">
+    TypeScript supports <code>public</code> (default), <code>private</code>, and <code>protected</code> modifiers:
+  </p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>class Person {
+  private name: string;
+
+  public constructor(name: string) {
+    this.name = name;
+  }
+
+  public getName(): string {
+    return this.name;
+  }
+}
+
+const person = new Person("Jane");
+console.log(person.getName()); // person.name is private</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Parameter Properties</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>class Person {
+  public constructor(private name: string) {}
+
+  public getName(): string {
+    return this.name;
+  }
+}
+
+const person = new Person("Jane");
+console.log(person.getName());</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Readonly Members</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>class Person {
+  private readonly name: string;
+
+  public constructor(name: string) {
+    this.name = name;
+  }
+
+  public getName(): string {
+    return this.name;
+  }
+}
+
+const person = new Person("Jane");</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Implements & Extends</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>interface Shape {
+  getArea: () =&gt; number;
+}
+
+class Rectangle implements Shape {
+  public constructor(protected readonly width: number, protected readonly height: number) {}
+
+  public getArea(): number {
+    return this.width * this.height;
+  }
+}
+
+class Square extends Rectangle {
+  public constructor(width: number) {
+    super(width, width);
+  }
+}</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Override Methods</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>class Square extends Rectangle {
+  public constructor(width: number) {
+    super(width, width);
+  }
+
+  public override toString(): string {
+    return \`Square[width=\${this.width}]\`;
+  }
+}</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Abstract Classes</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>abstract class Polygon {
+  public abstract getArea(): number;
+
+  public toString(): string {
+    return \`Polygon[area=\${this.getArea()}]\`;
+  }
+}
+
+class Rectangle extends Polygon {
+  public constructor(protected readonly width: number, protected readonly height: number) {
+    super();
+  }
+
+  public getArea(): number {
+    return this.width * this.height;
+  }
+}</code></pre>
+
+  <p class="text-gray-700 italic mt-2">
+    ✅ Tip: Use visibility modifiers and readonly properties for safer and more maintainable code.
+  </p>
+</div>
+`
+},
+
+"ts-generics": {
+  title: "",
+  content: `
+<section class="prose prose-lg max-w-none">
+  <h2 class="text-3xl font-bold text-indigo-700 mb-6 border-b pb-2">🔹 TypeScript Generics</h2>
+
+  <p class="mb-4">
+    Generics allow creating reusable components, functions, or classes where the types are determined later.
+  </p>
+
+  <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Generic Functions</h3>
+  <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto"><code>// generic function
+function identity<T>(value: T): T {
+  return value;
+}
+
+// using the function
+const num = identity<number>(42);  // T is number
+const str = identity<string>("hello"); // T is string
+</code></pre>
+
+  <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Generic Classes</h3>
+  <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto"><code>class Box<T> {
+  private content: T;
+
+  constructor(value: T) {
+    this.content = value;
+  }
+
+  public getContent(): T {
+    return this.content;
+  }
+}
+
+const numberBox = new Box<number>(123);
+console.log(numberBox.getContent()); // 123
+
+const stringBox = new Box<string>("TypeScript");
+console.log(stringBox.getContent()); // "TypeScript"
+</code></pre>
+
+  <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Generic Type Aliases</h3>
+  <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto"><code>type Wrapper<T> = { value: T };
+
+const wrappedNumber: Wrapper<number> = { value: 10 };
+const wrappedString: Wrapper<string> = { value: "Hello" };
+</code></pre>
+
+  <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Constraints with extends</h3>
+  <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto"><code>function logLength<T extends { length: number }>(item: T): T {
+  console.log(item.length);
+  return item;
+}
+
+logLength("Hello");  // works, string has length
+logLength([1,2,3]);  // works, array has length
+// logLength(123);    // Error: number has no length
+</code></pre>
+</section>
+`
+}
+,
+ "ts-utility-types": { 
+  title: "JS Object Properties",
+  content: `
+<!-- TS Utility Types -->
+<div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-400 mb-6">
+  <h3 class="text-xl font-semibold text-purple-800 mb-2">🔹 TypeScript Utility Types</h3>
+  <p class="text-gray-700 leading-relaxed mb-4">
+    TypeScript provides utility types to help with common type transformations and manipulations.
+  </p>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Partial</h4>
+  <p class="text-gray-700 mb-2">
+    Makes all properties optional.
+  </p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>interface Point {
+  x: number;
+  y: number;
+}
+
+let pointPart: Partial<Point> = {}; // x and y are optional
+pointPart.x = 10;</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Required</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>interface Car {
+  make: string;
+  model: string;
+  mileage?: number;
+}
+
+let myCar: Required<Car> = {
+  make: 'Ford',
+  model: 'Focus',
+  mileage: 12000
+};</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Record</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>const nameAgeMap: Record<string, number> = {
+  'Alice': 21,
+  'Bob': 25
+};</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Omit</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>interface Person {
+  name: string;
+  age: number;
+  location?: string;
+}
+
+const bob: Omit<Person, 'age' | 'location'> = {
+  name: 'Bob'
+};</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Pick</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>const bob: Pick<Person, 'name'> = {
+  name: 'Bob'
+};</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Exclude</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>type Primitive = string | number | boolean;
+const value: Exclude<Primitive, string> = true;</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ ReturnType</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>type PointGenerator = () => { x: number; y: number; };
+const point: ReturnType<PointGenerator> = { x: 10, y: 20 };</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Parameters</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>type PointPrinter = (p: { x: number; y: number; }) => void;
+const point: Parameters<PointPrinter>[0] = { x: 10, y: 20 };</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Readonly</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>interface Person {
+  name: string;
+  age: number;
+}
+
+const person: Readonly<Person> = {
+  name: "Dylan",
+  age: 35,
+};
+// person.name = 'Israel'; // Error: Cannot assign to 'name' because it is read-only</code></pre>
+
+  <p class="text-gray-700 italic mt-2">
+    ✅ Tip: Use utility types to simplify type manipulations and enforce stricter type safety.
+  </p>
+</div>
+`
+},
+
+"ts-keyof": {
+  title: "JS Object Methods",
+  content: `
+<!-- TS Keyof -->
+<div class="bg-pink-50 p-4 rounded-lg border-l-4 border-pink-400 mb-6">
+  <h3 class="text-xl font-semibold text-pink-800 mb-2">🔹 TypeScript keyof</h3>
+  <p class="text-gray-700 leading-relaxed mb-4">
+    <code>keyof</code> is used to extract the keys of a given object type.  
+    It produces a union of string literal types that correspond to the keys.
+  </p>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ keyof with Explicit Keys</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>interface Person {
+  name: string;
+  age: number;
+}
+
+// keyof Person is "name" | "age"
+function printPersonProperty(person: Person, property: keyof Person) {
+  console.log(\`Printing person property \${property}: "\${person[property]}"\`);
+}
+
+let person = {
+  name: "Max",
+  age: 27
+};
+
+printPersonProperty(person, "name"); 
+// Output: Printing person property name: "Max"</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ keyof with Index Signatures</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>type StringMap = { [key: string]: unknown };
+
+// keyof StringMap resolves to "string"
+function createStringPair(property: keyof StringMap, value: string): StringMap {
+  return { [property]: value };
+}</code></pre>
+
+  <p class="text-gray-700 italic mt-2">
+    ✅ Tip: <code>keyof</code> is great for ensuring only valid property names are passed to functions.
+  </p>
+</div>
+`
+},
+
+"ts-null": {
+  title: "JS Object Display",
+  content: `
+<!-- TS Null & Undefined -->
+<div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400 mb-6">
+  <h3 class="text-xl font-semibold text-yellow-800 mb-2">🔹 TypeScript Null & Undefined</h3>
+  <p class="text-gray-700 leading-relaxed mb-4">
+    TypeScript provides strict handling of <code>null</code> and <code>undefined</code> values, especially when <code>strictNullChecks</code> is enabled.
+  </p>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Basic Types</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>let value: string | undefined | null = null;
+value = 'hello';
+value = undefined;</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Optional Chaining</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>interface House {
+  sqft: number;
+  yard?: { sqft: number };
+}
+
+function printYardSize(house: House) {
+  const yardSize = house.yard?.sqft;
+  if (yardSize === undefined) {
+    console.log('No yard');
+  } else {
+    console.log(\`Yard is \${yardSize} sqft\`);
+  }
+}
+
+let home: House = { sqft: 500 };
+printYardSize(home); // No yard</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Nullish Coalescing</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>function printMileage(mileage: number | null | undefined) {
+  console.log(\`Mileage: \${mileage ?? 'Not Available'}\`);
+}
+
+printMileage(null); // Mileage: Not Available
+printMileage(0);    // Mileage: 0</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Null Assertion</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>function getValue(): string | undefined {
+  return 'hello';
+}
+
+let value = getValue();
+console.log('value length: ' + value!.length);</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Array Bounds Handling</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>let array: number[] = [1, 2, 3];
+let value = array[0]; 
+// With noUncheckedIndexedAccess enabled, value has type number | undefined</code></pre>
+
+  <p class="text-gray-700 italic mt-2">
+    ✅ Tip: Use optional chaining, nullish coalescing, and strict null checks to safely handle <code>null</code> and <code>undefined</code> values.
+  </p>
+</div>
+`
+},
+
+"ts-definitely-typed": {
+  title: "JS Object Constructors",
+  content: `
+<!-- TS Definitely Typed -->
+<div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-400 mb-6">
+  <h3 class="text-xl font-semibold text-purple-800 mb-2">🔹 TypeScript Definitely Typed</h3>
+  <p class="text-gray-700 leading-relaxed mb-4">
+    Many NPM packages in the JavaScript ecosystem do not include TypeScript type definitions. 
+    <strong>Definitely Typed</strong> is a community-driven project providing type definitions for such packages.
+  </p>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Using Untyped NPM Packages</h4>
+  <p class="text-gray-700 mb-2">
+    Using packages without types in TypeScript is not type-safe. To safely use them, install the corresponding type definitions from Definitely Typed:
+  </p>
+
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>npm install --save-dev @types/jquery</code></pre>
+
+  <p class="text-gray-700 mb-2">
+    Once installed, TypeScript automatically picks up the types. Many editors, such as VS Code, even suggest installing these packages when types are missing.
+  </p>
+
+  <p class="text-gray-700 italic mt-2">
+    ✅ Tip: Always check for an <code>@types</code> package when using JavaScript libraries in TypeScript for better type safety.
+  </p>
+</div>
+`
+},
+
+"ts-5-updates": {
+  title: "JS Events",
+  content: `
+<!-- TS 5.x Updates -->
+<div class="bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-400 mb-6">
+  <h3 class="text-xl font-semibold text-indigo-800 mb-2">🔹 TypeScript 5.x Updates</h3>
+  <p class="text-gray-700 leading-relaxed mb-4">
+    TypeScript 5.x introduces new features for stricter and more flexible type safety. These updates are only available in TypeScript 5.x and above.
+  </p>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Template Literal Types</h4>
+  <p class="text-gray-700 mb-2">
+    Template Literal Types allow creating precise types using template literals. Types can depend on actual string values at compile time.
+  </p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>type Color = "red" | "green" | "blue";
+type HexColor<T extends Color> = \`#\${string}\`;
+
+// Usage:
+let myColor: HexColor<"blue"> = "#0000FF";</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Index Signature Labels</h4>
+  <p class="text-gray-700 mb-2">
+    Index Signature Labels let you label index signatures with computed property names for more descriptive type information.
+  </p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>type DynamicObject = { [key: \`dynamic_\${string}\`]: string };
+
+// Usage:
+let obj: DynamicObject = { dynamic_key: "value" };</code></pre>
+
+  <p class="text-gray-700 mb-2">
+    5.x also supports native JavaScript private fields. TypeScript's <code>private</code> keyword still works as described in the Classes section.
+  </p>
+
+  <p class="text-gray-700 italic mt-2">
+    ✅ Tip: Use these new features to make your types more precise and your code safer.
+  </p>
+</div>
+`
+},
+
+"ts-configuration": {
+  title: "JS Strings",
+  content: `
+<!-- TS Configuration -->
+<div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400 mb-6">
+  <h3 class="text-xl font-semibold text-yellow-800 mb-2">🔹 TypeScript Configuration</h3>
+  <p class="text-gray-700 leading-relaxed mb-4">
+    The <code>tsconfig.json</code> file is the heart of every TypeScript project. It tells the compiler how to process your code, which files to include, and which features to enable.
+  </p>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Key Concepts & Explanations</h4>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>compilerOptions</code>: Controls how TypeScript compiles your code (target, module, strictness, etc.).</li>
+    <li><code>include</code>: Files or folders to include in compilation.</li>
+    <li><code>exclude</code>: Files or folders to exclude.</li>
+    <li><code>files</code>: Explicit list of files to include (rarely used with <code>include</code>).</li>
+    <li><code>extends</code>: Inherit options from another config file.</li>
+    <li><code>references</code>: Enable project references for monorepos or multi-package setups.</li>
+  </ul>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Step-by-Step Examples</h4>
+  <p class="text-gray-700 mb-2">Minimal <code>tsconfig.json</code>:</p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs"
+  },
+  "include": ["src/**/*"]
+}</code></pre>
+
+  <p class="text-gray-700 mb-2">Advanced <code>tsconfig.json</code>:</p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "esnext",
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": ["src/app/*"]
+    },
+    "outDir": "dist",
+    "esModuleInterop": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}</code></pre>
+
+  <p class="text-gray-700 mb-2">
+    To generate a <code>tsconfig.json</code> file automatically, run: <code>tsc --init</code>
+  </p>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Real-World Scenarios</h4>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li>Monorepo: Use <code>references</code> and <code>extends</code> to share settings across packages.</li>
+    <li>Library: Set <code>declaration</code> and <code>outDir</code> for type definitions.</li>
+    <li>App: Use <code>strict</code> and <code>esModuleInterop</code> for best compatibility.</li>
+  </ul>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Common Pitfalls & Troubleshooting</h4>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li>Misconfigured <code>include</code>/<code>exclude</code> can cause files to be missed or included unexpectedly.</li>
+    <li>Paths not resolving? Check <code>baseUrl</code> and <code>paths</code> settings.</li>
+    <li>Type errors after changing <code>strict</code>? Review your code for type safety.</li>
+  </ul>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Best Practices</h4>
+  <ul class="list-disc list-inside text-gray-700">
+    <li>Always enable <code>strict</code> for safer code.</li>
+    <li>Use <code>extends</code> to avoid duplicating config in monorepos or multiple projects.</li>
+    <li>Do not commit build output folders (like <code>dist</code>) to version control.</li>
+  </ul>
+</div>
+`
+},
+
+"ts-nodejs": {
+  title: "JS String Methods",
+  content: `
+<!-- TS with Node.js -->
+<div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-400 mb-6">
+  <h3 class="text-xl font-semibold text-purple-800 mb-2">🔹 TypeScript with Node.js</h3>
+  <p class="text-gray-700 leading-relaxed mb-4">
+    TypeScript brings static typing to Node.js, providing better tooling, improved code quality, and enhanced developer experience.
+  </p>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Key Benefits</h4>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li>Type safety for JavaScript code</li>
+    <li>Better IDE support with autocompletion</li>
+    <li>Early error detection during development</li>
+    <li>Improved code maintainability and documentation</li>
+    <li>Easier refactoring</li>
+  </ul>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Setup</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>mkdir my-ts-node-app
+cd my-ts-node-app
+npm init -y
+npm install typescript @types/node --save-dev
+npx tsc --init</code></pre>
+
+  <p class="text-gray-700 mb-2">
+    This installs TypeScript, Node types, and creates a <code>tsconfig.json</code>.
+  </p>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Project Structure</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>my-ts-node-app/
+  src/
+    server.ts
+    middleware/
+      auth.ts
+    entity/
+      User.ts
+    config/
+      database.ts
+  dist/
+  node_modules/
+  package.json
+  tsconfig.json</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Example: Basic Express Server</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>import express, { Request, Response, NextFunction } from 'express';
+import { json } from 'body-parser';
+
+interface User {
+  id: number;
+  username: string;
+  email: string;
+}
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+app.use(json());
+
+const users: User[] = [
+  { id: 1, username: 'user1', email: 'user1@example.com' },
+  { id: 2, username: 'user2', email: 'user2@example.com' }
+];
+
+app.get('/api/users', (req: Request, res: Response) => res.json(users));
+app.get('/api/users/:id', (req: Request, res: Response) => {
+  const user = users.find(u => u.id === parseInt(req.params.id));
+  if (!user) return res.status(404).json({ message: 'User not found' });
+  res.json(user);
+});
+
+app.post('/api/users', (req: Request, res: Response) => {
+  const { username, email } = req.body;
+  if (!username || !email) return res.status(400).json({ message: 'Username and email required' });
+  const newUser: User = { id: users.length + 1, username, email };
+  users.push(newUser);
+  res.status(201).json(newUser);
+});
+
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  console.error(err.stack);
+  res.status(500).json({ message: 'Something went wrong!' });
+});
+
+app.listen(PORT, () => console.log(\`Server is running on http://localhost:\${PORT}\`));</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Middleware Example (Auth)</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>import { Request, Response, NextFunction } from 'express';
+
+declare global {
+  namespace Express {
+    interface Request { user?: { id: number; role: string }; }
+  }
+}
+
+export const authenticate = (req: Request, res: Response, next: NextFunction) => {
+  const token = req.header('Authorization')?.replace('Bearer ', '');
+  if (!token) return res.status(401).json({ message: 'No token' });
+  req.user = { id: 1, role: 'admin' }; // Mock
+  next();
+};
+
+export const authorize = (roles: string[]) => (req: Request, res: Response, next: NextFunction) => {
+  if (!req.user) return res.status(401).json({ message: 'Not authenticated' });
+  if (!roles.includes(req.user.role)) return res.status(403).json({ message: 'Not authorized' });
+  next();
+};</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Database Example (TypeORM)</h4>
+  <p class="text-gray-700 mb-2">Enable decorators in tsconfig.json: <code>"experimentalDecorators": true, "emitDecoratorMetadata": true</code></p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+
+@Entity('users')
+export class User {
+  @PrimaryGeneratedColumn() id: number;
+  @Column({ unique: true }) username: string;
+  @Column({ unique: true }) email: string;
+  @Column({ select: false }) password: string;
+  @Column({ default: 'user' }) role: string;
+  @CreateDateColumn() createdAt: Date;
+  @UpdateDateColumn() updatedAt: Date;
+}</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Dev Workflow</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>{
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "nodemon --exec ts-node src/server.ts",
+    "watch": "tsc -w",
+    "test": "jest --config jest.config.js"
+  }
+}</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Best Practices</h4>
+  <ul class="list-disc list-inside text-gray-700">
+    <li>Always define types for function parameters and return values</li>
+    <li>Use interfaces for object shapes</li>
+    <li>Enable strict mode in tsconfig.json</li>
+    <li>Use type guards for runtime type checking</li>
+    <li>Leverage utility types (Partial, Pick, Omit, etc.)</li>
+    <li>Keep type definitions in <code>.d.ts</code> files</li>
+    <li>Use enums or const assertions for fixed value sets</li>
+    <li>Document complex types with JSDoc</li>
+    <li>Validate environment variables at startup</li>
+    <li>Use ts-node/nodemon only in dev; compile for prod</li>
+    <li>Use ESLint + Prettier with <code>@typescript-eslint</code> for consistent code quality</li>
+  </ul>
+</div>
+`
+},
+
+"ts-react": {
+  title: "JS String Search",
+  content: `
+<!-- TS with React -->
+<div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6">
+  <h3 class="text-xl font-semibold text-blue-800 mb-2">🔹 TypeScript with React</h3>
+  <p class="text-gray-700 leading-relaxed mb-4">
+    TypeScript enhances React with type safety for props, state, and context, better IDE autocompletion, and early error detection.
+  </p>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Getting Started</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>npm create vite@latest my-app -- --template react-ts
+cd my-app
+npm install
+npm run dev</code></pre>
+
+  <p class="text-gray-700 mb-2">
+    Recommended <code>tsconfig.json</code> settings for React + TypeScript:
+  </p>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "jsx": "react-jsx",
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src"]
+}</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Component Typing</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>type GreetingProps = { name: string; age?: number };
+
+export function Greeting({ name, age }: GreetingProps) {
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;Hello, {name}!&lt;/h2&gt;
+      {age !== undefined &amp;&amp; &lt;p&gt;You are {age} years old&lt;/p&gt;}
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Common Patterns</h4>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><strong>Type-Safe Events:</strong> <code>React.ChangeEvent</code> and <code>React.MouseEvent</code></li>
+    <li><strong>Typed State:</strong> <code>useState&lt;number&gt;</code>, <code>useState&lt;'idle' | 'loading' | 'error'&gt;</code></li>
+    <li><strong>Refs:</strong> <code>useRef&lt;HTMLInputElement&gt;</code> for DOM access</li>
+    <li><strong>Children:</strong> Use <code>React.ReactNode</code> type</li>
+    <li><strong>Generics for Fetch:</strong> <code>async function fetchJson&lt;T&gt;(url: string): Promise&lt;T&gt;</code></li>
+  </ul>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Minimal Context & Custom Hook</h4>
+  <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto"><code>type Theme = 'light' | 'dark';
+const ThemeContext = React.createContext&lt;{ theme: Theme; toggle(): void } | null&gt;(null);
+
+function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const [theme, setTheme] = React.useState&lt;Theme&gt;('light');
+  const value = { theme, toggle: () =&gt; setTheme(t =&gt; (t === 'light' ? 'dark' : 'light')) };
+  return &lt;ThemeContext.Provider value={value}&gt;{children}&lt;/ThemeContext.Provider&gt;;
+}
+
+function useTheme() {
+  const ctx = React.useContext(ThemeContext);
+  if (!ctx) throw new Error('useTheme must be used within ThemeProvider');
+  return ctx;
+}</code></pre>
+
+  <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Notes & Tips</h4>
+  <ul class="list-disc list-inside text-gray-700">
+    <li>Add Vite types: <code>/// &lt;reference types="vite/client" /&gt;</code> or <code>"types": ["vite/client"]</code> in tsconfig.json</li>
+    <li>Prefer direct function components over <code>React.FC</code></li>
+    <li>Optional <code>baseUrl</code> and <code>paths</code> for import aliases if supported by bundler</li>
+    <li>Keep <code>strict</code> enabled for maximum type safety</li>
+  </ul>
+</div>
+`
+},
+
+  "ts-tooling": {
+    title: "JS String Templates",
+    content:``},
+  "ts-advanced-types": {
+    title: "JS Numbers",
+    content:``},
+  "ts-type-guards": {
+    title: "JS BigInt",
+    content: ``},
+  "ts-conditional-types": {
+    title: "JS Number Methods",
+    content:``},
+  "ts-mapped-types": {
+    title: "JS Number Properties",
+    content:``},
+  "ts-type-inference": {
+    title: "JS Arrays",
+    content:``},
+  "ts-literal-types": {
+    title: "JS Array Methods",
+    content: ``},
+  "ts-namespaces": {
+    title: "JS Array Search",
+    content:``},
+  "ts-index-signatures": {
+    title: "JS Array Sort",
+    content: ``},
+  "ts-declaration-merging": {
+    title: "JS Array Iteration",
+    content:``},
+  "ts-async-programming": {
+    title: "JS Array Const",
+    content:``},
+  "ts-decorators": {
+    title: "JS Dates",
+    content: ``},
+  "ts-in-js": {
+    title: "JS Date Formats",
+    content: ``},
+  "ts-migration": {
+    title: "JS Date Get Methods",
+    content:``},
+  "ts-error-handling": {
+    title: "JS Date Set Methods",
+    content:``},
+  "ts-best-practices": {
+    title: "JS Math",
+    content: ``},
+ 
+
+};
+
+    // Sidebar toggle (mobile)
+    document.getElementById('open-sidebar').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.add('open');
+    });
+
+    document.getElementById('close-sidebar').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.remove('open');
+    });
+
+    // Sidebar link click handler
+    document.querySelectorAll('#sidebar-links a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const topicId = link.getAttribute('href').substring(1);
+        loadTopicContent(topicId);
+
+        // Update active state
+        document.querySelectorAll('#sidebar-links a').forEach(a => a.classList.remove('active'));
+        link.classList.add('active');
+
+        // Close sidebar on mobile after clicking
+        document.getElementById('sidebar').classList.remove('open');
+      });
+    });
+
+    function loadTopicContent(topicId) {
+      const mainContent = document.getElementById('main-content');
+      const topic = topicContents[topicId];
+      if (topic) {
+        mainContent.innerHTML = `
+          <section class="bg-white p-6 rounded-lg shadow-md">
+            ${topic.content}
+            <button onclick="document.getElementById('main-content').innerHTML = document.getElementById('welcome').outerHTML" 
+                    class="mt-6 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+              Back to Welcome
+            </button>
+          </section>
+        `;
+      } else {
+        mainContent.innerHTML = `
+          <section class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold mb-4">Topic Not Found</h2>
+            <p>No content available for this topic.</p>
+            <button onclick="document.getElementById('main-content').innerHTML = document.getElementById('welcome').outerHTML" 
+                    class="mt-6 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+              Back to Welcome
+            </button>
+          </section>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>

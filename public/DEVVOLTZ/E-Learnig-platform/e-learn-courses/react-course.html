@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>React Tutorial - Devvoltz</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    header {
+      background-color: #D4EBF7;
+    }
+    pre {
+      background-color: #f3f4f6;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+    }
+    #sidebar {
+      transition: transform 0.3s ease-in-out;
+    }
+    #sidebar a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.375rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    #sidebar a:hover {
+      background-color: #1e40af;
+      color: #ffffff;
+      transform: translateX(5px);
+    }
+    #sidebar a.active {
+      background-color: #3b82f6;
+      font-weight: bold;
+      color: white;
+    }
+    #main-content {
+      width: 75.4%;
+    }
+    @media (max-width: 768px) {
+      #sidebar {
+        transform: translateX(-100%);
+      }
+      #sidebar.open {
+        transform: translateX(0);
+      }
+      #main-content {
+        background-color: #2d9dd5;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <!-- Sidebar -->
+  <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-gray-900 text-white p-4 overflow-y-auto md:transform-none z-50">
+    <h2 class="text-xl font-bold mb-4">React Tutorial</h2>
+    <div class="mt-6">
+      <h3 class="font-semibold mb-2">React Topics</h3>
+      <ul class="space-y-1 text-sm" id="sidebar-links">
+        <li><a href="#ts-home" class="text-gray-300 block">React HOME</a></li>
+        <li><a href="#ts-introduction" class="text-gray-300 block">React Introduction</a></li>
+        <li><a href="#ts-get-started" class="text-gray-300 block">React Get Started</a></li>
+        <li><a href="#ts-simple-types" class="text-gray-300 block">React JSX</a></li>
+        <li><a href="#ts-explicit-inference" class="text-gray-300 block">React Components</a></li>
+        <li><a href="#ts-special-types" class="text-gray-300 block">React Props</a></li>
+        <li><a href="#ts-arrays" class="text-gray-300 block">React State</a></li>
+        <li><a href="#ts-tuples" class="text-gray-300 block">React Lifecycle</a></li>
+        <li><a href="#ts-object-types" class="text-gray-300 block">React Events</a></li>
+        <li><a href="#ts-enums" class="text-gray-300 block">React Conditional Rendering</a></li>
+        <li><a href="#ts-aliases-interfaces" class="text-gray-300 block">React Lists</a></li>
+        <li><a href="#ts-union-types" class="text-gray-300 block">React Forms</a></li>
+        <li><a href="#ts-functions" class="text-gray-300 block">React Router</a></li>
+        <li><a href="#ts-casting" class="text-gray-300 block">React CSS Styling</a></li>
+        <li><a href="#ts-classes" class="text-gray-300 block">React Hooks</a></li>
+        <li><a href="#ts-generics" class="text-gray-300 block">React useState</a></li>
+        <li><a href="#ts-utility-types" class="text-gray-300 block">React useEffect</a></li>
+        <li><a href="#ts-keyof" class="text-gray-300 block">React useContext</a></li>
+        <li><a href="#ts-null" class="text-gray-300 block">React useRef</a></li>
+        <li><a href="#ts-definitely-typed" class="text-gray-300 block">React Custom Hooks</a></li>
+        <li><a href="#ts-5-updates" class="text-gray-300 block">React Memo & useCallback</a></li>
+        <li><a href="#ts-configuration" class="text-gray-300 block">React Error Boundaries</a></li>
+        <li><a href="#ts-nodejs" class="text-gray-300 block">React Context API</a></li>
+        <li><a href="#ts-react" class="text-gray-300 block">React with TypeScript</a></li>
+        <li><a href="#ts-es6" class="text-gray-300 block">React ES6</a></li>
+        <li><a href="#ts-exercises" class="text-gray-300 block">React Exercises</a></li>
+        <li><a href="#ts-quiz" class="text-gray-300 block">React Quiz</a></li>
+      </ul>
+    </div>
+    <button id="close-sidebar" class="md:hidden mt-4 bg-red-600 px-4 py-2 rounded-md">Close</button>
+  </aside>
+
+  <!-- Mobile Toggle Button -->
+  <button id="open-sidebar" class="md:hidden fixed top-4 left-4 z-50 bg-blue-600 text-white p-2 rounded-md">
+    ☰ Menu
+  </button>
+
+  <!-- Header -->
+  <header class="py-6 md:ml-64">
+    <div class="container mx-auto px-4">
+      <h1 class="text-3xl font-bold">Introduction to React</h1>
+      <p class="mt-2">Learn the essentials of React programming on the Devvoltz platform, inspired by W3Schools.</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8 md:ml-64 space-y-12" id="main-content">
+    <section class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200" id="welcome">
+      <!-- Heading -->
+      <h2 class="text-3xl font-bold text-blue-900 mb-4 flex items-center gap-2">
+        <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M5 4v16h14V4H5zm13 1v2H6V5h12zM6 8h12v11H6V8z"/>
+        </svg>
+        Welcome to React
+      </h2>
+
+      <!-- Intro Paragraph -->
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        <span class="font-semibold text-blue-800">React</span> is a powerful JavaScript library for building user interfaces, widely used for creating single-page applications and reusable UI components. This tutorial, inspired by W3Schools, guides you through React concepts with practical examples, exercises, and quizzes to enhance your learning experience.
+      </p>
+
+      <!-- What is React -->
+      <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6">
+        <h3 class="text-xl font-semibold text-blue-800 mb-2">📌 What is React?</h3>
+        <ul class="list-disc pl-6 text-gray-700 space-y-1">
+          <li>React is a <strong>JavaScript library</strong> developed by Facebook for building user interfaces.</li>
+          <li>It enables the creation of reusable UI components, enhancing modularity.</li>
+          <li>Utilizes a <strong>virtual DOM</strong> for efficient rendering and performance.</li>
+          <li>Supports gradual adoption, integrating seamlessly with existing JavaScript projects.</li>
+          <li>Typically uses <code class="bg-gray-100 px-1 rounded text-sm text-blue-800">.jsx</code> or <code class="bg-gray-100 px-1 rounded text-sm text-blue-800">.tsx</code> file extensions.</li>
+        </ul>
+
+        <!-- Optional mini example -->
+        <div class="mt-3 bg-white rounded-md p-3 border">
+          <p class="text-sm text-gray-800 mb-2"><strong>Example:</strong> Simple component</p>
+          <pre class="overflow-auto text-sm"><code>// Greeting.jsx
+import React from 'react';
+function Greeting(props) {
+  return &lt;h1&gt;Hello, {props.name}!&lt;/h1&gt;;
+}
+// &lt;Greeting name="World" /&gt;; // Renders: Hello, World!
+</code></pre>
+        </div>
+      </div>
+
+      <!-- Why Use React -->
+      <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400 mb-6">
+        <h3 class="text-xl font-semibold text-green-800 mb-2">💡 Why Use React?</h3>
+        <p class="text-gray-700 leading-relaxed">
+          React simplifies building <strong>dynamic, component-based, and performant</strong> user interfaces. It’s ideal for single-page applications and large-scale projects due to its:
+        </p>
+        <ul class="list-disc pl-6 text-gray-700 space-y-1">
+          <li><strong>Component-based architecture</strong>: Reuse UI components across your app.</li>
+          <li><strong>Virtual DOM</strong>: Optimizes updates for faster rendering.</li>
+          <li><strong>Hooks</strong>: Simplifies state and lifecycle management in functional components.</li>
+          <li><strong>Community and ecosystem</strong>: Integrates with tools like Redux, Next.js, and more.</li>
+        </ul>
+      </div>
+
+      <!-- React Example -->
+      <div class="bg-gray-100 p-4 rounded-lg border border-gray-300 mb-6">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">🧪 React Example:</h3>
+        <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>
+// App.jsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
+function Hello(props) {
+  return &lt;h1&gt;Hello {props.name}!&lt;/h1&gt;;
+}
+
+const container = document.getElementById("root");
+const root = ReactDOM.createRoot(container);
+root.render(&lt;Hello name="World" /&gt;);
+</code>
+        </pre>
+        <p class="text-sm mt-2 text-gray-600">
+          This example demonstrates rendering a simple React component. Include it in an HTML file with a <code>&lt;div id="root"&gt;&lt;/div&gt;</code> element.
+        </p>
+      </div>
+
+      <!-- Learning Features -->
+      <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400 mb-6">
+        <h3 class="text-xl font-semibold text-yellow-800 mb-2">🎓 Learning Features</h3>
+        <p class="text-gray-700 mb-2">Enhance your learning with these features:</p>
+        <ul class="list-disc pl-6 text-gray-700 space-y-1">
+          <li><strong>Show React Tool</strong>: View code and results side-by-side.</li>
+          <li><strong>Exercises</strong>: Practice with hands-on tasks at the end of each chapter.</li>
+          <li><strong>Quiz</strong>: Test your React knowledge with a comprehensive quiz.</li>
+          <li><strong>Track Progress</strong>: Create a free Devvoltz account to monitor your learning, set goals, and view completed tutorials.</li>
+        </ul>
+        <div class="text-center mt-4">
+          <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-full shadow transition">
+            Sign Up for Free
+          </a>
+        </div>
+      </div>
+
+      <!-- Try it -->
+      <div class="text-center mt-8">
+        <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-full shadow transition">
+          🎯 Try It Yourself
+        </a>
+      </div>
+
+      <!-- Navigation Prompt -->
+      <p class="text-gray-600 mt-6 text-center">📚 Select a topic from the sidebar to begin learning!</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-4 mt-8 md:ml-64">
+    <div class="container mx-auto px-4 text-center">
+      <p>© 2025 Devvoltz Platform. All rights reserved. Powered by <a href="https://www.w3schools.com" class="underline">W3Schools</a>.</p>
+      <p class="mt-2">
+        <a href="mailto:sales@devvoltz.com" class="underline">Contact Sales</a> | 
+        <a href="mailto:help@devvoltz.com" class="underline">Report Error</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Topic content data
+    const topicContents = {
+      "ts-home": {
+        title: "React HOME",
+        content: `
+          <h2 class="text-2xl font-semibold mb-4">React Home</h2>
+          <p class="mb-4">
+            Welcome to the React Tutorial, inspired by W3Schools. React is a JavaScript library for building user interfaces, ideal for single-page applications and reusable UI components.
+          </p>
+          <h3 class="text-xl font-semibold mb-2">Why Learn React?</h3>
+          <ul class="list-disc list-inside mb-4">
+            <li>Build reusable UI components for modular development.</li>
+            <li>Leverage the virtual DOM for high-performance rendering.</li>
+            <li>Use hooks for simplified state and lifecycle management.</li>
+            <li>Integrate with modern frameworks like Next.js and libraries like Redux.</li>
+          </ul>
+          <h3 class="text-xl font-semibold mb-2">How This Tutorial Works</h3>
+          <p class="mb-4">
+            This tutorial provides a step-by-step guide to React, with examples, exercises, and quizzes. Use our "Show React" tool to see code and results side-by-side.
+          </p>
+          <div class="bg-gray-100 p-3 rounded mb-4">
+            <strong>Example:</strong><br>
+            <code>import React from 'react';<br>function App() { return &lt;h1&gt;Hello React&lt;/h1&gt;; }</code>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Prerequisites</h3>
+          <p class="mb-4">
+            You should have a basic understanding of:
+            <ul class="list-disc list-inside">
+              <li>HTML and CSS</li>
+              <li>JavaScript and ES6 features (e.g., arrow functions, destructuring)</li>
+              <li>Node.js for setting up React</li>
+            </ul>
+          </p>
+          <h3 class="text-xl font-semibold mb-2">Learning Path</h3>
+          <p class="mb-4">
+            Start with basics like JSX and components, then progress to advanced topics like hooks, routing, and TypeScript integration.
+          </p>
+          <h3 class="text-xl font-semibold mb-2">Get Certified</h3>
+          <p class="mb-4">
+            Complete the course to earn a React certification from Devvoltz, showcasing your skills to employers.
+          </p>
+          <p class="text-center font-semibold mt-6">🎯 Start your React journey now!</p>
+        `
+      },
+      "ts-introduction": {
+        title: "React Introduction",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">React Introduction</h2>
+            <h3 class="text-2xl font-semibold text-green-700 mb-2">📌 What is React?</h3>
+            <p class="mb-4">
+              React, developed by Facebook in 2013, is an open-source JavaScript library for building user interfaces, particularly for single-page applications where UI updates are frequent.
+            </p>
+            <ul class="list-disc list-inside text-gray-700 mb-6 pl-4">
+              <li>Component-based: Break UI into reusable pieces.</li>
+              <li>Virtual DOM: Efficiently updates the UI.</li>
+              <li>Declarative: Describe what the UI should look like.</li>
+            </ul>
+            <h3 class="text-2xl font-semibold text-green-700 mb-2">🎯 Why Study React?</h3>
+            <p class="mb-4">React is a cornerstone of modern web development:</p>
+            <ol class="list-decimal list-inside mb-6 text-gray-700 pl-4">
+              <li>Simplifies interactive UI development.</li>
+              <li>Scales well for large applications.</li>
+              <li>Supported by a vast ecosystem and community.</li>
+            </ol>
+            <h3 class="text-2xl font-semibold text-green-700 mb-2">📝 React Example</h3>
+            <p class="mb-2">A simple React component:</p>
+            <pre class="bg-gray-900 text-white rounded p-3 overflow-x-auto mb-4 text-sm"><code>import React from 'react';
+import ReactDOM from 'react-dom/client';
+
+function Greet(props) {
+  return &lt;h1&gt;Hello, {props.name}!&lt;/h1&gt;;
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(&lt;Greet name="World" /&gt;);</code></pre>
+            <h3 class="text-2xl font-semibold text-green-700 mb-2">💡 Did You Know?</h3>
+            <ul class="list-disc list-inside text-gray-700 pl-4 mb-6">
+              <li>React powers major platforms like Facebook, Instagram, and Netflix.</li>
+              <li>It supports server-side rendering with Node.js.</li>
+              <li>React Native extends React for mobile app development.</li>
+            </ul>
+            <p class="text-center font-semibold text-blue-800 mt-10 text-lg">🚀 Ready to dive into React? Let’s get started!</p>
+          </section>
+        `
+      },
+      "ts-get-started": {
+        title: "Getting Started",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">🚀 React Getting Started</h2>
+            <h3 class="text-2xl font-semibold text-green-700 mb-2">⚙️ Setting Up React</h3>
+            <p class="mb-4">
+              To start with React, set up a development environment using <code>create-react-app</code>, an officially supported tool for creating React applications.
+            </p>
+            <h3 class="text-2xl font-semibold text-green-700 mb-2">📦 Prerequisites</h3>
+            <p class="mb-4">
+              Ensure you have <strong>Node.js</strong> installed (includes npm). Download it from <a href="https://nodejs.org" class="underline">nodejs.org</a>.
+            </p>
+            <h3 class="text-2xl font-semibold text-green-700 mb-2">📦 Installing create-react-app</h3>
+            <p class="mb-4">
+              Run the following command in your terminal to create a new React app:
+            </p>
+            <pre class="bg-gray-900 text-yellow-300 p-3 rounded text-sm overflow-x-auto mb-4"><code>npx create-react-app my-react-app</code></pre>
+            <p class="mb-4">
+              Note: If you previously installed <code>create-react-app</code> globally, uninstall it to ensure the latest version:
+            </p>
+            <pre class="bg-gray-900 text-yellow-300 p-3 rounded text-sm overflow-x-auto mb-4"><code>npm uninstall -g create-react-app</code></pre>
+            <h3 class="text-2xl font-semibold text-green-700 mb-2">🛠️ Running the App</h3>
+            <p class="mb-4">
+              Navigate to the project directory and start the development server:
+            </p>
+            <pre class="bg-gray-900 text-yellow-300 p-3 rounded text-sm overflow-x-auto mb-6"><code>cd my-react-app
+npm start</code></pre>
+            <p class="mb-4">
+              This opens <code>localhost:3000</code> in your browser, displaying your React app.
+            </p>
+            <h3 class="text-2xl font-semibold text-green-700 mb-2">👨‍💻 First React Component</h3>
+            <p class="mb-4">Create a simple component in <code>App.jsx</code>:</p>
+            <pre class="bg-gray-900 text-green-300 p-4 rounded text-sm overflow-x-auto mb-4"><code>// App.jsx
+import React from 'react';
+
+function App() {
+  return &lt;h1&gt;Welcome to React!&lt;/h1&gt;;
+}
+
+export default App;
+</code></pre>
+            <p class="mb-4">Render it in <code>index.jsx</code>:</p>
+            <pre class="bg-gray-900 text-yellow-300 p-3 rounded text-sm overflow-x-auto mb-4"><code>// index.jsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(&lt;App /&gt;);
+</code></pre>
+            <p class="font-semibold text-center text-purple-700 mt-6">✅ Output: Welcome to React!</p>
+            <p class="text-center text-blue-800 font-semibold mt-10 text-lg">
+              🎉 Your React environment is ready! Explore more topics to build your skills.
+            </p>
+          </section>
+        `
+      },
+      "ts-simple-types": {
+        title: "React JSX",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">🔹 React JSX</h2>
+            <p class="mb-4">
+              JSX (JavaScript XML) is a syntax extension that allows you to write HTML-like code in JavaScript, making React components declarative and intuitive.
+            </p>
+            <h3 class="text-2xl font-semibold text-green-700 mb-4">📌 JSX Basics</h3>
+            <p class="mb-6">
+              JSX combines HTML and JavaScript, compiled into JavaScript by tools like Babel.
+            </p>
+            <h3 class="text-xl font-semibold text-purple-700 mb-2">✅ Basic JSX</h3>
+            <p class="mb-2">Define UI elements:</p>
+            <pre class="bg-gray-900 text-green-300 p-3 rounded text-sm overflow-x-auto mb-6"><code>const element = &lt;h1&gt;Hello, World!&lt;/h1&gt;;</code></pre>
+            <h3 class="text-xl font-semibold text-purple-700 mb-2">✅ Embedding Expressions</h3>
+            <p class="mb-2">Use curly braces for JavaScript expressions:</p>
+            <pre class="bg-gray-900 text-green-300 p-3 rounded text-sm overflow-x-auto mb-6"><code>const name = 'John';
+const element = &lt;h1&gt;Hello, {name}!&lt;/h1&gt;;</code></pre>
+            <h3 class="text-xl font-semibold text-purple-700 mb-2">✅ JSX Attributes</h3>
+            <p class="mb-2">Use camelCase for attributes:</p>
+            <pre class="bg-gray-900 text-green-300 p-3 rounded text-sm overflow-x-auto mb-6"><code>const element = &lt;img src={user.avatarUrl} className="profile" /&gt;;</code></pre>
+            <h3 class="text-xl font-semibold text-purple-700 mb-2">✅ JSX Children</h3>
+            <p class="mb-2">Include nested elements:</p>
+            <pre class="bg-gray-900 text-green-300 p-3 rounded text-sm overflow-x-auto mb-6"><code>const element = (
+  &lt;div&gt;
+    &lt;h1&gt;Welcome&lt;/h1&gt;
+    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+  &lt;/div&gt;
+);</code></pre>
+            <p class="text-center text-blue-800 font-semibold mt-10 text-lg">
+              🚀 JSX makes React components expressive. Next, explore components!
+            </p>
+          </section>
+        `
+      },
+      "ts-explicit-inference": {
+        title: "React Components",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">✍️ React Components</h2>
+            <p class="mb-4">
+              Components are the core of React, encapsulating UI logic and rendering. They can be functional (preferred) or class-based.
+            </p>
+            <h3 class="text-2xl font-semibold text-green-700 mb-3">✅ Functional Components</h3>
+            <p class="mb-2">Simple functions returning JSX:</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>function Welcome(props) {
+  return &lt;h1&gt;Hello, {props.name}!&lt;/h1&gt;;
+}</code></pre>
+            <h3 class="text-2xl font-semibold text-green-700 mb-3">🤖 Class Components</h3>
+            <p class="mb-2">Classes extending <code>React.Component</code>:</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>class Welcome extends React.Component {
+  render() {
+    return &lt;h1&gt;Hello, {this.props.name}!&lt;/h1&gt;;
+  }
+}</code></pre>
+            <h3 class="text-2xl font-semibold text-purple-700 mb-3">⚠️ Choosing Components</h3>
+            <ul class="list-disc list-inside mb-6">
+              <li>Use functional components with hooks for modern React.</li>
+              <li>Class components for legacy code or lifecycle methods.</li>
+            </ul>
+            <p class="text-center font-semibold text-blue-800">🚀 Functional components are simpler and more flexible!</p>
+          </section>
+        `
+      },
+      "ts-special-types": {
+        title: "React Props",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-indigo-700 mb-6 border-b pb-2">⭐ React Props</h2>
+            <p class="mb-4">
+              Props (properties) allow passing data to components, making them reusable and dynamic.
+            </p>
+            <h3 class="text-2xl font-semibold text-indigo-600 mb-3">props in Functional Components</h3>
+            <p class="mb-2">Access props as an argument:</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6"><code>function Car(props) {
+  return &lt;h2&gt;I am a {props.color} Car!&lt;/h2&gt;;
+}</code></pre>
+            <h3 class="text-2xl font-semibold text-indigo-600 mb-3">props in Class Components</h3>
+            <p class="mb-2">Use <code>this.props</code>:</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6"><code>class Car extends React.Component {
+  render() {
+    return &lt;h2&gt;I am a {this.props.color} Car!&lt;/h2&gt;;
+  }
+}</code></pre>
+            <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Default Props</h3>
+            <p class="mb-2">Set default values:</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6"><code>Car.defaultProps = { color: "red" };</code></pre>
+            <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Children Props</h3>
+            <p class="mb-2">Pass content between tags:</p>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6"><code>function Container(props) {
+  return &lt;div&gt;{props.children}&lt;/div&gt;;
+}</code></pre>
+            <p class="text-center text-purple-800 font-semibold">💡 Props make components versatile!</p>
+          </section>
+        `
+      },
+      "ts-arrays": {
+        title: "React State",
+        content: `
+          <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400 mb-6">
+            <h3 class="text-xl font-semibold text-yellow-800 mb-2">📚 React State</h3>
+            <p class="text-gray-700 leading-relaxed">
+              State allows components to manage dynamic data, triggering UI updates when it changes.
+            </p>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">✅ Class Component State</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+  }
+  render() {
+    return &lt;div&gt;
+      &lt;h1&gt;Count: {this.state.count}&lt;/h1&gt;
+      &lt;button onClick={() => this.setState({ count: this.state.count + 1 })}&gt;Increment&lt;/button&gt;
+    &lt;/div&gt;;
+  }
+}
+</code>
+            </pre>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">🔒 Updating State</h4>
+            <p class="text-gray-700 mb-2">
+              Use <code>setState</code> to update state safely:
+            </p>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>this.setState({ count: this.state.count + 1 });</code>
+            </pre>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">🔍 Functional Component State</h4>
+            <p class="text-gray-700 mb-2">
+              Use the <code>useState</code> hook:
+            </p>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>import { useState } from 'react';
+function Counter() {
+  const [count, setCount] = useState(0);
+  return &lt;div&gt;
+    &lt;h1&gt;Count: {count}&lt;/h1&gt;
+    &lt;button onClick={() => setCount(count + 1)}&gt;Increment&lt;/button&gt;
+  &lt;/div&gt;;
+}
+</code>
+            </pre>
+          </div>
+        `
+      },
+      "ts-tuples": {
+        title: "React Lifecycle",
+        content: `
+          <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6">
+            <h3 class="text-xl font-semibold text-blue-800 mb-2">📊 React Lifecycle</h3>
+            <p class="text-gray-700 leading-relaxed">
+              Lifecycle methods in class components run at specific stages: mounting, updating, and unmounting.
+            </p>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">✅ Mounting</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>class App extends React.Component {
+  componentDidMount() {
+    console.log('Component mounted');
+  }
+  render() { return &lt;div&gt;Hello&lt;/div&gt;; }
+}
+</code>
+            </pre>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚠️ Updating</h4>
+            <pre class="bg-black text-red-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>componentDidUpdate(prevProps, prevState) {
+  console.log('Component updated');
+}
+</code>
+            </pre>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">🔒 Unmounting</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>componentWillUnmount() {
+  console.log('Component will unmount');
+}
+</code>
+            </pre>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚛️ Hooks Equivalent</h4>
+            <p class="text-gray-700 leading-relaxed">
+              Use <code>useEffect</code> for lifecycle events in functional components:
+            </p>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>import { useEffect } from 'react';
+function App() {
+  useEffect(() => {
+    console.log('Mounted/Updated');
+    return () => console.log('Unmounting');
+  }, []);
+  return &lt;div&gt;Hello&lt;/div&gt;;
+}
+</code>
+            </pre>
+          </div>
+        `
+      },
+      "ts-object-types": {
+        title: "React Events",
+        content: `
+          <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6">
+            <h3 class="text-xl font-semibold text-blue-800 mb-2">📝 React Events</h3>
+            <p class="text-gray-700 leading-relaxed">
+              React handles events like clicks and inputs using camelCase event handlers.
+            </p>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">✅ Basic Event</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>function Button() {
+  const handleClick = () => alert('Clicked!');
+  return &lt;button onClick={handleClick}&gt;Click me&lt;/button&gt;;
+}
+</code>
+            </pre>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">🔍 Event with Parameters</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>function Button() {
+  const handleClick = (message) => alert(message);
+  return &lt;button onClick={() => handleClick('Hello')}&gt;Click&lt;/button&gt;;
+}
+</code>
+            </pre>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">✨ Event Object</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>function Input() {
+  const handleChange = (e) => console.log(e.target.value);
+  return &lt;input onChange={handleChange} placeholder="Type here" /&gt;;
+}
+</code>
+            </pre>
+          </div>
+        `
+      },
+      "ts-enums": {
+        title: "React Conditional Rendering",
+        content: `
+          <div class="bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-400 mb-6">
+            <h3 class="text-xl font-semibold text-indigo-800 mb-2">🔹 React Conditional Rendering</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Conditionally render UI using JavaScript logic.
+            </p>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">🔢 If-Else</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>function LoginStatus({ isLoggedIn }) {
+  if (isLoggedIn) {
+    return &lt;h1&gt;Welcome!&lt;/h1&gt;;
+  }
+  return &lt;h1&gt;Please log in.&lt;/h1&gt;;
+}
+</code>
+            </pre>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">🔢 Ternary Operator</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>function LoginStatus({ isLoggedIn }) {
+  return &lt;h1&gt;{isLoggedIn ? 'Welcome!' : 'Please log in.'}&lt;/h1&gt;;
+}
+</code>
+            </pre>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">🔢 Logical AND</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>function LoginStatus({ isLoggedIn }) {
+  return &lt;div&gt;{isLoggedIn && &lt;h1&gt;Welcome!&lt;/h1&gt;}&lt;/div&gt;;
+}
+</code>
+            </pre>
+          </div>
+        `
+      },
+      "ts-aliases-interfaces": {
+        title: "React Lists",
+        content: `
+          <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400 mb-6">
+            <h3 class="text-xl font-semibold text-yellow-800 mb-2">🔹 React Lists</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Render lists using the <code>map</code> function with unique keys.
+            </p>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">📝 Rendering Lists</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>function NumberList({ numbers }) {
+  const listItems = numbers.map(num => &lt;li key={num.toString()}&gt;{num}&lt;/li&gt;);
+  return &lt;ul&gt;{listItems}&lt;/ul&gt;;
+}
+</code>
+            </pre>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Keys</h4>
+            <p class="text-gray-700 mb-2">
+              Keys help React optimize rendering:
+            </p>
+            <ul class="list-disc list-inside text-gray-700 mb-4 pl-4">
+              <li>Use unique, stable identifiers.</li>
+              <li>Avoid array indices for dynamic lists.</li>
+            </ul>
+          </div>
+        `
+      },
+      "ts-union-types": {
+        title: "React Forms",
+        content: `
+          <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400 mb-6">
+            <h3 class="text-xl font-semibold text-yellow-800 mb-2">🔹 React Forms</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Manage form inputs with controlled components for predictable behavior.
+            </p>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Controlled Input</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>import { useState } from 'react';
+function Form() {
+  const [value, setValue] = useState('');
+  return &lt;input value={value} onChange={(e) => setValue(e.target.value)} /&gt;;
+}
+</code>
+            </pre>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Form Submission</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>function Form() {
+  const [value, setValue] = useState('');
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert('Submitted: ' + value);
+  };
+  return &lt;form onSubmit={handleSubmit}&gt;
+    &lt;input value={value} onChange={(e) => setValue(e.target.value)} /&gt;
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+  &lt;/form&gt;;
+}
+</code>
+            </pre>
+          </div>
+        `
+      },
+      "ts-functions": {
+        title: "React Router",
+        content: `
+          <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6">
+            <h3 class="text-xl font-semibold text-blue-800 mb-2">🔹 React Router</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              React Router enables client-side navigation in single-page applications.
+            </p>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">🔗 Setup</h4>
+            <p class="text-gray-700 mb-2">
+              Install with: <code>npm install react-router-dom</code>
+            </p>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">🔗 Basic Routing</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>import { BrowserRouter, Routes, Route } from 'react-router-dom';
+function App() {
+  return (
+    &lt;BrowserRouter&gt;
+      &lt;Routes&gt;
+        &lt;Route path="/" element={&lt;Home /&gt;} /&gt;
+        &lt;Route path="/about" element={&lt;About /&gt;} /&gt;
+      &lt;/Routes&gt;
+    &lt;/BrowserRouter&gt;
+  );
+}
+</code>
+            </pre>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Navigation</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>import { Link } from 'react-router-dom';
+function Nav() {
+  return &lt;nav&gt;&lt;Link to="/about"&gt;About&lt;/Link&gt;&lt;/nav&gt;;
+}
+</code>
+            </pre>
+          </div>
+        `
+      },
+      "ts-casting": {
+        title: "React CSS Styling",
+        content: `
+          <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-400 mb-6">
+            <h3 class="text-xl font-semibold text-purple-800 mb-2">🔹 React CSS Styling</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Style React components using inline styles, CSS classes, or CSS-in-JS libraries.
+            </p>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Inline Styles</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>function Header() {
+  const style = { color: 'blue', fontSize: '24px' };
+  return &lt;h1 style={style}&gt;Hello&lt;/h1&gt;;
+}
+</code>
+            </pre>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ CSS Classes</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>function Header() {
+  return &lt;h1 className="title"&gt;Hello&lt;/h1&gt;;
+}
+</code>
+            </pre>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ CSS Modules</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>import styles from './Header.module.css';
+function Header() {
+  return &lt;h1 className={styles.title}&gt;Hello&lt;/h1&gt;;
+}
+</code>
+            </pre>
+          </div>
+        `
+      },
+      "ts-classes": {
+        title: "React Hooks",
+        content: `
+          <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6">
+            <h3 class="text-xl font-semibold text-blue-800 mb-2">🔹 React Hooks</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Hooks enable state and lifecycle features in functional components.
+            </p>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Basic Hook</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>import { useState } from 'react';
+function Counter() {
+  const [count, setCount] = useState(0);
+  return &lt;button onClick={() => setCount(count + 1)}&gt;Count: {count}&lt;/button&gt;;
+}
+</code>
+            </pre>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ useEffect</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>import { useEffect } from 'react';
+function App() {
+  useEffect(() => {
+    document.title = 'React App';
+  }, []);
+  return &lt;div&gt;Hello&lt;/div&gt;;
+}
+</code>
+            </pre>
+          </div>
+        `
+      },
+      "ts-generics": {
+        title: "React useState",
+        content: `
+          <section class="prose prose-lg max-w-none">
+            <h2 class="text-3xl font-bold text-indigo-700 mb-6 border-b pb-2">🔹 React useState</h2>
+            <p class="mb-4">
+              The <code>useState</code> hook adds state to functional components.
+            </p>
+            <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Basic useState</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto">
+<code>import { useState } from 'react';
+function Counter() {
+  const [count, setCount] = useState(0);
+  return &lt;button onClick={() => setCount(count + 1)}&gt;Count: {count}&lt;/button&gt;;
+}
+</code>
+            </pre>
+            <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Functional Updates</h3>
+            <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto">
+<code>function Counter() {
+  const [count, setCount] = useState(0);
+  return &lt;button onClick={() => setCount(prev => prev + 1)}&gt;Count: {count}&lt;/button&gt;;
+}
+</code>
+            </pre>
+          </section>
+        `
+      },
+      "ts-utility-types": {
+        title: "React useEffect",
+        content: `
+          <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-400 mb-6">
+            <h3 class="text-xl font-semibold text-purple-800 mb-2">🔹 React useEffect</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              <code>useEffect</code> handles side effects like data fetching or DOM updates.
+            </p>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Basic Effect</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>import { useEffect } from 'react';
+function App() {
+  useEffect(() => {
+    console.log('Effect ran');
+  });
+  return &lt;div&gt;Hello&lt;/div&gt;;
+}
+</code>
+            </pre>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ With Dependencies</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>import { useState, useEffect } from 'react';
+function Counter() {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    document.title = \`Count: \${count}\`;
+  }, [count]);
+  return &lt;button onClick={() => setCount(count + 1)}&gt;Count: {count}&lt;/button&gt;;
+}
+</code>
+            </pre>
+          </div>
+        `
+      },
+      "ts-keyof": {
+        title: "React useContext",
+        content: `
+          <div class="bg-pink-50 p-4 rounded-lg border-l-4 border-pink-400 mb-6">
+            <h3 class="text-xl font-semibold text-pink-800 mb-2">🔹 React useContext</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              <code>useContext</code> accesses context for sharing data globally.
+            </p>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Example</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>import { createContext, useContext } from 'react';
+const ThemeContext = createContext('light');
+function App() {
+  return (
+    &lt;ThemeContext.Provider value="dark"&gt;
+      &lt;Component /&gt;
+    &lt;/ThemeContext.Provider&gt;
+  );
+}
+function Component() {
+  const theme = useContext(ThemeContext);
+  return &lt;div&gt;Theme: {theme}&lt;/div&gt;;
+}
+</code>
+            </pre>
+          </div>
+        `
+      },
+      "ts-null": {
+        title: "React useRef",
+        content: `
+          <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400 mb-6">
+            <h3 class="text-xl font-semibold text-yellow-800 mb-2">🔹 React useRef</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              <code>useRef</code> creates a mutable reference that persists across renders.
+            </p>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ DOM Reference</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>import { useRef } from 'react';
+function Input() {
+  const inputRef = useRef(null);
+  const focus = () => inputRef.current.focus();
+  return (
+    &lt;div&gt;
+      &lt;input ref={inputRef} /&gt;
+      &lt;button onClick={focus}&gt;Focus&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+</code>
+            </pre>
+          </div>
+        `
+      },
+      "ts-definitely-typed": {
+        title: "React Custom Hooks",
+        content: `
+          <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-400 mb-6">
+            <h3 class="text-xl font-semibold text-purple-800 mb-2">🔹 React Custom Hooks</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Custom hooks encapsulate reusable logic.
+            </p>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Example</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>import { useState, useEffect } from 'react';
+function useWindowSize() {
+  const [size, setSize] = useState({ width: window.innerWidth });
+  useEffect(() => {
+    const handleResize = () => setSize({ width: window.innerWidth });
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  return size;
+}
+function Component() {
+  const { width } = useWindowSize();
+  return &lt;div&gt;Window width: {width}&lt;/div&gt;;
+}
+</code>
+            </pre>
+          </div>
+        `
+      },
+      "ts-5-updates": {
+        title: "React Memo & useCallback",
+        content: `
+          <div class="bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-400 mb-6">
+            <h3 class="text-xl font-semibold text-indigo-800 mb-2">🔹 React Memo & useCallback</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Optimize performance with memoization.
+            </p>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ React.memo</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>import { memo } from 'react';
+const Child = memo(({ value }) => &lt;div&gt;{value}&lt;/div&gt;);
+</code>
+            </pre>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ useCallback</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>import { useCallback } from 'react';
+function Parent() {
+  const handleClick = useCallback(() => console.log('Clicked'), []);
+  return &lt;Child onClick={handleClick} /&gt;;
+}
+</code>
+            </pre>
+          </div>
+        `
+      },
+      "ts-configuration": {
+        title: "React Error Boundaries",
+        content: `
+          <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400 mb-6">
+            <h3 class="text-xl font-semibold text-yellow-800 mb-2">🔹 React Error Boundaries</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Catch errors in child components to prevent app crashes.
+            </p>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Example</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>class ErrorBoundary extends React.Component {
+  state = { hasError: false };
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  render() {
+    if (this.state.hasError) return &lt;h1&gt;Something went wrong.&lt;/h1&gt;;
+    return this.props.children;
+  }
+}
+</code>
+            </pre>
+          </div>
+        `
+      },
+      "ts-nodejs": {
+        title: "React Context API",
+        content: `
+          <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-400 mb-6">
+            <h3 class="text-xl font-semibold text-purple-800 mb-2">🔹 React Context API</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Share data across components without prop drilling.
+            </p>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Example</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>import { createContext } from 'react';
+const UserContext = createContext(null);
+function App() {
+  return (
+    &lt;UserContext.Provider value={{ name: 'John' }}&gt;
+      &lt;Component /&gt;
+    &lt;/UserContext.Provider&gt;
+  );
+}
+function Component() {
+  return (
+    &lt;UserContext.Consumer&gt;
+      {user => &lt;div&gt;User: {user.name}&lt;/div&gt;}
+    &lt;/UserContext.Consumer&gt;
+  );
+}
+</code>
+            </pre>
+          </div>
+        `
+      },
+      "ts-react": {
+        title: "React with TypeScript",
+        content: `
+          <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6">
+            <h3 class="text-xl font-semibold text-blue-800 mb-2">🔹 React with TypeScript</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Add type safety to React with TypeScript.
+            </p>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Typed Component</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>interface Props { name: string; }
+function Greeting({ name }: Props) {
+  return &lt;h1&gt;Hello, {name}!&lt;/h1&gt;;
+}
+</code>
+            </pre>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Typed State</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>import { useState } from 'react';
+function Counter() {
+  const [count, setCount] = useState&lt;number&gt;(0);
+  return &lt;button onClick={() => setCount(count + 1)}&gt;Count: {count}&lt;/button&gt;;
+}
+</code>
+            </pre>
+          </div>
+        `
+      },
+      "ts-es6": {
+        title: "React ES6",
+        content: `
+          <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400 mb-6">
+            <h3 class="text-xl font-semibold text-green-800 mb-2">🔹 React with ES6</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              React leverages ES6 features like arrow functions, destructuring, and modules for cleaner code.
+            </p>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Arrow Functions</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>const Button = () => &lt;button onClick={() => alert('Clicked')}&gt;Click me&lt;/button&gt;;
+</code>
+            </pre>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Destructuring Props</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>function Greeting({ name }) {
+  return &lt;h1&gt;Hello, {name}!&lt;/h1&gt;;
+}
+</code>
+            </pre>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Modules</h4>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>import React from 'react';
+export default function App() {
+  return &lt;div&gt;Hello&lt;/div&gt;;
+}
+</code>
+            </pre>
+            <p class="text-gray-700 italic mt-2">
+              ✅ Tip: Familiarity with ES6 enhances React development efficiency.
+            </p>
+          </div>
+        `
+      },
+      "ts-exercises": {
+        title: "React Exercises",
+        content: `
+          <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400 mb-6">
+            <h3 class="text-xl font-semibold text-yellow-800 mb-2">🔹 React Exercises</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Practice React with hands-on exercises to reinforce your learning.
+            </p>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Example Exercise</h4>
+            <p class="text-gray-700 mb-2">
+              Create a counter component with increment and decrement buttons.
+            </p>
+            <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>import { useState } from 'react';
+function Counter() {
+  const [count, setCount] = useState(0);
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Count: {count}&lt;/h1&gt;
+      &lt;button onClick={() => setCount(count + 1)}&gt;Increment&lt;/button&gt;
+      &lt;button onClick={() => setCount(count - 1)}&gt;Decrement&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+</code>
+            </pre>
+            <p class="text-gray-700 mb-2">
+              Try more exercises in each chapter to test your skills!
+            </p>
+            <div class="text-center mt-4">
+              <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-full shadow transition">
+                Start Exercises
+              </a>
+            </div>
+          </div>
+        `
+      },
+      "ts-quiz": {
+        title: "React Quiz",
+        content: `
+          <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6">
+            <h3 class="text-xl font-semibold text-blue-800 mb-2">🔹 React Quiz</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Test your React knowledge with a comprehensive quiz.
+            </p>
+            <h4 class="text-lg font-semibold text-gray-800 mt-3">⚡ Sample Question</h4>
+            <p class="text-gray-700 mb-2">
+              What is the purpose of the <code>useState</code> hook?
+            </p>
+            <ul class="list-disc list-inside text-gray-700 mb-4 pl-4">
+              <li>A) Manage side effects</li>
+              <li>B) Add state to functional components</li>
+              <li>C) Create context</li>
+              <li>D) Optimize rendering</li>
+            </ul>
+            <p class="text-gray-700 mb-2">
+              Answer: B) Add state to functional components
+            </p>
+            <div class="text-center mt-4">
+              <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-full shadow transition">
+                Take the Quiz
+              </a>
+            </div>
+          </div>
+        `
+      }
+    };
+
+    // Sidebar toggle (mobile)
+    document.getElementById('open-sidebar').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.add('open');
+    });
+
+    document.getElementById('close-sidebar').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.remove('open');
+    });
+
+    // Sidebar link click handler
+    document.querySelectorAll('#sidebar-links a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const topicId = link.getAttribute('href').substring(1);
+        loadTopicContent(topicId);
+
+        // Update active state
+        document.querySelectorAll('#sidebar-links a').forEach(a => a.classList.remove('active'));
+        link.classList.add('active');
+
+        // Close sidebar on mobile after clicking
+        document.getElementById('sidebar').classList.remove('open');
+      });
+    });
+
+    function loadTopicContent(topicId) {
+      const mainContent = document.getElementById('main-content');
+      const topic = topicContents[topicId];
+      if (topic) {
+        mainContent.innerHTML = `
+          <section class="bg-white p-6 rounded-lg shadow-md">
+            ${topic.content}
+            <button onclick="document.getElementById('main-content').innerHTML = document.getElementById('welcome').outerHTML" 
+                    class="mt-6 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+              Back to Welcome
+            </button>
+          </section>
+        `;
+      } else {
+        mainContent.innerHTML = `
+          <section class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold mb-4">Topic Not Found</h2>
+            <p>No content available for this topic.</p>
+            <button onclick="document.getElementById('main-content').innerHTML = document.getElementById('welcome').outerHTML" 
+                    class="mt-6 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+              Back to Welcome
+            </button>
+          </section>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,1993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Devvoltz CSS Tutorial</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    pre {
+      background-color: #f3f4f6;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+    }
+
+    #sidebar {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    #sidebar a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.375rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #sidebar a:hover {
+      background-color: #1e40af;
+      color: #ffffff;
+      transform: translateX(5px);
+    }
+
+    #sidebar a.active {
+      background-color: #3b82f6;
+      font-weight: bold;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      #sidebar {
+        transform: translateX(-100%);
+      }
+
+      #sidebar.open {
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <!-- Sidebar -->
+  <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-gray-900 text-white p-4 overflow-y-auto md:transform-none z-50">
+    <h2 class="text-xl font-bold mb-4">CSS Tutorial</h2>
+    <div class="mt-6">
+      <h3 class="font-semibold mb-2">CSS Topics</h3>
+      <ul class="space-y-1 text-sm" id="sidebar-links">
+        <li><a href="#css-syntax" class="text-gray-300 block">CSS Syntax</a></li>
+        <li><a href="#css-selectors" class="text-gray-300 block">CSS Selectors</a></li>
+        <li><a href="#css-how-to" class="text-gray-300 block">CSS How To</a></li>
+        <li><a href="#css-comments" class="text-gray-300 block">CSS Comments</a></li>
+        <li><a href="#css-colors" class="text-gray-300 block">CSS Colors</a></li>
+        <li><a href="#css-backgrounds" class="text-gray-300 block">CSS Backgrounds</a></li>
+        <li><a href="#css-borders" class="text-gray-300 block">CSS Borders</a></li>
+        <li><a href="#css-margins" class="text-gray-300 block">CSS Margins</a></li>
+        <li><a href="#css-padding" class="text-gray-300 block">CSS Padding</a></li>
+        <li><a href="#css-box-model" class="text-gray-300 block">CSS Box Model</a></li>
+        <li><a href="#css-text" class="text-gray-300 block">CSS Text</a></li>
+        <li><a href="#css-fonts" class="text-gray-300 block">CSS Fonts</a></li>
+        <li><a href="#css-position" class="text-gray-300 block">CSS Position</a></li>
+        <li><a href="#css-overflow" class="text-gray-300 block">CSS Overflow</a></li>
+        <li><a href="#css-float" class="text-gray-300 block">CSS Float</a></li>
+        <li><a href="#css-align" class="text-gray-300 block">CSS Align</a></li>
+        <li><a href="#css-combinators" class="text-gray-300 block">CSS Combinators</a></li>
+        <li><a href="#css-pseudo-classes" class="text-gray-300 block">CSS Pseudo-classes</a></li>
+        <li><a href="#css-pseudo-elements" class="text-gray-300 block">CSS Pseudo-elements</a></li>
+        <li><a href="#css-opacity" class="text-gray-300 block">CSS Opacity</a></li>
+      </ul>
+    </div>
+    <button id="close-sidebar" class="md:hidden mt-4 bg-red-600 px-4 py-2 rounded-md">Close</button>
+  </aside>
+
+  <!-- Mobile Toggle Button -->
+  <button id="open-sidebar" class="md:hidden fixed top-4 left-4 z-50 bg-blue-600 text-white p-2 rounded-md">
+    ☰ Menu
+  </button>
+
+  <!-- Header -->
+  <header class="bg-blue-600 text-white py-6 md:ml-64">
+    <div class="container mx-auto px-4">
+      <h1 class="text-3xl font-bold">Introduction to CSS</h1>
+      <p class="mt-2">Learn the essentials of styling web pages with CSS on the Devvoltz platform.</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+<main class="container mx-auto px-4 py-8 md:ml-64 space-y-12" id="main-content">
+  <section class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200" id="welcome">
+    <!-- Heading -->
+    <h2 class="text-3xl font-bold text-blue-900 mb-4 flex items-center gap-2">
+      <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M5 4v16h14V4H5zm13 1v2H6V5h12zM6 8h12v11H6V8z"/></svg>
+      Welcome to CSS
+    </h2>
+
+    <!-- Intro Paragraph -->
+    <p class="text-gray-700 mb-4 leading-relaxed">
+      <span class="font-semibold text-blue-800">CSS (Cascading Style Sheets)</span> is used to style and layout web pages. 
+      This tutorial will guide you through key CSS concepts with practical examples.
+    </p>
+
+    <!-- What is CSS -->
+    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6">
+      <h3 class="text-xl font-semibold text-blue-800 mb-2">📌 What is CSS?</h3>
+      <ul class="list-disc pl-6 text-gray-700 space-y-1">
+        <li>CSS stands for <strong>Cascading Style Sheets</strong></li>
+        <li>Describes how HTML elements are displayed on screen, paper, or in other media</li>
+        <li>Saves a lot of work — can style multiple pages at once</li>
+        <li>External stylesheets are stored in <code class="bg-gray-100 px-1 rounded text-sm text-blue-800">.css</code> files</li>
+      </ul>
+    </div>
+
+    <!-- Why Use CSS -->
+    <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400 mb-6">
+      <h3 class="text-xl font-semibold text-green-800 mb-2">💡 Why Use CSS?</h3>
+      <p class="text-gray-700 leading-relaxed">
+        CSS defines styles for your web pages, including layout, colors, fonts, and responsive behavior for different devices.
+      </p>
+    </div>
+
+    <!-- CSS Example -->
+    <div class="bg-gray-100 p-4 rounded-lg border border-gray-300 mb-6">
+      <h3 class="text-xl font-semibold text-gray-800 mb-2">🧪 CSS Example:</h3>
+      <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>
+body {
+  background-color: lightblue;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+p {
+  font-family: verdana;
+  font-size: 20px;
+}
+</code>
+      </pre>
+      <p class="text-sm mt-2 text-gray-600">You can copy and try this code in your own HTML file.</p>
+    </div>
+
+    <!-- Try it -->
+    <div class="text-center mt-8">
+      <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-full shadow transition">
+        🎯 Try It Yourself
+      </a>
+    </div>
+
+    <!-- Navigation Prompt -->
+    <p class="text-gray-600 mt-6 text-center">📚 Select a topic from the sidebar to begin learning!</p>
+  </section>
+</main>
+
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-4 mt-8 md:ml-64">
+    <div class="container mx-auto px-4 text-center">
+      <p>© 2025 Devvoltz Platform. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Topic content data
+    const topicContents = {
+     "css-syntax": {
+  "title": "CSS Syntax",
+  "content": `
+    <h2 class="text-2xl font-semibold mb-4">CSS Syntax</h2>
+    <p class="mb-4">
+      CSS (Cascading Style Sheets) is used to style HTML elements. A CSS rule consists of a selector and a declaration block.
+    </p>
+    <p class="mb-4">
+      The selector targets the HTML element you want to style. The declaration block contains one or more property-value pairs.
+    </p>
+    <pre class="mb-4 bg-gray-100 p-3 rounded"><code>selector {
+  property: value;
+  property: value;
+}</code></pre>
+    <p class="mb-4">
+      <strong>Example:</strong>
+    </p>
+    <pre class="mb-4 bg-gray-100 p-3 rounded"><code>h1 {
+  color: blue;
+  font-size: 24px;
+}</code></pre>
+    <p class="mb-4">
+      This CSS rule selects all <code>&lt;h1&gt;</code> elements and:
+      <ul class="list-disc pl-5">
+        <li>Changes their text color to <strong>blue</strong></li>
+        <li>Sets the font size to <strong>24 pixels</strong></li>
+      </ul>
+    </p>
+    <p class="mb-2 font-medium">Live Example:</p>
+    <iframe class="w-full h-32 border border-gray-300 rounded mb-4" srcdoc='
+      <style>
+        h1 {
+          color: blue;
+          font-size: 24px;
+        }
+      </style>
+      <h1>Hello, World!</h1>
+    '></iframe>
+    <p class="mb-4"><strong>Tips:</strong> Always end declarations with a semicolon, and use curly braces to group multiple property-value pairs.</p>
+  `
+}
+,
+    "css-selectors": {
+  title: "CSS Selectors",
+  content: `
+
+            <section class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200 space-y-6" id="css-selectors">
+  <h2 class="text-3xl font-bold text-blue-900">🎯 CSS Selectors</h2>
+  <p class="text-gray-700">
+    A <strong>CSS selector</strong> selects the HTML element(s) you want to style. CSS selectors are used to "find" the HTML elements you want to style.
+  </p>
+
+  <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+    <h3 class="text-xl font-semibold text-blue-800 mb-2">🔵 Types of CSS Selectors</h3>
+    <ul class="list-disc pl-6 text-gray-700 space-y-1">
+      <li><strong>Simple selectors</strong> – select by name, ID, class</li>
+      <li><strong>Combinator selectors</strong> – based on relationships</li>
+      <li><strong>Pseudo-class selectors</strong> – based on state</li>
+      <li><strong>Pseudo-elements selectors</strong> – part of an element</li>
+      <li><strong>Attribute selectors</strong> – based on attributes</li>
+    </ul>
+  </div>
+
+  <div class="space-y-4">
+    <h3 class="text-2xl font-semibold text-gray-800">🔹 The Element Selector</h3>
+    <p class="text-gray-700">Selects HTML elements by tag name.</p>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg"><code>
+p {
+  text-align: center;
+  color: red;
+}
+    </code></pre>
+  </div>
+
+  <div class="space-y-4">
+    <h3 class="text-2xl font-semibold text-gray-800">🔹 The ID Selector</h3>
+    <p class="text-gray-700">Selects an element with a unique ID. Syntax uses <code class="text-blue-700">#</code> followed by the ID name.</p>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg"><code>
+#para1 {
+  text-align: center;
+  color: red;
+}
+    </code></pre>
+    <p class="text-red-600 text-sm">⚠️ ID names cannot start with a number.</p>
+  </div>
+
+  <div class="space-y-4">
+    <h3 class="text-2xl font-semibold text-gray-800">🔹 The Class Selector</h3>
+    <p class="text-gray-700">Selects elements with a specific class. Syntax uses <code class="text-blue-700">.</code> followed by the class name.</p>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg"><code>
+.center {
+  text-align: center;
+  color: red;
+}
+    </code></pre>
+    <p class="text-gray-700">To apply to specific elements:</p>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg"><code>
+p.center {
+  text-align: center;
+  color: red;
+}
+    </code></pre>
+    <p class="text-gray-700">Multiple classes can be used:</p>
+    <code class="bg-gray-100 text-sm p-1 rounded">&lt;p class="center large"&gt;This paragraph refers to two classes.&lt;/p&gt;</code>
+    <p class="text-red-600 text-sm">⚠️ Class names also should not start with a number.</p>
+  </div>
+
+  <div class="space-y-4">
+    <h3 class="text-2xl font-semibold text-gray-800">🔹 The Universal Selector</h3>
+    <p class="text-gray-700">Selects all HTML elements on the page.</p>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg"><code>
+* {
+  text-align: center;
+  color: blue;
+}
+    </code></pre>
+  </div>
+
+  <div class="space-y-4">
+    <h3 class="text-2xl font-semibold text-gray-800">🔹 Grouping Selectors</h3>
+    <p class="text-gray-700">Apply the same styles to multiple elements using commas.</p>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg"><code>
+h1, h2, p {
+  text-align: center;
+  color: red;
+}
+    </code></pre>
+  </div>
+
+  <div class="space-y-4">
+    <h3 class="text-2xl font-semibold text-gray-800">🔹 Pseudo-class Selectors</h3>
+    <p class="text-gray-700">A pseudo-class styles elements based on their <strong>state or user interaction</strong>, like hover, focus, or checked.</p>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg"><code>
+button:hover {
+  background-color: green;
+  color: white;
+}
+    </code></pre>
+    <iframe class="w-full h-24 border border-gray-300 rounded mb-4" srcdoc='
+      <style>
+        button {
+          padding: 10px 20px;
+          font-size: 16px;
+        }
+        button:hover {
+          background-color: green;
+          color: white;
+        }
+      </style>
+      <button>Hover Me</button>
+    '></iframe>
+  </div>
+
+  <div class="space-y-4">
+    <h3 class="text-2xl font-semibold text-gray-800">🔹 Pseudo-element Selectors</h3>
+    <p class="text-gray-700">Pseudo-elements let you style <strong>specific parts of an element</strong> or insert virtual content (like before or after).</p>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg"><code>
+p::first-letter {
+  font-size: 200%;
+  color: red;
+}
+    </code></pre>
+    <iframe class="w-full h-24 border border-gray-300 rounded mb-4" srcdoc='
+      <style>
+        p::first-letter {
+          font-size: 200%;
+          color: red;
+        }
+      </style>
+      <p>This paragraph starts with a styled letter.</p>
+    '></iframe>
+
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg"><code>
+h2::before {
+  content: "🔥 ";
+}
+    </code></pre>
+    <iframe class="w-full h-24 border border-gray-300 rounded mb-4" srcdoc='
+      <style>
+        h2::before {
+          content: "🔥 ";
+        }
+      </style>
+      <h2>This heading uses ::before</h2>
+    '></iframe>
+  </div>
+
+  <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400">
+    <h3 class="text-lg font-semibold text-yellow-700">🧠 Quick Quiz:</h3>
+    <p class="text-gray-700">Which CSS selector is used to select an element with a specific id?</p>
+    <ul class="list-none pl-0 space-y-1 text-gray-700 mt-2">
+      <li>🔘 <code>*</code></li>
+      <li>🔘 <code>.</code></li>
+      <li>✅ <code>#</code> ← Correct Answer</li>
+      <li>🔘 <code>%</code></li>
+    </ul>
+  </div>
+
+  <div class="overflow-x-auto mt-6">
+    <table class="table-auto w-full border border-gray-300 text-sm text-left">
+      <thead class="bg-gray-100">
+        <tr>
+          <th class="p-2 border">Selector</th>
+          <th class="p-2 border">Example</th>
+          <th class="p-2 border">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="p-2 border">#id</td>
+          <td class="p-2 border">#firstname</td>
+          <td class="p-2 border">Selects element with id="firstname"</td>
+        </tr>
+        <tr>
+          <td class="p-2 border">.class</td>
+          <td class="p-2 border">.intro</td>
+          <td class="p-2 border">Selects all elements with class="intro"</td>
+        </tr>
+        <tr>
+          <td class="p-2 border">*</td>
+          <td class="p-2 border">*</td>
+          <td class="p-2 border">Selects all elements</td>
+        </tr>
+        <tr>
+          <td class="p-2 border">element</td>
+          <td class="p-2 border">p</td>
+          <td class="p-2 border">Selects all &lt;p&gt; elements</td>
+        </tr>
+        <tr>
+          <td class="p-2 border">element,element</td>
+          <td class="p-2 border">div, p</td>
+          <td class="p-2 border">Selects all &lt;div&gt; and &lt;p&gt; elements</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+  `
+}
+,
+      "css-how-to": {
+  title: "CSS How To",
+  content: `
+  <section class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200 space-y-6" id="how-to-add-css">
+  <h2 class="text-3xl font-bold text-blue-900">🧩 How To Add CSS</h2>
+  <p class="text-gray-700">
+    When a browser reads a style sheet, it formats the HTML according to the styles defined. There are three ways to apply CSS to a web page:
+  </p>
+
+  <!-- List of Methods -->
+  <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+    <h3 class="text-xl font-semibold text-blue-800 mb-2">📌 Three Ways to Insert CSS</h3>
+    <ul class="list-disc pl-6 text-gray-700 space-y-1">
+      <><strong>External CSS</strong></li>
+      <li><strong>Internal CSS</strong></li>
+      <lili><strong>Inline CSS</strong></li>
+    </ul>
+  </div>
+
+  <!-- External CSS -->
+  <div>
+    <h3 class="text-2xl font-semibold text-gray-800">🔹 External CSS</h3>
+    <p class="text-gray-700 mb-2">
+      External styles are stored in a separate <code class="bg-gray-100 px-1 rounded text-blue-800">.css</code> file. One file can style multiple HTML pages.
+    </p>
+    <p class="text-gray-700">Reference it in the <code class="text-blue-700">&lt;head&gt;</code> section using <code>&lt;link&gt;</code>:</p>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>
+&lt;link rel="stylesheet" href="mystyle.css"&gt;
+    </code></pre>
+
+    <h4 class="text-gray-700 font-semibold mt-2">🔸 Sample HTML:</h4>
+    <pre class="bg-gray-800 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;link rel="stylesheet" href="mystyle.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;h1&gt;This is a heading&lt;/h1&gt;
+  &lt;p&gt;This is a paragraph.&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+
+    <h4 class="text-gray-700 font-semibold mt-2">🔸 Sample CSS File (<code>mystyle.css</code>):</h4>
+    <pre class="bg-gray-800 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>
+body {
+  background-color: lightblue;
+}
+
+h1 {
+  color: navy;
+  margin-left: 20px;
+}
+    </code></pre>
+    <p class="text-red-600 text-sm mt-1">⚠️ Don’t add space between number and unit (e.g. <code>20px</code> not <code>20 px</code>).</p>
+  </div>
+
+  <!-- Internal CSS -->
+  <div>
+    <h3 class="text-2xl font-semibold text-gray-800">🔹 Internal CSS</h3>
+    <p class="text-gray-700 mb-2">
+      Used for a single HTML page. The styles go inside the <code>&lt;style&gt;</code> tag in the <code>&lt;head&gt;</code>.
+    </p>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>
+&lt;style&gt;
+  body {
+    background-color: linen;
+  }
+
+  h1 {
+    color: maroon;
+    margin-left: 40px;
+  }
+&lt;/style&gt;
+    </code></pre>
+  </div>
+
+  <!-- Inline CSS -->
+  <div>
+    <h3 class="text-2xl font-semibold text-gray-800">🔹 Inline CSS</h3>
+    <p class="text-gray-700">
+      Used to apply a unique style to a single element. You add the <code>style</code> attribute directly to the tag.
+    </p>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>
+&lt;h1 style="color:blue; text-align:center;"&gt;This is a heading&lt;/h1&gt;
+&lt;p style="color:red;"&gt;This is a paragraph.&lt;/p&gt;
+    </code></pre>
+    <p class="text-yellow-600 text-sm mt-1">⚠️ Avoid using too much inline CSS. It mixes structure with styling.</p>
+  </div>
+
+  <!-- Multiple Style Sheets -->
+  <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400 space-y-2">
+    <h3 class="text-xl font-semibold text-green-800">🧪 Multiple Style Sheets</h3>
+    <p class="text-gray-700">
+      If multiple style sheets define the same property, the **last read** one takes priority.
+    </p>
+    <p class="text-gray-700">Example (internal style comes after external):</p>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg overflow-x-auto"><code>
+&lt;head&gt;
+  &lt;link rel="stylesheet" href="mystyle.css"&gt;
+  &lt;style&gt;
+    h1 {
+      color: orange;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+    </code></pre>
+  </div>
+
+  <!-- Cascading Order -->
+  <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400 space-y-2">
+    <h3 class="text-xl font-semibold text-yellow-800">🔺 Cascading Order (Priority)</h3>
+    <ol class="list-decimal pl-6 text-gray-700 space-y-1">
+      <li><strong>Inline styles</strong> (highest priority)</li>
+      <li><strong>Internal & External</strong> styles (in order of appearance)</li>
+      <li><strong>Browser default</strong> styles (lowest priority)</li>
+    </ol>
+    <p class="text-sm text-gray-600">🔁 Inline styles override all others!</p>
+  </div>
+</section>
+
+    <h2 class="text-2xl font-semibold mb-4">CSS How To</h2>
+    <p class="mb-4">CSS can be applied to HTML in three different ways. Each method is used based on the size, structure, and need for maintainability of your project:</p>
+    <ul class="list-disc pl-5 mb-4">
+      <li>
+        <strong>External CSS</strong> – Write styles in a separate <code>.css</code> file. This method is best for large projects and reusability.
+        <br>Example: 
+        <pre class="bg-gray-100 p-2 rounded mt-1"><code>&lt;link rel="stylesheet" href="styles.css"&gt;</code></pre>
+      </li>
+      <li>
+        <strong>Internal CSS</strong> – Write styles inside a <code>&lt;style&gt;</code> tag in the <code>&lt;head&gt;</code> of your HTML.
+        <br>Example:
+        <pre class="bg-gray-100 p-2 rounded mt-1"><code>&lt;style&gt;
+  body {
+    background-color: lightblue;
+  }
+&lt;/style&gt;</code></pre>
+      </li>
+      <li>
+        <strong>Inline CSS</strong> – Add styles directly in the HTML element using the <code>style</code> attribute.
+        <br>Example:
+        <pre class="bg-gray-100 p-2 rounded mt-1"><code>&lt;p style=&quot;color: red;&quot;&gt;This is red text&lt;/p&gt;</code></pre>
+      </li>
+    </ul>
+    <p class="mb-4"><strong>Note:</strong> External CSS is the most recommended approach for scalability and clean code management.</p>
+  `
+}
+,
+     "css-comments": {
+  title: "CSS Comments",
+  content: `
+    <h2 class="text-2xl font-semibold mb-4">CSS Comments</h2>
+    <p class="mb-4">
+      Comments in CSS help you explain your code and make it more readable. 
+      They are not rendered by browsers and are completely ignored during execution.
+    </p>
+    <p class="mb-4">
+      CSS comments begin with <code>/*</code> and end with <code>*/</code>. You can place them above or beside your rules.
+    </p>
+    <pre class="mb-4 bg-gray-100 p-3 rounded"><code>/* This is a comment */
+p {
+  color: green;
+}</code></pre>
+    <p class="mb-4">
+      You can also use comments to temporarily disable parts of your CSS without deleting them.
+    </p>
+    <pre class="mb-4 bg-gray-100 p-3 rounded"><code>/*
+h1 {
+  color: red;
+}
+*/</code></pre>
+    <p class="mb-4"><strong>Note:</strong> Avoid overusing comments in production code, but do use them to explain tricky parts or organization.</p>
+  `
+}
+,
+     "css-colors": {
+  title: "CSS Colors",
+  content: `
+  <section class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200 space-y-6" id="css-colors">
+  <h2 class="text-3xl font-bold text-blue-900">🎨 CSS Colors</h2>
+  <p class="text-gray-700">
+    CSS colors can be defined using <strong>predefined names</strong> (like <code class="text-blue-600">Tomato</code>), or with color values in <strong>RGB</strong>, <strong>HEX</strong>, <strong>HSL</strong>, <strong>RGBA</strong>, or <strong>HSLA</strong> formats.
+  </p>
+
+  <!-- Color Names -->
+  <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+    <h3 class="text-xl font-semibold text-blue-800 mb-2">🟢 CSS Color Names</h3>
+    <p class="text-gray-700">HTML supports <strong>140 standard color names</strong>, such as:</p>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3 text-white font-medium text-center text-sm">
+      <div class="p-2 rounded bg-[tomato]">Tomato</div>
+      <div class="p-2 rounded bg-[orange]">Orange</div>
+      <div class="p-2 rounded bg-[dodgerblue]">DodgerBlue</div>
+      <div class="p-2 rounded bg-[mediumseagreen]">MediumSeaGreen</div>
+      <div class="p-2 rounded bg-[gray]">Gray</div>
+      <div class="p-2 rounded bg-[slateblue]">SlateBlue</div>
+      <div class="p-2 rounded bg-[violet]">Violet</div>
+      <div class="p-2 rounded bg-[lightgray] text-black">LightGray</div>
+    </div>
+  </div>
+
+  <!-- Background Color -->
+  <div>
+    <h3 class="text-2xl font-semibold text-gray-800 mt-4">🔹 CSS Background Color</h3>
+    <p class="text-gray-700">Set the background color of an element using <code>background-color</code>.</p>
+    <div class="space-y-2 mt-4">
+      <h1 class="text-white font-bold p-3 rounded" style="background-color:DodgerBlue;">Hello World</h1>
+      <p class="text-white p-3 rounded" style="background-color:Tomato;">
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh...
+      </p>
+    </div>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg mt-2 overflow-x-auto"><code>
+&lt;h1 style="background-color:DodgerBlue;"&gt;Hello World&lt;/h1&gt;
+&lt;p style="background-color:Tomato;"&gt;Lorem ipsum...&lt;/p&gt;
+    </code></pre>
+  </div>
+
+  <!-- Text Color -->
+  <div>
+    <h3 class="text-2xl font-semibold text-gray-800">🔹 CSS Text Color</h3>
+    <p class="text-gray-700">Use the <code>color</code> property to change text color.</p>
+    <div class="space-y-2 mt-4">
+      <h1 class="text-[Tomato] font-bold">Hello World</h1>
+      <p class="text-[DodgerBlue]">Lorem ipsum dolor sit amet...</p>
+      <p class="text-[MediumSeaGreen]">Ut wisi enim ad minim veniam...</p>
+    </div>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg mt-2 overflow-x-auto"><code>
+&lt;h1 style="color:Tomato;"&gt;Hello World&lt;/h1&gt;
+&lt;p style="color:DodgerBlue;"&gt;Lorem ipsum...&lt;/p&gt;
+&lt;p style="color:MediumSeaGreen;"&gt;Ut wisi enim...&lt;/p&gt;
+    </code></pre>
+  </div>
+
+  <!-- Border Color -->
+  <div>
+    <h3 class="text-2xl font-semibold text-gray-800">🔹 CSS Border Color</h3>
+    <p class="text-gray-700">Use <code>border</code> and color name to style borders.</p>
+    <div class="space-y-2 mt-4">
+      <h1 class="p-2 border-2 border-[Tomato] inline-block">Hello World</h1>
+      <h1 class="p-2 border-2 border-[DodgerBlue] inline-block">Hello World</h1>
+      <h1 class="p-2 border-2 border-[Violet] inline-block">Hello World</h1>
+    </div>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg mt-2 overflow-x-auto"><code>
+&lt;h1 style="border:2px solid Tomato;"&gt;Hello World&lt;/h1&gt;
+&lt;h1 style="border:2px solid DodgerBlue;"&gt;Hello World&lt;/h1&gt;
+&lt;h1 style="border:2px solid Violet;"&gt;Hello World&lt;/h1&gt;
+    </code></pre>
+  </div>
+
+  <!-- Color Values -->
+  <div>
+    <h3 class="text-2xl font-semibold text-gray-800">🔹 CSS Color Values</h3>
+    <p class="text-gray-700">
+      You can use color names, or values in <code>rgb()</code>, <code>#hex</code>, <code>hsl()</code>, <code>rgba()</code>, or <code>hsla()</code> formats.
+    </p>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4 text-sm font-mono text-center font-semibold">
+      <div class="bg-[rgb(255,99,71)] p-3 text-white rounded">rgb(255,99,71)</div>
+      <div class="bg-[#ff6347] p-3 text-white rounded">#ff6347</div>
+      <div class="bg-[hsl(9,100%,64%)] p-3 text-white rounded">hsl(9, 100%, 64%)</div>
+      <div class="bg-[rgba(255,99,71,0.5)] p-3 text-black rounded">rgba(255,99,71,0.5)</div>
+      <div class="bg-[hsla(9,100%,64%,0.5)] p-3 text-black rounded">hsla(9,100%,64%,0.5)</div>
+    </div>
+
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg mt-4 overflow-x-auto"><code>
+&lt;h1 style="background-color:rgb(255,99,71);"&gt;&lt;/h1&gt;
+&lt;h1 style="background-color:#ff6347;"&gt;&lt;/h1&gt;
+&lt;h1 style="background-color:hsl(9,100%,64%);"&gt;&lt;/h1&gt;
+&lt;h1 style="background-color:rgba(255,99,71,0.5);"&gt;&lt;/h1&gt;
+&lt;h1 style="background-color:hsla(9,100%,64%,0.5);"&gt;&lt;/h1&gt;
+    </code></pre>
+  </div>
+</section>
+<section class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200 space-y-6" id="css-rgb-colors">
+  <h2 class="text-3xl font-bold text-blue-900">🌈 CSS RGB and RGBA Colors</h2>
+  <p class="text-gray-700">
+    CSS colors can be defined using the <code class="text-blue-700">rgb()</code> function. RGB stands for <strong>Red, Green, Blue</strong>. Each color value ranges from 0 to 255.
+  </p>
+
+  <!-- RGB Formula -->
+  <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+    <h3 class="text-xl font-semibold text-blue-800 mb-2">📘 RGB Syntax</h3>
+    <p class="text-gray-700"><code>rgb(red, green, blue)</code> — each value from <code>0</code> (none) to <code>255</code> (full brightness).</p>
+    <ul class="list-disc pl-6 text-gray-700 space-y-1 mt-2">
+      <li><code>rgb(255, 0, 0)</code> → Red</li>
+      <li><code>rgb(0, 0, 0)</code> → Black</li>
+      <li><code>rgb(255, 255, 255)</code> → White</li>
+    </ul>
+  </div>
+
+  <!-- RGB Examples -->
+  <div>
+    <h3 class="text-2xl font-semibold text-gray-800">🔹 RGB Examples</h3>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-4 font-mono text-white text-sm font-semibold text-center">
+      <div class="p-3 rounded bg-[rgb(255,0,0)]">rgb(255, 0, 0)</div>
+      <div class="p-3 rounded bg-[rgb(0,0,255)]">rgb(0, 0, 255)</div>
+      <div class="p-3 rounded bg-[rgb(60,179,113)]">rgb(60, 179, 113)</div>
+      <div class="p-3 rounded bg-[rgb(238,130,238)]">rgb(238, 130, 238)</div>
+      <div class="p-3 rounded bg-[rgb(255,165,0)]">rgb(255, 165, 0)</div>
+      <div class="p-3 rounded bg-[rgb(106,90,205)]">rgb(106, 90, 205)</div>
+    </div>
+  </div>
+
+  <!-- Shades of Gray -->
+  <div>
+    <h3 class="text-2xl font-semibold text-gray-800 mt-6">🔹 Shades of Gray</h3>
+    <p class="text-gray-700">When red, green, and blue are equal, the result is a shade of gray.</p>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-4 font-mono text-center text-sm font-semibold">
+      <div class="p-3 rounded text-white bg-[rgb(60,60,60)]">rgb(60, 60, 60)</div>
+      <div class="p-3 rounded text-white bg-[rgb(90,90,90)]">rgb(90, 90, 90)</div>
+      <div class="p-3 rounded text-white bg-[rgb(120,120,120)]">rgb(120, 120, 120)</div>
+      <div class="p-3 rounded text-black bg-[rgb(180,180,180)]">rgb(180, 180, 180)</div>
+      <div class="p-3 rounded text-black bg-[rgb(210,210,210)]">rgb(210, 210, 210)</div>
+      <div class="p-3 rounded text-black bg-[rgb(240,240,240)]">rgb(240, 240, 240)</div>
+    </div>
+  </div>
+
+  <!-- RGBA Section -->
+  <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400 mt-6">
+    <h3 class="text-xl font-semibold text-green-800">🧪 RGBA Colors (With Opacity)</h3>
+    <p class="text-gray-700">
+      The <code>rgba()</code> function adds an <strong>alpha</strong> channel for transparency. Alpha ranges from <code>0.0</code> (transparent) to <code>1.0</code> (opaque).
+    </p>
+    <code class="block mt-2 font-mono text-sm text-blue-900">rgba(red, green, blue, alpha)</code>
+  </div>
+
+  <!-- RGBA Examples -->
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 mt-4 font-mono text-center text-sm font-semibold">
+    <div class="p-3 rounded bg-[rgba(255,99,71,0)] text-black">0</div>
+    <div class="p-3 rounded bg-[rgba(255,99,71,0.2)] text-black">0.2</div>
+    <div class="p-3 rounded bg-[rgba(255,99,71,0.4)] text-black">0.4</div>
+    <div class="p-3 rounded bg-[rgba(255,99,71,0.6)] text-white">0.6</div>
+    <div class="p-3 rounded bg-[rgba(255,99,71,0.8)] text-white">0.8</div>
+    <div class="p-3 rounded bg-[rgba(255,99,71,1)] text-white">1</div>
+  </div>
+
+  <!-- Code Sample -->
+  <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg mt-4 overflow-x-auto"><code>
+&lt;h1 style="background-color:rgba(255,99,71,0.5);"&gt;Transparent Red&lt;/h1&gt;
+  </code></pre>
+</section>
+
+    <h2 class="text-2xl font-semibold mb-4">CSS Colors</h2>
+    <p class="mb-4">
+      CSS allows you to set colors in multiple ways for text, backgrounds, borders, and more. The common methods include:
+    </p>
+    <ul class="list-disc pl-5 mb-4">
+      <li><strong>Color Names:</strong> Simple color keywords like <code>red</code>, <code>blue</code>, <code>green</code>.</li>
+      <li><strong>HEX Codes:</strong> Six-digit hexadecimal values prefixed with <code>#</code>, e.g., <code>#ff0000</code> for red.</li>
+      <li><strong>RGB Values:</strong> Specify colors by Red, Green, and Blue components, e.g., <code>rgb(255, 0, 0)</code> for red.</li>
+      <li><strong>HSL Values:</strong> Hue, Saturation, and Lightness, e.g., <code>hsl(0, 100%, 50%)</code> for red.</li>
+    </ul>
+    <pre class="mb-4 bg-gray-100 p-3 rounded"><code>p { color: #ff0000; }
+span { background-color: rgb(0, 255, 0); }</code></pre>
+    <iframe class="w-full h-32 border border-gray-300 rounded-md mb-4" srcdoc='
+      <style>
+        p { color: #ff0000; }
+        span { background-color: rgb(0, 255, 0); padding: 3px; display: inline-block; }
+      </style>
+      <p>Red text</p>
+      <span>Green background</span>
+    '></iframe>
+    <p class="mb-4"><strong>Tip:</strong> Use HEX or RGB for precise control, and color names for quick styling.</p>
+  `
+}
+,
+      "css-backgrounds": {
+  title: "CSS Backgrounds",
+  content: `
+  <section class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200 space-y-6" id="css-backgrounds">
+  <h2 class="text-3xl font-bold text-blue-900">🌄 CSS Backgrounds</h2>
+  <p class="text-gray-700">
+    The <strong>CSS background</strong> properties allow you to add styling effects such as color, images, repeat, position, and attachment to any HTML element.
+  </p>
+
+  <!-- Background Color -->
+  <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+    <h3 class="text-xl font-semibold text-blue-800 mb-2">🎨 background-color</h3>
+    <p class="text-gray-700">Used to set the background color of an element using <strong>name</strong>, <strong>HEX</strong>, or <strong>RGB</strong> values.</p>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg mt-3 overflow-x-auto"><code>
+body {
+  background-color: lightblue;
+}
+h1 {
+  background-color: green;
+}
+div {
+  background-color: lightblue;
+}
+p {
+  background-color: yellow;
+}
+    </code></pre>
+
+    <div class="mt-4 space-y-2 font-semibold text-white text-center text-sm grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div class="p-2 rounded bg-[lightblue]">body</div>
+      <div class="p-2 rounded bg-[green]">h1</div>
+      <div class="p-2 rounded bg-[lightblue] text-black">div</div>
+      <div class="p-2 rounded bg-[yellow] text-black">p</div>
+    </div>
+  </div>
+
+  <!-- Opacity -->
+  <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-400">
+    <h3 class="text-xl font-semibold text-purple-800 mb-2">🌫️ Opacity</h3>
+    <p class="text-gray-700">The <code>opacity</code> property sets the transparency of the entire element (including its children). Values range from <strong>0.0</strong> (fully transparent) to <strong>1.0</strong> (fully opaque).</p>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg mt-3 overflow-x-auto"><code>
+div {
+  background-color: green;
+  opacity: 0.3;
+}
+    </code></pre>
+
+    <div class="grid grid-cols-4 gap-4 mt-4 font-semibold text-center text-sm">
+      <div class="p-3 rounded bg-green-600 opacity-100 text-white">1</div>
+      <div class="p-3 rounded bg-green-600 opacity-60 text-white">0.6</div>
+      <div class="p-3 rounded bg-green-600 opacity-30 text-white">0.3</div>
+      <div class="p-3 rounded bg-green-600 opacity-10 text-white">0.1</div>
+    </div>
+
+    <p class="text-sm text-red-600 mt-3">⚠️ All child elements inside will also become transparent.</p>
+  </div>
+
+  <!-- RGBA Transparency -->
+  <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400">
+    <h3 class="text-xl font-semibold text-green-800 mb-2">🧪 Transparency with RGBA</h3>
+    <p class="text-gray-700">Use <code>rgba()</code> if you want the background transparent but the text fully visible.</p>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg mt-3 overflow-x-auto"><code>
+div {
+  background: rgba(0, 128, 0, 0.3); /* 30% opacity green */
+}
+    </code></pre>
+
+    <div class="grid grid-cols-5 gap-3 mt-4 font-mono text-center text-sm font-semibold">
+      <div class="p-3 rounded bg-[rgba(0,128,0,1)] text-white">1</div>
+      <div class="p-3 rounded bg-[rgba(0,128,0,0.6)] text-white">0.6</div>
+      <div class="p-3 rounded bg-[rgba(0,128,0,0.3)] text-black">0.3</div>
+      <div class="p-3 rounded bg-[rgba(0,128,0,0.1)] text-black">0.1</div>
+      <div class="p-3 rounded bg-[rgba(0,128,0,0)] text-black">0</div>
+    </div>
+  </div>
+
+  <!-- Summary Table -->
+  <div class="bg-gray-100 p-4 rounded-lg mt-6">
+    <h3 class="text-xl font-semibold text-gray-800 mb-2">📋 Background Properties Summary</h3>
+    <table class="table-auto w-full text-left text-sm text-gray-700 border border-gray-300">
+      <thead class="bg-gray-200">
+        <tr>
+          <th class="border px-3 py-2">Property</th>
+          <th class="border px-3 py-2">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border px-3 py-2">background-color</td>
+          <td class="border px-3 py-2">Sets background color</td>
+        </tr>
+        <tr>
+          <td class="border px-3 py-2">background-image</td>
+          <td class="border px-3 py-2">Sets an image as background</td>
+        </tr>
+        <tr>
+          <td class="border px-3 py-2">background-repeat</td>
+          <td class="border px-3 py-2">Controls repeating of the image</td>
+        </tr>
+        <tr>
+          <td class="border px-3 py-2">background-position</td>
+          <td class="border px-3 py-2">Sets starting position</td>
+        </tr>
+        <tr>
+          <td class="border px-3 py-2">background-attachment</td>
+          <td class="border px-3 py-2">Scroll or fixed background</td>
+        </tr>
+        <tr>
+          <td class="border px-3 py-2">background</td>
+          <td class="border px-3 py-2">Shorthand for all background properties</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+    <h2 class="text-2xl font-semibold mb-4">CSS Backgrounds</h2>
+    <p class="mb-4">
+      Background properties allow you to customize the appearance behind elements, including colors, images, and how images behave.
+    </p>
+    <ul class="list-disc pl-5 mb-4">
+      <li><strong>background-color:</strong> Sets a solid color as background.</li>
+      <li><strong>background-image:</strong> Adds an image as background.</li>
+      <li><strong>background-repeat:</strong> Controls if/how a background image repeats (<code>repeat</code>, <code>no-repeat</code>, <code>repeat-x</code>, <code>repeat-y</code>).</li>
+      <li><strong>background-position:</strong> Specifies the starting position of the background image (<code>center</code>, <code>top right</code>, coordinates, etc.).</li>
+      <li><strong>background-size:</strong> Controls the size of the background image (e.g., <code>cover</code>, <code>contain</code>).</li>
+    </ul>
+    <pre class="mb-4 bg-gray-100 p-3 rounded"><code>div {
+  background: url('image.jpg') no-repeat center;
+  background-color: #f0f0f0;
+  background-size: cover;
+}</code></pre>
+    <p class="mb-4"><em>Note:</em> When using images, combining <code>background-color</code> helps in case the image fails to load.</p>
+  `
+}
+,
+     "css-borders": {
+  title: "CSS Borders",
+  content: `
+  <section class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200 space-y-6" id="css-borders">
+  <h2 class="text-3xl font-bold text-blue-900">🧱 CSS Borders</h2>
+  <p class="text-gray-700">
+    The <strong>CSS border</strong> properties allow you to define the <em>style</em>, <em>width</em>, and <em>color</em> of borders for any HTML element.
+  </p>
+
+  <!-- Border Syntax Overview -->
+  <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400">
+    <h3 class="text-xl font-semibold text-yellow-800 mb-2">💡 Syntax</h3>
+    <p class="text-gray-700">
+      The main border properties are:
+    </p>
+    <ul class="list-disc pl-6 text-gray-700 space-y-1 mt-2">
+      <li><code>border-style</code>: The border pattern (solid, dashed, dotted...)</li>
+      <li><code>border-width</code>: The thickness of the border</li>
+      <li><code>border-color</code>: The border color</li>
+      <li><code>border-radius</code>: For rounded corners</li>
+    </ul>
+  </div>
+
+  <!-- Border Style Examples -->
+  <div>
+    <h3 class="text-2xl font-semibold text-gray-800">🎨 Border Style Examples</h3>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-sm mt-4">
+      <p class="p-4 border border-dotted">.dotted</p>
+      <p class="p-4 border border-dashed">.dashed</p>
+      <p class="p-4 border border-solid">.solid</p>
+      <p class="p-4 border border-double">.double</p>
+      <p class="p-4 border border-groove">.groove (not supported in Tailwind)</p>
+      <p class="p-4 border border-ridge">.ridge (not supported in Tailwind)</p>
+    </div>
+    <p class="text-sm text-red-500 mt-2">Note: 3D styles like <code>groove</code>, <code>ridge</code>, <code>inset</code>, and <code>outset</code> may not show in Tailwind by default — custom CSS is needed.</p>
+  </div>
+
+  <!-- Directional Borders -->
+  <div>
+    <h3 class="text-2xl font-semibold text-gray-800 mt-6">🔃 One-Side Borders</h3>
+    <div class="space-y-3 mt-4 text-sm">
+      <p class="p-4 border-b-4 border-red-500">I have a <strong>red bottom border</strong></p>
+      <p class="p-4 border-l-4 border-blue-500">I have a <strong>blue left border</strong></p>
+      <p class="p-4 border-t-4 border-green-500">I have a <strong>green top border</strong></p>
+      <p class="p-4 border-r-4 border-purple-500">I have a <strong>purple right border</strong></p>
+    </div>
+  </div>
+
+  <!-- Border Radius -->
+  <div class="mt-6">
+    <h3 class="text-2xl font-semibold text-gray-800">🔵 Rounded Borders</h3>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm text-center">
+      <div class="p-4 border border-gray-400 rounded-sm">.rounded-sm</div>
+      <div class="p-4 border border-gray-400 rounded-md">.rounded-md</div>
+      <div class="p-4 border border-gray-400 rounded-lg">.rounded-lg</div>
+      <div class="p-4 border border-gray-400 rounded-full">.rounded-full</div>
+    </div>
+  </div>
+
+  <!-- Mixed Borders -->
+  <div class="mt-6">
+    <h3 class="text-2xl font-semibold text-gray-800">🌀 Mixed Border Styles</h3>
+    <div class="p-4 border-t-4 border-dotted border-r-4 border-dashed border-b-4 border-solid border-l-4 border-double text-sm">
+      I have <strong>mixed borders</strong> (top: dotted, right: dashed, bottom: solid, left: double)
+    </div>
+  </div>
+
+  <!-- Code Example -->
+  <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg mt-6 overflow-x-auto"><code>
+/* CSS Equivalent Example */
+p.dotted { border-style: dotted; }
+p.dashed { border-style: dashed; }
+p.solid  { border-style: solid; }
+p.double { border-style: double; }
+p.mix    { border-style: dotted dashed solid double; }
+  </code></pre>
+</section>
+
+    <h2 class="text-2xl font-semibold mb-4">CSS Borders</h2>
+    <p class="mb-4">
+      Borders define the outline around an element. You can customize borders by setting their width, style, and color.
+    </p>
+    <ul class="list-disc pl-5 mb-4">
+      <li><strong>border-width:</strong> Thickness of the border (e.g., 1px, 2px).</li>
+      <li><strong>border-style:</strong> Type of border (solid, dashed, dotted, double, none, etc.).</li>
+      <li><strong>border-color:</strong> Color of the border (color names, HEX, RGB, etc.).</li>
+    </ul>
+    <pre class="mb-4 bg-gray-100 p-3 rounded"><code>div {
+  border: 2px solid black;
+}</code></pre>
+    <iframe class="w-full h-32 border border-gray-300 rounded-md mb-4" srcdoc='
+      <style>
+        div {
+          border: 2px solid black;
+          padding: 10px;
+          width: fit-content;
+          margin: 10px;
+        }
+      </style>
+      <div>Box with border</div>
+    '></iframe>
+    <p class="mb-4">
+      You can also set borders for specific sides using properties like <code>border-top</code>, <code>border-right</code>, etc.
+    </p>
+  `
+}
+,
+      "css-margins": {
+  title: "CSS Margins",
+  content: `
+  <section class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200 space-y-6" id="css-margins">
+  <h2 class="text-3xl font-bold text-blue-900">📏 CSS Margins</h2>
+  <p class="text-gray-700">
+    The <strong>margin</strong> property adds space <em>outside</em> an element’s border. You can control each side individually or use shorthand syntax.
+  </p>
+
+  <!-- Individual Margins -->
+  <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+    <h3 class="text-xl font-semibold text-blue-800 mb-2">🧭 Margin: Individual Sides</h3>
+    <p class="text-gray-700">Margins can be set individually using:</p>
+    <ul class="list-disc pl-6 text-gray-700 mt-2 space-y-1">
+      <li><code>margin-top</code></li>
+      <li><code>margin-right</code></li>
+      <li><code>margin-bottom</code></li>
+      <li><code>margin-left</code></li>
+    </ul>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg mt-4 overflow-x-auto"><code>
+p {
+  margin-top: 100px;
+  margin-right: 150px;
+  margin-bottom: 100px;
+  margin-left: 80px;
+}
+    </code></pre>
+  </div>
+
+  <!-- Shorthand Margins -->
+  <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400">
+    <h3 class="text-xl font-semibold text-yellow-800 mb-2">🔀 Margin: Shorthand</h3>
+    <p class="text-gray-700">Use fewer values to simplify margin declarations:</p>
+    <ul class="list-disc pl-6 text-gray-700 mt-2 space-y-1">
+      <li><code>margin: top right bottom left;</code></li>
+      <li><code>margin: top right/left bottom;</code></li>
+      <li><code>margin: top/bottom right/left;</code></li>
+      <li><code>margin: all;</code></li>
+    </ul>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg mt-4 overflow-x-auto"><code>
+/* Four values */
+p { margin: 25px 50px 75px 100px; }
+
+/* Three values */
+p { margin: 25px 50px 75px; }
+
+/* Two values */
+p { margin: 25px 50px; }
+
+/* One value */
+p { margin: 25px; }
+    </code></pre>
+  </div>
+
+  <!-- Auto Centering -->
+  <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400">
+    <h3 class="text-xl font-semibold text-green-800 mb-2">🧩 Margin: auto</h3>
+    <p class="text-gray-700">Use <code>margin: auto</code> to horizontally center a block element.</p>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg mt-4 overflow-x-auto"><code>
+div {
+  width: 300px;
+  margin: auto;
+  border: 1px solid red;
+}
+    </code></pre>
+
+    <div class="mx-auto w-[300px] border border-red-500 bg-red-100 p-3 text-center mt-4 rounded">
+      Centered using <code>margin: auto</code>
+    </div>
+  </div>
+
+  <!-- Inherit Value -->
+  <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-400">
+    <h3 class="text-xl font-semibold text-purple-800 mb-2">🧬 Margin: inherit</h3>
+    <p class="text-gray-700">Inherit margin value from the parent element:</p>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg mt-4 overflow-x-auto"><code>
+div {
+  margin-left: 100px;
+}
+p.ex1 {
+  margin-left: inherit;
+}
+    </code></pre>
+  </div>
+
+  <!-- Visual Margin Spacing -->
+  <div class="mt-6">
+    <h3 class="text-xl font-semibold text-gray-800">🔍 Visual Margin Demo</h3>
+    <div class="space-y-6 bg-gray-50 p-4 rounded-lg border border-gray-300">
+      <div class="bg-blue-300 text-white p-4">No margin</div>
+      <div class="bg-blue-300 text-white p-4 mt-6">margin-top: 6</div>
+      <div class="bg-blue-300 text-white p-4 mb-6">margin-bottom: 6</div>
+      <div class="bg-blue-300 text-white p-4 ml-6">margin-left: 6</div>
+      <div class="bg-blue-300 text-white p-4 mr-6">margin-right: 6</div>
+    </div>
+  </div>
+
+  <!-- Exercise Box -->
+  <div class="bg-gray-100 p-4 rounded-lg mt-6">
+    <h3 class="text-xl font-semibold text-gray-800 mb-2">🎯 Practice Exercise</h3>
+    <p class="text-gray-700 mb-2">
+      Set the following margins:
+    </p>
+    <ul class="list-disc pl-6 text-gray-700 space-y-1">
+      <li>10px top</li>
+      <li>20px right</li>
+      <li>30px bottom</li>
+      <li>40px left</li>
+    </ul>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg mt-3 overflow-x-auto"><code>
+div {
+  width: 200px;
+  margin: 10px 20px 30px 40px;
+}
+    </code></pre>
+  </div>
+
+  <!-- Summary Table -->
+  <div class="bg-gray-100 p-4 rounded-lg mt-6">
+    <h3 class="text-xl font-semibold text-gray-800 mb-2">📋 Margin Properties Summary</h3>
+    <table class="table-auto w-full text-left text-sm text-gray-700 border border-gray-300">
+      <thead class="bg-gray-200">
+        <tr>
+          <th class="border px-3 py-2">Property</th>
+          <th class="border px-3 py-2">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border px-3 py-2">margin</td>
+          <td class="border px-3 py-2">Shorthand for all margins</td>
+        </tr>
+        <tr>
+          <td class="border px-3 py-2">margin-top</td>
+          <td class="border px-3 py-2">Top margin</td>
+        </tr>
+        <tr>
+          <td class="border px-3 py-2">margin-right</td>
+          <td class="border px-3 py-2">Right margin</td>
+        </tr>
+        <tr>
+          <td class="border px-3 py-2">margin-bottom</td>
+          <td class="border px-3 py-2">Bottom margin</td>
+        </tr>
+        <tr>
+          <td class="border px-3 py-2">margin-left</td>
+          <td class="border px-3 py-2">Left margin</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+    <h2 class="text-2xl font-semibold mb-4">CSS Margins</h2>
+    <p class="mb-4">
+      Margins create space outside an element's border, effectively pushing other elements away.
+      They are useful for controlling the layout and spacing between elements.
+    </p>
+    <ul class="list-disc pl-5 mb-4">
+      <li><strong>margin:</strong> Sets margin on all four sides.</li>
+      <li><strong>margin-top, margin-right, margin-bottom, margin-left:</strong> Set margin individually.</li>
+      <li><strong>Shorthand syntax:</strong> You can set margins for all sides using one to four values, e.g., <code>margin: 10px 20px;</code>.</li>
+    </ul>
+    <pre class="mb-4 bg-gray-100 p-3 rounded"><code>div {
+  margin: 20px;
+}</code></pre>
+    <iframe class="w-full h-48 border border-gray-300 rounded-md mb-4" srcdoc='
+      <style>
+        div {
+          margin: 20px;
+          border: 1px solid black;
+          width: fit-content;
+          padding: 10px;
+          background-color: #f9f9f9;
+        }
+      </style>
+      <div>Box with margin</div>
+    '></iframe>
+    <p class="mb-4"><strong>Note:</strong> Margins can collapse vertically between adjacent elements, so be aware when spacing stacked elements.</p>
+  `
+}
+,
+      "css-padding": {
+  title: "CSS Padding",
+  content: `
+  <section class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200 space-y-6" id="css-padding">
+  <h2 class="text-3xl font-bold text-blue-900">📦 CSS Padding</h2>
+  <p class="text-gray-700">
+    <strong>Padding</strong> creates space <em>inside</em> an element, between the content and its border. It helps control internal spacing for better layout.
+  </p>
+
+  <!-- Individual Padding -->
+  <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+    <h3 class="text-xl font-semibold text-blue-800 mb-2">🧭 Padding: Individual Sides</h3>
+    <p class="text-gray-700">CSS has properties for setting padding on each side:</p>
+    <ul class="list-disc pl-6 text-gray-700 mt-2 space-y-1">
+      <li><code>padding-top</code></li>
+      <li><code>padding-right</code></li>
+      <li><code>padding-bottom</code></li>
+      <li><code>padding-left</code></li>
+    </ul>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg mt-4 overflow-x-auto"><code>
+div {
+  padding-top: 50px;
+  padding-right: 30px;
+  padding-bottom: 50px;
+  padding-left: 80px;
+}
+    </code></pre>
+  </div>
+
+  <!-- Shorthand Padding -->
+  <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400">
+    <h3 class="text-xl font-semibold text-yellow-800 mb-2">🔀 Padding: Shorthand</h3>
+    <p class="text-gray-700">Use the <code>padding</code> shorthand property to set multiple sides:</p>
+    <ul class="list-disc pl-6 text-gray-700 mt-2 space-y-1">
+      <li><code>padding: top right bottom left;</code></li>
+      <li><code>padding: top right/left bottom;</code></li>
+      <li><code>padding: top/bottom right/left;</code></li>
+      <li><code>padding: all;</code></li>
+    </ul>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg mt-4 overflow-x-auto"><code>
+/* Four values */
+div { padding: 25px 50px 75px 100px; }
+
+/* Three values */
+div { padding: 25px 50px 75px; }
+
+/* Two values */
+div { padding: 25px 50px; }
+
+/* One value */
+div { padding: 25px; }
+    </code></pre>
+  </div>
+
+  <!-- Box Model Note -->
+  <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400">
+    <h3 class="text-xl font-semibold text-green-800 mb-2">📐 Padding + Width</h3>
+    <p class="text-gray-700">
+      Padding is added to the element's width. To prevent layout breaking, use <code>box-sizing: border-box</code>.
+    </p>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg mt-4 overflow-x-auto"><code>
+/* Without box-sizing: total width = 350px */
+div {
+  width: 300px;
+  padding: 25px;
+}
+
+/* With box-sizing: total width stays 300px */
+div {
+  width: 300px;
+  padding: 25px;
+  box-sizing: border-box;
+}
+    </code></pre>
+  </div>
+
+  <!-- Visual Demo -->
+  <div class="mt-6">
+    <h3 class="text-xl font-semibold text-gray-800">🎨 Visual Padding Demo</h3>
+    <div class="space-y-4">
+      <div class="bg-blue-200 text-blue-900 p-4 rounded shadow">
+        <p class="bg-white p-4 border border-blue-500 rounded">Default Padding (p-4)</p>
+      </div>
+      <div class="bg-yellow-200 text-yellow-900 p-4 rounded shadow">
+        <p class="bg-white p-8 border border-yellow-500 rounded">More Padding (p-8)</p>
+      </div>
+      <div class="bg-green-200 text-green-900 p-4 rounded shadow">
+        <p class="bg-white pt-10 pb-2 pl-4 pr-10 border border-green-500 rounded">
+          Custom Side Padding (pt-10 pb-2 pl-4 pr-10)
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exercise Box -->
+  <div class="bg-gray-100 p-4 rounded-lg mt-6">
+    <h3 class="text-xl font-semibold text-gray-800 mb-2">🎯 Practice Exercise</h3>
+    <p class="text-gray-700 mb-2">
+      Set a top padding of 20px, right padding of 40px, bottom padding of 30px, and left padding of 50px:
+    </p>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded-lg mt-3 overflow-x-auto"><code>
+div {
+  padding: 20px 40px 30px 50px;
+}
+    </code></pre>
+  </div>
+
+  <!-- Summary Table -->
+  <div class="bg-gray-100 p-4 rounded-lg mt-6">
+    <h3 class="text-xl font-semibold text-gray-800 mb-2">📋 Padding Properties Summary</h3>
+    <table class="table-auto w-full text-left text-sm text-gray-700 border border-gray-300">
+      <thead class="bg-gray-200">
+        <tr>
+          <th class="border px-3 py-2">Property</th>
+          <th class="border px-3 py-2">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border px-3 py-2">padding</td>
+          <td class="border px-3 py-2">Shorthand for all padding sides</td>
+        </tr>
+        <tr>
+          <td class="border px-3 py-2">padding-top</td>
+          <td class="border px-3 py-2">Top padding</td>
+        </tr>
+        <tr>
+          <td class="border px-3 py-2">padding-right</td>
+          <td class="border px-3 py-2">Right padding</td>
+        </tr>
+        <tr>
+          <td class="border px-3 py-2">padding-bottom</td>
+          <td class="border px-3 py-2">Bottom padding</td>
+        </tr>
+        <tr>
+          <td class="border px-3 py-2">padding-left</td>
+          <td class="border px-3 py-2">Left padding</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+    <h2 class="text-2xl font-semibold mb-4">CSS Padding</h2>
+    <p class="mb-4">
+      Padding is the space between the content of an element and its border. It creates inner spacing within the element.
+    </p>
+    <ul class="list-disc pl-5 mb-4">
+      <li><strong>padding:</strong> Sets padding on all four sides.</li>
+      <li><strong>padding-top, padding-right, padding-bottom, padding-left:</strong> Set padding individually.</li>
+      <li><strong>Shorthand syntax:</strong> You can use one to four values to specify padding on different sides.</li>
+    </ul>
+    <pre class="mb-4 bg-gray-100 p-3 rounded"><code>div {
+  padding: 15px;
+  border: 1px solid black;
+}</code></pre>
+    <iframe class="w-full h-48 border border-gray-300 rounded-md mb-4" srcdoc='
+      <style>
+        div {
+          padding: 15px;
+          border: 1px solid black;
+          width: fit-content;
+          background-color: #eef6f9;
+        }
+      </style>
+      <div>Box with padding</div>
+    '></iframe>
+    <p class="mb-4">
+      Padding increases the clickable or visible area inside an element without affecting the space outside it.
+    </p>
+  `
+}
+,
+      "css-box-model": {
+  title: "CSS Box Model",
+  content: `
+  <section class="bg-white p-6 rounded-xl shadow-md space-y-6" id="css-box-model">
+  <h2 class="text-3xl font-bold text-blue-900">📦 CSS Box Model</h2>
+  <p class="text-gray-700">
+    Every HTML element is a box, made up of:
+    <strong>Content</strong>, <strong>Padding</strong>, <strong>Border</strong>, and <strong>Margin</strong>. Understanding this structure is essential for layout and spacing.
+  </p>
+
+  <!-- Illustration -->
+  <div class="flex justify-center">
+    <div class="bg-yellow-300 p-4 border-4 border-green-600 m-6">
+      <div class="bg-white text-center py-6 px-12 text-sm text-gray-700 shadow-md">
+        Content
+      </div>
+    </div>
+  </div>
+  <p class="text-center text-sm text-gray-500">⬆️ Illustration of Box Model (Margin → Border → Padding → Content)</p>
+
+  <!-- Explanation Sections -->
+  <div class="grid md:grid-cols-2 gap-6">
+    <div class="bg-blue-50 border-l-4 border-blue-400 p-4 rounded">
+      <h3 class="text-lg font-semibold text-blue-800">🔹 Content</h3>
+      <p class="text-gray-700">Where your text, image, or elements live.</p>
+    </div>
+    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
+      <h3 class="text-lg font-semibold text-yellow-800">🔸 Padding</h3>
+      <p class="text-gray-700">Transparent space inside the box, around the content.</p>
+    </div>
+    <div class="bg-green-50 border-l-4 border-green-400 p-4 rounded">
+      <h3 class="text-lg font-semibold text-green-800">🟢 Border</h3>
+      <p class="text-gray-700">A visible edge around the padding and content.</p>
+    </div>
+    <div class="bg-gray-50 border-l-4 border-gray-400 p-4 rounded">
+      <h3 class="text-lg font-semibold text-gray-800">⚪ Margin</h3>
+      <p class="text-gray-700">Transparent space outside the border, separating elements.</p>
+    </div>
+  </div>
+
+  <!-- Example Code Box -->
+  <div class="bg-gray-100 p-4 rounded-xl border border-gray-300 mt-6">
+    <h3 class="text-xl font-semibold text-gray-800 mb-2">💡 Box Model Example</h3>
+    <p class="text-gray-700 mb-3">This CSS styles a <code>&lt;div&gt;</code> using all box model properties:</p>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded overflow-x-auto"><code>
+div {
+  width: 300px;
+  border: 15px solid green;
+  padding: 50px;
+  margin: 20px;
+}
+    </code></pre>
+  </div>
+
+  <!-- Box Size Calculation -->
+  <div class="bg-purple-50 border-l-4 border-purple-500 p-4 rounded mt-6">
+    <h3 class="text-lg font-semibold text-purple-800">📏 Box Size Calculation</h3>
+    <ul class="list-disc pl-6 text-gray-700 space-y-1">
+      <li><strong>Total Width</strong> = width + left/right padding + left/right border</li>
+      <li><strong>Total Height</strong> = height + top/bottom padding + top/bottom border</li>
+      <li><strong>Margin</strong> adds extra space outside the box, but not part of its actual width/height</li>
+    </ul>
+  </div>
+
+  <!-- Box-sizing Note -->
+  <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded">
+    <h3 class="text-lg font-semibold text-red-700">⚠️ Important!</h3>
+    <p class="text-gray-700">
+      By default, <code>width</code> only applies to the <strong>content</strong>. Use <code>box-sizing: border-box;</code> to include padding and border in the width.
+    </p>
+    <pre class="bg-gray-900 text-green-300 text-sm p-4 rounded mt-3 overflow-x-auto"><code>
+div {
+  width: 300px;
+  padding: 25px;
+  border: 5px solid gray;
+  box-sizing: border-box;
+}
+    </code></pre>
+  </div>
+</section>
+
+    <h2 class="text-2xl font-semibold mb-4">CSS Box Model</h2>
+    <p class="mb-4">
+      The CSS Box Model describes how the size of an element is calculated. It consists of four parts:
+    </p>
+    <ul class="list-disc pl-5 mb-4">
+      <li><strong>Content:</strong> The actual content like text, images, etc.</li>
+      <li><strong>Padding:</strong> Space between content and border (inside space).</li>
+      <li><strong>Border:</strong> The border surrounding the padding and content.</li>
+      <li><strong>Margin:</strong> Space outside the border that separates the element from others.</li>
+    </ul>
+    <p class="mb-4">The total width and height of an element equals:</p>
+    <p class="mb-4 font-semibold">
+      width + padding (left + right) + border (left + right) + margin (left + right)
+    </p>
+    <pre class="mb-4 bg-gray-100 p-3 rounded"><code>div {
+  width: 200px;
+  padding: 10px;
+  border: 5px solid black;
+  margin: 15px;
+}</code></pre>
+    <iframe class="w-full h-64 border border-gray-300 rounded-md mb-4" srcdoc='
+      <style>
+        div {
+          width: 200px;
+          padding: 10px;
+          border: 5px solid black;
+          margin: 15px;
+          background: lightblue;
+        }
+      </style>
+      <div>Box model example</div>
+    '></iframe>
+    <p class="mb-4"><strong>Note:</strong> The <code>box-sizing</code> property can change how the width and height are calculated, commonly set to <code>border-box</code> to include padding and border within the width.</p>
+  `
+}
+,
+     "css-text": {
+  title: "CSS Text",
+  content: `
+    <h2 class="text-2xl font-semibold mb-4">CSS Text</h2>
+    <p class="mb-4">
+      CSS provides various text properties to control the appearance and formatting of text within elements.
+    </p>
+    <ul class="list-disc pl-5 mb-4">
+      <li><strong>text-align:</strong> Aligns text horizontally (left, right, center, justify).</li>
+      <li><strong>text-decoration:</strong> Adds decorations like underline, overline, line-through, or none.</li>
+      <li><strong>text-transform:</strong> Controls capitalization (uppercase, lowercase, capitalize, none).</li>
+      <li><strong>color:</strong> Sets the color of the text.</li>
+      <li><strong>font-family:</strong> Specifies the typeface.</li>
+      <li><strong>line-height:</strong> Adjusts the spacing between lines of text.</li>
+    </ul>
+    <pre class="mb-4 bg-gray-100 p-3 rounded"><code>p {
+  text-align: center;
+  text-decoration: underline;
+  text-transform: uppercase;
+}</code></pre>
+    <iframe class="w-full h-32 border border-gray-300 rounded-md mb-4" srcdoc='
+      <style>
+        p {
+          text-align: center;
+          text-decoration: underline;
+          text-transform: uppercase;
+          font-family: Arial, sans-serif;
+          color: #333;
+        }
+      </style>
+      <p>Styled text</p>
+    '></iframe>
+    <p class="mb-4">
+      These properties help improve readability and style of textual content on your web pages.
+    </p>
+  `
+}
+,
+      "css-fonts": {
+  title: "CSS Fonts",
+  content: `
+    <h2 class="text-2xl font-semibold mb-4">CSS Fonts</h2>
+    <p class="mb-4">
+      Choosing the right font for your website is important! Fonts affect how users perceive and interact with your content.
+    </p>
+    <h3 class="text-xl font-semibold mb-2">Font Selection is Important</h3>
+    <p class="mb-4">
+      The right font can create a strong identity for your brand. Fonts that are easy to read and visually balanced add value to your content.
+      It is also important to choose appropriate colors and text sizes.
+    </p>
+    
+    <h3 class="text-xl font-semibold mb-2">Generic Font Families</h3>
+    <ul class="list-disc pl-5 mb-4">
+      <li><strong>Serif:</strong> Has small strokes at the edges of letters. Formal and elegant (e.g., Times New Roman, Georgia).</li>
+      <li><strong>Sans-serif:</strong> Clean and modern, without strokes (e.g., Arial, Helvetica).</li>
+      <li><strong>Monospace:</strong> Each letter has equal width. Mechanical look (e.g., Courier New, Monaco).</li>
+      <li><strong>Cursive:</strong> Imitates handwriting (e.g., Brush Script MT).</li>
+      <li><strong>Fantasy:</strong> Decorative and playful (e.g., Papyrus, Copperplate).</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold mb-2">Serif vs. Sans-serif</h3>
+    <p class="mb-4">
+      <strong>Note:</strong> On screens, <strong>sans-serif</strong> fonts are generally easier to read than <strong>serif</strong> fonts.
+    </p>
+
+    <h3 class="text-xl font-semibold mb-2">Font Examples</h3>
+    <table class="mb-4 border w-full text-left border-collapse">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="border px-4 py-2">Generic Font Family</th>
+          <th class="border px-4 py-2">Examples</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border px-4 py-2">Serif</td>
+          <td class="border px-4 py-2">Times New Roman, Georgia, Garamond</td>
+        </tr>
+        <tr>
+          <td class="border px-4 py-2">Sans-serif</td>
+          <td class="border px-4 py-2">Arial, Helvetica, Verdana</td>
+        </tr>
+        <tr>
+          <td class="border px-4 py-2">Monospace</td>
+          <td class="border px-4 py-2">Courier New, Lucida Console, Monaco</td>
+        </tr>
+        <tr>
+          <td class="border px-4 py-2">Cursive</td>
+          <td class="border px-4 py-2">Brush Script MT, Lucida Handwriting</td>
+        </tr>
+        <tr>
+          <td class="border px-4 py-2">Fantasy</td>
+          <td class="border px-4 py-2">Copperplate, Papyrus</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="text-xl font-semibold mb-2">The <code>font-family</code> Property</h3>
+    <p class="mb-4">
+      In CSS, use <code>font-family</code> to specify the font. If the name contains spaces, wrap it in quotes. Always include fallback fonts.
+    </p>
+
+    <pre class="mb-4 bg-gray-100 p-3 rounded"><code>.p1 {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.p2 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.p3 {
+  font-family: "Lucida Console", "Courier New", monospace;
+}</code></pre>
+
+    <iframe class="w-full h-32 border border-gray-300 rounded-md mb-4" srcdoc='
+      <style>
+        .p1 { font-family: "Times New Roman", Times, serif; }
+        .p2 { font-family: Arial, Helvetica, sans-serif; }
+        .p3 { font-family: "Lucida Console", "Courier New", monospace; }
+      </style>
+      <p class="p1">This is a Serif font</p>
+      <p class="p2">This is a Sans-serif font</p>
+      <p class="p3">This is a Monospace font</p>
+    '></iframe>
+
+    <h3 class="text-xl font-semibold mb-2">Font Property Overview</h3>
+    <ul class="list-disc pl-5 mb-4">
+      <li><strong>font-family:</strong> Type of font (with fallback list).</li>
+      <li><strong>font-size:</strong> Font size (px, em, rem, etc.).</li>
+      <li><strong>font-weight:</strong> Font thickness (normal, bold, 100–900).</li>
+      <li><strong>font-style:</strong> Normal, italic, or oblique.</li>
+      <li><strong>line-height:</strong> Line spacing.</li>
+    </ul>
+
+    <pre class="mb-4 bg-gray-100 p-3 rounded"><code>p {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.6;
+}</code></pre>
+
+    <iframe class="w-full h-24 border border-gray-300 rounded-md mb-4" srcdoc='
+      <style>
+        p {
+          font-family: Arial, sans-serif;
+          font-size: 18px;
+          font-weight: bold;
+          color: #222;
+        }
+      </style>
+      <p>Styled font example</p>
+    '></iframe>
+
+    <p class="mb-4">
+      Fonts give your website personality, improve readability, and ensure a great user experience. Use font families and sizes wisely!
+    </p>
+  `
+}
+,
+     "css-position": {
+  title: "CSS Position",
+  content: `
+    <h2 class="text-2xl font-semibold mb-4">CSS Position</h2>
+    <p class="mb-4">
+      The <code>position</code> property controls how an element is positioned in the document. Common values include:
+    </p>
+    <ul class="list-disc pl-5 mb-4">
+      <li><strong>static:</strong> Default position; elements follow normal flow.</li>
+      <li><strong>relative:</strong> Positioned relative to its normal position.</li>
+      <li><strong>absolute:</strong> Positioned relative to the nearest positioned ancestor.</li>
+      <li><strong>fixed:</strong> Positioned relative to the viewport; stays fixed when scrolling.</li>
+      <li><strong>sticky:</strong> Switches between relative and fixed based on scroll position.</li>
+    </ul>
+    <pre class="mb-4 bg-gray-100 p-3 rounded"><code>div {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}</code></pre>
+    <iframe class="w-full h-48 border border-gray-300 rounded-md mb-4" srcdoc='
+      <style>
+        div {
+          position: absolute;
+          top: 20px;
+          left: 20px;
+          background: lightblue;
+          padding: 10px;
+        }
+      </style>
+      <div>Absolutely positioned</div>
+    '></iframe>
+    <p class="mb-4">
+      Using positioning lets you place elements precisely on the page, but be mindful of how they affect document flow.
+    </p>
+  `
+}
+,
+      "css-overflow": {
+  title: "CSS Overflow",
+  content: `
+    <h2 class="text-2xl font-semibold mb-4">CSS Overflow</h2>
+    <p class="mb-4">
+      The <code>overflow</code> property controls how content that exceeds the size of its container is handled.
+    </p>
+    <ul class="list-disc pl-5 mb-4">
+      <li><strong>visible:</strong> Default; content spills outside the container.</li>
+      <li><strong>hidden:</strong> Content is clipped and hidden.</li>
+      <li><strong>scroll:</strong> Scrollbars are always shown, allowing the user to scroll.</li>
+      <li><strong>auto:</strong> Scrollbars appear only if content overflows.</li>
+    </ul>
+    <pre class="mb-4 bg-gray-100 p-3 rounded"><code>div {
+  width: 200px;
+  height: 100px;
+  overflow: auto;
+}</code></pre>
+    <iframe class="w-full h-48 border border-gray-300 rounded-md mb-4" srcdoc='
+      <style>
+        div {
+          width: 200px;
+          height: 100px;
+          overflow: auto;
+          border: 1px solid black;
+          padding: 5px;
+          font-family: Arial, sans-serif;
+        }
+      </style>
+      <div>
+        This is a long content that exceeds the height of the box. When overflow is set to <code>auto</code>, a scrollbar will appear to allow scrolling and viewing the hidden content.
+      </div>
+    '></iframe>
+    <p class="mb-4">
+      Using overflow controls ensures your layout remains tidy and usable even when content sizes vary.
+    </p>
+  `
+}
+,
+      "css-float": {
+  title: "CSS Float",
+  content: `
+    <h2 class="text-2xl font-semibold mb-4">CSS Float</h2>
+    <p class="mb-4">
+      The <code>float</code> property allows elements, such as images or divs, to be taken out of the normal flow and positioned to the left or right of their container. Other content will wrap around the floated element.
+    </p>
+    <ul class="list-disc pl-5 mb-4">
+      <li><strong>float: left;</strong> floats the element to the left.</li>
+      <li><strong>float: right;</strong> floats the element to the right.</li>
+      <li>Commonly used for layouts, especially text wrapping around images.</li>
+      <li>Clearing floats is important to prevent layout issues (<code>clear</code> property or <code>overflow: hidden;</code> on container).</li>
+    </ul>
+    <pre class="mb-4 bg-gray-100 p-3 rounded"><code>img {
+  float: left;
+  margin-right: 10px;
+}</code></pre>
+    <iframe class="w-full h-48 border border-gray-300 rounded-md mb-4" srcdoc='
+      <style>
+        img {
+          float: left;
+          margin-right: 10px;
+          border: 1px solid #ccc;
+        }
+        p {
+          overflow: hidden; /* Clear float */
+          font-family: Arial, sans-serif;
+        }
+      </style>
+      <img src="https://via.placeholder.com/100" alt="Sample">
+      <p>Text wraps around the floated image.</p>
+    '></iframe>
+    <p class="mb-4">
+      Remember to clear floats to avoid container collapse and layout bugs.
+    </p>
+  `
+}
+,
+      "css-align": {
+  title: "CSS Align",
+  content: `
+    <h2 class="text-2xl font-semibold mb-4">CSS Align</h2>
+    <p class="mb-4">
+      CSS alignment properties, especially with Flexbox and Grid, simplify centering and positioning content horizontally and vertically.
+    </p>
+    <ul class="list-disc pl-5 mb-4">
+      <li><strong>display: flex;</strong> activates Flexbox layout.</li>
+      <li><strong>justify-content:</strong> aligns items horizontally (start, center, end, space-between).</li>
+      <li><strong>align-items:</strong> aligns items vertically (start, center, end, stretch).</li>
+      <li>These properties make centering both horizontally and vertically easy.</li>
+    </ul>
+    <pre class="mb-4 bg-gray-100 p-3 rounded"><code>div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}</code></pre>
+    <iframe class="w-full h-48 border border-gray-300 rounded-md mb-4" srcdoc='
+      <style>
+        div {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100px;
+          border: 1px solid black;
+          font-family: Arial, sans-serif;
+        }
+      </style>
+      <div>Centered content</div>
+    '></iframe>
+  `
+},
+
+"css-combinators": {
+  title: "CSS Combinators",
+  content: `
+    <h2 class="text-2xl font-semibold mb-4">CSS Combinators</h2>
+    <p class="mb-4">
+      CSS combinators describe relationships between selectors, targeting elements based on hierarchy or sibling relationships.
+    </p>
+    <ul class="list-disc pl-5 mb-4">
+      <li><strong>Descendant (space):</strong> selects all descendants (e.g., <code>div p</code>).</li>
+      <li><strong>Child (>):</strong> selects direct children only (e.g., <code>div > p</code>).</li>
+      <li><strong>Adjacent sibling (+):</strong> selects next sibling only.</li>
+      <li><strong>General sibling (~):</strong> selects all following siblings.</li>
+    </ul>
+    <pre class="mb-4 bg-gray-100 p-3 rounded"><code>div > p {
+  color: blue;
+}</code></pre>
+    <iframe class="w-full h-48 border border-gray-300 rounded-md mb-4" srcdoc='
+      <style>
+        div > p {
+          color: blue;
+        }
+      </style>
+      <div>
+        <p>Blue text</p>
+        <span><p>Not blue</p></span>
+      </div>
+    '></iframe>
+  `
+},
+
+"css-pseudo-classes": {
+  title: "CSS Pseudo-classes",
+  content: `
+    <h2 class="text-2xl font-semibold mb-4">CSS Pseudo-classes</h2>
+    <p class="mb-4">
+      Pseudo-classes allow styling elements based on their state or position without adding classes or IDs.
+    </p>
+    <ul class="list-disc pl-5 mb-4">
+      <li><code>:hover</code> – when the user hovers over an element.</li>
+      <li><code>:focus</code> – when an element is focused (e.g., input).</li>
+      <li><code>:nth-child(n)</code> – selects the nth child of a parent.</li>
+      <li>Useful for interactive and dynamic styling.</li>
+    </ul>
+    <pre class="mb-4 bg-gray-100 p-3 rounded"><code>a:hover {
+  color: red;
+}</code></pre>
+    <iframe class="w-full h-32 border border-gray-300 rounded-md mb-4" srcdoc='
+      <style>
+        a:hover {
+          color: red;
+        }
+        a {
+          font-family: Arial, sans-serif;
+          font-size: 16px;
+          text-decoration: none;
+        }
+      </style>
+      <a href="#">Hover me</a>
+    '></iframe>
+  `
+},
+
+"css-pseudo-elements": {
+  title: "CSS Pseudo-elements",
+  content: `
+    <h2 class="text-2xl font-semibold mb-4">CSS Pseudo-elements</h2>
+    <p class="mb-4">
+      Pseudo-elements allow you to style specific parts of an element, like before or after its content.
+    </p>
+    <ul class="list-disc pl-5 mb-4">
+      <li><code>::before</code> – inserts content before an element's content.</li>
+      <li><code>::after</code> – inserts content after an element's content.</li>
+      <li>Great for adding decorative content without extra HTML.</li>
+    </ul>
+    <pre class="mb-4 bg-gray-100 p-3 rounded"><code>p::before {
+  content: "★ ";
+}</code></pre>
+    <iframe class="w-full h-32 border border-gray-300 rounded-md mb-4" srcdoc='
+      <style>
+        p::before {
+          content: "★ ";
+          color: gold;
+        }
+        p {
+          font-family: Arial, sans-serif;
+          font-size: 16px;
+        }
+      </style>
+      <p>Star before text</p>
+    '></iframe>
+  `
+},
+
+"css-opacity": {
+  title: "CSS Opacity",
+  content: `
+    <h2 class="text-2xl font-semibold mb-4">CSS Opacity</h2>
+    <p class="mb-4">
+      The <code>opacity</code> property controls the transparency of an element, with values from 0 (fully transparent) to 1 (fully opaque).
+    </p>
+    <ul class="list-disc pl-5 mb-4">
+      <li><code>opacity: 0;</code> makes an element fully transparent (invisible).</li>
+      <li><code>opacity: 1;</code> means fully visible.</li>
+      <li>Values between 0 and 1 set partial transparency.</li>
+      <li>Opacity affects the entire element including its content.</li>
+    </ul>
+    <pre class="mb-4 bg-gray-100 p-3 rounded"><code>div {
+  opacity: 0.5;
+}</code></pre>
+    <iframe class="w-full h-48 border border-gray-300 rounded-md mb-4" srcdoc='
+      <style>
+        div {
+          opacity: 0.5;
+          background: blue;
+          color: white;
+          padding: 10px;
+          font-family: Arial, sans-serif;
+        }
+      </style>
+      <div>Semi-transparent box</div>
+    '></iframe>
+  `
+}
+
+    };
+
+    // Sidebar toggle (mobile)
+    document.getElementById('open-sidebar').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.add('open');
+    });
+
+    document.getElementById('close-sidebar').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.remove('open');
+    });
+
+    // Sidebar link click handler
+    document.querySelectorAll('#sidebar-links a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const topicId = link.getAttribute('href').substring(1);
+        loadTopicContent(topicId);
+
+        // Update active state
+        document.querySelectorAll('#sidebar-links a').forEach(a => a.classList.remove('active'));
+        link.classList.add('active');
+
+        // Close sidebar on mobile after clicking
+        document.getElementById('sidebar').classList.remove('open');
+      });
+    });
+
+    function loadTopicContent(topicId) {
+      const mainContent = document.getElementById('main-content');
+      const topic = topicContents[topicId];
+      if (topic) {
+        mainContent.innerHTML = `
+          <section class="bg-white p-6 rounded-lg shadow-md">
+            ${topic.content}
+            <button onclick="document.getElementById('main-content').innerHTML = document.getElementById('welcome').outerHTML" 
+                    class="mt-6 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+              Back to Welcome
+            </button>
+          </section>
+        `;
+      } else {
+        mainContent.innerHTML = `
+          <section class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold mb-4">Topic Not Found</h2>
+            <p>No content available for this topic.</p>
+            <button onclick="document.getElementById('main-content').innerHTML = document.getElementById('welcome').outerHTML" 
+                    class="mt-6 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+              Back to Welcome
+            </button>
+          </section>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>

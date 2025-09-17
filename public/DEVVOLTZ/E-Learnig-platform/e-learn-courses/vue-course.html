@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Devvoltz Vue Tutorial</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    header {
+      background-color: #D4EBF7;
+    }
+    pre {
+      background-color: #f3f4f6;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+    }
+    #sidebar {
+      transition: transform 0.3s ease-in-out;
+    }
+    #sidebar a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.375rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    #sidebar a:hover {
+      background-color: #1e40af;
+      color: #ffffff;
+      transform: translateX(5px);
+    }
+    #sidebar a.active {
+      background-color: #3b82f6;
+      font-weight: bold;
+      color: white;
+    }
+    #main-content {
+      width: 75.4%;
+    }
+    @media (max-width: 768px) {
+      #sidebar {
+        transform: translateX(-100%);
+      }
+      #sidebar.open {
+        transform: translateX(0);
+      }
+      #main-content {
+        background-color: #2d9dd5;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <!-- Sidebar -->
+  <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-gray-900 text-white p-4 overflow-y-auto md:transform-none z-50">
+    <h2 class="text-xl font-bold mb-4">Vue Tutorial</h2>
+    <div class="mt-6">
+      <h3 class="font-semibold mb-2">Vue Topics</h3>
+      <ul class="space-y-1 text-sm" id="sidebar-links"> 
+        <li><a href="#vue-home" class="text-gray-300 block">Vue HOME</a></li>
+        <li><a href="#vue-intro" class="text-gray-300 block">Vue Intro</a></li>
+        <li><a href="#vue-directives" class="text-gray-300 block">Vue Directives</a></li>
+        <li><a href="#vue-v-bind" class="text-gray-300 block">Vue v-bind</a></li>
+        <li><a href="#vue-v-if" class="text-gray-300 block">Vue v-if</a></li>
+        <li><a href="#vue-v-show" class="text-gray-300 block">Vue v-show</a></li>
+        <li><a href="#vue-v-for" class="text-gray-300 block">Vue v-for</a></li>
+        <li><a href="#vue-events" class="text-gray-300 block">Vue Events</a></li>
+        <li><a href="#vue-v-on" class="text-gray-300 block">Vue v-on</a></li>
+        <li><a href="#vue-methods" class="text-gray-300 block">Vue Methods</a></li>
+        <li><a href="#vue-event-modifiers" class="text-gray-300 block">Vue Event Modifiers</a></li>
+        <li><a href="#vue-forms" class="text-gray-300 block">Vue Forms</a></li>
+        <li><a href="#vue-v-model" class="text-gray-300 block">Vue v-model</a></li>
+        <li><a href="#vue-css-binding" class="text-gray-300 block">Vue CSS Binding</a></li>
+        <li><a href="#vue-computed-properties" class="text-gray-300 block">Vue Computed Properties</a></li>
+        <li><a href="#vue-watchers" class="text-gray-300 block">Vue Watchers</a></li>
+        <li><a href="#vue-templates" class="text-gray-300 block">Vue Templates</a></li>
+        <li><a href="#vue-why-how-setup" class="text-gray-300 block">Vue Why, How and Setup</a></li>
+        <li><a href="#vue-first-sfc-page" class="text-gray-300 block">Vue First SFC Page</a></li>
+        <li><a href="#vue-components" class="text-gray-300 block">Vue Components</a></li>
+        <li><a href="#vue-props" class="text-gray-300 block">Vue Props</a></li>
+        <li><a href="#vue-v-for-components" class="text-gray-300 block">Vue v-for Components</a></li>
+        <li><a href="#vue-emit" class="text-gray-300 block">Vue $emit()</a></li>
+        <li><a href="#vue-fallthrough-attributes" class="text-gray-300 block">Vue Fallthrough Attributes</a></li>
+        <li><a href="#vue-scoped-styling" class="text-gray-300 block">Vue Scoped Styling</a></li>
+        <li><a href="#vue-local-components" class="text-gray-300 block">Vue Local Components</a></li>
+        <li><a href="#vue-slots" class="text-gray-300 block">Vue Slots</a></li>
+        <li><a href="#vue-v-slot" class="text-gray-300 block">Vue v-slot</a></li>
+        <li><a href="#vue-scoped-slots" class="text-gray-300 block">Vue Scoped Slots</a></li>
+        <li><a href="#vue-dynamic-components" class="text-gray-300 block">Vue Dynamic Components</a></li>
+        <li><a href="#vue-teleport" class="text-gray-300 block">Vue Teleport</a></li>
+        <li><a href="#vue-http-request" class="text-gray-300 block">Vue HTTP Request</a></li>
+        <li><a href="#vue-template-refs" class="text-gray-300 block">Vue Template Refs</a></li>
+        <li><a href="#vue-lifecycle-hooks" class="text-gray-300 block">Vue Lifecycle Hooks</a></li>
+        <li><a href="#vue-provide-inject" class="text-gray-300 block">Vue Provide/Inject</a></li>
+        <li><a href="#vue-routing" class="text-gray-300 block">Vue Routing</a></li>
+        <li><a href="#vue-form-inputs" class="text-gray-300 block">Vue Form Inputs</a></li>
+        <li><a href="#vue-animations" class="text-gray-300 block">Vue Animations</a></li>
+        <li><a href="#vue-animations-with-v-for" class="text-gray-300 block">Vue Animations with v-for</a></li>
+        <li><a href="#vue-build" class="text-gray-300 block">Vue Build</a></li>
+        <li><a href="#vue-composition-api" class="text-gray-300 block">Vue Composition API</a></li>
+        <li><a href="#vue-built-in-attributes" class="text-gray-300 block">Vue Built-in Attributes</a></li>
+        <li><a href="#vue-built-in-components" class="text-gray-300 block">Vue Built-in Components</a></li>
+        <li><a href="#vue-built-in-elements" class="text-gray-300 block">Vue Built-in Elements</a></li>
+        <li><a href="#vue-component-instance" class="text-gray-300 block">Vue Component Instance</a></li>
+        <li><a href="#vue-directives-ref" class="text-gray-300 block">Vue Directives</a></li>
+        <li><a href="#vue-instance-options" class="text-gray-300 block">Vue Instance Options</a></li>
+        <li><a href="#vue-lifecycle-hooks-ref" class="text-gray-300 block">Vue Lifecycle Hooks</a></li>
+        <li><a href="#vue-examples" class="text-gray-300 block">Vue Examples</a></li>
+        <li><a href="#vue-exercises" class="text-gray-300 block">Vue Exercises</a></li>
+        <li><a href="#vue-quiz" class="text-gray-300 block">Vue Quiz</a></li>
+        <li><a href="#vue-syllabus" class="text-gray-300 block">Vue Syllabus</a></li>
+        <li><a href="#vue-study-plan" class="text-gray-300 block">Vue Study Plan</a></li>
+        <li><a href="#vue-server" class="text-gray-300 block">Vue Server</a></li>
+        <li><a href="#vue-certificate" class="text-gray-300 block">Vue Certificate</a></li>
+      </ul>
+    </div>
+    <button id="close-sidebar" class="md:hidden mt-4 bg-red-600 px-4 py-2 rounded-md">Close</button>
+  </aside>
+
+  <!-- Mobile Toggle Button -->
+  <button id="open-sidebar" class="md:hidden fixed top-4 left-4 z-50 bg-blue-600 text-white p-2 rounded-md">
+    ☰ Menu
+  </button>
+
+  <!-- Header -->
+  <header class="py-6 md:ml-64">
+    <div class="container mx-auto px-4">
+      <h1 class="text-3xl font-bold">Introduction to Vue</h1>
+      <p class="mt-2">Learn the essentials of Vue programming on the Devvoltz platform.</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8 md:ml-64 space-y-12" id="main-content">
+    <section class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200" id="welcome">
+      <!-- Heading -->
+      <h2 class="text-3xl font-bold text-blue-900 mb-4 flex items-center gap-2">
+        <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M5 4v16h14V4H5zm13 1v2H6V5h12zM6 8h12v11H6V8z"/>
+        </svg>
+        Welcome to Vue
+      </h2>
+
+      <!-- Intro Paragraph -->
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        <span class="font-semibold text-blue-800">Vue</span> is a progressive JavaScript framework for building user interfaces. 
+        This tutorial will guide you through key Vue concepts with practical examples.
+      </p>
+
+      <!-- What is Vue -->
+      <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6">
+        <h3 class="text-xl font-semibold text-blue-800 mb-2">📌 What is Vue?</h3>
+        <ul class="list-disc pl-6 text-gray-700 space-y-1">
+          <li>Vue is a <strong>JavaScript framework</strong> for building UIs.</li>
+          <li>It helps create reactive components and manage state efficiently.</li>
+          <li>Vue uses a <strong>virtual DOM</strong> for performance.</li>
+          <li>Works seamlessly with existing JS—<strong>progressive adoption</strong>.</li>
+          <li>Vue files use <code class="bg-gray-100 px-1 rounded text-sm text-blue-800">.vue</code> for SFCs.</li>
+        </ul>
+
+        <!-- Optional mini example -->
+        <div class="mt-3 bg-white rounded-md p-3 border">
+          <p class="text-sm text-gray-800 mb-2"><strong>Example:</strong> Simple binding</p>
+          <pre class="overflow-auto text-sm"><code>&lt;div id="app"&gt;
+  {{ message }}
+&lt;/div&gt;
+// new Vue({ el: '#app', data: { message: 'Hello Vue!' } });
+</code></pre>
+        </div>
+      </div>
+
+      <!-- Why Use Vue --> 
+      <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400 mb-6">
+        <h3 class="text-xl font-semibold text-green-800 mb-2">💡 Why Use Vue?</h3>
+        <p class="text-gray-700 leading-relaxed">
+          Vue makes UIs <strong>reactive, component-based, and lightweight</strong>. 
+          It helps build interactive apps with directives and hooks. 
+          Vue is valuable for <strong>large-scale applications</strong> with its reactivity system.
+        </p>
+      </div>
+
+      <!-- Vue Example -->
+      <div class="bg-gray-100 p-4 rounded-lg border border-gray-300 mb-6">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">🧪 Vue Example:</h3>
+        <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>
+&lt;div id="app"&gt;{{ message }}&lt;/div&gt;
+&lt;script&gt;
+const app = new Vue({
+  el: '#app',
+  data: { message: 'Hello Vue!' }
+});
+&lt;/script&gt;
+</code>
+        </pre>
+        <p class="text-sm mt-2 text-gray-600">
+          This example shows Vue's reactivity.  
+          Update data and the UI updates automatically.
+        </p>
+      </div>
+
+      <!-- Try it -->
+      <div class="text-center mt-8">
+        <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-full shadow transition">
+          🎯 Try It Yourself
+        </a>
+      </div>
+
+      <!-- Navigation Prompt -->
+      <p class="text-gray-600 mt-6 text-center">📚 Select a topic from the sidebar to begin learning!</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-4 mt-8 md:ml-64">
+    <div class="container mx-auto px-4 text-center">
+      <p>© 2025 Devvoltz Platform. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+   // Topic content data
+const topicContents = {
+  "vue-home": {
+    title: "Vue HOME",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">Vue Home</h2>
+      <p class="mb-4">
+        Welcome to the Vue Tutorial. Vue is a progressive JavaScript framework for building UIs. It helps developers create reactive components and manage state efficiently.
+      </p>
+      <h3 class="text-xl font-semibold mb-2">Why Learn Vue?</h3>
+      <ul class="list-disc list-inside mb-4">
+        <li>Provides reactive data binding and component-based architecture.</li>
+        <li>Lightweight and easy to integrate with existing projects.</li>
+        <li>Works seamlessly with JavaScript libraries.</li>
+        <li>Ideal for both small and large-scale apps.</li>
+      </ul>
+      <h3 class="text-xl font-semibold mb-2">How This Tutorial Works</h3>
+      <p class="mb-4">
+        This tutorial teaches Vue step by step. Each chapter includes explanations and code examples.
+      </p>
+      <div class="bg-gray-100 p-3 rounded mb-4">
+        <strong>Example:</strong><br>
+        <code>new Vue({ el: '#app', data: { message: 'Hello Vue' } });</code>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">Suggested Learning Path</h3>
+      <p class="mb-4">
+        Start with basics like directives and bindings, then progress to components and routing.
+      </p>
+      <h3 class="text-xl font-semibold mb-2">Learn by Examples</h3>
+      <p class="mb-4">
+        This tutorial is packed with hands-on examples to clarify Vue concepts.
+      </p>
+      <h3 class="text-xl font-semibold mb-2">Core Benefits of Vue</h3>
+      <p class="mb-4">
+        Vue enhances:
+        <ul class="list-disc list-inside">
+          <li><strong>Reactivity</strong> – Automatic UI updates</li>
+          <li><strong>Flexibility</strong> – Progressive framework</li>
+          <li><strong>Integration</strong> – With Vue Router, Pinia</li>
+        </ul>
+      </p>
+      <h3 class="text-xl font-semibold mb-2">Versions of Vue</h3>
+      <p class="mb-4">
+        This tutorial covers Vue 3, the latest version.
+      </p>
+      <h3 class="text-xl font-semibold mb-2">FAQs</h3>
+      <ul class="list-disc list-inside mb-4">
+        <li><strong>Do I need to install Vue?</strong><br> Yes. Use <code>npm create vue@latest</code>.</li>
+        <li><strong>Can I use Vue with JavaScript projects?</strong <br> Yes, progressively.</li>
+      </ul>
+      <p class="text-center font-semibold mt-6">🎯 Let’s start your Vue journey now!</p>
+    `
+  },
+  "vue-intro": {
+    title: "Vue Intro",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Introduction</h2>
+        <h3 class="text-2xl font-semibold text-green-700 mb-2">📌 What is Vue?</h3>
+        <p class="mb-4">
+          Vue is an open-source JavaScript framework for building UIs. It focuses on reactivity and component-based development.
+        </p>
+        <ul class="list-disc list-inside text-gray-700 mb-6 pl-4">
+          <li>Reactive data binding</li>
+          <li>Component-based</li>
+          <li>Virtual DOM</li>
+        </ul>
+        <h3 class="text-2xl font-semibold text-green-700 mb-2">🎯 Why Study Vue?</h3>
+        <p class="mb-4">Vue is essential for modern web development because:</p>
+        <ol class="list-decimal list-inside mb-6 text-gray-700 pl-4">
+          <li>Easy to learn</li>
+          <li>Flexible for large apps</li>
+          <li>Integrates with Vue Router, Pinia</li>
+        </ol>
+        <h3 class="text-2xl font-semibold text-green-700 mb-2">📝 Vue Example</h3>
+        <p class="mb-2">Here’s a simple Vue app:</p>
+        <pre class="bg-gray-900 text-white rounded p-3 overflow-x-auto mb-4 text-sm"><code>&lt;div id="app"&gt;{{ message }}&lt;/div&gt;
+&lt;script&gt;
+new Vue({
+  el: '#app',
+  data: { message: 'Hello Vue' }
+});
+&lt;/script&gt;</code></pre>
+        <h3 class="text-2xl font-semibold text-green-700 mb-2">💡 Did You Know?</h3>
+        <ul class="list-disc list-inside text-gray-700 pl-4 mb-6">
+          <li>Vue was released in 2014 by Evan You.</li>
+          <li>Used by companies like Alibaba, Xiaomi.</li>
+          <li>Vue 3 introduces Composition API.</li>
+        </ul>
+        <p class="text-center font-semibold text-blue-800 mt-10 text-lg">🚀 Vue makes UIs reactive. Let’s explore!</p>
+      </section>
+    `
+  },
+  "vue-directives": {
+    title: "Vue Directives",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Directives</h2>
+        <p class="mb-4">
+          Directives are special attributes with the v- prefix that tell the library to apply special reactive behavior to the DOM.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;p v-text="message"&gt;&lt;/p&gt;</code></pre>
+      </section>
+    `
+  },
+  "vue-v-bind": {
+    title: "Vue v-bind",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue v-bind</h2>
+        <p class="mb-4">
+          v-bind binds an attribute to an expression.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;img v-bind:src="imageSrc"&gt;</code></pre>
+      </section>
+    `
+  },
+  "vue-v-if": {
+    title: "Vue v-if",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue v-if</h2>
+        <p class="mb-4">
+          v-if conditionally renders an element.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;p v-if="seen"&gt;Now you see me&lt;/p&gt;</code></pre>
+      </section>
+    `
+  },
+  "vue-v-show": {
+    title: "Vue v-show",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue v-show</h2>
+        <p class="mb-4">
+          v-show conditionally displays an element with CSS.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;p v-show="ok"&gt;Hello!&lt;/p&gt;</code></pre>
+      </section>
+    `
+  },
+  "vue-v-for": {
+    title: "Vue v-for",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue v-for</h2>
+        <p class="mb-4">
+          v-for renders a list of items.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;p v-for="item in items" :key="item.id"&gt;{{ item.text }}&lt;/p&gt;</code></pre>
+      </section>
+    `
+  },
+  "vue-events": {
+    title: "Vue Events",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Events</h2>
+        <p class="mb-4">
+          Handle events like clicks in Vue.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;button v-on:click="counter += 1"&gt;Add 1&lt;/button&gt;</code></pre>
+      </section>
+    `
+  },
+  "vue-v-on": {
+    title: "Vue v-on",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue v-on</h2>
+        <p class="mb-4">
+          v-on attaches event listeners.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;button v-on:click="greet"&gt;Greet&lt;/button&gt;</code></pre>
+      </section>
+    `
+  },
+  "vue-methods": {
+    title: "Vue Methods",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Methods</h2>
+        <p class="mb-4">
+          Methods are functions defined in the Vue instance.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>methods: { greet() { return 'Hello' } }</code></pre>
+      </section>
+    `
+  },
+  "vue-event-modifiers": {
+    title: "Vue Event Modifiers",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Event Modifiers</h2>
+        <p class="mb-4">
+          Modifiers like .prevent modify event behavior.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;a v-on:click.prevent="onClick"&gt;Link&lt;/a&gt;</code></pre>
+      </section>
+    `
+  },
+  "vue-forms": {
+    title: "Vue Forms",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Forms</h2>
+        <p class="mb-4">
+          Handle form inputs with Vue.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;input v-model="name"&gt;</code></pre>
+      </section>
+    `
+  },
+  "vue-v-model": {
+    title: "Vue v-model",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue v-model</h2>
+        <p class="mb-4">
+          v-model creates two-way binding on form inputs.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;input v-model="searchQuery" type="text"&gt;</code></pre>
+      </section>
+    `
+  },
+  "vue-css-binding": {
+    title: "Vue CSS Binding",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue CSS Binding</h2>
+        <p class="mb-4">
+          Bind CSS classes and styles dynamically.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;div v-bind:class="{ active: isActive }"&gt;&lt;/div&gt;</code></pre>
+      </section>
+    `
+  },
+  "vue-computed-properties": {
+    title: "Vue Computed Properties",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Computed Properties</h2>
+        <p class="mb-4">
+          Computed properties cache based on reactive dependencies.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>computed: { reversedMessage() { return this.message.split('').reverse().join('') } }</code></pre>
+      </section>
+    `
+  },
+  "vue-watchers": {
+    title: "Vue Watchers",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Watchers</h2>
+        <p class="mb-4">
+          Watchers perform actions when data changes.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>watch: { question(newQuestion) { this.getAnswer() } }</code></pre>
+      </section>
+    `
+  },
+  "vue-templates": {
+    title: "Vue Templates",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Templates</h2>
+        <p class="mb-4">
+          Templates define the structure of Vue components.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;template&gt;&lt;div&gt;Hello&lt;/div&gt;&lt;/template&gt;</code></pre>
+      </section>
+    `
+  },
+  "vue-why-how-setup": {
+    title: "Vue Why, How and Setup",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Why, How and Setup</h2>
+        <p class="mb-4">
+          Vue is lightweight and reactive. Setup with Vite: npm create vue@latest.
+        </p>
+      </section>
+    `
+  },
+  "vue-first-sfc-page": {
+    title: "Vue First SFC Page",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue First SFC Page</h2>
+        <p class="mb-4">
+          Single File Component (.vue file) with template, script, style.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;template&gt;&lt;div&gt;Hello&lt;/div&gt;&lt;/template&gt;
+&lt;script&gt;export default {}&lt;/script&gt;
+&lt;style&gt;div { color: red; }&lt;/style&gt;</code></pre>
+      </section>
+    `
+  },
+  "vue-components": {
+    title: "Vue Components",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Components</h2>
+        <p class="mb-4">
+          Reusable Vue pieces.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>export default { name: 'MyComponent' }</code></pre>
+      </section>
+    `
+  },
+  "vue-props": {
+    title: "Vue Props",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Props</h2>
+        <p class="mb-4">
+          Pass data to components.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>props: ['title']</code></pre>
+      </section>
+    `
+  },
+  "vue-v-for-components": {
+    title: "Vue v-for Components",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue v-for Components</h2>
+        <p class="mb-4">
+          Loop over components.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;my-component v-for="item in items" :key="item.id"&gt;&lt;/my-component&gt;</code></pre>
+      </section>
+    `
+  },
+  "vue-emit": {
+    title: "Vue $emit()",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue $emit()</h2>
+        <p class="mb-4">
+          Emit events from child to parent.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>this.$emit('myEvent')</code></pre>
+      </section>
+    `
+  },
+  "vue-fallthrough-attributes": {
+    title: "Vue Fallthrough Attributes",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Fallthrough Attributes</h2>
+        <p class="mb-4">
+          Attributes passed to child components.
+        </p>
+      </section>
+    `
+  },
+  "vue-scoped-styling": {
+    title: "Vue Scoped Styling",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Scoped Styling</h2>
+        <p class="mb-4">
+          Scope styles to component.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;style scoped&gt; p { color: red; } &lt;/style&gt;</code></pre>
+      </section>
+    `
+  },
+  "vue-local-components": {
+    title: "Vue Local Components",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Local Components</h2>
+        <p class="mb-4">
+          Components registered locally.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>components: { 'my-component': MyComponent }</code></pre>
+      </section>
+    `
+  },
+  "vue-slots": {
+    title: "Vue Slots",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Slots</h2>
+        <p class="mb-4">
+          Slots for content distribution.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;slot&gt;&lt;/slot&gt;</code></pre>
+      </section>
+    `
+  },
+  "vue-v-slot": {
+    title: "Vue v-slot",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue v-slot</h2>
+        <p class="mb-4">
+          Directive for named slots.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;template v-slot:header&gt;Header&lt;/template&gt;</code></pre>
+      </section>
+    `
+  },
+  "vue-scoped-slots": {
+    title: "Vue Scoped Slots",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Scoped Slots</h2>
+        <p class="mb-4">
+          Slots that expose data.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;slot :item="item"&gt;&lt;/slot&gt;</code></pre>
+      </section>
+    `
+  },
+  "vue-dynamic-components": {
+    title: "Vue Dynamic Components",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Dynamic Components</h2>
+        <p class="mb-4">
+          Switch components dynamically.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;component v-bind:is="currentView"&gt;&lt;/component&gt;</code></pre>
+      </section>
+    `
+  },
+  "vue-teleport": {
+    title: "Vue Teleport",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Teleport</h2>
+        <p class="mb-4">
+          Teleport elements to different DOM locations.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;teleport to="body"&gt;&lt;div&gt;Modal&lt;/div&gt;&lt;/teleport&gt;</code></pre>
+      </section>
+    `
+  },
+  "vue-http-request": {
+    title: "Vue HTTP Request",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue HTTP Request</h2>
+        <p class="mb-4">
+          Make HTTP requests with fetch or axios.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>fetch('/api').then(res => res.json()).then(data => this.data = data)</code></pre>
+      </section>
+    `
+  },
+  "vue-template-refs": {
+    title: "Vue Template Refs",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Template Refs</h2>
+        <p class="mb-4">
+          Refs for direct DOM access.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;input ref="myInput"&gt; this.$refs.myInput.focus()</code></pre>
+      </section>
+    `
+  },
+  "vue-lifecycle-hooks": {
+    title: "Vue Lifecycle Hooks",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Lifecycle Hooks</h2>
+        <p class="mb-4">
+          Hooks like mounted, updated.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>mounted() { console.log('Mounted') }</code></pre>
+      </section>
+    `
+  },
+  "vue-provide-inject": {
+    title: "Vue Provide/Inject",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Provide/Inject</h2>
+        <p class="mb-4">
+          Provide data to descendants.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>provide: { message: 'Hello' }</code></pre>
+      </section>
+    `
+  },
+  "vue-routing": {
+    title: "Vue Routing",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Routing</h2>
+        <p class="mb-4">
+          Use Vue Router for SPA navigation.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>const router = createRouter({ history: createWebHistory(), routes })</code></pre>
+      </section>
+    `
+  },
+  "vue-form-inputs": {
+    title: "Vue Form Inputs",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Form Inputs</h2>
+        <p class="mb-4">
+          Handle various input types with v-model.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;input type="checkbox" v-model="checked"&gt;</code></pre>
+      </section>
+    `
+  },
+  "vue-animations": {
+    title: "Vue Animations",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Animations</h2>
+        <p class="mb-4">
+          Use Transition component for animations.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;transition name="fade"&gt;&lt;p v-if="show"&gt;Hello&lt;/p&gt;&lt;/transition&gt;</code></pre>
+      </section>
+    `
+  },
+  "vue-animations-with-v-for": {
+    title: "Vue Animations with v-for",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Animations with v-for</h2>
+        <p class="mb-4">
+          Animate list items.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;transition-group name="list"&gt;&lt;p v-for="item in items" :key="item"&gt;{{ item }}&lt;/p&gt;&lt;/transition-group&gt;</code></pre>
+      </section>
+    `
+  },
+  "vue-build": {
+    title: "Vue Build",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Build</h2>
+        <p class="mb-4">
+          Build for production with Vite.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>npm run build</code></pre>
+      </section>
+    `
+  },
+  "vue-composition-api": {
+    title: "Vue Composition API",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Composition API</h2>
+        <p class="mb-4">
+          Use setup() for logic.
+        </p>
+        <pre class="bg-gray-900 text-white p-4 rounded text-sm overflow-x-auto mb-6"><code>&lt;script setup&gt;import { ref } from 'vue'; const count = ref(0);&lt;/script&gt;</code></pre>
+      </section>
+    `
+  },
+  "vue-built-in-attributes": {
+    title: "Vue Built-in Attributes",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Built-in Attributes</h2>
+        <p class="mb-4">
+          Attributes like v-cloak, v-html.
+        </p>
+      </section>
+    `
+  },
+  "vue-built-in-components": {
+    title: "Vue Built-in Components",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Built-in Components</h2>
+        <p class="mb-4">
+          Components like Transition, KeepAlive.
+        </p>
+      </section>
+    `
+  },
+  "vue-built-in-elements": {
+    title: "Vue Built-in Elements",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Built-in Elements</h2>
+        <p class="mb-4">
+          Elements like component, slot.
+        </p>
+      </section>
+    `
+  },
+  "vue-component-instance": {
+    title: "Vue Component Instance",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Component Instance</h2>
+        <p class="mb-4">
+          Access instance properties like $data, $el.
+        </p>
+      </section>
+    `
+  },
+  "vue-directives-ref": {
+    title: "Vue Directives",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Directives</h2>
+        <p class="mb-4">
+          Reference for all directives.
+        </p>
+      </section>
+    `
+  },
+  "vue-instance-options": {
+    title: "Vue Instance Options",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Instance Options</h2>
+        <p class="mb-4">
+          Options like data, methods, computed.
+        </p>
+      </section>
+    `
+  },
+  "vue-lifecycle-hooks-ref": {
+    title: "Vue Lifecycle Hooks",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Lifecycle Hooks</h2>
+        <p class="mb-4">
+          Reference for lifecycle hooks.
+        </p>
+      </section>
+    `
+  },
+  "vue-examples": {
+    title: "Vue Examples",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Examples</h2>
+        <p class="mb-4">
+          Collection of Vue examples.
+        </p>
+      </section>
+    `
+  },
+  "vue-exercises": {
+    title: "Vue Exercises",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Exercises</h2>
+        <p class="mb-4">
+          Practice with Vue exercises.
+        </p>
+      </section>
+    `
+  },
+  "vue-quiz": {
+    title: "Vue Quiz",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Quiz</h2>
+        <p class="mb-4">
+          Test your Vue knowledge.
+        </p>
+      </section>
+    `
+  },
+  "vue-syllabus": {
+    title: "Vue Syllabus",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Syllabus</h2>
+        <p class="mb-4">
+          Overview of Vue topics.
+        </p>
+      </section>
+    `
+  },
+  "vue-study-plan": {
+    title: "Vue Study Plan",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Study Plan</h2>
+        <p class="mb-4">
+          Structured learning path.
+        </p>
+      </section>
+    `
+  },
+  "vue-server": {
+    title: "Vue Server",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Server</h2>
+        <p class="mb-4">
+          Server-side rendering with Vue.
+        </p>
+      </section>
+    `
+  },
+  "vue-certificate": {
+    title: "Vue Certificate",
+    content: `
+      <section class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">Vue Certificate</h2>
+        <p class="mb-4">
+          Earn a Vue certification.
+        </p>
+      </section>
+    `
+  }
+};
+
+    // Sidebar toggle (mobile)
+    document.getElementById('open-sidebar').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.add('open');
+    });
+
+    document.getElementById('close-sidebar').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.remove('open');
+    });
+
+    // Sidebar link click handler
+    document.querySelectorAll('#sidebar-links a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const topicId = link.getAttribute('href').substring(1);
+        loadTopicContent(topicId);
+
+        // Update active state
+        document.querySelectorAll('#sidebar-links a').forEach(a => a.classList.remove('active'));
+        link.classList.add('active');
+
+        // Close sidebar on mobile after clicking
+        document.getElementById('sidebar').classList.remove('open');
+      });
+    });
+
+    function loadTopicContent(topicId) {
+      const mainContent = document.getElementById('main-content');
+      const topic = topicContents[topicId];
+      if (topic) {
+        mainContent.innerHTML = `
+          <section class="bg-white p-6 rounded-lg shadow-md">
+            ${topic.content}
+            <button onclick="document.getElementById('main-content').innerHTML = document.getElementById('welcome').outerHTML" 
+                    class="mt-6 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+              Back to Welcome
+            </button>
+          </section>
+        `;
+      } else {
+        mainContent.innerHTML = `
+          <section class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold mb-4">Topic Not Found</h2>
+            <p>No content available for this topic.</p>
+            <button onclick="document.getElementById('main-content').innerHTML = document.getElementById('welcome').outerHTML" 
+                    class="mt-6 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+              Back to Welcome
+            </button>
+          </section>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>

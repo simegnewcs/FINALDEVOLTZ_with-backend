@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MySQL Tutorial</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    pre {
+      background-color: #f3f4f6;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+    }
+    #sidebar {
+      transition: transform 0.3s ease-in-out;
+    }
+    @media (max-width: 768px) {
+      #sidebar {
+        transform: translateX(-100%);
+      }
+      #sidebar.open {
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <!-- Sidebar -->
+  <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-gray-900 text-white p-4 overflow-y-auto md:transform-none z-50">
+    <h2 class="text-xl font-bold mb-4">Lesson Contents</h2>
+    <ul id="sidebar-links" class="space-y-2"></ul>
+    <button id="close-sidebar" class="md:hidden mt-4 bg-red-600 px-4 py-2 rounded-md">Close</button>
+  </aside>
+
+  <!-- Mobile Toggle Button -->
+  <button id="open-sidebar" class="md:hidden fixed top-4 left-4 z-50 bg-blue-600 text-white p-2 rounded-md">
+    ☰ Menu
+  </button>
+
+  <!-- Header -->
+  <header class="bg-blue-600 text-white py-6 md:ml-64">
+    <div class="container mx-auto px-4">
+      <h1 class="text-3xl font-bold">Lesson 1: Introduction to MySQL</h1>
+      <p class="mt-2">Learn the basics of MySQL for managing databases on the E-Learn platform.</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8 md:ml-64">
+    <section class="bg-white p-6 rounded-lg shadow-md">
+      <h2 id="what-is-mysql" class="text-2xl font-semibold mb-4">What is MySQL?</h2>
+      <p class="mb-4">
+        MySQL is an open-source relational database management system (RDBMS) used to store, manage, and retrieve data using structured query language (SQL).
+      </p>
+
+      <h2 id="creating-a-database" class="text-2xl font-semibold mb-4 mt-6">Creating a Database</h2>
+      <p class="mb-4">
+        To start using MySQL, you need to create a database. Here’s an example of creating a database and a table:
+      </p>
+      <pre class="mb-4"><code>CREATE DATABASE school;
+USE school;
+
+CREATE TABLE students (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  age INT
+);
+</code></pre>
+      <h3 class="text-xl font-semibold mb-2">Try It Live</h3>
+      <p class="mb-4 border border-gray-300 rounded-md p-4">
+        Running MySQL queries requires a server environment, so this code cannot be executed directly in the browser. If run in a MySQL environment, the above code would:
+        <ul class="list-disc pl-6">
+          <li>Create a database named <code>school</code>.</li>
+          <li>Create a <code>students</code> table with columns for <code>id</code>, <code>name</code>, and <code>age</code>.</li>
+        </ul>
+      </p>
+
+      <h2 id="basic-queries" class="text-2xl font-semibold mb-4 mt-6">Basic MySQL Queries</h2>
+      <p class="mb-4">
+        MySQL uses SQL queries to manipulate data. Here’s an example of inserting and selecting data:
+      </p>
+      <pre class="mb-4"><code>INSERT INTO students (name, age) VALUES ('Alice', 20);
+INSERT INTO students (name, age) VALUES ('Bob', 22);
+
+SELECT * FROM students;
+</code></pre>
+      <h3 class="text-xl font-semibold mb-2">Try It Live</h3>
+      <p class="mb-4 border border-gray-300 rounded-md p-4">
+        In a MySQL environment, the above queries would:
+        <ul class="list-disc pl-6">
+          <li>Insert two rows into the <code>students</code> table.</li>
+          <li>Return a table with the data:
+            <table class="table-auto w-full mt-2">
+              <thead>
+                <tr><th>id</th><th>name</th><th>age</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>Alice</td><td>20</td></tr>
+                <tr><td>2</td><td>Bob</td><td>22</td></tr>
+              </tbody>
+            </table>
+          </li>
+        </ul>
+      </p>
+
+      <h2 id="practice-exercise" class="text-2xl font-semibold mb-4 mt-6">Practice Exercise</h2>
+      <p class="mb-4">
+        Write MySQL queries to:
+        <ul class="list-disc pl-6">
+          <li>Create a database named <code>library</code>.</li>
+          <li>Create a table named <code>books</code> with columns for <code>id</code>, <code>title</code>, and <code>author</code>.</li>
+          <li>Insert two books into the table and select all records.</li>
+        </ul>
+      </p>
+    </section>
+
+    <!-- Navigation Links -->
+    <nav class="mt-8 flex justify-start md:ml-64">
+      <a
+        href="bootstrap-course.html"
+        class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+      >
+        Previous Lesson: Introduction to Bootstrap
+      </a>
+    </nav>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-4 mt-8 md:ml-64">
+    <div class="container mx-auto px-4 text-center">
+      <p>© 2025 E-Learn Platform. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Sidebar -->
+  <script>
+    // Generate sidebar links
+    const headings = document.querySelectorAll('h2');
+    const sidebarLinks = document.getElementById('sidebar-links');
+    headings.forEach(heading => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = `#${heading.id}`;
+      a.textContent = heading.textContent;
+      a.className = 'hover:text-blue-400';
+      li.appendChild(a);
+      sidebarLinks.appendChild(li);
+    });
+
+    // Toggle sidebar on mobile
+    const openSidebar = document.getElementById('open-sidebar');
+    const closeSidebar = document.getElementById('close-sidebar');
+    const sidebar = document.getElementById('sidebar');
+
+    openSidebar.addEventListener('click', () => {
+      sidebar.classList.add('open');
+    });
+
+    closeSidebar.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+    });
+  </script>
+</body>
+</html>

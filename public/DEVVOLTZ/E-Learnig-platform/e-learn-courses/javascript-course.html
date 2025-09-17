@@ -1,0 +1,2332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Devvoltz js Tutorial</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    pre {
+      background-color: #f3f4f6;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+    }
+
+    #sidebar {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    #sidebar a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.375rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #sidebar a:hover {
+      background-color: #1e40af;
+      color: #ffffff;
+      transform: translateX(5px);
+    }
+
+    #sidebar a.active {
+      background-color: #3b82f6;
+      font-weight: bold;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      #sidebar {
+        transform: translateX(-100%);
+      }
+
+      #sidebar.open {
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <!-- Sidebar -->
+  <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-gray-900 text-white p-4 overflow-y-auto md:transform-none z-50">
+    <h2 class="text-xl font-bold mb-4">JavaScript Tutorial</h2>
+    <div class="mt-6">
+      <h3 class="font-semibold mb-2">JS Topics</h3>
+     <ul class="space-y-1 text-sm" id="sidebar-links"> 
+  <li><a href="#js-home" class="text-gray-300 block">JS HOME</a></li>
+  <li><a href="#js-introduction" class="text-gray-300 block">JS Introduction</a></li>
+  <li><a href="#js-where-to" class="text-gray-300 block">JS Where To</a></li>
+  <li><a href="#js-output" class="text-gray-300 block">JS Output</a></li>
+  <li><a href="#js-statements" class="text-gray-300 block">JS Statements</a></li>
+  <li><a href="#js-syntax" class="text-gray-300 block">JS Syntax</a></li>
+  <li><a href="#js-comments" class="text-gray-300 block">JS Comments</a></li>
+  <li><a href="#js-variables" class="text-gray-300 block">JS Variables</a></li>
+  <li><a href="#js-let" class="text-gray-300 block">JS Let</a></li>
+  <li><a href="#js-const" class="text-gray-300 block">JS Const</a></li>
+  <li><a href="#js-operators" class="text-gray-300 block">JS Operators</a></li>
+  <li><a href="#js-arithmetic" class="text-gray-300 block">JS Arithmetic</a></li>
+  <li><a href="#js-assignment" class="text-gray-300 block">JS Assignment</a></li>
+  <li><a href="#js-data-types" class="text-gray-300 block">JS Data Types</a></li>
+  <li><a href="#js-functions" class="text-gray-300 block">JS Functions</a></li>
+  <li><a href="#js-objects" class="text-gray-300 block">JS Objects</a></li>
+  <li><a href="#js-object-properties" class="text-gray-300 block">JS Object Properties</a></li>
+  <li><a href="#js-object-methods" class="text-gray-300 block">JS Object Methods</a></li>
+  <li><a href="#js-object-display" class="text-gray-300 block">JS Object Display</a></li>
+  <li><a href="#js-object-constructors" class="text-gray-300 block">JS Object Constructors</a></li>
+  <li><a href="#js-events" class="text-gray-300 block">JS Events</a></li>
+  <li><a href="#js-strings" class="text-gray-300 block">JS Strings</a></li>
+  <li><a href="#js-string-methods" class="text-gray-300 block">JS String Methods</a></li>
+  <li><a href="#js-string-search" class="text-gray-300 block">JS String Search</a></li>
+  <li><a href="#js-string-templates" class="text-gray-300 block">JS String Templates</a></li>
+  <li><a href="#js-numbers" class="text-gray-300 block">JS Numbers</a></li>
+  <li><a href="#js-bigint" class="text-gray-300 block">JS BigInt</a></li>
+  <li><a href="#js-number-methods" class="text-gray-300 block">JS Number Methods</a></li>
+  <li><a href="#js-number-properties" class="text-gray-300 block">JS Number Properties</a></li>
+  <li><a href="#js-arrays" class="text-gray-300 block">JS Arrays</a></li>
+  <li><a href="#js-array-methods" class="text-gray-300 block">JS Array Methods</a></li>
+  <li><a href="#js-array-search" class="text-gray-300 block">JS Array Search</a></li>
+  <li><a href="#js-array-sort" class="text-gray-300 block">JS Array Sort</a></li>
+  <li><a href="#js-array-iteration" class="text-gray-300 block">JS Array Iteration</a></li>
+  <li><a href="#js-array-const" class="text-gray-300 block">JS Array Const</a></li>
+  <li><a href="#js-dates" class="text-gray-300 block">JS Dates</a></li>
+  <li><a href="#js-date-formats" class="text-gray-300 block">JS Date Formats</a></li>
+  <li><a href="#js-date-get-methods" class="text-gray-300 block">JS Date Get Methods</a></li>
+  <li><a href="#js-date-set-methods" class="text-gray-300 block">JS Date Set Methods</a></li>
+  <li><a href="#js-math" class="text-gray-300 block">JS Math</a></li>
+  <li><a href="#js-random" class="text-gray-300 block">JS Random</a></li>
+  <li><a href="#js-booleans" class="text-gray-300 block">JS Booleans</a></li>
+  <li><a href="#js-comparisons" class="text-gray-300 block">JS Comparisons</a></li>
+  <li><a href="#js-if-else" class="text-gray-300 block">JS If Else</a></li>
+  <li><a href="#js-switch" class="text-gray-300 block">JS Switch</a></li>
+  <li><a href="#js-loop-for" class="text-gray-300 block">JS Loop For</a></li>
+  <li><a href="#js-loop-for-in" class="text-gray-300 block">JS Loop For In</a></li>
+  <li><a href="#js-loop-for-of" class="text-gray-300 block">JS Loop For Of</a></li>
+  <li><a href="#js-loop-while" class="text-gray-300 block">JS Loop While</a></li>
+  <li><a href="#js-break" class="text-gray-300 block">JS Break</a></li>
+  <li><a href="#js-sets" class="text-gray-300 block">JS Sets</a></li>
+  <li><a href="#js-set-methods" class="text-gray-300 block">JS Set Methods</a></li>
+  <li><a href="#js-set-logic" class="text-gray-300 block">JS Set Logic</a></li>
+  <li><a href="#js-maps" class="text-gray-300 block">JS Maps</a></li>
+  <li><a href="#js-map-methods" class="text-gray-300 block">JS Map Methods</a></li>
+  <li><a href="#js-typed-arrays" class="text-gray-300 block">JS Typed Arrays</a></li>
+  <li><a href="#js-typed-methods" class="text-gray-300 block">JS Typed Methods</a></li>
+  <li><a href="#js-iterables" class="text-gray-300 block">JS Iterables</a></li>
+  <li><a href="#js-iterators" class="text-gray-300 block">JS Iterators</a></li>
+  <li><a href="#js-typeof" class="text-gray-300 block">JS typeof</a></li>
+  <li><a href="#js-tostring" class="text-gray-300 block">JS toString()</a></li>
+  <li><a href="#js-type-conversion" class="text-gray-300 block">JS Type Conversion</a></li>
+  <li><a href="#js-destructuring" class="text-gray-300 block">JS Destructuring</a></li>
+  <li><a href="#js-bitwise" class="text-gray-300 block">JS Bitwise</a></li>
+  <li><a href="#js-regexp" class="text-gray-300 block">JS RegExp</a></li>
+  <li><a href="#js-precedence" class="text-gray-300 block">JS Precedence</a></li>
+  <li><a href="#js-errors" class="text-gray-300 block">JS Errors</a></li>
+  <li><a href="#js-scope" class="text-gray-300 block">JS Scope</a></li>
+  <li><a href="#js-hoisting" class="text-gray-300 block">JS Hoisting</a></li>
+  <li><a href="#js-strict-mode" class="text-gray-300 block">JS Strict Mode</a></li>
+  <li><a href="#js-this-keyword" class="text-gray-300 block">JS this Keyword</a></li>
+  <li><a href="#js-arrow-function" class="text-gray-300 block">JS Arrow Function</a></li>
+  <li><a href="#js-classes" class="text-gray-300 block">JS Classes</a></li>
+  <li><a href="#js-modules" class="text-gray-300 block">JS Modules</a></li>
+  <li><a href="#js-json" class="text-gray-300 block">JS JSON</a></li>
+  <li><a href="#js-debugging" class="text-gray-300 block">JS Debugging</a></li>
+  <li><a href="#js-style-guide" class="text-gray-300 block">JS Style Guide</a></li>
+  <li><a href="#js-best-practices" class="text-gray-300 block">JS Best Practices</a></li>
+  <li><a href="#js-mistakes" class="text-gray-300 block">JS Mistakes</a></li>
+  <li><a href="#js-performance" class="text-gray-300 block">JS Performance</a></li>
+  <li><a href="#js-reserved-words" class="text-gray-300 block">JS Reserved Words</a></li>
+</ul>
+ 
+    </div>
+    <button id="close-sidebar" class="md:hidden mt-4 bg-red-600 px-4 py-2 rounded-md">Close</button>
+  </aside>
+
+  <!-- Mobile Toggle Button -->
+  <button id="open-sidebar" class="md:hidden fixed top-4 left-4 z-50 bg-blue-600 text-white p-2 rounded-md">
+    ☰ Menu
+  </button>
+
+  <!-- Header -->
+  <header class="bg-blue-600 text-white py-6 md:ml-64">
+    <div class="container mx-auto px-4">
+      <h1 class="text-3xl font-bold">Introduction to JavaScript</h1>
+      <p class="mt-2">Learn the essentials of javascript programming  in web pages  Devvoltz platform.</p>
+    </div>
+  </header>
+
+ <!-- Main Content -->
+<main class="container mx-auto px-4 py-8 md:ml-64 space-y-12" id="main-content">
+  <section class="bg-white p-6 rounded-2xl shadow-lg border border-gray-200" id="welcome">
+    <!-- Heading -->
+    <h2 class="text-3xl font-bold text-blue-900 mb-4 flex items-center gap-2">
+      <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M5 4v16h14V4H5zm13 1v2H6V5h12zM6 8h12v11H6V8z"/>
+      </svg>
+      Welcome to JavaScript
+    </h2>
+
+    <!-- Intro Paragraph -->
+    <p class="text-gray-700 mb-4 leading-relaxed">
+      <span class="font-semibold text-blue-800">JavaScript</span> is the most widely used programming language for web development. 
+      This tutorial will guide you through key JavaScript concepts with practical examples.
+    </p>
+
+    <!-- What is JavaScript -->
+    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6">
+      <h3 class="text-xl font-semibold text-blue-800 mb-2">📌 What is JavaScript?</h3>
+      <ul class="list-disc pl-6 text-gray-700 space-y-1">
+        <li>JavaScript is a <strong>programming language</strong> that brings interactivity to web pages.</li>
+        <li>It can update and change both HTML and CSS content dynamically.</li>
+        <li>Runs directly in the browser and does not require compilation.</li>
+        <li>JavaScript code is typically written in <code class="bg-gray-100 px-1 rounded text-sm text-blue-800">.js</code> files.</li>
+      </ul>
+    </div>
+
+    <!-- Why Use JavaScript -->
+    <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400 mb-6">
+      <h3 class="text-xl font-semibold text-green-800 mb-2">💡 Why Use JavaScript?</h3>
+      <p class="text-gray-700 leading-relaxed">
+        JavaScript adds logic and behavior to your web pages. It allows you to create dynamic content, handle events, validate forms, and build rich web applications.
+      </p>
+    </div>
+
+    <!-- JavaScript Example -->
+    <div class="bg-gray-100 p-4 rounded-lg border border-gray-300 mb-6">
+      <h3 class="text-xl font-semibold text-gray-800 mb-2">🧪 JavaScript Example:</h3>
+      <pre class="bg-black text-green-300 p-4 rounded-md text-sm overflow-x-auto">
+<code>
+document.getElementById("demo").innerHTML = "Hello JavaScript!";
+</code>
+      </pre>
+      <p class="text-sm mt-2 text-gray-600">You can try this in an HTML page with an element like <code>&lt;p id="demo"&gt;&lt;/p&gt;</code>.</p>
+    </div>
+
+    <!-- Try it -->
+    <div class="text-center mt-8">
+      <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-full shadow transition">
+        🎯 Try It Yourself
+      </a>
+    </div>
+
+    <!-- Navigation Prompt -->
+    <p class="text-gray-600 mt-6 text-center">📚 Select a topic from the sidebar to begin learning!</p>
+  </section>
+</main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-4 mt-8 md:ml-64">
+    <div class="container mx-auto px-4 text-center">
+      <p>© 2025 Devvoltz Platform. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Topic content data
+    const topicContents = {
+  
+  "js-tutorial": {
+    title: "JS Tutorial",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JavaScript Tutorial</h2>
+      <p>Welcome to the complete JavaScript tutorial. Learn everything from basics to advanced topics.</p>
+    `
+  },
+ "js-home": {
+  title: "JS HOME",
+  content: `
+    <h2 class="text-2xl font-semibold mb-4">JavaScript Home</h2>
+    <p class="mb-4">
+      Welcome to the JavaScript Tutorial. JavaScript is the world's most popular programming language and a critical component of modern web development. It's used to add interactivity, logic, and dynamic content to websites.
+    </p>
+
+    <h3 class="text-xl font-semibold mb-2">Why Learn JavaScript?</h3>
+    <ul class="list-disc list-inside mb-4">
+      <li>It’s the programming language of the Web.</li>
+      <li>It's supported by all modern browsers without installation.</li>
+      <li>It’s easy to learn and fun to use.</li>
+      <li>JavaScript is free to use and built into your browser.</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold mb-2">How This Tutorial Works</h3>
+    <p class="mb-4">
+      This tutorial teaches JavaScript from basic to advanced levels. Each chapter includes examples with a "Try it Yourself" feature that lets you edit code and see the result instantly.
+    </p>
+    <div class="bg-gray-100 p-3 rounded mb-4">
+      <strong>Example:</strong><br>
+      <code>My First JavaScript<br>Click me to display Date and Time</code>
+    </div>
+
+    <h3 class="text-xl font-semibold mb-2">Suggested Learning Path</h3>
+    <p class="mb-4">
+      We recommend reading this tutorial in sequence, as listed in the sidebar menu. On larger screens, the menu is visible on the left. On smaller screens, tap the ☰ icon to open it.
+    </p>
+
+    <h3 class="text-xl font-semibold mb-2">Learn by Examples</h3>
+    <p class="mb-4">
+      Examples make learning easier. This tutorial is packed with hands-on examples that clarify each concept. Practicing these examples will rapidly improve your JavaScript skills.
+    </p>
+
+    <h3 class="text-xl font-semibold mb-2">Core Web Development Trio</h3>
+    <p class="mb-4">
+      Every web developer should learn:
+      <ul class="list-disc list-inside">
+        <li><strong>HTML</strong> – to structure web content</li>
+        <li><strong>CSS</strong> – to style web pages</li>
+        <li><strong>JavaScript</strong> – to make web pages interactive</li>
+      </ul>
+    </p>
+
+    <h3 class="text-xl font-semibold mb-2">Versions of JavaScript Covered</h3>
+    <p class="mb-4">
+      This tutorial covers all major versions, including:
+      <ul class="list-disc list-inside">
+        <li>Original JavaScript (ES1 to ES3)</li>
+        <li>ES5 (2009 major update)</li>
+        <li>ES6 / ECMAScript 2015</li>
+        <li>Yearly updates (ES2016 to ES2022 and beyond)</li>
+      </ul>
+    </p>
+
+    <h3 class="text-xl font-semibold mb-2">Learn at Your Own Pace</h3>
+    <p class="mb-4">
+      The speed is up to you. Take your time, repeat topics if necessary, and most importantly: <strong>Practice, Practice, Practice!</strong>
+    </p>
+
+    <h3 class="text-xl font-semibold mb-2">FAQs</h3>
+    <ul class="list-disc list-inside mb-4">
+      <li><strong>Do I need to download JavaScript?</strong><br> No! It’s already in your browser.</li>
+      <li><strong>Is JavaScript free?</strong><br> Yes, completely free for everyone to use.</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold mb-2">Interactive Exercises & Quizzes</h3>
+    <p class="mb-4">
+      Many chapters end with exercises and quizzes to test your knowledge. For example:
+    </p>
+    <div class="bg-gray-100 p-3 rounded mb-4">
+      <strong>Exercise:</strong><br>
+      What is the correct syntax to assign a value to a variable?<br>
+      <code>x = 5;</code>
+    </div>
+
+    <h3 class="text-xl font-semibold mb-2">Track Your Progress</h3>
+    <p class="mb-4">
+      Optionally, create a free account to:
+      <ul class="list-disc list-inside">
+        <li>Track completed tutorials and exercises</li>
+        <li>Monitor your learning streaks and goals</li>
+        <li>Build your own personal learning path</li>
+      </ul>
+    </p>
+
+    <h3 class="text-xl font-semibold mb-2">Comprehensive JavaScript Reference</h3>
+    <p class="mb-4">
+      This tutorial includes a full JavaScript reference with examples for all HTML DOM objects, properties, methods, and events—updated regularly to reflect the latest standards.
+    </p>
+
+    <p class="text-center font-semibold mt-6">🎯 Let’s start your JavaScript journey now!</p>
+  `
+}
+,
+  "js-introduction": {
+  title: "JS Introduction",
+  content: `
+    <section class="prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">JavaScript Introduction</h2>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">📌 What is JavaScript?</h3>
+      <p class="mb-4">
+        JavaScript is the programming language of the web. It enables interactive behavior on websites such as popups, form validation, animations, and more. It can:
+      </p>
+      <ul class="list-disc list-inside text-gray-700 mb-6 pl-4">
+        <li>Update and change HTML and CSS content</li>
+        <li>React to user actions and browser events</li>
+        <li>Calculate, manipulate, and validate data</li>
+      </ul>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">🎯 Why Study JavaScript?</h3>
+      <p class="mb-4">JavaScript is one of the three essential technologies every web developer must learn:</p>
+      <ol class="list-decimal list-inside mb-6 text-gray-700 pl-4">
+        <li><strong>HTML</strong> – defines the content of web pages</li>
+        <li><strong>CSS</strong> – styles and designs the content</li>
+        <li><strong>JavaScript</strong> – programs the behavior and logic</li>
+      </ol>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">📝 JavaScript Can Change HTML Content</h3>
+      <p class="mb-2">You can use JavaScript to change the content of any HTML element using <code>getElementById()</code>:</p>
+      <pre class="bg-gray-900 text-white rounded p-3 overflow-x-auto mb-4 text-sm"><code>document.getElementById("demo").innerHTML = "Hello JavaScript";</code></pre>
+
+      <p class="mb-2">JavaScript supports both single and double quotes:</p>
+      <pre class="bg-gray-900 text-white rounded p-3 overflow-x-auto mb-6 text-sm"><code>document.getElementById('demo').innerHTML = 'Hello JavaScript';</code></pre>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">🖼️ JavaScript Can Change HTML Attributes</h3>
+      <p class="mb-2">You can change attributes such as an image’s <code>src</code> dynamically:</p>
+      <pre class="bg-gray-900 text-white rounded p-3 overflow-x-auto mb-6 text-sm"><code>document.getElementById("myImage").src = "bulb-on.png";</code></pre>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">🎨 JavaScript Can Change CSS Styles</h3>
+      <p class="mb-2">Change an element's style directly using JavaScript:</p>
+      <pre class="bg-gray-900 text-white rounded p-3 overflow-x-auto mb-6 text-sm"><code>document.getElementById("demo").style.fontSize = "35px";</code></pre>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">👁️ JavaScript Can Hide or Show Elements</h3>
+      <p class="mb-2">Hide an element:</p>
+      <pre class="bg-gray-900 text-white rounded p-3 overflow-x-auto text-sm mb-2"><code>document.getElementById("demo").style.display = "none";</code></pre>
+
+      <p class="mb-2">Show the hidden element:</p>
+      <pre class="bg-gray-900 text-white rounded p-3 overflow-x-auto mb-6 text-sm"><code>document.getElementById("demo").style.display = "block";</code></pre>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">💡 Did You Know?</h3>
+      <ul class="list-disc list-inside text-gray-700 pl-4 mb-6">
+        <li>JavaScript and Java are completely different languages</li>
+        <li>JavaScript was invented by <strong>Brendan Eich</strong> in 1995</li>
+        <li>It became an official ECMA standard in 1997</li>
+        <li>The standard name is <strong>ECMA-262</strong>, and the official language name is <strong>ECMAScript</strong></li>
+      </ul>
+
+      <p class="text-center font-semibold text-blue-800 mt-10 text-lg">🚀 JavaScript makes your web pages come alive. Let’s start coding!</p>
+    </section>
+  `
+}
+,
+
+"js-where-to": {
+  title: "JS Where To",
+  content: `
+    <section class="prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">📍 Where to Place JavaScript</h2>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">🔖 The &lt;script&gt; Tag</h3>
+      <p class="mb-4">
+        In HTML, JavaScript code is inserted between <code>&lt;script&gt;</code> and <code>&lt;/script&gt;</code> tags.
+      </p>
+      <pre class="bg-gray-900 text-white rounded p-3 overflow-x-auto text-sm mb-4"><code>&lt;script&gt;
+document.getElementById("demo").innerHTML = "My First JavaScript";
+&lt;/script&gt;</code></pre>
+
+      <p class="mb-4">
+        Older examples may include <code>type="text/javascript"</code>, but it’s no longer required as JavaScript is the default scripting language in HTML5.
+      </p>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">⚙️ JavaScript Functions and Events</h3>
+      <p class="mb-4">
+        A JavaScript function is a reusable block of code that runs when "called". It's often triggered by an event — like a button click.
+        You’ll learn more about functions and events in later chapters.
+      </p>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">📌 JavaScript in &lt;head&gt; or &lt;body&gt;</h3>
+      <p class="mb-4">
+        You can place JavaScript code in the <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>, or both. However, placing scripts at the end of the <code>&lt;body&gt;</code> improves page load speed.
+      </p>
+
+      <div class="bg-gray-100 p-3 rounded mb-6">
+        <p class="font-semibold mb-2">🔼 Script in &lt;head&gt;:</p>
+        <pre class="bg-gray-900 text-white p-3 rounded text-sm overflow-x-auto"><code>&lt;head&gt;
+  &lt;script&gt;
+    function myFunction() {
+      document.getElementById("demo").innerHTML = "Paragraph changed.";
+    }
+  &lt;/script&gt;
+&lt;/head&gt;</code></pre>
+      </div>
+
+      <div class="bg-gray-100 p-3 rounded mb-6">
+        <p class="font-semibold mb-2">🔽 Script in &lt;body&gt;:</p>
+        <pre class="bg-gray-900 text-white p-3 rounded text-sm overflow-x-auto"><code>&lt;body&gt;
+  &lt;h2&gt;Demo JavaScript in Body&lt;/h2&gt;
+  &lt;p id="demo"&gt;A Paragraph&lt;/p&gt;
+  &lt;button onclick="myFunction()"&gt;Try it&lt;/button&gt;
+
+  &lt;script&gt;
+    function myFunction() {
+      document.getElementById("demo").innerHTML = "Paragraph changed.";
+    }
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+      </div>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">📁 External JavaScript</h3>
+      <p class="mb-4">
+        JavaScript code can also be written in separate <code>.js</code> files, which are linked into the HTML using the <code>src</code> attribute of the <code>&lt;script&gt;</code> tag.
+      </p>
+
+      <pre class="bg-gray-900 text-white p-3 rounded text-sm overflow-x-auto mb-4"><code>// File: myScript.js
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Paragraph changed.";
+}</code></pre>
+
+      <p class="mb-4">To include the file in your HTML:</p>
+      <pre class="bg-gray-900 text-white p-3 rounded text-sm overflow-x-auto mb-6"><code>&lt;script src="myScript.js"&gt;&lt;/script&gt;</code></pre>
+
+      <h4 class="text-xl font-semibold text-purple-700 mb-2">✅ Advantages of External Scripts</h4>
+      <ul class="list-disc list-inside text-gray-700 mb-6 pl-4">
+        <li>Separates HTML and JavaScript for cleaner code</li>
+        <li>Reusability across multiple pages</li>
+        <li>Improves maintainability</li>
+        <li>Can be cached by the browser for faster loading</li>
+      </ul>
+
+      <h4 class="text-xl font-semibold text-purple-700 mb-2">🧩 Linking Multiple External Scripts</h4>
+      <pre class="bg-gray-900 text-white p-3 rounded text-sm overflow-x-auto mb-6"><code>&lt;script src="script1.js"&gt;&lt;/script&gt;
+&lt;script src="script2.js"&gt;&lt;/script&gt;</code></pre>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">🌐 Referencing External Scripts</h3>
+      <ul class="list-disc list-inside mb-4 pl-4">
+        <li><strong>Full URL:</strong> <code>&lt;script src="https://example.com/myScript.js"&gt;</code></li>
+        <li><strong>Relative Path:</strong> <code>&lt;script src="/js/myScript.js"&gt;</code></li>
+        <li><strong>Local File:</strong> <code>&lt;script src="myScript.js"&gt;</code></li>
+      </ul>
+
+      <p class="text-center text-blue-800 font-semibold mt-10 text-lg">📘 Understanding where and how to place JavaScript improves performance and code structure. Let's explore the next topic!</p>
+    </section>
+  `
+}
+,
+
+"js-output": {
+  title: "JS Output",
+  content: `
+    <section class="prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">🖥️ JavaScript Output</h2>
+
+      <p class="mb-4">
+        JavaScript can display data in several different ways. Each method serves a unique purpose depending on how and where you want to show the result:
+      </p>
+
+      <ul class="list-disc list-inside text-gray-700 mb-6 pl-4">
+        <li><strong><code>innerHTML</code></strong> – Injects HTML content into a specific element</li>
+        <li><strong><code>innerText</code></strong> – Inserts plain text (ignores any HTML tags)</li>
+        <li><strong><code>document.write()</code></strong> – Writes directly into the HTML stream (⚠️ not recommended for modern use)</li>
+        <li><strong><code>alert()</code></strong> – Shows a popup alert box with a message</li>
+        <li><strong><code>console.log()</code></strong> – Logs messages or data to the browser console (great for debugging)</li>
+        <li><strong><code>window.print()</code></strong> – Opens the browser’s print dialog for the current page</li>
+      </ul>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">📌 Using <code>innerHTML</code></h3>
+      <p class="mb-2">Use <code>document.getElementById()</code> to select an element and change its HTML content:</p>
+      <pre class="bg-gray-900 text-white rounded p-3 overflow-x-auto text-sm mb-6"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+  document.getElementById("demo").innerHTML = "&lt;strong&gt;Hello World!&lt;/strong&gt;";
+&lt;/script&gt;</code></pre>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">📌 Using <code>innerText</code></h3>
+      <p class="mb-2">This method is similar to <code>innerHTML</code> but only handles plain text:</p>
+      <pre class="bg-gray-900 text-white rounded p-3 overflow-x-auto text-sm mb-6"><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+  document.getElementById("demo").innerText = "Hello JavaScript!";
+&lt;/script&gt;</code></pre>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">⚠️ Using <code>document.write()</code></h3>
+      <p class="mb-2">Writes content directly to the page while loading. Not recommended for modern web development:</p>
+      <pre class="bg-gray-900 text-white rounded p-3 overflow-x-auto text-sm mb-4"><code>&lt;script&gt;
+  document.write(5 + 10);
+&lt;/script&gt;</code></pre>
+      <p class="text-sm text-red-600 italic mb-6">Using <code>document.write()</code> after the page loads will overwrite the entire page content!</p>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">🔔 Using <code>alert()</code></h3>
+      <p class="mb-2">Displays a popup message box to the user:</p>
+      <pre class="bg-gray-900 text-white rounded p-3 overflow-x-auto text-sm mb-6"><code>&lt;script&gt;
+  alert("Hello from JavaScript!");
+&lt;/script&gt;</code></pre>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">🛠️ Using <code>console.log()</code></h3>
+      <p class="mb-2">Great for debugging and inspecting data in the developer console:</p>
+      <pre class="bg-gray-900 text-white rounded p-3 overflow-x-auto text-sm mb-6"><code>&lt;script&gt;
+  console.log("The sum is", 5 + 5);
+&lt;/script&gt;</code></pre>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">🖨️ Using <code>window.print()</code></h3>
+      <p class="mb-2">Triggers the browser’s print dialog to print the current page:</p>
+      <pre class="bg-gray-900 text-white rounded p-3 overflow-x-auto text-sm mb-6"><code>&lt;button onclick="window.print()"&gt;Print This Page&lt;/button&gt;</code></pre>
+
+      <h3 class="text-xl font-semibold text-purple-700 mb-2">💡 Tip</h3>
+      <p class="mb-6">
+        You can skip writing <code>window.</code> before methods like <code>alert()</code> or <code>print()</code> — it's implied because they are part of the global <code>window</code> object.
+      </p>
+
+      <p class="text-center text-blue-800 font-semibold mt-10 text-lg">🚀 Now you know how to show data to users. Let’s move on to writing JavaScript statements!</p>
+    </section>
+  `
+}
+,
+
+"js-statements": {
+  title: "JS Statements",
+  content: `
+    <section class="prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">📜 JavaScript Statements</h2>
+
+      <p class="mb-4">
+        A <strong>JavaScript statement</strong> is a command the browser executes. A JavaScript program is simply a series of statements executed one by one, in the order they are written.
+      </p>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">🧠 Basic Example</h3>
+      <p class="mb-2">Each line below is a separate statement:</p>
+      <pre class="bg-gray-900 text-white p-3 rounded text-sm overflow-x-auto mb-6"><code>let x, y, z; // Declare variables
+x = 5;       // Assign 5 to x
+y = 6;       // Assign 6 to y
+z = x + y;   // Add x and y, store in z</code></pre>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">🔍 What Makes a Statement?</h3>
+      <p class="mb-4">JavaScript statements are made up of:</p>
+      <ul class="list-disc list-inside mb-6 pl-4">
+        <li><strong>Values</strong></li>
+        <li><strong>Operators</strong></li>
+        <li><strong>Expressions</strong></li>
+        <li><strong>Keywords</strong></li>
+        <li><strong>Comments</strong></li>
+      </ul>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">🎯 Example in Action</h3>
+      <p class="mb-2">This statement displays "Hello Dolly." inside an element with ID <code>demo</code>:</p>
+      <pre class="bg-gray-900 text-white p-3 rounded text-sm overflow-x-auto mb-6"><code>document.getElementById("demo").innerHTML = "Hello Dolly.";</code></pre>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">🔚 Semicolons (<code>;</code>)</h3>
+      <p class="mb-2">Semicolons separate executable statements. JavaScript allows multiple statements on one line when separated by semicolons:</p>
+      <pre class="bg-gray-900 text-white p-3 rounded text-sm overflow-x-auto mb-4"><code>let a = 5; let b = 10; let sum = a + b;</code></pre>
+      <p class="mb-6 text-sm text-yellow-700 italic">Semicolons are optional in JavaScript but are highly recommended for consistency and error prevention.</p>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">📏 White Space & Readability</h3>
+      <p class="mb-2">JavaScript ignores extra white space, but good formatting improves readability:</p>
+      <pre class="bg-gray-900 text-white p-3 rounded text-sm overflow-x-auto mb-4"><code>let person = "Hege";
+let person="Hege"; // also valid</code></pre>
+      <p class="mb-6 text-sm text-green-700 italic">Best practice: add spaces around operators for readability, e.g., <code>let x = y + z;</code></p>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">🔗 Line Length & Breaks</h3>
+      <p class="mb-2">Avoid long lines of code. If breaking a long statement, do it after an operator:</p>
+      <pre class="bg-gray-900 text-white p-3 rounded text-sm overflow-x-auto mb-6"><code>document.getElementById("demo").innerHTML =
+  "Hello Dolly!";</code></pre>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">🧱 Code Blocks</h3>
+      <p class="mb-2">Multiple statements can be grouped using curly braces <code>{ }</code>. These blocks are common inside functions, loops, and conditions:</p>
+      <pre class="bg-gray-900 text-white p-3 rounded text-sm overflow-x-auto mb-6"><code>function myFunction() {
+  document.getElementById("demo1").innerHTML = "Hello Dolly!";
+  document.getElementById("demo2").innerHTML = "How are you?";
+}</code></pre>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-2">🔑 Common JavaScript Keywords</h3>
+      <p class="mb-2">Statements often begin with keywords that define the action. Here are some you'll learn in this course:</p>
+      <table class="table-auto w-full mb-6 border border-gray-300 text-left">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="p-2 border border-gray-300">Keyword</th>
+            <th class="p-2 border border-gray-300">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="p-2 border border-gray-300">var</td><td class="p-2 border border-gray-300">Declares a variable (function scope)</td></tr>
+          <tr><td class="p-2 border border-gray-300">let</td><td class="p-2 border border-gray-300">Declares a block-scoped variable</td></tr>
+          <tr><td class="p-2 border border-gray-300">const</td><td class="p-2 border border-gray-300">Declares a constant value</td></tr>
+          <tr><td class="p-2 border border-gray-300">if</td><td class="p-2 border border-gray-300">Executes code on a condition</td></tr>
+          <tr><td class="p-2 border border-gray-300">switch</td><td class="p-2 border border-gray-300">Handles multiple conditions</td></tr>
+          <tr><td class="p-2 border border-gray-300">for</td><td class="p-2 border border-gray-300">Loops through a block of code</td></tr>
+          <tr><td class="p-2 border border-gray-300">function</td><td class="p-2 border border-gray-300">Declares a function</td></tr>
+          <tr><td class="p-2 border border-gray-300">return</td><td class="p-2 border border-gray-300">Exits a function and returns a value</td></tr>
+          <tr><td class="p-2 border border-gray-300">try</td><td class="p-2 border border-gray-300">Handles exceptions</td></tr>
+        </tbody>
+      </table>
+
+      <p class="text-center text-blue-800 font-semibold mt-10 text-lg">🚀 You now understand the building blocks of JavaScript. Next, let’s dive into JavaScript syntax rules!</p>
+    </section>
+  `
+}
+,
+
+"js-syntax": {
+  title: "JS Syntax",
+  content: `
+    <section class="prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b pb-2">🧩 JavaScript Syntax</h2>
+
+      <p class="mb-4">
+        JavaScript syntax is the set of rules that defines how JavaScript programs are written and structured.
+      </p>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-3">📌 Variables and Values</h3>
+      <p class="mb-4">You can declare variables using <code>var</code>, <code>let</code>, or <code>const</code>, and assign values to them:</p>
+      <pre class="bg-gray-900 text-white p-3 rounded text-sm overflow-x-auto mb-6"><code>var x;
+let y;
+x = 5;
+y = 6;
+let z = x + y;</code></pre>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-3">🔢 Literals and Variables</h3>
+      <p class="mb-4">There are two types of values in JavaScript:</p>
+      <ul class="list-disc list-inside mb-6 pl-5 text-gray-700">
+        <li><strong>Fixed values (Literals):</strong> Numbers (e.g., <code>10.5</code>, <code>1001</code>) or strings wrapped in quotes (e.g., <code>"John Doe"</code>, <code>'John Doe'</code>).</li>
+        <li><strong>Variable values:</strong> Stored in variables declared with <code>var</code>, <code>let</code>, or <code>const</code>.</li>
+      </ul>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-3">➕ Operators and Expressions</h3>
+      <p class="mb-4">Operators perform computations like addition, subtraction, etc. Expressions combine values, variables, and operators to produce a value:</p>
+      <pre class="bg-gray-900 text-white p-3 rounded text-sm overflow-x-auto mb-6"><code>// Arithmetic operation
+(5 + 6) * 10
+
+// Expression with variables
+let x = 5;
+x * 10
+
+// String concatenation
+"John" + " " + "Doe"</code></pre>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-3">🔑 JavaScript Keywords</h3>
+      <p class="mb-4">Keywords tell JavaScript what action to perform. Some important ones include:</p>
+      <ul class="list-disc list-inside mb-6 pl-5 text-gray-700">
+        <li><code>let</code>, <code>var</code>, <code>const</code> — Declare variables or constants</li>
+        <li><code>if</code>, <code>switch</code> — Conditional execution</li>
+        <li><code>for</code>, <code>while</code> — Loops</li>
+        <li><code>function</code> — Defines functions</li>
+        <li><code>return</code> — Returns a value from a function</li>
+        <li><code>try</code> — Handles exceptions</li>
+      </ul>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-3">💬 Comments</h3>
+      <p class="mb-4">Comments are notes that explain the code but are ignored by JavaScript:</p>
+      <pre class="bg-gray-900 text-white p-3 rounded text-sm overflow-x-auto mb-6"><code>let x = 5;   // This will be executed
+
+// x = 6;    This line is a comment and will NOT run
+
+/* 
+  Multi-line comment:
+  This code won't run
+*/</code></pre>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-3">📛 Identifiers / Naming Rules</h3>
+      <p class="mb-4">Identifiers are names for variables, functions, etc. Rules include:</p>
+      <ul class="list-disc list-inside mb-6 pl-5 text-gray-700">
+        <li>Must start with a letter (A-Z or a-z), dollar sign (<code>$</code>), or underscore (<code>_</code>)</li>
+        <li>Subsequent characters can be letters, digits, underscores, or dollar signs</li>
+        <li>Cannot start with a number</li>
+        <li>Case sensitive (<code>lastName</code> and <code>lastname</code> are different)</li>
+      </ul>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-3">🐫 Camel Case Naming</h3>
+      <p class="mb-4">JavaScript programmers typically use <em>lower camel case</em> for variable and function names:</p>
+      <ul class="list-disc list-inside mb-6 pl-5 text-gray-700">
+        <li><code>firstName</code>, <code>lastName</code>, <code>masterCard</code>, <code>interCity</code></li>
+        <li>Hyphens (<code>first-name</code>) are not allowed — they are subtraction operators in JavaScript</li>
+      </ul>
+
+      <h3 class="text-2xl font-semibold text-green-700 mb-3">🌐 Unicode Character Set</h3>
+      <p class="mb-4">
+        JavaScript uses the Unicode character set, supporting almost all written languages, symbols, and emojis.
+      </p>
+
+      <pre class="bg-gray-900 text-white p-3 rounded text-sm overflow-x-auto mb-6"><code>let smiley = "😊";</code></pre>
+
+      <p class="text-center text-blue-800 font-semibold mt-10 text-lg">🚀 Great! Now you understand the syntax rules that form the foundation of JavaScript programs.</p>
+    </section>
+  `
+}
+,
+
+"js-comments": {
+  title: "JS Comments",
+  content: `
+    <section class="prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold text-indigo-700 mb-6 border-b pb-2">💬 JavaScript Comments</h2>
+      
+      <p class="mb-4">
+        Comments help explain your code and make it easier to understand. They are ignored by the browser and do not affect program execution.
+      </p>
+      
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Single-line Comments</h3>
+      <p class="mb-4">
+        Use <code>//</code> at the beginning of a line to write a comment that lasts until the end of the line.
+      </p>
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto"><code>// This is a single-line comment
+document.getElementById("myH").innerHTML = "My First Page";</code></pre>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Multi-line Comments</h3>
+      <p class="mb-4">
+        Enclose your comment with <code>/*</code> at the start and <code>*/</code> at the end to comment multiple lines.
+      </p>
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto"><code>/*
+  This is a multi-line comment block.
+  It can span several lines,
+  useful for detailed explanations or disabling code.
+*/
+document.getElementById("myH").innerHTML = "My First Page";</code></pre>
+      
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Using Comments to Disable Code</h3>
+      <p class="mb-4">
+        Comments can temporarily prevent code from running, which is helpful for testing or debugging.
+      </p>
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto"><code>// document.getElementById("myH").innerHTML = "My First Page";
+document.getElementById("myP").innerHTML = "My first paragraph.";
+
+/*
+document.getElementById("myH").innerHTML = "My First Page";
+document.getElementById("myP").innerHTML = "My first paragraph.";
+*/</code></pre>
+
+      <p class="text-center text-indigo-700 font-semibold mt-8 text-lg">
+        📝 Using comments effectively will make your JavaScript code cleaner and easier to maintain.
+      </p>
+    </section>
+  `
+}
+,
+  "js-variables": {
+  title: "JS Variables",
+  content: `
+    <section class="prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold text-indigo-700 mb-6 border-b pb-2">🔑 JavaScript Variables</h2>
+
+      <p class="mb-4">
+        Variables are containers used to store data values in JavaScript. You can declare variables using <code>var</code>, <code>let</code>, or <code>const</code>.
+      </p>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Declaring Variables</h3>
+      <p class="mb-4">Here are the four main ways variables can be declared:</p>
+      <ul class="list-disc list-inside mb-6">
+        <li><strong>Automatically:</strong> Variables can be created when first assigned (not recommended).</li>
+        <li><strong>var:</strong> Old syntax (pre-2015), used for function-scoped variables.</li>
+        <li><strong>let:</strong> Block-scoped variables introduced in ES6 (2015).</li>
+        <li><strong>const:</strong> Block-scoped constants that cannot be reassigned.</li>
+      </ul>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Examples</h3>
+
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto"><code>// Automatically declared variables (not recommended)
+x = 5;
+y = 6;
+z = x + y;
+
+// Using var
+var x = 5;
+var y = 6;
+var z = x + y;
+
+// Using let
+let x = 5;
+let y = 6;
+let z = x + y;
+
+// Using const
+const x = 5;
+const y = 6;
+const z = x + y;</code></pre>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3">When to Use var, let, or const?</h3>
+      <ol class="list-decimal list-inside mb-6">
+        <li>Always declare your variables before use.</li>
+        <li>Use <code>const</code> for values that should never change.</li>
+        <li>Use <code>const</code> for arrays and objects if they shouldn't be reassigned.</li>
+        <li>Use <code>let</code> if the variable's value needs to change.</li>
+        <li>Use <code>var</code> only if you must support very old browsers.</li>
+      </ol>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Variable Names (Identifiers)</h3>
+      <p class="mb-4">Rules for variable names:</p>
+      <ul class="list-disc list-inside mb-6">
+        <li>Can contain letters, digits, underscores (<code>_</code>), and dollar signs (<code>$</code>).</li>
+        <li>Must begin with a letter, underscore, or dollar sign.</li>
+        <li>Are case-sensitive (<code>myVar</code> and <code>myvar</code> are different).</li>
+        <li>Cannot be reserved JavaScript keywords.</li>
+      </ul>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Assignment Operator</h3>
+      <p class="mb-4">
+        The equal sign <code>=</code> assigns values to variables. For example:
+      </p>
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto"><code>let x = 5;
+x = x + 3;  // x is now 8</code></pre>
+      <p>
+        Note: <code>=</code> is the assignment operator, different from the equality check <code>==</code> or <code>===</code>.
+      </p>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Data Types</h3>
+      <p class="mb-4">
+        Variables can hold many types of data. Common types include numbers and strings (text).
+      </p>
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto"><code>const pi = 3.14;
+let name = "John Doe";
+let answer = 'Yes, I am!';</code></pre>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Multiple Variables in One Statement</h3>
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto"><code>let person = "John Doe", carName = "Volvo", price = 200;</code></pre>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Undefined Variables</h3>
+      <p class="mb-4">
+        Variables declared without a value have the value <code>undefined</code>.
+      </p>
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto"><code>let carName;
+console.log(carName); // undefined</code></pre>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Special Characters in Names</h3>
+      <p class="mb-4">Dollar sign <code>$</code> and underscore <code>_</code> are valid characters in variable names:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto"><code>let $amount = 100;
+let _privateValue = "hidden";</code></pre>
+      <p>
+        These are often used by programmers for special purposes, like denoting private variables or libraries like jQuery.
+      </p>
+
+      <p class="text-center text-indigo-700 font-semibold mt-8 text-lg">
+        🧠 Understanding variables is fundamental to writing effective JavaScript code!
+      </p>
+    </section>
+  `
+}
+,
+  "js-let": {
+  title: "JS Let",
+  content: `
+    <section class="prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold text-indigo-700 mb-6 border-b pb-2">🔹 JavaScript <code>let</code></h2>
+      
+      <p class="mb-4">
+        The <code>let</code> keyword, introduced in ES6 (2015), declares block-scoped variables that can be reassigned but not redeclared in the same scope.
+      </p>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Block Scope</h3>
+      <p class="mb-4">
+        Variables declared with <code>let</code> exist only within the block <code>{ ... }</code> where they are defined.
+      </p>
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto"><code>{
+  let x = 2;
+}
+// x cannot be accessed here</code></pre>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Global Scope & <code>var</code> vs <code>let</code></h3>
+      <p class="mb-4">
+        Variables declared with <code>var</code> are function-scoped or globally scoped, not block-scoped. <code>var</code> declarations inside blocks leak out of the block.
+      </p>
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto"><code>{
+  var x = 2;
+}
+// x can still be accessed here</code></pre>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Redeclaration Rules</h3>
+      <p class="mb-4">
+        Variables declared with <code>let</code> cannot be redeclared in the same scope, preventing accidental overwrites.
+      </p>
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto"><code>let x = "John Doe";
+// let x = 0; // Error: Cannot redeclare 'x'
+
+var y = "John Doe";
+var y = 0; // Allowed with var</code></pre>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Redeclaring Inside Blocks</h3>
+      <p class="mb-4">
+        Redeclaring a <code>var</code> inside a block affects the variable outside the block, while <code>let</code> redeclaration inside a block creates a new local variable.
+      </p>
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto"><code>var x = 10;
+{
+  var x = 2; // modifies the outer x
+}
+// x is now 2
+
+let y = 10;
+{
+  let y = 2; // block-scoped local y
+}
+// y remains 10</code></pre>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Comparison Table</h3>
+      <table class="table-auto border-collapse border border-gray-300 mb-6 w-full text-left">
+        <thead>
+          <tr class="bg-indigo-100">
+            <th class="border border-gray-300 px-4 py-2">Feature</th>
+            <th class="border border-gray-300 px-4 py-2">var</th>
+            <th class="border border-gray-300 px-4 py-2">let</th>
+            <th class="border border-gray-300 px-4 py-2">const</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="border border-gray-300 px-4 py-2">Scope</td><td class="border border-gray-300 px-4 py-2">Global / Function</td><td class="border border-gray-300 px-4 py-2">Block</td><td class="border border-gray-300 px-4 py-2">Block</td></tr>
+          <tr><td class="border border-gray-300 px-4 py-2">Redeclare</td><td class="border border-gray-300 px-4 py-2">Yes</td><td class="border border-gray-300 px-4 py-2">No</td><td class="border border-gray-300 px-4 py-2">No</td></tr>
+          <tr><td class="border border-gray-300 px-4 py-2">Reassign</td><td class="border border-gray-300 px-4 py-2">Yes</td><td class="border border-gray-300 px-4 py-2">Yes</td><td class="border border-gray-300 px-4 py-2">No</td></tr>
+          <tr><td class="border border-gray-300 px-4 py-2">Hoisted</td><td class="border border-gray-300 px-4 py-2">Yes</td><td class="border border-gray-300 px-4 py-2">Yes (not initialized)</td><td class="border border-gray-300 px-4 py-2">Yes (not initialized)</td></tr>
+          <tr><td class="border border-gray-300 px-4 py-2">Binds this</td><td class="border border-gray-300 px-4 py-2">Yes</td><td class="border border-gray-300 px-4 py-2">No</td><td class="border border-gray-300 px-4 py-2">No</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Hoisting</h3>
+      <p class="mb-4">
+        Variables declared with <code>var</code> are hoisted and initialized with <code>undefined</code>, so you can use them before declaration.
+      </p>
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto"><code>carName = "Volvo";
+var carName;
+</code></pre>
+      <p class="mb-4">
+        Variables declared with <code>let</code> are hoisted but not initialized, so using them before declaration results in a <code>ReferenceError</code>:
+      </p>
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto"><code>carName = "Saab"; // ReferenceError
+let carName = "Volvo";
+</code></pre>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Browser Support</h3>
+      <p class="mb-4">
+        The <code>let</code> keyword is supported in all modern browsers except Internet Explorer 11 and earlier.
+      </p>
+      <table class="table-auto border-collapse border border-gray-300 w-full text-left">
+        <thead>
+          <tr class="bg-indigo-100">
+            <th class="border border-gray-300 px-4 py-2">Browser</th>
+            <th class="border border-gray-300 px-4 py-2">Version with let support</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="border border-gray-300 px-4 py-2">Chrome</td><td class="border border-gray-300 px-4 py-2">49+</td></tr>
+          <tr><td class="border border-gray-300 px-4 py-2">Edge</td><td class="border border-gray-300 px-4 py-2">12+</td></tr>
+          <tr><td class="border border-gray-300 px-4 py-2">Firefox</td><td class="border border-gray-300 px-4 py-2">36+</td></tr>
+          <tr><td class="border border-gray-300 px-4 py-2">Safari</td><td class="border border-gray-300 px-4 py-2">11+</td></tr>
+          <tr><td class="border border-gray-300 px-4 py-2">Opera</td><td class="border border-gray-300 px-4 py-2">36+</td></tr>
+        </tbody>
+      </table>
+    </section>
+  `
+}
+,
+  "js-const": {
+  title: "JS Const",
+  content: `
+    <section class="prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold text-indigo-700 mb-6 border-b pb-2">🔹 JavaScript <code>const</code></h2>
+
+      <p class="mb-4">
+        The <code>const</code> keyword, introduced in ES6 (2015), declares block-scoped constants that cannot be reassigned or redeclared in the same scope.
+      </p>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3">No Reassignment Allowed</h3>
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto"><code>const PI = 3.141592653589793;
+PI = 3.14;      // Error: Assignment to constant variable.
+PI = PI + 10;   // Error as well</code></pre>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Must Be Assigned When Declared</h3>
+      <p class="mb-4">
+        Unlike <code>let</code> and <code>var</code>, <code>const</code> variables must be initialized during declaration:
+      </p>
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto"><code>const PI = 3.14159265359;  // Correct
+const PI;                   // SyntaxError
+PI = 3.14159265359;         // Not allowed</code></pre>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Constant Objects and Arrays</h3>
+      <p class="mb-4">
+        <code>const</code> prevents reassigning the variable reference but does NOT make the object or array immutable.
+      </p>
+      <h4 class="font-semibold mb-2">Constant Arrays</h4>
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto"><code>const cars = ["Saab", "Volvo", "BMW"];
+
+// Allowed: modifying elements
+cars[0] = "Toyota";
+cars.push("Audi");
+
+// Not allowed: reassigning the whole array
+cars = ["Toyota", "Volvo", "Audi"];  // Error</code></pre>
+
+      <h4 class="font-semibold mb-2">Constant Objects</h4>
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto"><code>const car = {type: "Fiat", model: "500", color: "white"};
+
+// Allowed: modifying properties
+car.color = "red";
+car.owner = "Johnson";
+
+// Not allowed: reassigning the whole object
+car = {type: "Volvo", model: "EX60", color: "red"};  // Error</code></pre>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Block Scope & Redeclaration</h3>
+      <p class="mb-4">
+        Like <code>let</code>, <code>const</code> variables have block scope. Redeclaring a <code>const</code> variable in the same scope is not allowed, but in different blocks it is:
+      </p>
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto"><code>const x = 10;
+// x is 10
+
+{
+  const x = 2;  // Different block scope, allowed
+}
+
+// x is still 10</code></pre>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Comparison: var, let, const</h3>
+      <table class="table-auto border-collapse border border-gray-300 mb-6 w-full text-left">
+        <thead>
+          <tr class="bg-indigo-100">
+            <th class="border border-gray-300 px-4 py-2">Feature</th>
+            <th class="border border-gray-300 px-4 py-2">var</th>
+            <th class="border border-gray-300 px-4 py-2">let</th>
+            <th class="border border-gray-300 px-4 py-2">const</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="border border-gray-300 px-4 py-2">Scope</td><td class="border border-gray-300 px-4 py-2">Global / Function</td><td class="border border-gray-300 px-4 py-2">Block</td><td class="border border-gray-300 px-4 py-2">Block</td></tr>
+          <tr><td class="border border-gray-300 px-4 py-2">Redeclare</td><td class="border border-gray-300 px-4 py-2">Yes</td><td class="border border-gray-300 px-4 py-2">No</td><td class="border border-gray-300 px-4 py-2">No</td></tr>
+          <tr><td class="border border-gray-300 px-4 py-2">Reassign</td><td class="border border-gray-300 px-4 py-2">Yes</td><td class="border border-gray-300 px-4 py-2">Yes</td><td class="border border-gray-300 px-4 py-2">No</td></tr>
+          <tr><td class="border border-gray-300 px-4 py-2">Hoisted</td><td class="border border-gray-300 px-4 py-2">Yes</td><td class="border border-gray-300 px-4 py-2">Yes (not initialized)</td><td class="border border-gray-300 px-4 py-2">Yes (not initialized)</td></tr>
+          <tr><td class="border border-gray-300 px-4 py-2">Binds this</td><td class="border border-gray-300 px-4 py-2">Yes</td><td class="border border-gray-300 px-4 py-2">No</td><td class="border border-gray-300 px-4 py-2">No</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Hoisting</h3>
+      <p class="mb-4">
+        Variables declared with <code>var</code> are hoisted and initialized with <code>undefined</code>, while <code>const</code> variables are hoisted but not initialized.
+      </p>
+      <pre class="bg-gray-900 text-white p-4 rounded text-sm mb-6 overflow-x-auto"><code>alert(carName);  // ReferenceError
+const carName = "Volvo";</code></pre>
+
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-3">Browser Support</h3>
+      <p>
+        Supported in modern browsers except Internet Explorer 11 and earlier.
+      </p>
+      <table class="table-auto border-collapse border border-gray-300 w-full text-left">
+        <thead>
+          <tr class="bg-indigo-100">
+            <th class="border border-gray-300 px-4 py-2">Browser</th>
+            <th class="border border-gray-300 px-4 py-2">Version with <code>const</code> support</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="border border-gray-300 px-4 py-2">Chrome</td><td class="border border-gray-300 px-4 py-2">49+</td></tr>
+          <tr><td class="border border-gray-300 px-4 py-2">Edge</td><td class="border border-gray-300 px-4 py-2">12+</td></tr>
+          <tr><td class="border border-gray-300 px-4 py-2">Firefox</td><td class="border border-gray-300 px-4 py-2">36+</td></tr>
+          <tr><td class="border border-gray-300 px-4 py-2">Safari</td><td class="border border-gray-300 px-4 py-2">11+</td></tr>
+          <tr><td class="border border-gray-300 px-4 py-2">Opera</td><td class="border border-gray-300 px-4 py-2">36+</td></tr>
+        </tbody>
+      </table>
+    </section>
+  `
+}
+,
+  "js-operators": {
+  title: "JS Operators",
+  content: `
+    <section class="prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold mb-4 text-indigo-700">JavaScript Operators</h2>
+      
+      <p class="mb-4">Operators perform operations on variables and values, such as arithmetic, assignment, comparison, and logical operations.</p>
+
+      <h3 class="text-2xl font-semibold mb-3">Common Operator Examples</h3>
+      <ul class="list-disc list-inside mb-6">
+        <li><code>=</code> Assignment Operator: assigns values</li>
+        <li><code>+</code> Addition Operator: adds values or concatenates strings</li>
+        <li><code>*</code> Multiplication Operator: multiplies values</li>
+        <li><code>&gt;</code> Comparison Operator: compares values</li>
+      </ul>
+
+      <h3 class="text-2xl font-semibold mb-3">JavaScript Assignment Operators</h3>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-6 overflow-x-auto"><code>let x = 10;   // Assign 10 to x
+x += 5;        // Equivalent to x = x + 5</code></pre>
+      <table class="table-auto mb-6 w-full text-left border border-gray-300">
+        <thead class="bg-indigo-100">
+          <tr>
+            <th class="border px-4 py-2">Operator</th>
+            <th class="border px-4 py-2">Example</th>
+            <th class="border px-4 py-2">Equivalent To</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="border px-4 py-2">=</td><td class="border px-4 py-2">x = y</td><td class="border px-4 py-2">x = y</td></tr>
+          <tr><td class="border px-4 py-2">+=</td><td class="border px-4 py-2">x += y</td><td class="border px-4 py-2">x = x + y</td></tr>
+          <tr><td class="border px-4 py-2">-=</td><td class="border px-4 py-2">x -= y</td><td class="border px-4 py-2">x = x - y</td></tr>
+          <tr><td class="border px-4 py-2">*=</td><td class="border px-4 py-2">x *= y</td><td class="border px-4 py-2">x = x * y</td></tr>
+          <tr><td class="border px-4 py-2">/=</td><td class="border px-4 py-2">x /= y</td><td class="border px-4 py-2">x = x / y</td></tr>
+          <tr><td class="border px-4 py-2">%=</td><td class="border px-4 py-2">x %= y</td><td class="border px-4 py-2">x = x % y</td></tr>
+          <tr><td class="border px-4 py-2">**=</td><td class="border px-4 py-2">x **= y</td><td class="border px-4 py-2">x = x ** y</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="text-2xl font-semibold mb-3">Arithmetic Operators</h3>
+      <p>Used to perform arithmetic operations:</p>
+      <table class="table-auto mb-6 w-full text-left border border-gray-300">
+        <thead class="bg-indigo-100">
+          <tr>
+            <th class="border px-4 py-2">Operator</th>
+            <th class="border px-4 py-2">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="border px-4 py-2">+</td><td class="border px-4 py-2">Addition</td></tr>
+          <tr><td class="border px-4 py-2">-</td><td class="border px-4 py-2">Subtraction</td></tr>
+          <tr><td class="border px-4 py-2">*</td><td class="border px-4 py-2">Multiplication</td></tr>
+          <tr><td class="border px-4 py-2">**</td><td class="border px-4 py-2">Exponentiation (ES2016+)</td></tr>
+          <tr><td class="border px-4 py-2">/</td><td class="border px-4 py-2">Division</td></tr>
+          <tr><td class="border px-4 py-2">%</td><td class="border px-4 py-2">Modulus (Remainder)</td></tr>
+          <tr><td class="border px-4 py-2">++</td><td class="border px-4 py-2">Increment</td></tr>
+          <tr><td class="border px-4 py-2">--</td><td class="border px-4 py-2">Decrement</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="text-2xl font-semibold mb-3">Comparison Operators</h3>
+      <table class="table-auto mb-6 w-full text-left border border-gray-300">
+        <thead class="bg-indigo-100">
+          <tr>
+            <th class="border px-4 py-2">Operator</th>
+            <th class="border px-4 py-2">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="border px-4 py-2">==</td><td class="border px-4 py-2">Equal to</td></tr>
+          <tr><td class="border px-4 py-2">===</td><td class="border px-4 py-2">Equal value and type</td></tr>
+          <tr><td class="border px-4 py-2">!=</td><td class="border px-4 py-2">Not equal</td></tr>
+          <tr><td class="border px-4 py-2">!==</td><td class="border px-4 py-2">Not equal value or type</td></tr>
+          <tr><td class="border px-4 py-2">&gt;</td><td class="border px-4 py-2">Greater than</td></tr>
+          <tr><td class="border px-4 py-2">&lt;</td><td class="border px-4 py-2">Less than</td></tr>
+          <tr><td class="border px-4 py-2">&gt;=</td><td class="border px-4 py-2">Greater than or equal to</td></tr>
+          <tr><td class="border px-4 py-2">&lt;=</td><td class="border px-4 py-2">Less than or equal to</td></tr>
+          <tr><td class="border px-4 py-2">?</td><td class="border px-4 py-2">Ternary operator</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="text-2xl font-semibold mb-3">String Operators</h3>
+      <p>The <code>+</code> operator concatenates (adds) strings:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-6 overflow-x-auto"><code>let text1 = "John";
+let text2 = "Doe";
+let text3 = text1 + " " + text2;  // "John Doe"
+
+let text = "What a ";
+text += "nice day";                // "What a nice day"</code></pre>
+      <p>Adding a string and a number results in a string:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-6 overflow-x-auto"><code>let x = 5 + "5";    // "55"
+let y = "Hello" + 5;  // "Hello5"</code></pre>
+
+      <h3 class="text-2xl font-semibold mb-3">Logical Operators</h3>
+      <ul class="list-disc list-inside mb-6">
+        <li><code>&&</code> Logical AND</li>
+        <li><code>||</code> Logical OR</li>
+        <li><code>!</code> Logical NOT</li>
+      </ul>
+
+      <h3 class="text-2xl font-semibold mb-3">Type Operators</h3>
+      <ul class="list-disc list-inside mb-6">
+        <li><code>typeof</code>: returns the type of a variable</li>
+        <li><code>instanceof</code>: checks if an object is instance of a certain type</li>
+      </ul>
+
+      <h3 class="text-2xl font-semibold mb-3">Bitwise Operators</h3>
+      <p>Bitwise operators work on 32-bit numbers:</p>
+      <table class="table-auto mb-6 w-full text-left border border-gray-300">
+        <thead class="bg-indigo-100">
+          <tr>
+            <th class="border px-4 py-2">Operator</th>
+            <th class="border px-4 py-2">Description</th>
+            <th class="border px-4 py-2">Example</th>
+            <th class="border px-4 py-2">Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="border px-4 py-2">&amp;</td><td class="border px-4 py-2">AND</td><td class="border px-4 py-2">5 &amp; 1</td><td class="border px-4 py-2">1</td></tr>
+          <tr><td class="border px-4 py-2">|</td><td class="border px-4 py-2">OR</td><td class="border px-4 py-2">5 | 1</td><td class="border px-4 py-2">5</td></tr>
+          <tr><td class="border px-4 py-2">~</td><td class="border px-4 py-2">NOT</td><td class="border px-4 py-2">~5</td><td class="border px-4 py-2">-6</td></tr>
+          <tr><td class="border px-4 py-2">^</td><td class="border px-4 py-2">XOR</td><td class="border px-4 py-2">5 ^ 1</td><td class="border px-4 py-2">4</td></tr>
+          <tr><td class="border px-4 py-2">&lt;&lt;</td><td class="border px-4 py-2">Left shift</td><td class="border px-4 py-2">5 &lt;&lt; 1</td><td class="border px-4 py-2">10</td></tr>
+          <tr><td class="border px-4 py-2">&gt;&gt;</td><td class="border px-4 py-2">Right shift</td><td class="border px-4 py-2">5 &gt;&gt; 1</td><td class="border px-4 py-2">2</td></tr>
+          <tr><td class="border px-4 py-2">&gt;&gt;&gt;</td><td class="border px-4 py-2">Unsigned right shift</td><td class="border px-4 py-2">5 &gt;&gt;&gt; 1</td><td class="border px-4 py-2">2</td></tr>
+        </tbody>
+      </table>
+
+    </section>
+  `
+}
+,
+  // ... continue for the remaining topics
+  
+
+
+
+  "js-arithmetic": {
+  title: "JS Arithmetic",
+  content: `
+    <section class="prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold mb-4 text-indigo-700">JavaScript Arithmetic</h2>
+      
+      <p>Arithmetic operators perform calculations on numbers (literals or variables).</p>
+
+      <table class="table-auto w-full text-left border border-gray-300 mb-6">
+        <thead class="bg-indigo-100">
+          <tr>
+            <th class="border px-4 py-2">Operator</th>
+            <th class="border px-4 py-2">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="border px-4 py-2">+</td><td class="border px-4 py-2">Addition</td></tr>
+          <tr><td class="border px-4 py-2">-</td><td class="border px-4 py-2">Subtraction</td></tr>
+          <tr><td class="border px-4 py-2">*</td><td class="border px-4 py-2">Multiplication</td></tr>
+          <tr><td class="border px-4 py-2">**</td><td class="border px-4 py-2">Exponentiation (power)</td></tr>
+          <tr><td class="border px-4 py-2">/</td><td class="border px-4 py-2">Division</td></tr>
+          <tr><td class="border px-4 py-2">%</td><td class="border px-4 py-2">Modulus (Remainder)</td></tr>
+          <tr><td class="border px-4 py-2">++</td><td class="border px-4 py-2">Increment</td></tr>
+          <tr><td class="border px-4 py-2">--</td><td class="border px-4 py-2">Decrement</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="text-2xl font-semibold mb-3">Examples</h3>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-6 overflow-x-auto"><code>// Adding two numbers
+let x = 100 + 50;
+
+// Using variables
+let a = 5, b = 2;
+let z = a + b;
+
+// Using expressions
+let result = (100 + 50) * a;
+
+// Incrementing
+a++;
+// Decrementing
+b--;
+
+// Exponentiation
+let power = a ** 2; // Same as Math.pow(a, 2)
+</code></pre>
+
+      <h3 class="text-2xl font-semibold mb-3">Operator Precedence</h3>
+      <p>Multiplication and division have higher precedence than addition and subtraction.</p>
+      <p>Operations inside parentheses are computed first.</p>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-6 overflow-x-auto"><code>let x = 100 + 50 * 3;    // Multiplication first: 50 * 3 = 150, then add 100 = 250
+let y = (100 + 50) * 3;  // Parentheses first: 100 + 50 = 150, then multiply by 3 = 450
+</code></pre>
+
+      <p>When operators have the same precedence (e.g., addition and subtraction), they are evaluated from left to right.</p>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-6 overflow-x-auto"><code>let x = 100 + 50 - 3;   // Evaluated as (100 + 50) - 3 = 147
+let y = 100 / 50 * 3;    // Evaluated as (100 / 50) * 3 = 6
+</code></pre>
+    </section>
+  `
+}
+,
+  "js-assignment": {
+  title: "JS Assignment",
+  content: `
+    <section class="prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold mb-4 text-indigo-700">JavaScript Assignment</h2>
+      <p>Assignment operators assign values to variables, such as <code>=</code>, <code>+=</code>, <code>-=</code>, and others.</p>
+      
+      <h3 class="text-2xl font-semibold mt-6 mb-3">Basic Assignment Operators</h3>
+      <table class="table-auto w-full border border-gray-300 mb-6">
+        <thead class="bg-indigo-100">
+          <tr>
+            <th class="border px-4 py-2">Operator</th>
+            <th class="border px-4 py-2">Example</th>
+            <th class="border px-4 py-2">Equivalent To</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="border px-4 py-2">=</td><td class="border px-4 py-2">x = y</td><td class="border px-4 py-2">x = y</td></tr>
+          <tr><td class="border px-4 py-2">+=</td><td class="border px-4 py-2">x += y</td><td class="border px-4 py-2">x = x + y</td></tr>
+          <tr><td class="border px-4 py-2">-=</td><td class="border px-4 py-2">x -= y</td><td class="border px-4 py-2">x = x - y</td></tr>
+          <tr><td class="border px-4 py-2">*=</td><td class="border px-4 py-2">x *= y</td><td class="border px-4 py-2">x = x * y</td></tr>
+          <tr><td class="border px-4 py-2">/=</td><td class="border px-4 py-2">x /= y</td><td class="border px-4 py-2">x = x / y</td></tr>
+          <tr><td class="border px-4 py-2">%=</td><td class="border px-4 py-2">x %= y</td><td class="border px-4 py-2">x = x % y</td></tr>
+          <tr><td class="border px-4 py-2">**=</td><td class="border px-4 py-2">x **= y</td><td class="border px-4 py-2">x = x ** y</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="text-2xl font-semibold mb-3">Shift Assignment Operators</h3>
+      <table class="table-auto w-full border border-gray-300 mb-6">
+        <thead class="bg-indigo-100">
+          <tr>
+            <th class="border px-4 py-2">Operator</th>
+            <th class="border px-4 py-2">Example</th>
+            <th class="border px-4 py-2">Equivalent To</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="border px-4 py-2"><<=</td><td class="border px-4 py-2">x <<= y</td><td class="border px-4 py-2">x = x << y</td></tr>
+          <tr><td class="border px-4 py-2">>>=</td><td class="border px-4 py-2">x >>= y</td><td class="border px-4 py-2">x = x >> y</td></tr>
+          <tr><td class="border px-4 py-2">>>>=</td><td class="border px-4 py-2">x >>>= y</td><td class="border px-4 py-2">x = x >>> y</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="text-2xl font-semibold mb-3">Bitwise Assignment Operators</h3>
+      <table class="table-auto w-full border border-gray-300 mb-6">
+        <thead class="bg-indigo-100">
+          <tr>
+            <th class="border px-4 py-2">Operator</th>
+            <th class="border px-4 py-2">Example</th>
+            <th class="border px-4 py-2">Equivalent To</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="border px-4 py-2">&=</td><td class="border px-4 py-2">x &= y</td><td class="border px-4 py-2">x = x & y</td></tr>
+          <tr><td class="border px-4 py-2">|=</td><td class="border px-4 py-2">x |= y</td><td class="border px-4 py-2">x = x | y</td></tr>
+          <tr><td class="border px-4 py-2">^=</td><td class="border px-4 py-2">x ^= y</td><td class="border px-4 py-2">x = x ^ y</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="text-2xl font-semibold mb-3">Logical Assignment Operators (ES2020)</h3>
+      <table class="table-auto w-full border border-gray-300 mb-6">
+        <thead class="bg-indigo-100">
+          <tr>
+            <th class="border px-4 py-2">Operator</th>
+            <th class="border px-4 py-2">Example</th>
+            <th class="border px-4 py-2">Equivalent To</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="border px-4 py-2">&&=</td><td class="border px-4 py-2">x &&= y</td><td class="border px-4 py-2">x = x && (x = y)</td></tr>
+          <tr><td class="border px-4 py-2">||=</td><td class="border px-4 py-2">x ||= y</td><td class="border px-4 py-2">x = x || (x = y)</td></tr>
+          <tr><td class="border px-4 py-2">??=</td><td class="border px-4 py-2">x ??= y</td><td class="border px-4 py-2">x = x ?? (x = y)</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="text-2xl font-semibold mb-3">Examples</h3>
+      <pre class="bg-gray-900 text-white p-4 rounded overflow-x-auto"><code>// Simple assignment
+let x = 10;
+let y = 5;
+
+// Addition assignment
+x += y;  // x = x + y
+
+// Subtraction assignment
+x -= 3;  // x = x - 3
+
+// Multiplication assignment
+x *= 2;  // x = x * 2
+
+// Exponentiation assignment
+x **= 3; // x = x ** 3
+
+// Logical AND assignment (ES2020)
+x &&= y;
+
+// Nullish coalescing assignment (ES2020)
+let z;
+z ??= 100;
+</code></pre>
+    </section>
+  `
+}
+,
+ "js-data-types": {
+  title: "JS Data Types",
+  content: `
+    <section class="prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold mb-4 text-indigo-700">JavaScript Data Types</h2>
+      <p>JavaScript has several data types including strings, numbers, booleans, objects, and undefined.</p>
+      
+      <h3 class="text-2xl font-semibold mt-6 mb-3">Primitive Data Types</h3>
+      <ul class="list-disc pl-6 mb-6">
+        <li><strong>String:</strong> Text values, enclosed in quotes.</li>
+        <li><strong>Number:</strong> All numbers, integers or floating-point.</li>
+        <li><strong>BigInt:</strong> For very large integers (ES2020 feature).</li>
+        <li><strong>Boolean:</strong> true or false values.</li>
+        <li><strong>Undefined:</strong> A variable declared but not assigned a value.</li>
+        <li><strong>Null:</strong> Represents an intentional absence of value.</li>
+        <li><strong>Symbol:</strong> Unique identifiers for object properties (ES6 feature).</li>
+      </ul>
+
+      <h3 class="text-2xl font-semibold mb-3">Object Data Type</h3>
+      <p>Objects can contain collections of data and more complex entities like arrays, functions, and built-in objects.</p>
+      <ul class="list-disc pl-6 mb-6">
+        <li><strong>Objects:</strong> Key-value pairs enclosed in curly braces.</li>
+        <li><strong>Arrays:</strong> Ordered lists enclosed in square brackets.</li>
+        <li><strong>Dates, Maps, Sets:</strong> Built-in object types for specialized data.</li>
+      </ul>
+
+      <h3 class="text-2xl font-semibold mb-3">Examples</h3>
+      <pre class="bg-gray-900 text-white p-4 rounded overflow-x-auto"><code>// Numbers
+let length = 16;
+let weight = 7.5;
+
+// Strings
+let color = "Yellow";
+let lastName = "Johnson";
+
+// Booleans
+let x = true;
+let y = false;
+
+// Object
+const person = {firstName:"John", lastName:"Doe"};
+
+// Array
+const cars = ["Saab", "Volvo", "BMW"];
+
+// Date object
+const date = new Date("2022-03-25");
+
+// BigInt (ES2020)
+let bigNum = BigInt("123456789012345678901234567890");
+
+// Undefined
+let car;
+console.log(car); // undefined
+
+// Null
+let empty = null;
+</code></pre>
+
+      <h3 class="text-2xl font-semibold mb-3">Type Conversion and Concatenation</h3>
+      <p>Adding numbers and strings behaves differently depending on order:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded overflow-x-auto"><code>let x = 16 + "Volvo";    // "16Volvo"
+let y = "Volvo" + 16;    // "Volvo16"
+let z = 16 + 4 + "Volvo"; // "20Volvo"
+let w = "Volvo" + 16 + 4; // "Volvo164"
+</code></pre>
+
+      <h3 class="text-2xl font-semibold mb-3">The <code>typeof</code> Operator</h3>
+      <p>Use <code>typeof</code> to check the data type of a variable or expression:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded overflow-x-auto"><code>typeof "John"     // "string"
+typeof 3.14       // "number"
+typeof true       // "boolean"
+typeof undefined  // "undefined"
+typeof null       // "object" (this is a JavaScript quirk)
+typeof {}         // "object"
+typeof Symbol()   // "symbol"
+</code></pre>
+    </section>
+  `
+}
+,
+  "js-functions": {
+  title: "JS Functions",
+  content: `
+    <section class="prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold mb-4 text-indigo-700">JavaScript Functions</h2>
+      <p>Functions are reusable blocks of code designed to perform a specific task and can be invoked (called) when needed.</p>
+      
+      <h3 class="text-2xl font-semibold mt-6 mb-3">Function Syntax</h3>
+      <pre class="bg-gray-900 text-white p-4 rounded overflow-x-auto"><code>function functionName(parameter1, parameter2) {
+  // code to be executed
+  return result;
+}
+</code></pre>
+      <p>Function names follow the same rules as variables and parameters are optional.</p>
+      
+      <h3 class="text-2xl font-semibold mb-3">Example</h3>
+      <pre class="bg-gray-900 text-white p-4 rounded overflow-x-auto"><code>// Function to compute product of two numbers
+function myFunction(p1, p2) {
+  return p1 * p2;
+}
+
+// Calling the function and storing the result
+let x = myFunction(4, 3);  // x will be 12
+</code></pre>
+
+      <h3 class="text-2xl font-semibold mb-3">Invocation</h3>
+      <p>The function executes when called using parentheses <code>()</code>:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded overflow-x-auto"><code>let result = myFunction(5, 6);</code></pre>
+
+      <p>Note: Using the function name without parentheses refers to the function itself, not the result:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded overflow-x-auto"><code>let funcRef = myFunction;  // funcRef is the function object</code></pre>
+
+      <h3 class="text-2xl font-semibold mb-3">Local Variables</h3>
+      <p>Variables declared inside a function are local to that function and cannot be accessed outside it:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded overflow-x-auto"><code>function example() {
+  let localVar = "I'm local";
+  console.log(localVar);  // Works here
+}
+
+console.log(localVar); // Error: localVar is not defined
+</code></pre>
+
+      <h3 class="text-2xl font-semibold mb-3">Why Use Functions?</h3>
+      <ul class="list-disc pl-6">
+        <li>Reuse code multiple times without rewriting.</li>
+        <li>Use different arguments to produce different results.</li>
+        <li>Organize code into logical blocks.</li>
+      </ul>
+    </section>
+  `
+}
+,
+ "js-objects": {
+  title: "JS Objects",
+  content: `
+    <section class="prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold mb-4 text-indigo-700">JavaScript Objects</h2>
+      <p>Objects are collections of properties and methods that represent real-world entities.</p>
+
+      <h3 class="text-2xl font-semibold mt-6 mb-3">Real Life Objects</h3>
+      <p>Examples include cars, houses, people, and animals. Each object has <strong>properties</strong> (characteristics) and <strong>methods</strong> (actions it can perform).</p>
+      <table class="table-auto mb-6 border-collapse border border-gray-300">
+        <thead>
+          <tr>
+            <th class="border border-gray-300 px-4 py-2">Car Object</th>
+            <th class="border border-gray-300 px-4 py-2">Properties</th>
+            <th class="border border-gray-300 px-4 py-2">Methods</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2">car</td>
+            <td class="border border-gray-300 px-4 py-2">name = "Fiat", model = "500", weight = "850kg", color = "white"</td>
+            <td class="border border-gray-300 px-4 py-2">start(), drive(), brake(), stop()</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="text-2xl font-semibold mb-3">Defining JavaScript Objects</h3>
+      <p>Objects are variables that can hold multiple values as <code>name:value</code> pairs (properties).</p>
+      <pre class="bg-gray-900 text-white p-4 rounded overflow-x-auto mb-6"><code>const car = {type:"Fiat", model:"500", color:"white"};</code></pre>
+
+      <h3 class="text-2xl font-semibold mb-3">Creating Objects</h3>
+      <p>Objects can be created using object literals, the <code>new Object()</code> syntax, or object constructors. The object literal is recommended for simplicity and performance.</p>
+      <pre class="bg-gray-900 text-white p-4 rounded overflow-x-auto mb-6"><code>// Object literal
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 50,
+  eyeColor: "blue"
+};
+
+// Using new Object()
+const person = new Object();
+person.firstName = "John";
+person.lastName = "Doe";
+person.age = 50;
+person.eyeColor = "blue";
+</code></pre>
+
+      <h3 class="text-2xl font-semibold mb-3">Accessing Object Properties</h3>
+      <p>Properties can be accessed using dot notation or bracket notation:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded overflow-x-auto mb-6"><code>person.firstName;
+person["lastName"];</code></pre>
+
+      <h3 class="text-2xl font-semibold mb-3">Object Methods</h3>
+      <p>Methods are functions stored as object properties:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded overflow-x-auto mb-6"><code>const person = {
+  firstName: "John",
+  lastName: "Doe",
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+
+person.fullName();  // Returns "John Doe"</code></pre>
+
+      <p>Here, <code>this</code> refers to the current object.</p>
+
+      <h3 class="text-2xl font-semibold mb-3">Primitives vs Objects</h3>
+      <p>Primitive values are immutable (cannot be changed), such as strings, numbers, and booleans.</p>
+      <p>Objects are mutable and are referenced by memory address, meaning changes to one reference affect all references to the same object:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded overflow-x-auto"><code>const person = { age: 50 };
+const x = person;
+x.age = 10;  // Changes 'age' in both x and person
+</code></pre>
+    </section>
+  `
+}
+,
+  "js-object-properties": {
+  title: "JS Object Properties",
+  content: `
+    <section class="prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold mb-4 text-indigo-700">JavaScript Object Properties</h2>
+      <p>Properties are values associated with an object and can be accessed, modified, added, or deleted.</p>
+
+      <h3 class="text-2xl font-semibold mt-6 mb-3">Accessing Properties</h3>
+      <p>You can access object properties in three ways:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-6 overflow-x-auto"><code>// Dot notation
+let age = person.age;
+
+// Bracket notation with string
+let age = person["age"];
+
+// Bracket notation with expression
+let x = "age";
+let age = person[x];
+</code></pre>
+
+      <h3 class="text-2xl font-semibold mb-3">Examples</h3>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-6 overflow-x-auto"><code>person.firstName + " is " + person.age + " years old.";
+person["firstName"] + " is " + person["age"] + " years old.";
+
+let x = "firstName";
+let y = "age";
+person[x] + " is " + person[y] + " years old.";
+</code></pre>
+
+      <h3 class="text-2xl font-semibold mb-3">Adding New Properties</h3>
+      <p>Simply assign a value to a new property name:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-6 overflow-x-auto"><code>person.nationality = "English";
+</code></pre>
+
+      <h3 class="text-2xl font-semibold mb-3">Deleting Properties</h3>
+      <p>Use the <code>delete</code> keyword to remove a property and its value:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-6 overflow-x-auto"><code>delete person.age;
+delete person["age"];
+</code></pre>
+
+      <p>Once deleted, the property no longer exists on the object unless added back.</p>
+
+      <h3 class="text-2xl font-semibold mb-3">Nested Objects</h3>
+      <p>Properties can also be objects themselves, enabling nested structures:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-6 overflow-x-auto"><code>const myObj = {
+  name: "John",
+  age: 30,
+  myCars: {
+    car1: "Ford",
+    car2: "BMW",
+    car3: "Fiat"
+  }
+};
+
+// Access nested properties:
+myObj.myCars.car2;
+myObj.myCars["car2"];
+myObj["myCars"]["car2"];
+
+// Using variables
+let p1 = "myCars";
+let p2 = "car2";
+myObj[p1][p2];
+</code></pre>
+
+      <p>For a full list of properties and methods, see the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" rel="noopener noreferrer" class="text-indigo-600 underline">complete JavaScript Object Reference</a>.</p>
+    </section>
+  `
+}
+,
+  "js-object-methods": {
+  title: "JS Object Methods",
+  content: `
+    <section class="prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold mb-4 text-indigo-700">JavaScript Object Methods</h2>
+      <p>Object methods are functions stored as properties that define behaviors for the object.</p>
+
+      <h3 class="text-2xl font-semibold mt-6 mb-3">Example of an Object Method</h3>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-6 overflow-x-auto"><code>const person = {
+  firstName: "John",
+  lastName: "Doe",
+  id: 5566,
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+};</code></pre>
+
+      <p>Here, <code>this</code> refers to the <code>person</code> object, so <code>this.firstName</code> accesses the <code>firstName</code> property of <code>person</code>.</p>
+
+      <h3 class="text-2xl font-semibold mb-3">Accessing Methods</h3>
+      <p>Invoke methods using parentheses <code>()</code> to execute them:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-6 overflow-x-auto"><code>let name = person.fullName();</code></pre>
+      <p>Accessing without parentheses returns the function itself (not executed):</p>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-6 overflow-x-auto"><code>let nameFunction = person.fullName;</code></pre>
+
+      <h3 class="text-2xl font-semibold mb-3">Adding a Method to an Object</h3>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-6 overflow-x-auto"><code>person.name = function () {
+  return this.firstName + " " + this.lastName;
+};</code></pre>
+
+      <h3 class="text-2xl font-semibold mb-3">Using Built-in String Methods in Object Methods</h3>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-6 overflow-x-auto"><code>person.name = function () {
+  return (this.firstName + " " + this.lastName).toUpperCase();
+};</code></pre>
+
+      <p>For more details, see the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" rel="noopener noreferrer" class="text-indigo-600 underline">complete JavaScript Object Reference</a>.</p>
+    </section>
+  `
+}
+,
+  "js-object-display": { 
+  title: "JS Object Display",
+  content: `
+    <section class="prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold mb-4 text-indigo-700">JavaScript Object Display</h2>
+      <p>By default, displaying an object will return <code>[object Object]</code>. To properly display its content, you need to access its properties in specific ways.</p>
+
+      <h3 class="text-2xl font-semibold mt-6 mb-3">Example Object</h3>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-6 overflow-x-auto"><code>const person = {
+  name: "John",
+  age: 30,
+  city: "New York"
+};</code></pre>
+
+      <h3 class="text-xl font-semibold mb-2">1. Displaying Properties Directly</h3>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-6 overflow-x-auto"><code>document.getElementById("demo").innerHTML = 
+  person.name + ", " + person.age + ", " + person.city;</code></pre>
+
+      <h3 class="text-xl font-semibold mb-2">2. Looping through Properties</h3>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-6 overflow-x-auto"><code>let text = "";
+for (let x in person) {
+  text += person[x] + " ";
+}
+document.getElementById("demo").innerHTML = text;</code></pre>
+
+      <h3 class="text-xl font-semibold mb-2">3. Using Object.values()</h3>
+      <p>Converts object property values into an array:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-6 overflow-x-auto"><code>const myArray = Object.values(person);
+document.getElementById("demo").innerHTML = myArray;</code></pre>
+
+      <h3 class="text-xl font-semibold mb-2">4. Using Object.entries()</h3>
+      <p>Useful for looping through key-value pairs:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-6 overflow-x-auto"><code>const fruits = {Bananas: 300, Oranges: 200, Apples: 500};
+let text = "";
+for (let [fruit, value] of Object.entries(fruits)) {
+  text += fruit + ": " + value + "&lt;br&gt;";
+}</code></pre>
+
+      <h3 class="text-xl font-semibold mb-2">5. Using JSON.stringify()</h3>
+      <p>Convert the object to a readable JSON string:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-6 overflow-x-auto"><code>let myString = JSON.stringify(person);
+document.getElementById("demo").innerHTML = myString;
+// Output: {"name":"John","age":30,"city":"New York"}</code></pre>
+
+      <p>✅ <strong>Tip:</strong> Use <code>JSON.stringify()</code> to easily inspect objects for debugging or displaying in the browser.</p>
+
+      <p class="mt-6">For a complete reference, check out the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" class="text-indigo-600 underline">MDN Object Documentation</a>.</p>
+    </section>
+  `
+}
+,
+ "js-object-constructors": { 
+  title: "JS Object Constructors",
+  content: `
+    <section class="prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold mb-4 text-indigo-700">JavaScript Object Constructors</h2>
+      <p>A constructor function is used to create multiple similar objects efficiently. Constructors are written using a capitalized name (by convention) and called with the <code>new</code> keyword.</p>
+
+      <h3 class="text-2xl font-semibold mt-6 mb-2">Creating a Constructor</h3>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-4 overflow-x-auto"><code>function Person(first, last, age, eye) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eye;
+}</code></pre>
+
+      <p>Creating new instances using the constructor:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-4 overflow-x-auto"><code>const myFather = new Person("John", "Doe", 50, "blue");
+const myMother = new Person("Sally", "Rally", 48, "green");</code></pre>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Adding Default Properties</h3>
+      <p>You can add default properties directly inside the constructor:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-4 overflow-x-auto"><code>function Person(first, last, age, eyecolor) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eyecolor;
+  this.nationality = "English";
+}</code></pre>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Extending Individual Objects</h3>
+      <p>To add properties or methods to a single object after creation:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-4 overflow-x-auto"><code>myFather.nationality = "English";
+
+myMother.changeName = function(name) {
+  this.lastName = name;
+};
+myMother.changeName("Doe");</code></pre>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Using Prototypes</h3>
+      <p>To add properties or methods to all instances, use the prototype:</p>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-4 overflow-x-auto"><code>Person.prototype.changeName = function(name) {
+  this.lastName = name;
+};
+myFather.changeName("Smith");</code></pre>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Constructor Function with Method</h3>
+      <pre class="bg-gray-900 text-white p-4 rounded mb-4 overflow-x-auto"><code>function Person(first, last, age, eyeColor) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eyeColor;
+  this.fullName = function() {
+    return this.firstName + " " + this.lastName;
+  };
+}</code></pre>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2">Built-in JavaScript Constructors</h3>
+      <ul class="list-disc pl-6">
+        <li><code>new Object()</code> — Object</li>
+        <li><code>new Array()</code> — Array</li>
+        <li><code>new Date()</code> — Date</li>
+        <li><code>new Function()</code> — Function</li>
+        <li><code>new RegExp()</code> — RegExp</li>
+        <li><code>new Map()</code> — Map</li>
+        <li><code>new Set()</code> — Set</li>
+      </ul>
+      <p>⚠️ Avoid using <code>new Object()</code>, <code>new Array()</code>, etc. when possible. Use object literals (<code>{}</code>) and array literals (<code>[]</code>) instead.</p>
+
+      <p class="mt-6">For more advanced features, see the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/constructor" target="_blank" class="text-indigo-600 underline">MDN Constructor Documentation</a>.</p>
+    </section>
+  `
+}
+,
+  "js-events": {
+    title: "JS Events",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JavaScript Events</h2>
+      <p>Events represent user actions like clicks or key presses that JavaScript can respond to.</p>
+    `
+  },
+  "js-strings": {
+    title: "JS Strings",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JavaScript Strings</h2>
+      <p>Strings are sequences of characters used to represent text.</p>
+    `
+  },
+  "js-string-methods": {
+    title: "JS String Methods",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS String Methods</h2>
+      <p>JavaScript provides built-in methods to manipulate strings like <code>slice()</code>, <code>replace()</code>, and <code>toUpperCase()</code>.</p>
+    `
+  },
+  "js-string-search": {
+    title: "JS String Search",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS String Search</h2>
+      <p>Use methods like <code>indexOf()</code> and <code>search()</code> to find substrings.</p>
+    `
+  },
+  "js-string-templates": {
+    title: "JS String Templates",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS String Templates</h2>
+      <p>Template literals use backticks <code>\` \`</code> and allow embedded expressions with <code>\${}</code>.</p>
+    `
+  },
+  "js-numbers": {
+    title: "JS Numbers",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JavaScript Numbers</h2>
+      <p>Numbers include integers and floating-point values used in calculations.</p>
+    `
+  },
+  "js-bigint": {
+    title: "JS BigInt",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JavaScript BigInt</h2>
+      <p>BigInt allows representation of integers larger than the safe integer limit for Numbers.</p>
+    `
+  },
+  "js-number-methods": {
+    title: "JS Number Methods",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Number Methods</h2>
+      <p>Methods like <code>toFixed()</code> and <code>toPrecision()</code> format numbers.</p>
+    `
+  },
+  "js-number-properties": {
+    title: "JS Number Properties",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Number Properties</h2>
+      <p>Properties such as <code>MAX_VALUE</code> and <code>MIN_VALUE</code> represent limits of number values.</p>
+    `
+  },
+  "js-arrays": {
+    title: "JS Arrays",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JavaScript Arrays</h2>
+      <p>Arrays are ordered collections of values accessed by index.</p>
+    `
+  },
+  "js-array-methods": {
+    title: "JS Array Methods",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Array Methods</h2>
+      <p>Common array methods include <code>push()</code>, <code>pop()</code>, <code>map()</code>, and <code>filter()</code>.</p>
+    `
+  },
+  "js-array-search": {
+    title: "JS Array Search",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Array Search</h2>
+      <p>Methods like <code>indexOf()</code> and <code>find()</code> help locate elements.</p>
+    `
+  },
+  "js-array-sort": {
+    title: "JS Array Sort",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Array Sort</h2>
+      <p>Use <code>sort()</code> to order array elements alphabetically or numerically.</p>
+    `
+  },
+  "js-array-iteration": {
+    title: "JS Array Iteration",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Array Iteration</h2>
+      <p>Loops like <code>for</code> and <code>forEach()</code> iterate over array elements.</p>
+    `
+  },
+  "js-array-const": {
+    title: "JS Array Const",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Array Const</h2>
+      <p>Arrays declared with <code>const</code> cannot be reassigned, but their contents can be modified.</p>
+    `
+  },
+  "js-dates": {
+    title: "JS Dates",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JavaScript Dates</h2>
+      <p>The <code>Date</code> object represents dates and times, and provides methods to manipulate them.</p>
+    `
+  },
+  "js-date-formats": {
+    title: "JS Date Formats",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Date Formats</h2>
+      <p>Format dates using methods like <code>toLocaleDateString()</code> and <code>toISOString()</code>.</p>
+    `
+  },
+  "js-date-get-methods": {
+    title: "JS Date Get Methods",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Date Get Methods</h2>
+      <p>Use getters like <code>getFullYear()</code>, <code>getMonth()</code>, and <code>getDate()</code> to extract parts of a date.</p>
+    `
+  },
+  "js-date-set-methods": {
+    title: "JS Date Set Methods",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Date Set Methods</h2>
+      <p>Set date components with <code>setFullYear()</code>, <code>setMonth()</code>, and <code>setDate()</code>.</p>
+    `
+  },
+  "js-math": {
+    title: "JS Math",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JavaScript Math</h2>
+      <p>The <code>Math</code> object provides properties and methods for mathematical constants and functions.</p>
+    `
+  },
+  "js-random": {
+    title: "JS Random",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Random</h2>
+      <p>Generate random numbers with <code>Math.random()</code>, often combined with rounding functions.</p>
+    `
+  },
+  "js-booleans": {
+    title: "JS Booleans",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JavaScript Booleans</h2>
+      <p>Booleans represent logical entities and can be <code>true</code> or <code>false</code>.</p>
+    `
+  },
+  "js-comparisons": {
+    title: "JS Comparisons",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Comparisons</h2>
+      <p>Comparison operators like <code>==</code>, <code>===</code>, <code>&gt;</code>, and <code>&lt;</code> compare values.</p>
+    `
+  },
+  "js-if-else": {
+    title: "JS If Else",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS If Else</h2>
+      <p>Control program flow using <code>if</code>, <code>else if</code>, and <code>else</code> statements.</p>
+    `
+  },
+  "js-switch": {
+    title: "JS Switch",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Switch</h2>
+      <p>Use <code>switch</code> statements to select one of many code blocks to execute.</p>
+    `
+  },
+  "js-loop-for": {
+    title: "JS Loop For",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Loop For</h2>
+      <p>The <code>for</code> loop repeats code a specific number of times.</p>
+    `
+  },
+  "js-loop-for-in": {
+    title: "JS Loop For In",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Loop For In</h2>
+      <p><code>for...in</code> loops iterate over the enumerable properties of an object.</p>
+    `
+  },
+  "js-loop-for-of": {
+    title: "JS Loop For Of",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Loop For Of</h2>
+      <p><code>for...of</code> loops iterate over iterable objects like arrays or strings.</p>
+    `
+  },
+  "js-loop-while": {
+    title: "JS Loop While",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Loop While</h2>
+      <p><code>while</code> loops repeat code while a condition is true.</p>
+    `
+  },
+  "js-break": {
+    title: "JS Break",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Break</h2>
+      <p>The <code>break</code> statement exits a loop or <code>switch</code> block prematurely.</p>
+    `
+  },
+  "js-sets": {
+    title: "JS Sets",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JavaScript Sets</h2>
+      <p>Sets are collections of unique values.</p>
+    `
+  },
+  "js-set-methods": {
+    title: "JS Set Methods",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Set Methods</h2>
+      <p>Common Set methods include <code>add()</code>, <code>delete()</code>, and <code>has()</code>.</p>
+    `
+  },
+  "js-set-logic": {
+    title: "JS Set Logic",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Set Logic</h2>
+      <p>Perform set operations like union, intersection, and difference using JavaScript Sets.</p>
+    `
+  },
+  "js-maps": {
+    title: "JS Maps",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JavaScript Maps</h2>
+      <p>Maps store key-value pairs where keys can be any data type.</p>
+    `
+  },
+  "js-map-methods": {
+    title: "JS Map Methods",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Map Methods</h2>
+      <p>Common Map methods include <code>set()</code>, <code>get()</code>, and <code>has()</code>.</p>
+    `
+  }
+  ,
+  
+  // Previous topics...
+
+  "js-typed-arrays": {
+    title: "JS Typed Arrays",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Typed Arrays</h2>
+      <p>Typed Arrays provide a way to work with binary data efficiently in JavaScript.</p>
+    `
+  },
+  "js-typed-methods": {
+    title: "JS Typed Methods",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Typed Methods</h2>
+      <p>Typed Arrays support methods like <code>set()</code>, <code>subarray()</code>, and <code>buffer</code> access.</p>
+    `
+  },
+  "js-iterables": {
+    title: "JS Iterables",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Iterables</h2>
+      <p>An iterable is an object that implements the <code>Symbol.iterator</code> method, enabling iteration.</p>
+    `
+  },
+  "js-iterators": {
+    title: "JS Iterators",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Iterators</h2>
+      <p>Iterators are objects that provide a <code>next()</code> method to traverse through data.</p>
+    `
+  },
+  "js-typeof": {
+    title: "JS typeof",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS typeof</h2>
+      <p>The <code>typeof</code> operator returns a string indicating the type of a variable or expression.</p>
+    `
+  },
+  "js-tostring": {
+    title: "JS toString()",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS toString()</h2>
+      <p>The <code>toString()</code> method converts values to their string representation.</p>
+    `
+  },
+  "js-type-conversion": {
+    title: "JS Type Conversion",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Type Conversion</h2>
+      <p>JavaScript performs type coercion automatically; explicit conversion can be done with <code>Number()</code>, <code>String()</code>, etc.</p>
+    `
+  },
+  "js-destructuring": {
+    title: "JS Destructuring",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Destructuring</h2>
+      <p>Destructuring allows unpacking values from arrays or properties from objects into distinct variables.</p>
+    `
+  },
+  "js-bitwise": {
+    title: "JS Bitwise",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Bitwise</h2>
+      <p>Bitwise operators work on 32-bit integers to perform operations like AND, OR, XOR, NOT, shifts.</p>
+    `
+  },
+  "js-regexp": {
+    title: "JS RegExp",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS RegExp</h2>
+      <p>Regular expressions provide powerful pattern matching and text searching functionality.</p>
+    `
+  },
+  "js-precedence": {
+    title: "JS Precedence",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Precedence</h2>
+      <p>Operator precedence determines the order in which operations are performed in expressions.</p>
+    `
+  },
+  "js-errors": {
+    title: "JS Errors",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Errors</h2>
+      <p>Errors can be caught and handled using <code>try...catch</code> blocks and custom error objects.</p>
+    `
+  },
+  "js-scope": {
+    title: "JS Scope",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Scope</h2>
+      <p>Scope defines the visibility and lifetime of variables and functions in the code.</p>
+    `
+  },
+  "js-hoisting": {
+    title: "JS Hoisting",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Hoisting</h2>
+      <p>JavaScript hoists declarations to the top of their scope, affecting variable and function behavior.</p>
+    `
+  },
+  "js-strict-mode": {
+    title: "JS Strict Mode",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Strict Mode</h2>
+      <p>Strict mode enforces stricter parsing and error handling in your JavaScript code.</p>
+    `
+  },
+  "js-this-keyword": {
+    title: "JS this Keyword",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS this Keyword</h2>
+      <p><code>this</code> refers to the context object from which a function was called.</p>
+    `
+  },
+  "js-arrow-function": {
+    title: "JS Arrow Function",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Arrow Function</h2>
+      <p>Arrow functions provide a concise syntax and lexically bind <code>this</code>.</p>
+    `
+  },
+  "js-classes": {
+    title: "JS Classes",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Classes</h2>
+      <p>Classes are syntactic sugar over prototypes for creating objects and handling inheritance.</p>
+    `
+  },
+  "js-modules": {
+    title: "JS Modules",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Modules</h2>
+      <p>Modules allow encapsulation and reuse of code across files using <code>import</code> and <code>export</code>.</p>
+    `
+  },
+  "js-json": {
+    title: "JS JSON",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS JSON</h2>
+      <p>JSON (JavaScript Object Notation) is a lightweight data-interchange format easy to read and write.</p>
+    `
+  },
+  "js-debugging": {
+    title: "JS Debugging",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Debugging</h2>
+      <p>Use browser dev tools, <code>console.log()</code>, breakpoints, and debuggers to find and fix issues.</p>
+    `
+  },
+  "js-style-guide": {
+    title: "JS Style Guide",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Style Guide</h2>
+      <p>Follow consistent coding styles for readability and maintainability.</p>
+    `
+  },
+  "js-best-practices": {
+    title: "JS Best Practices",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Best Practices</h2>
+      <p>Write clean, efficient, and secure JavaScript by following best practices.</p>
+    `
+  },
+  "js-mistakes": {
+    title: "JS Mistakes",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Mistakes</h2>
+      <p>Common pitfalls include improper variable scoping, forgetting <code>break</code> in <code>switch</code>, and async mistakes.</p>
+    `
+  },
+  "js-performance": {
+    title: "JS Performance",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Performance</h2>
+      <p>Optimize JavaScript code to improve speed and reduce memory usage.</p>
+    `
+  },
+  "js-reserved-words": {
+    title: "JS Reserved Words",
+    content: `
+      <h2 class="text-2xl font-semibold mb-4">JS Reserved Words</h2>
+      <p>Certain words are reserved in JavaScript and cannot be used as variable or function names.</p>
+    `
+  }
+
+
+
+};
+
+    // Sidebar toggle (mobile)
+    document.getElementById('open-sidebar').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.add('open');
+    });
+
+    document.getElementById('close-sidebar').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.remove('open');
+    });
+
+    // Sidebar link click handler
+    document.querySelectorAll('#sidebar-links a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const topicId = link.getAttribute('href').substring(1);
+        loadTopicContent(topicId);
+
+        // Update active state
+        document.querySelectorAll('#sidebar-links a').forEach(a => a.classList.remove('active'));
+        link.classList.add('active');
+
+        // Close sidebar on mobile after clicking
+        document.getElementById('sidebar').classList.remove('open');
+      });
+    });
+
+    function loadTopicContent(topicId) {
+      const mainContent = document.getElementById('main-content');
+      const topic = topicContents[topicId];
+      if (topic) {
+        mainContent.innerHTML = `
+          <section class="bg-white p-6 rounded-lg shadow-md">
+            ${topic.content}
+            <button onclick="document.getElementById('main-content').innerHTML = document.getElementById('welcome').outerHTML" 
+                    class="mt-6 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+              Back to Welcome
+            </button>
+          </section>
+        `;
+      } else {
+        mainContent.innerHTML = `
+          <section class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold mb-4">Topic Not Found</h2>
+            <p>No content available for this topic.</p>
+            <button onclick="document.getElementById('main-content').innerHTML = document.getElementById('welcome').outerHTML" 
+                    class="mt-6 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+              Back to Welcome
+            </button>
+          </section>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>
