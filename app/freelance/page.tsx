@@ -1,3 +1,4 @@
+// app/freelance/page.tsx - FULLY UPDATED FOR NEXT.JS API
 "use client"
 
 import { useState, useEffect } from "react"
@@ -133,21 +134,21 @@ export default function FreelancePage() {
     }
   }, [])
 
-  // Fetch data based on active tab
+  // Fetch data based on active tab - UPDATED FOR NEXT.JS API
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true)
       try {
         if (activeTab === "projects") {
-          const response = await fetch("http://localhost:5000/api/projects")
+          const response = await fetch("/api/projects")
           if (!response.ok) throw new Error("Failed to fetch projects")
           const data = await response.json()
-          setProjects(data)
+          setProjects(data.projects || data)
         } else {
-          const response = await fetch("http://localhost:5000/api/users/freelancers")
+          const response = await fetch("/api/users/freelancers")
           if (!response.ok) throw new Error("Failed to fetch freelancers")
           const data = await response.json()
-          setFreelancers(data)
+          setFreelancers(data.freelancers || data)
         }
       } catch (err) {
         setError("Failed to load data. Please try again later.")
@@ -184,7 +185,6 @@ export default function FreelancePage() {
     }
   }
 
-
   const handleApplyNow = (projectId: number) => {
     if (!user.isLoggedIn) {
       setShowRoleSelectionModal(true)
@@ -201,7 +201,7 @@ export default function FreelancePage() {
     }
   }
 
-  // Enhanced Hire Now function
+  // Enhanced Hire Now function - UPDATED FOR NEXT.JS API
   const handleHireNow = async (freelancerId: number) => {
     if (!user.isLoggedIn) {
       setShowRoleSelectionModal(true)
@@ -210,18 +210,15 @@ export default function FreelancePage() {
     
     if (user.role === 'client') {
       try {
-        // In a real implementation, you would have a project ID context
-        // For now, we'll use a placeholder project ID
-        const projectId = 1; // This should come from context or selection
+        const projectId = 1;
         
-        const response = await fetch(`http://localhost:5000/api/projects/${projectId}/hire`, {
+        const response = await fetch(`/api/projects/${projectId}/hire`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
             freelancerId: freelancerId,
-            // Add authentication token in real implementation
           }),
         })
 
@@ -249,7 +246,6 @@ export default function FreelancePage() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: "" }))
     }
@@ -291,12 +287,13 @@ export default function FreelancePage() {
     return Object.keys(newErrors).length === 0
   }
 
+  // Handle Submit Project - UPDATED FOR NEXT.JS API
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
     if (validateForm()) {
       try {
-        const response = await fetch("http://localhost:5000/api/projects", {
+        const response = await fetch("/api/projects", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -321,11 +318,10 @@ export default function FreelancePage() {
             location: "Remote"
           })
           
-          // Refresh the projects list
-          const projectsResponse = await fetch("http://localhost:5000/api/projects")
+          const projectsResponse = await fetch("/api/projects")
           if (projectsResponse.ok) {
             const projectsData = await projectsResponse.json()
-            setProjects(projectsData)
+            setProjects(projectsData.projects || projectsData)
           }
         } else {
           showNotificationMessage(data.message || "Error posting project")
@@ -337,11 +333,12 @@ export default function FreelancePage() {
     }
   }
 
+  // Handle Submit Application - UPDATED FOR NEXT.JS API
   const handleSubmitApplication = async () => {
     if (!selectedProjectId) return
     
     try {
-      const response = await fetch(`http://localhost:5000/api/projects/${selectedProjectId}/apply`, {
+      const response = await fetch(`/api/projects/${selectedProjectId}/apply`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -359,11 +356,10 @@ export default function FreelancePage() {
         setShowApplyModal(false)
         setProposalData({ proposal: "", price: "" })
         
-        // Refresh projects to update proposal count
-        const projectsResponse = await fetch("http://localhost:5000/api/projects")
+        const projectsResponse = await fetch("/api/projects")
         if (projectsResponse.ok) {
           const data = await projectsResponse.json()
-          setProjects(data)
+          setProjects(data.projects || data)
         }
       } else {
         const data = await response.json()
@@ -379,9 +375,7 @@ export default function FreelancePage() {
     setRegistrationData(prev => ({ ...prev, role }))
     
     if (validateRegistrationForm()) {
-      // Simulate registration API call
       try {
-        // In a real app, you would call your registration API here
         const newUser = {
           id: Math.floor(Math.random() * 1000),
           name: registrationData.name,
@@ -446,7 +440,7 @@ export default function FreelancePage() {
     setErrors({})
   }
 
-  // Apply filters
+  // Apply filters - UPDATED FOR NEXT.JS API
   const applyFilters = async () => {
     setLoading(true)
     try {
@@ -454,14 +448,14 @@ export default function FreelancePage() {
       const params = new URLSearchParams()
       
       if (activeTab === "projects") {
-        url = "http://localhost:5000/api/filter/projects"
+        url = "/api/filter/projects"
         if (filterOptions.minBudget) params.append("minBudget", filterOptions.minBudget)
         if (filterOptions.maxBudget) params.append("maxBudget", filterOptions.maxBudget)
         if (filterOptions.skills) params.append("skills", filterOptions.skills)
         if (filterOptions.timePosted) params.append("timePosted", filterOptions.timePosted)
         if (filterOptions.sortBy) params.append("sortBy", filterOptions.sortBy)
       } else {
-        url = "http://localhost:5000/api/filter/freelancers"
+        url = "/api/filter/freelancers"
         if (filterOptions.minRate) params.append("minRate", filterOptions.minRate)
         if (filterOptions.maxRate) params.append("maxRate", filterOptions.maxRate)
         if (filterOptions.skills) params.append("skills", filterOptions.skills)
@@ -479,9 +473,9 @@ export default function FreelancePage() {
       const data = await response.json()
       
       if (activeTab === "projects") {
-        setProjects(data)
+        setProjects(data.projects || data)
       } else {
-        setFreelancers(data)
+        setFreelancers(data.freelancers || data)
       }
       
       setShowFilterSidebar(false)
@@ -493,7 +487,7 @@ export default function FreelancePage() {
     }
   }
 
-  // Reset filters
+  // Reset filters - UPDATED FOR NEXT.JS API
   const resetFilters = () => {
     setFilterOptions({
       minBudget: "",
@@ -507,20 +501,19 @@ export default function FreelancePage() {
       skillLevel: "",
     })
     
-    // Refetch original data
     const fetchData = async () => {
       setLoading(true)
       try {
         if (activeTab === "projects") {
-          const response = await fetch("http://localhost:5000/api/projects")
+          const response = await fetch("/api/projects")
           if (!response.ok) throw new Error("Failed to fetch projects")
           const data = await response.json()
-          setProjects(data)
+          setProjects(data.projects || data)
         } else {
-          const response = await fetch("http://localhost:5000/api/users/freelancers")
+          const response = await fetch("/api/users/freelancers")
           if (!response.ok) throw new Error("Failed to fetch freelancers")
           const data = await response.json()
-          setFreelancers(data)
+          setFreelancers(data.freelancers || data)
         }
       } catch (err) {
         setError("Failed to load data. Please try again later.")
@@ -1062,7 +1055,7 @@ export default function FreelancePage() {
                         <label className="block text-sm text-slate-600 mb-1">Max</label>
                         <input
                           type="number"
-                          value={filterOptions.maxRate}
+                          value={filterOptions.maxBudget}
                           onChange={(e) => setFilterOptions({...filterOptions, maxRate: e.target.value})}
                           className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                           placeholder="200"

@@ -1,28 +1,16 @@
+// app/auth/signup/page.tsx - UPDATED
 "use client"
 
 import type React from "react"
-import { signup } from "@/app/lib/api"
+import { signup, checkHealth } from "@/app/lib/api"
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { Eye, EyeOff, Mail, Lock, User, AlertCircle, Server, Database, WifiOff } from "lucide-react"
+import { Eye, EyeOff, Mail, Lock, User, AlertCircle, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-
-// Function to check if backend is reachable
-async function checkBackendConnection(): Promise<boolean> {
-  try {
-    const response = await fetch("http://localhost:5000/api/auth/health", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    })
-    return response.ok
-  } catch (error) {
-    return false
-  }
-}
 
 export default function SignUpPage() {
   const router = useRouter()
@@ -35,11 +23,12 @@ export default function SignUpPage() {
   })
   const [isLoading, setIsLoading] = useState(false)
   const [backendStatus, setBackendStatus] = useState<"checking" | "connected" | "disconnected">("checking")
+  const [error, setError] = useState("")
 
   // Check backend connection on component mount
   useEffect(() => {
     const checkConnection = async () => {
-      const isConnected = await checkBackendConnection()
+      const isConnected = await checkHealth()
       setBackendStatus(isConnected ? "connected" : "disconnected")
     }
     
@@ -48,9 +37,15 @@ export default function SignUpPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setError("")
 
     if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match")
+      setError("Passwords do not match")
+      return
+    }
+
+    if (formData.password.length < 6) {
+      setError("Password must be at least 6 characters long")
       return
     }
 
@@ -63,25 +58,16 @@ export default function SignUpPage() {
         password: formData.password,
       })
 
-      if (data.error) {
-        alert(data.error)
-      } else {
-        localStorage.setItem("token", data.token)
-        alert("Account created successfully ✅")
-        router.push("/auth/signin")
-      }
-    } catch (err) {
+      // Save token and user data
+      localStorage.setItem("token", data.token)
+      localStorage.setItem("user", JSON.stringify(data.user))
+      
+      alert("Account created successfully ✅")
+      router.push("/dashboard")
+
+    } catch (err: any) {
       console.error("Signup error", err)
-      
-      // Check backend connection again on error
-      const isConnected = await checkBackendConnection()
-      setBackendStatus(isConnected ? "connected" : "disconnected")
-      
-      if (!isConnected) {
-        alert("Cannot connect to the server. Please make sure the backend is running on port 5000.")
-      } else {
-        alert("Something went wrong. Please try again.")
-      }
+      setError(err.message || "Something went wrong. Please try again.")
     } finally {
       setIsLoading(false)
     }
@@ -92,11 +78,13 @@ export default function SignUpPage() {
       ...formData,
       [e.target.name]: e.target.value,
     })
+    // Clear error when user starts typing
+    if (error) setError("")
   }
 
   const retryConnection = async () => {
     setBackendStatus("checking")
-    const isConnected = await checkBackendConnection()
+    const isConnected = await checkHealth()
     setBackendStatus(isConnected ? "connected" : "disconnected")
   }
 
@@ -118,41 +106,42 @@ export default function SignUpPage() {
         
         <CardContent className="px-4 sm:px-6">
           {/* Backend Status Indicator */}
-          {backendStatus !== "connected" && (
-            <Alert variant={backendStatus === "disconnected" ? "destructive" : "default"} className="mb-4">
+          <Alert variant={
+            backendStatus === "connected" ? "default" : 
+            backendStatus === "checking" ? "default" : "destructive"
+          } className="mb-4">
+            {backendStatus === "connected" ? (
+              <CheckCircle className="h-4 w-4 text-green-600" />
+            ) : (
               <AlertCircle className="h-4 w-4" />
-              <AlertTitle>
-                {backendStatus === "checking" ? "Checking connection..." : "Connection issue"}
-              </AlertTitle>
-              <AlertDescription className="flex flex-col gap-2">
-                {backendStatus === "disconnected" ? (
-                  <>
-                    <span>Cannot connect to backend server.</span>
-                    <Button variant="outline" size="sm" onClick={retryConnection} className="mt-2">
-                      Retry Connection
-                    </Button>
-                  </>
-                ) : (
-                  "Verifying server connection..."
-                )}
-              </AlertDescription>
-            </Alert>
-          )}
+            )}
+            <AlertTitle>
+              {backendStatus === "checking" ? "Checking connection..." : 
+               backendStatus === "connected" ? "Connected to server" : "Connection issue"}
+            </AlertTitle>
+            <AlertDescription className="flex flex-col gap-2">
+              {backendStatus === "disconnected" ? (
+                <>
+                  <span>Cannot connect to server.</span>
+                  <Button variant="outline" size="sm" onClick={retryConnection} className="mt-2">
+                    Retry Connection
+                  </Button>
+                </>
+              ) : backendStatus === "checking" ? (
+                "Verifying server connection..."
+              ) : (
+                "Ready to create your account!"
+              )}
+            </AlertDescription>
+          </Alert>
 
-          {/* Troubleshooting Guide */}
-          {backendStatus === "disconnected" && (
-            <div className="mb-6 p-4 bg-slate-100 rounded-lg text-sm">
-              <h3 className="font-semibold mb-2 flex items-center gap-2">
-                <WifiOff className="w-4 h-4" />
-                Troubleshooting steps:
-              </h3>
-              <ol className="list-decimal list-inside space-y-1 ml-2">
-                <li>Ensure backend server is running</li>
-                <li>Check if backend is on port 5000</li>
-                <li>Verify no other services are using port 5000</li>
-                <li>Restart the backend server if needed</li>
-              </ol>
-            </div>
+          {/* Error Message */}
+          {error && (
+            <Alert variant="destructive" className="mb-4">
+              <AlertCircle className="h-4 w-4" />
+              <AlertTitle>Error</AlertTitle>
+              <AlertDescription>{error}</AlertDescription>
+            </Alert>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
@@ -170,7 +159,7 @@ export default function SignUpPage() {
                   required
                   className="pl-10 h-12"
                   placeholder="Enter your full name"
-                  disabled={backendStatus !== "connected"}
+                  disabled={isLoading}
                 />
               </div>
             </div>
@@ -190,7 +179,7 @@ export default function SignUpPage() {
                   required
                   className="pl-10 h-12"
                   placeholder="Enter your email"
-                  disabled={backendStatus !== "connected"}
+                  disabled={isLoading}
                 />
               </div>
             </div>
@@ -209,13 +198,15 @@ export default function SignUpPage() {
                   onChange={handleInputChange}
                   required
                   className="pl-10 pr-10 h-12"
-                  placeholder="Create a password"
-                  disabled={backendStatus !== "connected"}
+                  placeholder="Create a password (min. 6 characters)"
+                  disabled={isLoading}
+                  minLength={6}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                  disabled={isLoading}
                 >
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
@@ -237,7 +228,8 @@ export default function SignUpPage() {
                   required
                   className="pl-10 h-12"
                   placeholder="Confirm your password"
-                  disabled={backendStatus !== "connected"}
+                  disabled={isLoading}
+                  minLength={6}
                 />
               </div>
             </div>
@@ -247,7 +239,7 @@ export default function SignUpPage() {
                 type="checkbox"
                 required
                 className="rounded border-slate-300 text-blue-700 focus:ring-coral-500 mt-1"
-                disabled={backendStatus !== "connected"}
+                disabled={isLoading}
               />
               <span className="ml-2 text-sm text-slate-600">
                 I agree to the{" "}

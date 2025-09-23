@@ -1,9 +1,10 @@
+// app/auth/signin/page.tsx - UPDATED
 "use client"
 
 import type React from "react"
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { Eye, EyeOff, Mail, Lock, AlertCircle, User } from "lucide-react"
+import { Eye, EyeOff, Mail, Lock, AlertCircle, User, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -43,24 +44,16 @@ export default function SignInPage() {
         password: formData.password,
       })
 
-      if (data.error) {
-        setError(data.error)
-      } else {
-        // Save token in localStorage
-        localStorage.setItem("token", data.token)
-        localStorage.setItem("user", JSON.stringify(data.user))
-        
-        // Redirect to dashboard
-        router.push("/dashboard")
-      }
+      // Save token and user data
+      localStorage.setItem("token", data.token)
+      localStorage.setItem("user", JSON.stringify(data.user))
+      
+      // Redirect to dashboard
+      router.push("/dashboard")
+
     } catch (err: any) {
       console.error("Login error", err)
-      
-      if (err.message.includes("Failed to fetch")) {
-        setError("Cannot connect to server. Please try again later.")
-      } else {
-        setError("Invalid email or password. Please try again.")
-      }
+      setError(err.message || "Invalid email or password. Please try again.")
     } finally {
       setIsLoading(false)
     }
@@ -71,6 +64,8 @@ export default function SignInPage() {
       ...formData,
       [e.target.name]: e.target.value,
     })
+    // Clear error when user starts typing
+    if (error) setError("")
   }
 
   const retryConnection = async () => {
@@ -97,26 +92,34 @@ export default function SignInPage() {
         
         <CardContent className="px-4 sm:px-6">
           {/* Backend Status Indicator */}
-          {backendStatus !== "connected" && (
-            <Alert variant={backendStatus === "disconnected" ? "destructive" : "default"} className="mb-4">
+          <Alert variant={
+            backendStatus === "connected" ? "default" : 
+            backendStatus === "checking" ? "default" : "destructive"
+          } className="mb-4">
+            {backendStatus === "connected" ? (
+              <CheckCircle className="h-4 w-4 text-green-600" />
+            ) : (
               <AlertCircle className="h-4 w-4" />
-              <AlertTitle>
-                {backendStatus === "checking" ? "Checking connection..." : "Connection issue"}
-              </AlertTitle>
-              <AlertDescription className="flex flex-col gap-2">
-                {backendStatus === "disconnected" ? (
-                  <>
-                    <span>Cannot connect to backend server.</span>
-                    <Button variant="outline" size="sm" onClick={retryConnection} className="mt-2">
-                      Retry Connection
-                    </Button>
-                  </>
-                ) : (
-                  "Verifying server connection..."
-                )}
-              </AlertDescription>
-            </Alert>
-          )}
+            )}
+            <AlertTitle>
+              {backendStatus === "checking" ? "Checking connection..." : 
+               backendStatus === "connected" ? "Connected to server" : "Connection issue"}
+            </AlertTitle>
+            <AlertDescription className="flex flex-col gap-2">
+              {backendStatus === "disconnected" ? (
+                <>
+                  <span>Cannot connect to server.</span>
+                  <Button variant="outline" size="sm" onClick={retryConnection} className="mt-2">
+                    Retry Connection
+                  </Button>
+                </>
+              ) : backendStatus === "checking" ? (
+                "Verifying server connection..."
+              ) : (
+                "Ready to sign in!"
+              )}
+            </AlertDescription>
+          </Alert>
 
           {/* Error Message */}
           {error && (
@@ -143,7 +146,7 @@ export default function SignInPage() {
                   required
                   className="pl-10 h-12"
                   placeholder="Enter your email"
-                  disabled={backendStatus !== "connected"}
+                  disabled={isLoading}
                 />
               </div>
             </div>
@@ -163,12 +166,13 @@ export default function SignInPage() {
                   required
                   className="pl-10 pr-10 h-12"
                   placeholder="Enter your password"
-                  disabled={backendStatus !== "connected"}
+                  disabled={isLoading}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                  disabled={isLoading}
                 >
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
@@ -180,7 +184,7 @@ export default function SignInPage() {
                 <input 
                   type="checkbox" 
                   className="rounded border-slate-300 text-coral-500 focus:ring-coral-500" 
-                  disabled={backendStatus !== "connected"}
+                  disabled={isLoading}
                 />
                 <span className="ml-2 text-sm text-slate-600">Remember me</span>
               </label>
